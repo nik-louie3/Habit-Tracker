@@ -339,6 +339,7 @@ textarea.inp{resize:vertical;min-height:60px}
 .level-item .li-lv{font-weight:800;color:var(--accent);min-width:28px;font-size:11px}
 .level-item .li-name{flex:1;font-weight:600;font-size:12px}
 .level-item .li-xp{color:var(--dim);font-size:10px;white-space:nowrap}
+.level-item .li-reward{color:var(--green);font-size:10px;white-space:nowrap;font-weight:700;min-width:56px;text-align:right}
 .level-summary{display:flex;gap:10px;margin:12px 0;flex-wrap:wrap}
 .level-summary .ls{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 14px;flex:1;min-width:100px;text-align:center}
 .level-summary .ls .lsl{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
@@ -1053,7 +1054,7 @@ filterTitle:"Filters",selectAll:"Select all",deselectAll:"Deselect all",filterMo
 weeklyPattern:"Weekly Pattern",tagPerformance:"Tag Performance",streaksBoard:"Streaks Leaderboard",habitHeatmap:"Habit Heatmap",
 topStreaks:"Top streaks across all months",avgByDay:"Average completion by day of week",perfByTag:"Performance by tag category",
 heatmapDesc:"Daily completion intensity across the year",daysLabel:"days",
-done:"done",todayDone:"Done",remaining:"Remaining",freezesLeft:"Freezes left",bonusFreezes:"Bonus freezes",
+done:"done",todayDone:"Done",remaining:"Remaining",freezesLeft:"Freezes left",
 freezeToday:"Freeze today",freezeThisDay:"Freeze this day",left:"left",dayFrozen:"Day is frozen — tap to unfreeze",
 perfectDayToday:"Perfect day! The bonus applies once today has fully elapsed.",
 undoBtn:"Undo",undoCheckedMsg:"Checked: {0}",undoUncheckedMsg:"Unchecked: {0}",
@@ -1170,7 +1171,7 @@ filterTitle:"Фильтры",selectAll:"Выбрать все",deselectAll:"Сн
 weeklyPattern:"Недельный паттерн",tagPerformance:"Эффективность тегов",streaksBoard:"Рейтинг серий",habitHeatmap:"Тепловая карта",
 topStreaks:"Лучшие серии за все месяцы",avgByDay:"Средний % выполнения по дням недели",perfByTag:"Результативность по категориям тегов",
 heatmapDesc:"Интенсивность выполнения по дням года",daysLabel:"дн.",
-done:"выполнено",todayDone:"Сделано",remaining:"Осталось",freezesLeft:"Заморозок осталось",bonusFreezes:"Бонусных заморозок",
+done:"выполнено",todayDone:"Сделано",remaining:"Осталось",freezesLeft:"Заморозок осталось",
 freezeToday:"Заморозить день",freezeThisDay:"Заморозить этот день",left:"ост.",dayFrozen:"День заморожен — нажмите для отмены",
 perfectDayToday:"Идеальный день! Бонус применится, когда день полностью завершится.",
 undoBtn:"Отменить",undoCheckedMsg:"Отмечено: «{0}»",undoUncheckedMsg:"Снята отметка: «{0}»",
@@ -1287,7 +1288,7 @@ filterTitle:"Filtros",selectAll:"Seleccionar todo",deselectAll:"Deseleccionar to
 weeklyPattern:"Patrón semanal",tagPerformance:"Rendimiento por etiqueta",streaksBoard:"Ranking de rachas",habitHeatmap:"Mapa de calor",
 topStreaks:"Mejores rachas de todos los meses",avgByDay:"Promedio de cumplimiento por día de semana",perfByTag:"Rendimiento por categoría",
 heatmapDesc:"Intensidad de cumplimiento diario durante el año",daysLabel:"días",
-done:"hecho",todayDone:"Hecho",remaining:"Restante",freezesLeft:"Congelaciones rest.",bonusFreezes:"Congelaciones bonus",
+done:"hecho",todayDone:"Hecho",remaining:"Restante",freezesLeft:"Congelaciones rest.",
 freezeToday:"Congelar hoy",freezeThisDay:"Congelar este día",left:"rest.",dayFrozen:"Día congelado — toca para descongelar",
 perfectDayToday:"¡Día perfecto! La bonificación se aplicará cuando termine el día.",
 undoBtn:"Deshacer",undoCheckedMsg:"Marcado: {0}",undoUncheckedMsg:"Desmarcado: {0}",
@@ -1404,7 +1405,7 @@ filterTitle:"筛选",selectAll:"全选",deselectAll:"取消全选",filterMonths:
 weeklyPattern:"每周模式",tagPerformance:"标签表现",streaksBoard:"连续排行榜",habitHeatmap:"热力图",
 topStreaks:"所有月份最佳连续记录",avgByDay:"按星期几的平均完成率",perfByTag:"按标签类别的表现",
 heatmapDesc:"全年每日完成强度",daysLabel:"天",
-done:"完成",todayDone:"已完成",remaining:"剩余",freezesLeft:"剩余冻结",bonusFreezes:"奖励冻结",
+done:"完成",todayDone:"已完成",remaining:"剩余",freezesLeft:"剩余冻结",
 freezeToday:"冻结今天",freezeThisDay:"冻结这一天",left:"剩余",dayFrozen:"已冻结 — 点击解冻",
 perfectDayToday:"完美的一天！奖励将在今天结束后生效。",
 undoBtn:"撤销",undoCheckedMsg:"已完成：{0}",undoUncheckedMsg:"已取消：{0}",
@@ -1521,7 +1522,7 @@ filterTitle:"Filtres",selectAll:"Tout sélectionner",deselectAll:"Tout désélec
 weeklyPattern:"Modèle hebdomadaire",tagPerformance:"Performance par étiquette",streaksBoard:"Classement des séries",habitHeatmap:"Carte thermique",
 topStreaks:"Meilleures séries de tous les mois",avgByDay:"Moyenne d'achèvement par jour de semaine",perfByTag:"Performance par catégorie",
 heatmapDesc:"Intensité d'achèvement quotidien sur l'année",daysLabel:"jours",
-done:"fait",todayDone:"Fait",remaining:"Restant",freezesLeft:"Gels restants",bonusFreezes:"Gels bonus",
+done:"fait",todayDone:"Fait",remaining:"Restant",freezesLeft:"Gels restants",
 freezeToday:"Geler aujourd'hui",freezeThisDay:"Geler ce jour",left:"rest.",dayFrozen:"Jour gelé — appuyez pour dégeler",
 perfectDayToday:"Journée parfaite ! Le bonus s'appliquera une fois la journée terminée.",
 undoBtn:"Annuler",undoCheckedMsg:"Coché : {0}",undoUncheckedMsg:"Décoché : {0}",
@@ -1689,7 +1690,7 @@ function activeYear(){
   const now=new Date().getFullYear();
   return Math.min(LAST_YEAR,Math.max(FIRST_YEAR,now));
 }
-const MAX_FREEZES=1;
+const MAX_FREEZES=3;
 // Points-economy currency name — a proper noun, deliberately NOT localized (same in every language).
 const CURRENCY_NAME="Inlounity";
 const CURRENCY_TICKER="INLI";
@@ -3335,6 +3336,10 @@ function recalcPoints(){
   // enough to zero out whatever the raw negative sum was at the moment it was clicked; it never
   // retroactively erases penalties, it just permanently offsets them going forward.
   pts+=(state.debtForgiven||0);
+  // Level-up currency reward: a pure function of the current level (see totalLevelRewardEarned),
+  // so this naturally "retroactively" pays out every level already reached — no ledger, no
+  // separate grant, it just grows on its own the next time a level is crossed.
+  pts+=totalLevelRewardEarned();
   // Rounded to cents: every other term above was already a clean integer, but casino payouts carry
   // 2 decimal places (a multiplier like 0.36× or 3.35× applied to an integer bet), and summing many
   // of those over time accumulates plain binary floating-point noise (…000000001-type drift) that
@@ -3492,22 +3497,9 @@ function getChecks(m,hid){
   if(!state.checks[mk][hid])state.checks[mk][hid]={};
   return state.checks[mk][hid];
 }
-// Bonus freezes are an eternal stockpile earned +1 per XP level gained, ON TOP of the monthly
-// free allowance — derived (never stored/patched) from state.xp and actual freeze usage, same
-// "always derive" principle as recalcPoints/recalcXP.
-function totalBonusFreezesEarned(){return Math.max(0,levelFromXp(state.xp)-1)}
-function totalBonusFreezesConsumed(){
-  syncLiveToYear();
-  let used=0;
-  if(state.years){
-    Object.keys(state.years).forEach(y=>{
-      const fz=(state.years[y]||{}).freezesUsed||{};
-      Object.keys(fz).forEach(mk=>{ used+=Math.max(0,(fz[mk]||[]).length-MAX_FREEZES); });
-    });
-  }
-  return used;
-}
-function bonusFreezesAvailable(){return Math.max(0,totalBonusFreezesEarned()-totalBonusFreezesConsumed())}
+// Leveling up used to also earn a bonus freeze; that reward is now paid in currency instead (see
+// levelRewardAmount/totalLevelRewardEarned below) — the monthly freeze allowance is a fixed
+// MAX_FREEZES per month, from nowhere else, full stop.
 function getFreezes(m){return state.freezesUsed["m"+m]||[]}
 function isFrozen(m,d){return getFreezes(m).includes(d)}
 function toggleFreeze(m,d){
@@ -3516,9 +3508,27 @@ function toggleFreeze(m,d){
   const arr=state.freezesUsed[mk];
   const idx=arr.indexOf(d);
   if(idx>=0)arr.splice(idx,1);
-  else if(arr.length<MAX_FREEZES||bonusFreezesAvailable()>0)arr.push(d);
+  else if(arr.length<MAX_FREEZES)arr.push(d);
   else{toast(T.maxFreezesMsg.replace("{0}",MAX_FREEZES));return}
   save();
+}
+// One-time currency reward for reaching level lv (replaces the old level->bonus-freeze reward).
+// Banded by the same "5 levels per rank" grouping the rank titles already use — each rank pays more
+// per level than the last, so climbing into a new rank feels like a real raise. Level 1 (the
+// starting point) earns nothing; the reward is for actually leveling UP.
+function levelRewardAmount(lv){
+  if(lv<2)return 0;
+  return Math.ceil(lv/5)*50;
+}
+// Lifetime sum of levelRewardAmount for every level already reached — a pure function of the
+// CURRENT level (itself derived from state.xp), so folding this into recalcPoints() automatically
+// "retroactively" pays out every level-up that already happened, with no stored ledger and no
+// separate one-time grant: leveling further just grows this term the next time points recalc.
+function totalLevelRewardEarned(){
+  const lv=levelFromXp(state.xp||0);
+  let total=0;
+  for(let l=2;l<=lv;l++)total+=levelRewardAmount(l);
+  return total;
 }
 // XP is lifetime (like points) and gated by the same trackingStart cutoff — always re-derived from
 // every year's real check history, never patched incrementally (same reasoning as recalcPoints()).
@@ -3849,7 +3859,7 @@ function renderNoteFreezeBtn(){
   const btn=document.getElementById("btnFreezeNoteDay");if(!btn)return;
   const frozen=isFrozen(noteMonth,noteDay);
   const freezesLeft=Math.max(0,MAX_FREEZES-getFreezes(noteMonth).length);
-  const totalFreezesLeft=freezesLeft+bonusFreezesAvailable();
+  const totalFreezesLeft=freezesLeft;
   btn.classList.toggle("used",!frozen&&totalFreezesLeft<=0);
   btn.textContent=frozen?("❄ "+T.dayFrozen):("❄ "+T.freezeThisDay+" ("+totalFreezesLeft+" "+T.left+")");
   btn.onclick=()=>{
@@ -3958,10 +3968,12 @@ function openLevelModal(){
     const isCurrent=l===lv;
     const isCompleted=l<lv;
     const cls=isCurrent?'current':isCompleted?'completed':'';
+    const reward=levelRewardAmount(l);
     html+=`<div class="level-item ${cls}">
       <div class="li-lv">${l}</div>
       <div class="li-name">${levelTitle(l)}</div>
       <div class="li-xp">${xpNeed} XP</div>
+      <div class="li-reward">${reward?'+'+reward+' '+CURRENCY_TICKER:''}</div>
     </div>`;
   }
   document.getElementById("levelGrid").innerHTML=html;
@@ -3988,8 +4000,7 @@ function renderToday(){
   const hs=activeHabits().sort((a,b)=>(a.order||0)-(b.order||0));
   const frozen=isFrozen(m,d);
   const freezesLeft=Math.max(0,MAX_FREEZES-getFreezes(m).length);
-  const bonusLeft=bonusFreezesAvailable();
-  const totalFreezesLeft=freezesLeft+bonusLeft;
+  const totalFreezesLeft=freezesLeft;
   const doneCount=hs.filter(h=>!!getChecks(m,h.id)[d]).length;
   const todayXP=hs.reduce((s,h)=>getChecks(m,h.id)[d]?s+xpForCheck(h.weight):s,0);
 
@@ -4005,7 +4016,6 @@ function renderToday(){
       <div class="ts"><div class="tsl">${T.todayDone}</div><div class="tsv" style="color:var(--green)">${doneCount}</div></div>
       <div class="ts"><div class="tsl">${T.remaining}</div><div class="tsv" style="color:var(--accent2)">${hs.length-doneCount}</div></div>
       <div class="ts"><div class="tsl">${T.freezesLeft}</div><div class="tsv">${freezesLeft}</div></div>
-      <div class="ts"><div class="tsl">${T.bonusFreezes}</div><div class="tsv">${bonusLeft}</div></div>
     </div>`;
 
   if(!frozen){
