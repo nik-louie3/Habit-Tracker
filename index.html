@@ -1801,11 +1801,11 @@ function defaultBigRewards(){
 let state=null,memFallback=false;
 // Per-year data lives in state.years[YYYY]; shared data (habits/tags/bigRewards/theme...) at top level.
 function freshYearData(){
-  return{checks:{},notes:{},freezesUsed:{},incomeHistory:{},income:0,penaltyRate:15,rateIncrement:1,bigPurchases:[],declaredSins:{},violationLogs:{},achievementLogs:{},habitFreezes:{},habitFreezeEverDays:{},weeklySleepMarks:{}};
+  return{checks:{},notes:{},freezesUsed:{},freezesEverDays:{},incomeHistory:{},income:0,penaltyRate:15,rateIncrement:1,bigPurchases:[],declaredSins:{},violationLogs:{},achievementLogs:{},habitFreezes:{},habitFreezeEverDays:{},weeklySleepMarks:{}};
 }
 // xp intentionally NOT per-year (see below) — it's a lifetime field like points, sitting alongside
 // state.years rather than inside it.
-const YEAR_FIELDS=["checks","notes","freezesUsed","incomeHistory","income","penaltyRate","rateIncrement","bigPurchases","declaredSins","violationLogs","achievementLogs","habitFreezes","habitFreezeEverDays","weeklySleepMarks"];
+const YEAR_FIELDS=["checks","notes","freezesUsed","freezesEverDays","incomeHistory","income","penaltyRate","rateIncrement","bigPurchases","declaredSins","violationLogs","achievementLogs","habitFreezes","habitFreezeEverDays","weeklySleepMarks"];
 function todayISO(){const n=new Date();return n.getFullYear()+"-"+String(n.getMonth()+1).padStart(2,"0")+"-"+String(n.getDate()).padStart(2,"0")}
 function addDaysISO(iso,days){
   const d=new Date(iso+"T00:00:00");
@@ -1911,7 +1911,7 @@ function freshState(){
     // in the UI) so the end-of-month tier-ambiguity warning fires exactly once per month per habit.
     notifications:[],tierWarningKeys:[],
     // live per-year fields (bound to years[currentYear]); kept at top level so all existing code works unchanged
-    checks:{},notes:{},freezesUsed:{},incomeHistory:{},income:0,penaltyRate:15,rateIncrement:1,declaredSins:{},violationLogs:{},achievementLogs:{},habitFreezes:{},habitFreezeEverDays:{},weeklySleepMarks:{},
+    checks:{},notes:{},freezesUsed:{},freezesEverDays:{},incomeHistory:{},income:0,penaltyRate:15,rateIncrement:1,declaredSins:{},violationLogs:{},achievementLogs:{},habitFreezes:{},habitFreezeEverDays:{},weeklySleepMarks:{},
     _t:Date.now()
   };
   s.years[startYear]=freshYearData();
@@ -2128,6 +2128,17 @@ function migrate(){
         }
       });
     });
+    // Backfill freezesEverDays for every day already sitting in freezesUsed from before this memory
+    // existed — otherwise a day frozen legitimately under an earlier, looser rule (a bonus pool, or a
+    // higher MAX_FREEZES) would only gain grandfather protection the next time it's toggled, not
+    // retroactively, so accidentally un-freezing it today would strand it exactly like the bug this
+    // memory exists to prevent.
+    if(!yd.freezesEverDays)yd.freezesEverDays={};
+    Object.keys(yd.freezesUsed||{}).forEach(mk=>{
+      if(!yd.freezesEverDays[mk])yd.freezesEverDays[mk]=[];
+      const everArr=yd.freezesEverDays[mk];
+      (yd.freezesUsed[mk]||[]).forEach(d=>{if(!everArr.includes(d))everArr.push(d);});
+    });
   });
   // Reward pricing: old flat-INLI `cost` → derived `days` (see REWARD AUTO-PRICING below), so the
   // price stays exactly what it was the moment this migration runs and only starts floating with
@@ -2234,12 +2245,27 @@ function isArchivedOn(h,year,m,d){
 // whole week reads one consistent quota even when queried from a different day inside it). If several
 // overrides somehow cover the same day, the first one listed wins — simplest reasonable tie-break for
 // what should be a rare, user-caused edge case rather than a normal configuration.
+function activeQuotaOverride(h,year,m,d){
+  if(!Array.isArray(h.quotaOverrides)||!h.quotaOverrides.length)return null;
+  const ds=ymdStr(year,m,d);
+  return h.quotaOverrides.find(o=>o.start&&ds>=o.start&&(o.end==null||ds<o.end))||null;
+}
 function effectiveWeeklyQuota(h,year,m,d){
   const base=Math.max(0,h.weeklyQuota||0);
-  if(!Array.isArray(h.quotaOverrides)||!h.quotaOverrides.length)return base;
-  const ds=ymdStr(year,m,d);
-  const match=h.quotaOverrides.find(o=>o.start&&ds>=o.start&&(o.end==null||ds<o.end));
+  const match=activeQuotaOverride(h,year,m,d);
   return match?Math.max(0,match.quota||0):base;
+}
+// A tier's own label, unless an active quota-override period for this day renames it (see the
+// quota-override editor's "rename tiers for this period" rows) — kind is "violation"|"achievement".
+// Purely a display substitution: the reward stays tied to the tier's position, never its text, so
+// renaming "x>15" to "x>7" for a period is already enough to make hitting 7 "count" as that tier.
+function effectiveTierLabel(h,kind,tierIdx,year,m,d){
+  const tier=(kind==="violation"?h.violationTiers:h.achievementTiers)||[];
+  const fallback=(tier[tierIdx]&&tier[tierIdx].label)||("#"+(tierIdx+1));
+  const match=activeQuotaOverride(h,year,m,d);
+  if(!match)return fallback;
+  const labels=kind==="violation"?match.violationLabels:match.achievementLabels;
+  return(labels&&labels[tierIdx])||fallback;
 }
 // Combined hover text for a habit's name (Today + Track): its own free-text note, plus any
 // violation/achievement tier that has a description filled in — otherwise the only place either is
@@ -3457,14 +3483,26 @@ function getChecks(m,hid){
 // MAX_FREEZES per month, from nowhere else, full stop.
 function getFreezes(m){return state.freezesUsed["m"+m]||[]}
 function isFrozen(m,d){return getFreezes(m).includes(d)}
+// Toggles the whole-day freeze. A day that has EVER legitimately been frozen this month (tracked in
+// freezesEverDays, e.g. one frozen back when a bonus pool or a looser MAX_FREEZES allowed it) can
+// always be put back — a later rule tightening shouldn't strand a day that was legal when it was
+// set, and un-freezing it by mistake shouldn't cost it permanently. This never allows freezing a
+// genuinely NEW day beyond the current MAX_FREEZES: that still only opens up once the month's active
+// count drops back under the limit. Mirrors the same reasoning habitFreezeEverDays already uses for
+// per-habit freezes, just without that one's extra eviction bookkeeping — a global freeze doesn't
+// compete with a shrinking per-habit quota, so nothing here ever needs to be evicted.
 function toggleFreeze(m,d){
   const mk="m"+m;
   if(!state.freezesUsed[mk])state.freezesUsed[mk]=[];
   const arr=state.freezesUsed[mk];
+  if(!state.freezesEverDays[mk])state.freezesEverDays[mk]=[];
+  const everArr=state.freezesEverDays[mk];
   const idx=arr.indexOf(d);
   if(idx>=0)arr.splice(idx,1);
-  else if(arr.length<MAX_FREEZES)arr.push(d);
-  else{toast(T.maxFreezesMsg.replace("{0}",MAX_FREEZES));return}
+  else if(arr.length<MAX_FREEZES||everArr.includes(d)){
+    arr.push(d);
+    if(!everArr.includes(d))everArr.push(d);
+  }else{toast(T.maxFreezesMsg.replace("{0}",MAX_FREEZES));return}
   save();
 }
 // One-time currency reward for reaching level lv (replaces the old level->bonus-freeze reward).
@@ -4011,7 +4049,7 @@ function renderToday(){
         const loggedAch=(state.achievementLogs["m"+m]&&state.achievementLogs["m"+m][h.id])?state.achievementLogs["m"+m][h.id][d]:undefined;
         const curAchIdx=(loggedAch!==undefined&&h.achievementTiers[loggedAch])?loggedAch:0;
         achRow=`<div class="ti-ach-row">${h.achievementTiers.map((t,i)=>
-          `<span class="ach-chip ${curAchIdx===i?'sel':''}" data-ach-h="${h.id}" data-ach-tier="${i}">${escapeHtml(t.label||('#'+(i+1)))}</span>`
+          `<span class="ach-chip ${curAchIdx===i?'sel':''}" data-ach-h="${h.id}" data-ach-tier="${i}">${escapeHtml(effectiveTierLabel(h,"achievement",i,activeYear(),m,d))}</span>`
         ).join('')}</div>`;
       }
       // Same actions the Track grid's cell offers (sin/tier/freeze marks) — same availability checks,
@@ -4038,7 +4076,7 @@ function renderToday(){
         tierRow=`<div class="ti-ach-row">${h.violationTiers.map((t,i)=>{
           const isSel=logged===i,isAvail=avail.includes(i);
           const cls=`tier-chip ${isSel?'sel':''} ${(!isAvail&&!isSel)?'disabled':''}`;
-          return `<span class="${cls}" data-h="${h.id}" data-tier-idx="${i}" title="${isAvail?T.tierLogHint:T.tierUnavailableHint}">${escapeHtml(t.label||('#'+(i+1)))}</span>`;
+          return `<span class="${cls}" data-h="${h.id}" data-tier-idx="${i}" title="${isAvail?T.tierLogHint:T.tierUnavailableHint}">${escapeHtml(effectiveTierLabel(h,"violation",i,activeYear(),m,d))}</span>`;
         }).join('')}</div>`;
       }
       let actionRow="";
@@ -4696,6 +4734,7 @@ function renderTiersList(){
   box.querySelectorAll("[data-tierdel]").forEach(b=>b.onclick=()=>{
     readTiersFromForm(); // capture any in-progress edits in OTHER rows before this one is removed
     editTiers.splice(+b.dataset.tierdel,1);renderTiersList();
+    readQuotaOverridesFromForm();renderQuotaOverridesList(); // keep its rename rows' own in-progress text
   });
   // Live visual feedback: a non-negative multiplier would silently zero out the tier's penalty
   // (or worse, flip it into a bonus), so flag it red the moment it's typed rather than only
@@ -4880,6 +4919,7 @@ function renderAchTiersList(){
   box.querySelectorAll("[data-achtierdel]").forEach(b=>b.onclick=()=>{
     readAchTiersFromForm(); // capture any in-progress edits in OTHER rows before this one is removed
     editAchTiers.splice(+b.dataset.achtierdel,1);renderAchTiersList();
+    readQuotaOverridesFromForm();renderQuotaOverridesList();
   });
   // Mirrors the violation-tier live-invalid marking, just inverted: a non-positive reward
   // multiplier is nonsensical for an achievement tier (zero or negative isn't a reward at all).
@@ -4913,11 +4953,27 @@ function readAchTiersFromForm(){
   });
   return editAchTiers.filter(t=>t.label);
 }
-// Quota-override editor — a list of {start,end,quota} date ranges (see effectiveWeeklyQuota), same
-// list-editor shape as the tier editors above but for temporarily replacing the habit's weekly
-// target instead of adding a severity/success ladder.
+// Quota-override editor — a list of {start,end,quota,violationLabels,achievementLabels} date ranges
+// (see effectiveWeeklyQuota), same list-editor shape as the tier editors above but for temporarily
+// replacing the habit's weekly target instead of adding a severity/success ladder. Also lets each
+// period optionally rename any of the habit's CURRENT tiers for its duration — e.g. a tier labelled
+// "x>15" reads as "x>7" on the dates a lighter norm applies. Tiers are self-reported (the user picks
+// which one applies when checking a day), so the reward stays tied to the tier's position exactly as
+// before; renaming it is enough to make the lighter number "count" — nothing else needs to change.
 function quotaOverrideRowHTML(o,idx){
   const ru=state.lang!=="en";
+  const vRows=(editTiers||[]).map((t,i)=>`<div style="display:flex;gap:6px;align-items:center">
+      <span style="font-size:10px;color:var(--dim);min-width:110px;flex:0 0 auto">${ru?'Срыв':'Slip'}: ${escapeHtml(t.label||('#'+(i+1)))}</span>
+      <input class="inp quota-ov-vlabel" data-tieridx="${i}" style="flex:1" value="${escapeHtml((o.violationLabels&&o.violationLabels[i])||'')}" placeholder="${ru?'как обычно':'as usual'}">
+    </div>`).join('');
+  const aRows=(editAchTiers||[]).map((t,i)=>`<div style="display:flex;gap:6px;align-items:center">
+      <span style="font-size:10px;color:var(--dim);min-width:110px;flex:0 0 auto">${ru?'Успех':'Success'}: ${escapeHtml(t.label||('#'+(i+1)))}</span>
+      <input class="inp quota-ov-alabel" data-tieridx="${i}" style="flex:1" value="${escapeHtml((o.achievementLabels&&o.achievementLabels[i])||'')}" placeholder="${ru?'как обычно':'as usual'}">
+    </div>`).join('');
+  const tierSection=(vRows||aRows)?`<div style="display:flex;flex-direction:column;gap:4px;margin-top:2px;padding-top:6px;border-top:1px dashed var(--line)">
+    <span style="font-size:10px;color:var(--dim)">${ru?'Переименовать уровни на этот период (необязательно):':'Rename tiers for this period (optional):'}</span>
+    ${vRows}${aRows}
+  </div>`:'';
   return`<div class="br-edit-row tier-row" data-idx="${idx}" style="flex-direction:column;align-items:stretch;gap:6px">
     <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
       <input class="inp quota-ov-start" type="date" style="flex:1;min-width:130px" value="${o.start||''}" title="${ru?'Дата начала':'Start date'}">
@@ -4925,6 +4981,7 @@ function quotaOverrideRowHTML(o,idx){
       <input class="inp quota-ov-quota" type="number" min="0" step="1" style="width:64px;text-align:center" value="${o.quota!=null?o.quota:''}" placeholder="3" title="${ru?'Новая норма (раз в неделю)':'New quota (times/week)'}">
       <button type="button" class="mini tier-del" data-quotaovdel="${idx}">✕</button>
     </div>
+    ${tierSection}
   </div>`;
 }
 let editQuotaOverrides=[];
@@ -4971,6 +5028,16 @@ function readQuotaOverridesFromForm(){
     editQuotaOverrides[i].end=end||null;
     const raw=row.querySelector(".quota-ov-quota").value;
     editQuotaOverrides[i].quota=raw===""?0:Math.max(0,Math.round(+raw));
+    const violationLabels={};
+    row.querySelectorAll(".quota-ov-vlabel").forEach(inp=>{
+      const v=inp.value.trim();if(v)violationLabels[+inp.dataset.tieridx]=v;
+    });
+    editQuotaOverrides[i].violationLabels=violationLabels;
+    const achievementLabels={};
+    row.querySelectorAll(".quota-ov-alabel").forEach(inp=>{
+      const v=inp.value.trim();if(v)achievementLabels[+inp.dataset.tieridx]=v;
+    });
+    editQuotaOverrides[i].achievementLabels=achievementLabels;
   });
   return editQuotaOverrides.filter(o=>o.start);
 }
@@ -8112,11 +8179,15 @@ function init(){
     readTiersFromForm(); // capture any in-progress edits before appending a new blank row
     editTiers.push({label:"",deltaMult:-1,freeLimit:null,calendarDays:[],sinDeltaMult:-1,sinLimit:null,sinCalendarDays:[]});
     renderTiersList();
+    // Its per-tier rename rows track editTiers/editAchTiers live, so it needs a re-render too —
+    // but read its own in-progress text first, or a half-typed rename in another period gets lost.
+    readQuotaOverridesFromForm();renderQuotaOverridesList();
   };
   document.getElementById("fAchTierAdd").onclick=()=>{
     readAchTiersFromForm();
     editAchTiers.push({label:"",plusMult:1});
     renderAchTiersList();
+    readQuotaOverridesFromForm();renderQuotaOverridesList();
   };
   document.getElementById("fQuotaOverrideAdd").onclick=()=>{
     readQuotaOverridesFromForm();
