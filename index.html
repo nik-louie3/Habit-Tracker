@@ -241,6 +241,9 @@ textarea.inp{resize:vertical;min-height:60px}
 .ach .emo{font-size:24px}
 .ach .at{font-size:13px;font-weight:800;margin-top:7px}
 .ach .ad{font-size:11px;color:var(--dim);margin-top:3px;line-height:1.3}
+.ach .ap{font-size:10px;color:var(--dim);margin-top:5px;font-weight:700}
+.ach .apbar{height:3px;border-radius:2px;background:var(--line);margin-top:3px;overflow:hidden}
+.ach .apbar-fill{height:100%;background:var(--accent)}
 .chart{margin-top:6px}
 .chart svg{width:100%;display:block;overflow:visible}
 .legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:11px;color:var(--dim)}
@@ -499,7 +502,7 @@ textarea.inp{resize:vertical;min-height:60px}
 .cos-rarity.common{color:var(--dim)} .cos-rarity.rare{color:#4aa3ff} .cos-rarity.epic{color:#b76bff} .cos-rarity.legendary{color:#ffd400}
 .cos-btn{width:100%;padding:6px;border-radius:8px;border:none;font-size:11px;font-weight:800;cursor:pointer;background:var(--accent);color:#0a0a0a}
 .cos-btn.equipped{background:var(--red);color:#fff}
-.cos-btn.locked{background:var(--line);color:var(--dim);cursor:default}
+.cos-btn.locked{background:var(--line);color:var(--dim);cursor:pointer}
 .cos-btn:active{transform:scale(.96)}
 .profile-card{border-radius:16px;padding:16px;margin-bottom:14px;position:relative;overflow:hidden}
 .profile-card-inner{display:flex;align-items:center;gap:14px;position:relative;z-index:1}
@@ -681,6 +684,10 @@ textarea.inp{resize:vertical;min-height:60px}
         <input class="inp" id="fName" placeholder="e.g. Cold shower">
       </div>
       <div class="field">
+        <label id="lHabitNoteLabel">Note (optional)</label>
+        <textarea class="inp" id="fHabitNote" rows="2" placeholder="Your own rules, reminders, anything worth keeping in view"></textarea>
+      </div>
+      <div class="field">
         <label id="lTagLabel">Tag</label>
         <div class="select-wrap">
           <select class="inp" id="fTag" style="padding:12px 36px 12px 13px"></select>
@@ -780,6 +787,17 @@ textarea.inp{resize:vertical;min-height:60px}
         </div>
         <p class="hint" id="lAchTiersHint" style="margin:0 0 8px">По умолчанию любая галочка = +1×вес. Добавь уровни, если хочешь награждать разные варианты выполнения по-разному (напр. «холодный душ» +1×вес, «холодная ванна» +2×вес) — засчитывается только ОДИН уровень в день, даже если сделал несколько.</p>
         <div id="fAchTiersList"></div>
+      </div>
+      <!-- Temporary norm/quota overrides for specific date ranges (e.g. one lighter week while
+           traveling) — independent of the tier editors above, only meaningful for weekly-quota
+           habits, but stored generically since it could extend to other modes later. -->
+      <div class="zone-editor" id="fQuotaOverridesSection">
+        <div class="zone-ed-header">
+          <span style="font-size:13px;font-weight:700" id="lQuotaOverridesTitle">Временная корректировка нормы (необязательно)</span>
+          <button type="button" class="mini" id="fQuotaOverrideAdd">+ <span id="lQuotaOverrideAdd">период</span></button>
+        </div>
+        <p class="hint" id="lQuotaOverridesHint" style="margin:0 0 8px">На выбранный период норма (раз в неделю) временно меняется на указанное число, вместо обычной. Полезно для отпуска, болезни и т.п. — не трогает саму привычку, только эти даты.</p>
+        <div id="fQuotaOverridesList"></div>
       </div>
       <button class="btn primary" id="btnSaveHabit">Add Habit</button>
       <button class="btn ghost" id="btnCancelEdit" style="margin-top:8px;display:none">Cancel</button>
@@ -1051,6 +1069,7 @@ monthlyIncome:"Monthly Income",incomeDesc:"Base for penalty bank. The system all
 incomePerMonth:"Income per month",penaltyRateLabel:"Penalty rate %",
 newHabit:"New Habit",editHabit:"Edit Habit",formDesc:"Set a goal, weight (1-10), and reward.",
 nameLabel:"Name",namePH:"e.g. Morning workout",tagLabel:"Tag",
+habitNoteLabel:"Note (optional)",habitNotePH:"Your own rules, reminders, anything worth keeping in view",
 scheduleModeLabel:"Schedule",modeEveryday:"Every day",modeOffdays:"Days off",modeWeekly:"Times/week",
 offWeekdaysLabel:"Days off for this habit",weeklyQuotaLabel:"Times per week",
 weightLabel:"Weight (1-10)",
@@ -1059,6 +1078,7 @@ sinQuotaLabel:"Conscious skip on any other day, times/month",
 habitFreezeTitle:"Per-habit freeze",habitFreezeHintText:"A limited number of days per month you can freeze for just THIS habit — a true zero, doesn't help or hurt, doesn't touch streaks. Works for past and future days alike.",habitFreezeQuotaLabel:"Free freezes per month",habitFreezeHint:"Freeze this day for this habit (zero, streak untouched)",habitCreatedAtLabel:"Habit created on",
 tiersTitle:"Slip severity tiers (optional)",tierAdd:"tier",tiersHint:"By default any miss is −3×weight. Add tiers to distinguish a minor slip from a major one (e.g. \"processed\" −1×weight, \"junk\" −5×weight). First number = penalty multiplier, must be negative. Second number = free uses per month before it escalates to the next tier — leave blank for unlimited.",
 achTiersTitle:"Success tiers (optional)",achTierAdd:"tier",achTiersHint:"By default any check is +1×weight. Add tiers to reward different ways of succeeding differently (e.g. \"cold shower\" +1×weight, \"cold bath\" +2×weight) — only ONE tier counts per day, your choice, even if you technically did several. Number = reward multiplier, must be positive.",
+quotaOverridesTitle:"Temporary quota adjustment (optional)",quotaOverrideAdd:"period",quotaOverridesHint:"For the chosen dates, the weekly quota temporarily changes to the given number instead of the usual one. Useful for travel, illness, etc. — doesn't touch the habit itself, just these dates.",
 sinDeclareHint:"Declare a conscious skip for this day",sinDeclareQuotaHint:"Conscious skip via the monthly quota (not a marked calendar date)",tierLogHint:"Tap to log which severity tier this miss was",tierUnavailableHint:"This tier's monthly quota is already used up by another day",achTierLogHint:"Tap to cycle which success tier this check counts as",
 trackingStartTitle:"Tracking start date",trackingStartDesc:"Days before this date never enter the points economy — no gains, no penalties. Set it to when you actually started using this system.",trackingStartLabel:"Start date",
 addHabit:"Add Habit",saveChanges:"Save Changes",cancel:"Cancel",
@@ -1167,6 +1187,7 @@ monthlyIncome:"Ежемесячный доход",incomeDesc:"База для б
 incomePerMonth:"Доход в месяц",penaltyRateLabel:"Ставка штрафа %",
 newHabit:"Новая привычка",editHabit:"Редактировать привычку",formDesc:"Цель, вес (1-10) и награда.",
 nameLabel:"Название",namePH:"напр. Утренняя зарядка",tagLabel:"Тег",
+habitNoteLabel:"Заметка (необязательно)",habitNotePH:"Свои правила, напоминания — всё, что стоит держать перед глазами",
 scheduleModeLabel:"Расписание",modeEveryday:"Каждый день",modeOffdays:"Выходные",modeWeekly:"Раз в неделю",
 offWeekdaysLabel:"Выходные для этой привычки",weeklyQuotaLabel:"Сколько раз в неделю",
 weightLabel:"Вес (1-10)",
@@ -1175,6 +1196,7 @@ sinQuotaLabel:"Осознанный пропуск в любой другой д
 habitFreezeTitle:"Заморозка по привычке",habitFreezeHintText:"Ограниченное число дней в месяц, которые можно заморозить именно для ЭТОЙ привычки — настоящий ноль, не в плюс и не в минус, серию не трогает. Работает и для прошлых, и для будущих дней.",habitFreezeQuotaLabel:"Бесплатных заморозок в месяц",habitFreezeHint:"Заморозить этот день для привычки (ноль, серия не рвётся)",habitCreatedAtLabel:"Дата создания привычки",
 tiersTitle:"Уровни срыва (необязательно)",tierAdd:"уровень",tiersHint:"По умолчанию любой пропуск = −3×вес. Добавь уровни, если хочешь различать лёгкий и тяжёлый срыв (напр. «не цельное» −1×вес, «джанк» −5×вес). Первое число — множитель штрафа, обязательно отрицательное. Второе число — сколько раз в месяц этот уровень бесплатный, дальше срыв эскалирует к следующему уровню; пусто = без ограничений.",
 achTiersTitle:"Уровни успеха (необязательно)",achTierAdd:"уровень",achTiersHint:"По умолчанию любая галочка = +1×вес. Добавь уровни, если хочешь награждать разные варианты выполнения по-разному (напр. «холодный душ» +1×вес, «холодная ванна» +2×вес) — засчитывается только ОДИН уровень в день, по твоему выбору, даже если сделал несколько. Число — множитель награды, обязательно положительное.",
+quotaOverridesTitle:"Временная корректировка нормы (необязательно)",quotaOverrideAdd:"период",quotaOverridesHint:"На выбранные даты норма (раз в неделю) временно меняется на указанное число, вместо обычной. Полезно для поездки, болезни и т.п. — саму привычку не трогает, только эти даты.",
 sinDeclareHint:"Объявить осознанный пропуск на этот день",sinDeclareQuotaHint:"Осознанный пропуск через месячную квоту (день не отмечен в календаре)",tierLogHint:"Нажми, чтобы отметить уровень этого срыва",tierUnavailableHint:"Месячная квота этого уровня уже израсходована в другой день",achTierLogHint:"Нажми, чтобы переключить уровень успеха для этой галочки",
 trackingStartTitle:"Начало трекинга",trackingStartDesc:"Дни до этой даты не участвуют в подсчёте очков — ни в плюс, ни в минус. Поставь дату, когда реально начал(а) использовать систему.",trackingStartLabel:"Дата начала",
 addHabit:"Добавить привычку",saveChanges:"Сохранить",cancel:"Отмена",
@@ -1283,6 +1305,7 @@ monthlyIncome:"Ingreso mensual",incomeDesc:"Base para el banco de multas. El sis
 incomePerMonth:"Ingreso por mes",penaltyRateLabel:"Tasa de multa %",
 newHabit:"Nuevo hábito",editHabit:"Editar hábito",formDesc:"Establece meta, peso (1-10) y recompensa.",
 nameLabel:"Nombre",namePH:"ej. Ducha fría",tagLabel:"Etiqueta",
+habitNoteLabel:"Nota (opcional)",habitNotePH:"Tus propias reglas, recordatorios, cualquier cosa que valga la pena tener a la vista",
 scheduleModeLabel:"Horario",modeEveryday:"Cada día",modeOffdays:"Días libres",modeWeekly:"Veces/semana",
 offWeekdaysLabel:"Días libres para este hábito",weeklyQuotaLabel:"Veces por semana",
 weightLabel:"Peso (1-10)",
@@ -1291,6 +1314,7 @@ sinQuotaLabel:"Salto consciente en cualquier otro día, veces/mes",
 habitFreezeTitle:"Congelación por hábito",habitFreezeHintText:"Un número limitado de días al mes que puedes congelar solo para ESTE hábito — un cero real, no suma ni resta, no afecta las rachas. Funciona tanto para días pasados como futuros.",habitFreezeQuotaLabel:"Congelaciones gratis por mes",habitFreezeHint:"Congelar este día para este hábito (cero, la racha no se rompe)",habitCreatedAtLabel:"Hábito creado el",
 tiersTitle:"Niveles de recaída (opcional)",tierAdd:"nivel",tiersHint:"Por defecto cualquier fallo es −3×peso. Añade niveles para distinguir un desliz leve de uno grave. Primer número = multiplicador de penalización, debe ser negativo. Segundo número = usos gratis por mes antes de escalar al siguiente nivel; déjalo en blanco para ilimitado.",
 achTiersTitle:"Niveles de éxito (opcional)",achTierAdd:"nivel",achTiersHint:"Por defecto cualquier marca es +1×peso. Añade niveles para premiar distintas formas de cumplir (p. ej. «ducha fría» +1×peso, «baño frío» +2×peso) — solo cuenta UN nivel por día, a tu elección, aunque hayas hecho varios. El número = multiplicador de recompensa, debe ser positivo.",
+quotaOverridesTitle:"Ajuste temporal de la meta (opcional)",quotaOverrideAdd:"período",quotaOverridesHint:"Para las fechas elegidas, la meta semanal cambia temporalmente al número indicado en vez de la habitual. Útil para viajes, enfermedad, etc. — no afecta al hábito en sí, solo esas fechas.",
 sinDeclareHint:"Declarar un salto consciente para este día",sinDeclareQuotaHint:"Salto consciente vía la cuota mensual (fecha no marcada en el calendario)",tierLogHint:"Toca para registrar el nivel de este fallo",tierUnavailableHint:"La cuota mensual de este nivel ya se usó otro día",achTierLogHint:"Toca para cambiar el nivel de éxito de esta marca",
 trackingStartTitle:"Fecha de inicio",trackingStartDesc:"Los días antes de esta fecha no entran en la economía de puntos — sin ganancias, sin penalizaciones. Ponla en el día que realmente empezaste a usar el sistema.",trackingStartLabel:"Fecha de inicio",
 addHabit:"Agregar hábito",saveChanges:"Guardar cambios",cancel:"Cancelar",
@@ -1399,6 +1423,7 @@ monthlyIncome:"月收入",incomeDesc:"罚款库的基础。系统分配固定百
 incomePerMonth:"每月收入",penaltyRateLabel:"罚款率 %",
 newHabit:"新习惯",editHabit:"编辑习惯",formDesc:"设置目标、权重(1-10)和奖励。",
 nameLabel:"名称",namePH:"例如 冷水澡",tagLabel:"标签",
+habitNoteLabel:"备注(可选)",habitNotePH:"你自己的规则、提醒——任何值得记住的内容",
 scheduleModeLabel:"日程",modeEveryday:"每天",modeOffdays:"每周休息日",modeWeekly:"每周次数",
 offWeekdaysLabel:"该习惯的休息日",weeklyQuotaLabel:"每周次数",
 weightLabel:"权重 (1-10)",
@@ -1407,6 +1432,7 @@ sinQuotaLabel:"其他任何一天的自觉跳过,次/月",
 habitFreezeTitle:"单习惯冻结",habitFreezeHintText:"每月可为这一个习惯冻结的天数上限——真正的零,不加分不扣分,不影响连续记录。过去和未来的日期都适用。",habitFreezeQuotaLabel:"每月免费冻结次数",habitFreezeHint:"为此习惯冻结这一天(零,连续记录不中断)",habitCreatedAtLabel:"习惯创建日期",
 tiersTitle:"违规等级(可选)",tierAdd:"等级",tiersHint:"默认任何未完成都是 −3×权重。添加等级可以区分轻微和严重违规(例如「非全天然」−1×权重,「垃圾食品」−5×权重)。第一个数字 = 惩罚倍数,必须为负数。第二个数字 = 每月免费次数,超过后升级到下一等级;留空表示不限。",
 achTiersTitle:"成功等级(可选)",achTierAdd:"等级",achTiersHint:"默认任何打卡都是 +1×权重。添加等级可以对不同完成方式给予不同奖励(例如「冷水淋浴」+1×权重,「冷水浴」+2×权重)——每天只算一个等级,由你选择,即使实际完成了多种。数字 = 奖励倍数,必须为正数。",
+quotaOverridesTitle:"临时调整目标(可选)",quotaOverrideAdd:"时间段",quotaOverridesHint:"在选定的日期内,每周目标临时改为指定的数字,而不是平时的数字。适用于旅行、生病等情况——不影响习惯本身,只影响这些日期。",
 sinDeclareHint:"为这一天声明自觉跳过",sinDeclareQuotaHint:"通过月度配额的自觉跳过(该日期未在日历中标记)",tierLogHint:"点击记录此次违规的等级",tierUnavailableHint:"该等级的月度配额已被其他日期用完",achTierLogHint:"点击切换此次打卡的成功等级",
 trackingStartTitle:"追踪开始日期",trackingStartDesc:"此日期之前的天数不计入积分——无得分，无扣分。请设置为你真正开始使用本系统的日期。",trackingStartLabel:"开始日期",
 addHabit:"添加习惯",saveChanges:"保存更改",cancel:"取消",
@@ -1515,6 +1541,7 @@ monthlyIncome:"Revenu mensuel",incomeDesc:"Base pour la banque de pénalités. L
 incomePerMonth:"Revenu par mois",penaltyRateLabel:"Taux de pénalité %",
 newHabit:"Nouvelle habitude",editHabit:"Modifier l'habitude",formDesc:"Définir objectif, poids (1-10) et récompense.",
 nameLabel:"Nom",namePH:"ex. Douche froide",tagLabel:"Étiquette",
+habitNoteLabel:"Note (optionnel)",habitNotePH:"Tes propres règles, rappels, tout ce qui vaut la peine de garder sous les yeux",
 scheduleModeLabel:"Planning",modeEveryday:"Chaque jour",modeOffdays:"Jours de repos",modeWeekly:"Fois/semaine",
 offWeekdaysLabel:"Jours de repos pour cette habitude",weeklyQuotaLabel:"Fois par semaine",
 weightLabel:"Poids (1-10)",
@@ -1523,6 +1550,7 @@ sinQuotaLabel:"Écart conscient un autre jour, fois/mois",
 habitFreezeTitle:"Gel par habitude",habitFreezeHintText:"Un nombre limité de jours par mois que tu peux geler seulement pour CETTE habitude — un vrai zéro, ni positif ni négatif, la série n'est pas affectée. Fonctionne pour les jours passés comme futurs.",habitFreezeQuotaLabel:"Gels gratuits par mois",habitFreezeHint:"Geler ce jour pour cette habitude (zéro, la série n'est pas rompue)",habitCreatedAtLabel:"Habitude créée le",
 tiersTitle:"Niveaux d'écart (optionnel)",tierAdd:"niveau",tiersHint:"Par défaut tout échec vaut −3×poids. Ajoute des niveaux pour distinguer un écart mineur d'un majeur. Premier nombre = multiplicateur de pénalité, doit être négatif. Second nombre = utilisations gratuites par mois avant d'escalader au niveau suivant ; laisse vide pour illimité.",
 achTiersTitle:"Niveaux de réussite (optionnel)",achTierAdd:"niveau",achTiersHint:"Par défaut toute coche vaut +1×poids. Ajoute des niveaux pour récompenser différemment plusieurs façons de réussir (ex. « douche froide » +1×poids, « bain froid » +2×poids) — un SEUL niveau compte par jour, à ton choix, même si tu en as fait plusieurs. Le nombre = multiplicateur de récompense, doit être positif.",
+quotaOverridesTitle:"Ajustement temporaire de l'objectif (optionnel)",quotaOverrideAdd:"période",quotaOverridesHint:"Pour les dates choisies, l'objectif hebdomadaire change temporairement pour le nombre indiqué au lieu de l'habituel. Utile pour un voyage, une maladie, etc. — ne touche pas l'habitude elle-même, juste ces dates.",
 sinDeclareHint:"Déclarer un écart conscient pour ce jour",sinDeclareQuotaHint:"Écart conscient via le quota mensuel (date non marquée dans le calendrier)",tierLogHint:"Touchez pour enregistrer le niveau de cet écart",tierUnavailableHint:"Le quota mensuel de ce niveau est déjà utilisé un autre jour",achTierLogHint:"Touchez pour changer le niveau de réussite de cette coche",
 trackingStartTitle:"Date de début du suivi",trackingStartDesc:"Les jours avant cette date n'entrent pas dans l'économie de points — ni gain, ni pénalité. Mets la date à laquelle tu as vraiment commencé à utiliser ce système.",trackingStartLabel:"Date de début",
 addHabit:"Ajouter habitude",saveChanges:"Enregistrer",cancel:"Annuler",
@@ -1626,7 +1654,7 @@ function applyLang(){
     lDangerZone:T.dangerZone,lBtnWipe:T.clearAllData,
     lMonthlyIncome:T.monthlyIncome,lIncomeDesc:T.incomeDesc,lIncomePerMonth:T.incomePerMonth,
     lPenaltyRate:T.penaltyRateLabel,lFormDesc:T.formDesc,
-    lNameLabel:T.nameLabel,lTagLabel:T.tagLabel,
+    lNameLabel:T.nameLabel,lHabitNoteLabel:T.habitNoteLabel,lTagLabel:T.tagLabel,
     lScheduleModeLabel:T.scheduleModeLabel,lModeEveryday:T.modeEveryday,lModeOffdays:T.modeOffdays,lModeWeekly:T.modeWeekly,
     lOffWeekdaysLabel:T.offWeekdaysLabel,lWeeklyQuotaLabel:T.weeklyQuotaLabel,
     lWeightLabel:T.weightLabel,
@@ -1635,6 +1663,7 @@ function applyLang(){
     lHabitCreatedAtLabel:T.habitCreatedAtLabel,
     lTiersTitle:T.tiersTitle,lTierAdd:T.tierAdd,lTiersHint:T.tiersHint,
     lAchTiersTitle:T.achTiersTitle,lAchTierAdd:T.achTierAdd,lAchTiersHint:T.achTiersHint,
+    lQuotaOverridesTitle:T.quotaOverridesTitle,lQuotaOverrideAdd:T.quotaOverrideAdd,lQuotaOverridesHint:T.quotaOverridesHint,
     lTrackingStartTitle:T.trackingStartTitle,lTrackingStartDesc:T.trackingStartDesc,lTrackingStartLabel:T.trackingStartLabel,
     lMyHabits:T.myHabits,lHabitListDesc:T.habitListDesc,
     lPenaltyBankLabel:T.penaltyBankLabel,
@@ -1645,12 +1674,12 @@ function applyLang(){
     gridHintText:T.gridHint,lHowToCreate:T.howToCreate,
     lLevelProgression:T.levelProgression,lBtnCloseLevel:T.closeBtn2||T.closeBtn};
   for(const[id,text]of Object.entries(ids)){const el=document.getElementById(id);if(el)el.textContent=text}
-  const phs={fName:T.namePH,syncUrl:"https://...firebasedatabase.app",
+  const phs={fName:T.namePH,fHabitNote:T.habitNotePH,syncUrl:"https://...firebasedatabase.app",
     syncPaste:T.pasteKeyPH,noteText:T.notePH,tagNameInp:T.tagNamePH};
   for(const[id,ph]of Object.entries(phs)){const el=document.getElementById(id);if(el)el.placeholder=ph}
   const ls=document.getElementById("langSelect");if(ls)ls.value=state.lang;
   setSyncStatus(sync.on?(es?"live":"off"):"off");
-  renderSinCal();renderTiersList();renderAchTiersList();
+  renderSinCal();renderTiersList();renderAchTiersList();renderQuotaOverridesList();
   updateBackupStatusLine();
   rerenderActive();
 }
@@ -1994,6 +2023,10 @@ function migrate(){
     if(h.scheduleMode===undefined)h.scheduleMode="everyday";
     if(!Array.isArray(h.offWeekdays))h.offWeekdays=[];
     if(h.weeklyQuota===undefined)h.weeklyQuota=null;
+    // Free-text note independent of tier descriptions below — the only note a habit with no tiers
+    // configured can have, and shown alongside them either way (see habitNotesTooltip).
+    if(h.note===undefined)h.note="";
+    if(!Array.isArray(h.quotaOverrides))h.quotaOverrides=[];
     if(h.weight===undefined)h.weight=5;
     if(h.order===undefined)h.order=i;
     // Installs upgrading from before this existed have no record of when the habit was actually
@@ -2194,6 +2227,29 @@ function isArchivedOn(h,year,m,d){
   if(!Array.isArray(h.archivePeriods)||!h.archivePeriods.length)return false;
   const ds=ymdStr(year,m,d);
   return h.archivePeriods.some(p=>ds>=p.start&&(p.end==null||ds<p.end));
+}
+// A weekly-quota habit's normal quota, temporarily overridden for specific date ranges (see the
+// habit form's quota-override editor) — e.g. one lighter week while traveling, without touching the
+// habit's own permanent weeklyQuota. Looked up by d alone (callers pass the WEEK's start day, so the
+// whole week reads one consistent quota even when queried from a different day inside it). If several
+// overrides somehow cover the same day, the first one listed wins — simplest reasonable tie-break for
+// what should be a rare, user-caused edge case rather than a normal configuration.
+function effectiveWeeklyQuota(h,year,m,d){
+  const base=Math.max(0,h.weeklyQuota||0);
+  if(!Array.isArray(h.quotaOverrides)||!h.quotaOverrides.length)return base;
+  const ds=ymdStr(year,m,d);
+  const match=h.quotaOverrides.find(o=>o.start&&ds>=o.start&&(o.end==null||ds<o.end));
+  return match?Math.max(0,match.quota||0):base;
+}
+// Combined hover text for a habit's name (Today + Track): its own free-text note, plus any
+// violation/achievement tier that has a description filled in — otherwise the only place either is
+// visible is the editor form itself. Returns "" (no title attribute) when there's nothing to show.
+function habitNotesTooltip(h){
+  const parts=[];
+  if(h.note)parts.push(h.note);
+  (h.violationTiers||[]).forEach(t=>{if(t.description)parts.push(`${t.label||'?'}: ${t.description}`)});
+  (h.achievementTiers||[]).forEach(t=>{if(t.description)parts.push(`${t.label||'?'}: ${t.description}`)});
+  return parts.join("\n");
 }
 function countArchivedDaysInMonth(h,year,m){
   if(!Array.isArray(h.archivePeriods)||!h.archivePeriods.length)return 0;
@@ -2477,13 +2533,15 @@ function weeklyHabitPointsForMonth(h,year,m,yd,unresolvedOut,tierUseOut,stopBefo
   const frozen=(yd.freezesUsed&&yd.freezesUsed[mk])||[];
   const habitFrozenBucket=(yd.habitFreezes&&yd.habitFreezes[mk]&&yd.habitFreezes[mk][h.id])||{};
   const upper=isCurMonth?rt.d-1:totalDays;
-  const quota=Math.max(0,h.weeklyQuota||0);
   let pts=0;
   let chunkStart=1;
   while(chunkStart<=totalDays){
     const chunkEnd=weekBoundsForDay(year,m,chunkStart).end;
     if(stopBeforeDay&&chunkStart>=stopBeforeDay)break;
     if(chunkEnd>upper)break; // this chunk, and every later one, hasn't fully elapsed yet
+    // Which quota governs THIS week — an active override covering the week's own start day, if any,
+    // else the habit's regular weeklyQuota (see effectiveWeeklyQuota).
+    const quota=effectiveWeeklyQuota(h,year,m,chunkStart);
     const isFullChunk=(chunkEnd-chunkStart+1)===7; // a short chunk at month start/end never gets a full week to work with
     let checked=0,excused=0,hasPreCreation=false;
     for(let d=chunkStart;d<=chunkEnd;d++){
@@ -3660,7 +3718,7 @@ function weeklyProgressThisChunk(h,m,d){
     if(frozenDays.includes(dd)||habitFrozenBucket[dd]||isArchivedOn(h,year,m,dd)){excused++;continue}
     if(c[dd])checked++;
   }
-  return{checked,quota:Math.max(0,(h.weeklyQuota||0)-excused)};
+  return{checked,quota:Math.max(0,effectiveWeeklyQuota(h,year,m,chunkStart)-excused)};
 }
 // Whether (m,d) should render as "dormant" for a weekly-quota habit — purely the user's OWN manual
 // mark (see toggleWeeklySleepMark). This used to also auto-derive dormant from the week's quota
@@ -3994,10 +4052,11 @@ function renderToday(){
         }
         if(marks.length)actionRow=`<div class="ti-ach-row">${marks.join('')}</div>`;
       }
+      const notesTip=habitNotesTooltip(h);
       html+=`<div class="today-item" draggable="true" data-h="${h.id}">
         <span class="ti-drag">&#10495;</span>
         <div class="move-col"><button class="move-btn" data-mvup="${h.id}">&#9650;</button><button class="move-btn" data-mvdn="${h.id}">&#9660;</button></div>
-        <div style="flex:1"><div class="ti-name">${escapeHtml(h.name)}</div>
+        <div style="flex:1"><div class="ti-name"${notesTip?` title="${escapeHtml(notesTip)}"`:''}>${escapeHtml(h.name)}</div>
         <div class="ti-streak">${metaLine}</div>${achRow}${tierRow}${actionRow}</div>
         <div class="ti-check ${done?'done':''}" style="--chkcolor:${tag.color};${done?'background:'+tag.color:''}">
           ${done?'&#10003;':''}</div>
@@ -4183,9 +4242,10 @@ function renderGrid(){
     if(!collapsed){
       grouped[tid].forEach(h=>{
         const c=getChecks(m,h.id);
+        const notesTip=habitNotesTooltip(h);
         body+=`<tr><td class="cname"><div class="rowname">
           <span class="dot" style="background:${tag.color}"></span>
-          <div><div>${escapeHtml(h.name)}</div>
+          <div><div${notesTip?` title="${escapeHtml(notesTip)}"`:''}>${escapeHtml(h.name)}</div>
           <div class="rowmeta">${habitRowMetaHTML(h,m)}</div>
           </div></div></td>`;
         for(let d=1;d<=N;d++){
@@ -4849,6 +4909,67 @@ function readAchTiersFromForm(){
   });
   return editAchTiers.filter(t=>t.label);
 }
+// Quota-override editor — a list of {start,end,quota} date ranges (see effectiveWeeklyQuota), same
+// list-editor shape as the tier editors above but for temporarily replacing the habit's weekly
+// target instead of adding a severity/success ladder.
+function quotaOverrideRowHTML(o,idx){
+  const ru=state.lang!=="en";
+  return`<div class="br-edit-row tier-row" data-idx="${idx}" style="flex-direction:column;align-items:stretch;gap:6px">
+    <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+      <input class="inp quota-ov-start" type="date" style="flex:1;min-width:130px" value="${o.start||''}" title="${ru?'Дата начала':'Start date'}">
+      <input class="inp quota-ov-end" type="date" style="flex:1;min-width:130px" value="${o.end||''}" title="${ru?'Дата конца (пусто = бессрочно)':'End date (blank = ongoing)'}">
+      <input class="inp quota-ov-quota" type="number" min="0" step="1" style="width:64px;text-align:center" value="${o.quota!=null?o.quota:''}" placeholder="3" title="${ru?'Новая норма (раз в неделю)':'New quota (times/week)'}">
+      <button type="button" class="mini tier-del" data-quotaovdel="${idx}">✕</button>
+    </div>
+  </div>`;
+}
+let editQuotaOverrides=[];
+function renderQuotaOverridesList(){
+  const box=document.getElementById("fQuotaOverridesList");if(!box)return;
+  box.innerHTML=editQuotaOverrides.map((o,i)=>quotaOverrideRowHTML(o,i)).join("");
+  box.querySelectorAll("[data-quotaovdel]").forEach(b=>b.onclick=()=>{
+    readQuotaOverridesFromForm(); // capture any in-progress edits in OTHER rows before this one is removed
+    editQuotaOverrides.splice(+b.dataset.quotaovdel,1);renderQuotaOverridesList();
+  });
+  box.querySelectorAll(".quota-ov-quota").forEach(inp=>{
+    const markInvalid=()=>inp.classList.toggle("invalid",inp.value!==""&&+inp.value<0);
+    inp.oninput=markInvalid;
+    markInvalid();
+  });
+  box.querySelectorAll(".quota-ov-start").forEach(inp=>{
+    const markInvalid=()=>inp.classList.toggle("invalid",inp.value==="");
+    inp.oninput=markInvalid;
+    markInvalid();
+  });
+}
+function quotaOverridesAreValid(){
+  const ru=state.lang!=="en";
+  for(const row of document.querySelectorAll("#fQuotaOverridesList .tier-row")){
+    const start=row.querySelector(".quota-ov-start").value;
+    const quotaRaw=row.querySelector(".quota-ov-quota").value;
+    if(!start){
+      toast(ru?"У периода корректировки нормы должна быть дата начала":"A quota-override period needs a start date");
+      return false;
+    }
+    if(quotaRaw!==""&&+quotaRaw<0){
+      toast(ru?"Норма на период не может быть отрицательной":"The period's quota can't be negative");
+      return false;
+    }
+  }
+  return true;
+}
+function readQuotaOverridesFromForm(){
+  document.querySelectorAll("#fQuotaOverridesList .tier-row").forEach(row=>{
+    const i=+row.dataset.idx;
+    if(!editQuotaOverrides[i])return;
+    editQuotaOverrides[i].start=row.querySelector(".quota-ov-start").value;
+    const end=row.querySelector(".quota-ov-end").value;
+    editQuotaOverrides[i].end=end||null;
+    const raw=row.querySelector(".quota-ov-quota").value;
+    editQuotaOverrides[i].quota=raw===""?0:Math.max(0,Math.round(+raw));
+  });
+  return editQuotaOverrides.filter(o=>o.start);
+}
 // Redraws the mode buttons' active state + which of the two mode-specific rows is visible, and
 // (re)populates the off-weekday chips from fOffWeekdays — called on every mode switch, not just once,
 // since switching modes is the only time these rows' visibility needs to change.
@@ -4869,6 +4990,7 @@ function renderScheduleModeUI(){
 function clearForm(){
   editId=null;
   document.getElementById("fName").value="";
+  document.getElementById("fHabitNote").value="";
   document.getElementById("fWeight").value="";
   document.getElementById("fTag").selectedIndex=0;
   fScheduleMode="everyday";fOffWeekdays=new Set();
@@ -4883,12 +5005,14 @@ function clearForm(){
   document.getElementById("fCreatedAt").value=todayISO();
   editTiers=[];renderTiersList();
   editAchTiers=[];renderAchTiersList();
+  editQuotaOverrides=[];renderQuotaOverridesList();
   updatePenaltyPreview();
 }
 function startEdit(id){
   const h=state.habits.find(x=>x.id===id);if(!h)return;
   editId=id;
   document.getElementById("fName").value=h.name;
+  document.getElementById("fHabitNote").value=h.note||"";
   document.getElementById("fWeight").value=h.weight;
   document.getElementById("fTag").value=h.tagId;
   fScheduleMode=h.scheduleMode||"everyday";fOffWeekdays=new Set(h.offWeekdays||[]);
@@ -4903,16 +5027,19 @@ function startEdit(id){
   document.getElementById("fCreatedAt").value=h.createdAt||state.trackingStart||todayISO();
   editTiers=(h.violationTiers||[]).map(t=>({...t}));renderTiersList();
   editAchTiers=(h.achievementTiers||[]).map(t=>({...t}));renderAchTiersList();
+  editQuotaOverrides=(h.quotaOverrides||[]).map(o=>({...o}));renderQuotaOverridesList();
   updatePenaltyPreview();
   window.scrollTo({top:0,behavior:"smooth"});
 }
 function saveHabit(){
   const name=document.getElementById("fName").value.trim();
   if(!name){toast(T.enterName);return}
+  const note=document.getElementById("fHabitNote").value.trim();
   const weight=Math.max(1,Math.min(10,+document.getElementById("fWeight").value||5));
   const tagId=document.getElementById("fTag").value;
   if(!tiersAreValid())return; // toast already shown — an invalid (non-negative) tier multiplier blocks the save
   if(!achTiersAreValid())return; // toast already shown — an invalid (non-positive) achievement multiplier blocks the save
+  if(!quotaOverridesAreValid())return; // toast already shown — a missing start date or non-positive quota blocks the save
   if(fScheduleMode==="weekly"&&!(+document.getElementById("fWeeklyQuota").value>0)){
     toast(T.enterWeeklyQuota);return;
   }
@@ -4923,16 +5050,17 @@ function saveHabit(){
   const freezeMonthlyQuota=freezeQuotaRaw===""?null:Math.max(0,+freezeQuotaRaw);
   const violationTiers=readTiersFromForm();
   const achievementTiers=readAchTiersFromForm();
+  const quotaOverrides=readQuotaOverridesFromForm();
   const createdAt=document.getElementById("fCreatedAt").value||todayISO();
   const scheduleMode=fScheduleMode;
   const offWeekdays=scheduleMode==="offdays"?[...fOffWeekdays]:[];
   const weeklyQuota=scheduleMode==="weekly"?Math.max(1,Math.round(+document.getElementById("fWeeklyQuota").value)):null;
   if(editId){
     const h=state.habits.find(x=>x.id===editId);
-    Object.assign(h,{name,tagId,scheduleMode,offWeekdays,weeklyQuota,weight,sinCalendarDays,sinMonthlyQuota,freezeMonthlyQuota,violationTiers,achievementTiers,createdAt});
+    Object.assign(h,{name,note,tagId,scheduleMode,offWeekdays,weeklyQuota,weight,sinCalendarDays,sinMonthlyQuota,freezeMonthlyQuota,violationTiers,achievementTiers,quotaOverrides,createdAt});
     toast(T.habitUpdated);
   }else{
-    state.habits.push({id:uid(),name,tagId,scheduleMode,offWeekdays,weeklyQuota,weight,sinCalendarDays,sinMonthlyQuota,freezeMonthlyQuota,violationTiers,achievementTiers,archived:false,archivePeriods:[],deleted:false,deletedAt:null,order:state.habits.length,createdAt});
+    state.habits.push({id:uid(),name,note,tagId,scheduleMode,offWeekdays,weeklyQuota,weight,sinCalendarDays,sinMonthlyQuota,freezeMonthlyQuota,violationTiers,achievementTiers,quotaOverrides,archived:false,archivePeriods:[],deleted:false,deletedAt:null,order:state.habits.length,createdAt});
     toast(T.habitAdded);
   }
   recalcPoints(); // weight/schedule/tiers/sin-days changes retroactively affect every already-logged day
@@ -5318,7 +5446,20 @@ function calculateCorrelations(m){
 function achCard(a){
   const days=ACHIEVEMENT_REWARD_DAYS[a.key];
   const rewardHTML=days?`<div class="ar" style="color:var(--green);font-size:11px;font-weight:700;margin-top:3px">+${Math.round(days*dailyUnit())} ${CURRENCY_TICKER}</div>`:'';
-  return`<div class="ach ${a.on?'unlocked':''}"><div class="emo">${a.on?a.emo:'&#128274;'}</div><div class="at">${a.title}</div><div class="ad">${a.desc}</div>${rewardHTML}</div>`;
+  return`<div class="ach ${a.on?'unlocked':''}"><div class="emo">${a.on?a.emo:'&#128274;'}</div><div class="at">${a.title}</div><div class="ad">${a.desc}</div>${achProgressHTML(a)}${rewardHTML}</div>`;
+}
+// Compact "current/target" line for threshold-based achievements (see achievementsForMonth/Year's
+// progress field) — a one-time-event achievement (natural blackjack, a specific casino win, etc.)
+// has no such field, since a 0/1 fraction wouldn't tell the user anything a locked icon doesn't
+// already say. Capped at target once unlocked so an old, since-surpassed number doesn't linger
+// (e.g. level 30 still reading "25/25" instead of "30/25").
+function achProgressHTML(a){
+  if(!a.progress)return'';
+  const{cur,target}=a.progress;
+  if(!target)return'';
+  const shown=a.on?target:cur;
+  const pct=Math.max(0,Math.min(100,Math.round(shown/target*100)));
+  return`<div class="ap">${shown}/${target}</div><div class="apbar"><div class="apbar-fill" style="width:${pct}%"></div></div>`;
 }
 // Replaces the old abstinenceMet() (which matched English substrings "porn"/"reels"/"junk"
 // against habit names — meaningless for real, custom-named habits and never tied to any actual
@@ -5339,13 +5480,14 @@ function avoidedHarshestTier(m){
 function achievementsForMonth(m){
   const sc=monthScore(m),hs=activeHabits();
   const anyStreak=Math.max(0,...hs.map(h=>longestStreak(m,h.id)));
-  const allMet=hs.length>0&&hs.every(h=>metTarget(h,m));
+  const metCount=hs.filter(h=>metTarget(h,m)).length;
+  const allMet=hs.length>0&&metCount===hs.length;
   return[
-    {key:"achPerfectMonth",emo:"&#128142;",title:T.achPerfectMonth,desc:T.achPerfectMonthD,on:allMet},
-    {key:"achOnFire",emo:"&#128293;",title:T.achOnFire,desc:T.achOnFireD,on:anyStreak>=7},
-    {key:"achStreak14",emo:"&#9889;",title:T.achStreak14,desc:T.achStreak14D,on:anyStreak>=14},
+    {key:"achPerfectMonth",emo:"&#128142;",title:T.achPerfectMonth,desc:T.achPerfectMonthD,on:allMet,progress:hs.length?{cur:metCount,target:hs.length}:null},
+    {key:"achOnFire",emo:"&#128293;",title:T.achOnFire,desc:T.achOnFireD,on:anyStreak>=7,progress:{cur:anyStreak,target:7}},
+    {key:"achStreak14",emo:"&#9889;",title:T.achStreak14,desc:T.achStreak14D,on:anyStreak>=14,progress:{cur:anyStreak,target:14}},
     {key:"achCleanMonth",emo:"&#129482;",title:T.achCleanMonth,desc:T.achCleanMonthD,on:avoidedHarshestTier(m)},
-    {key:"ach80",emo:"&#127919;",title:T.ach80,desc:T.ach80D,on:sc>=80},
+    {key:"ach80",emo:"&#127919;",title:T.ach80,desc:T.ach80D,on:sc>=80,progress:{cur:sc,target:80}},
     {key:"achZeroPenalty",emo:"&#128176;",title:T.achZeroPenalty,desc:T.achZeroPenaltyD,on:monthMoneyOwed(m)===0&&hs.length>0},
     {key:"achMonthPositive",emo:"&#128176;",title:T.achMonthPositive,desc:T.achMonthPositiveD,on:hs.length>0&&monthPointsNet(m)>0},
     {key:"achNoFreeze",emo:"&#10052;",title:T.achNoFreeze,desc:T.achNoFreezeD,on:hs.length>0&&getFreezes(m).length===0&&!hs.some(h=>Object.keys((state.habitFreezes&&state.habitFreezes["m"+m]&&state.habitFreezes["m"+m][h.id])||{}).length>0)},
@@ -5401,16 +5543,19 @@ function achievementsForYear(){
   const blackjackNatural=casinoBets.some(b=>b.game==="blackjack"&&b.details&&b.details.outcome==="blackjack");
   const casinoWagered=casinoBets.reduce((s,b)=>s+b.bet,0);
   const plinkoMaxMult=casinoBets.some(b=>b.game==="plinko"&&b.details&&b.details.mult>=41);
-  const doubleStreak3=casinoLongestWinStreak("double")>=3;
+  const doubleWinStreak=casinoLongestWinStreak("double");
+  const doubleStreak3=doubleWinStreak>=3;
   const crash50=casinoBets.some(b=>b.game==="crash"&&b.details&&b.details.won&&b.details.cashOutAt>=50);
   const crash100=casinoBets.some(b=>b.game==="crash"&&b.details&&b.details.won&&b.details.cashOutAt>=100);
   const bjDoubleWin=casinoBets.some(b=>b.game==="blackjack"&&b.details&&b.details.doubled&&(b.details.outcome==="win"||b.details.outcome==="dealerbust"));
   const minesCleared=casinoBets.some(b=>b.game==="mines"&&b.details&&b.details.cleared);
   const minesBigCashout=casinoBets.some(b=>b.game==="mines"&&b.details&&b.details.mult>=10);
-  const allGamesPlayed=["plinko","double","crash","mines","blackjack"].every(g=>casinoBets.some(b=>b.game===g));
+  const gamesPlayedCount=["plinko","double","crash","mines","blackjack"].filter(g=>casinoBets.some(b=>b.game===g)).length;
+  const allGamesPlayed=gamesPlayedCount>=5;
   const casinoBigWin=casinoBets.some(b=>(b.payout-b.bet)>=50);
   const casinoVeteran=casinoBets.length>=100;
-  const hotHand5=casinoLongestWinStreak()>=5;
+  const hotHandStreak=casinoLongestWinStreak();
+  const hotHand5=hotHandStreak>=5;
   const casinoWhale=casinoWagered>=5000;
   // Savings/challenge/shop/habit lifetime achievements below — same reasoning as the casino block
   // above: these all read top-level ledgers (state.savings/state.challenges/state.purchases/
@@ -5418,59 +5563,63 @@ function achievementsForYear(){
   // "ever happened" facts rather than something tied to whichever year happens to be open right now.
   const savings=state.savings||[];
   const savingsFirst=savings.length>0;
-  const savingsBig=savings.some(s=>s.principal>=200);
+  const biggestSaving=Math.max(0,...savings.map(s=>s.principal),0);
+  const savingsBig=biggestSaving>=200;
   const savingsPatient=savings.some(s=>s.collected&&isoDaysBetween(s.startDate,s.maturesDate)>=120);
-  const savingsCollected5=savings.filter(s=>s.collected).length>=5;
+  const savingsCollectedCount=savings.filter(s=>s.collected).length;
+  const savingsCollected5=savingsCollectedCount>=5;
   const challengesCompleted=(state.challenges||[]).filter(c=>challengeStatus(c)==="completed");
   const challengeFirst=challengesCompleted.length>0;
-  const challengeLong=challengesCompleted.some(c=>c.days>=30);
+  const longestChallenge=Math.max(0,...challengesCompleted.map(c=>c.days),0);
+  const challengeLong=longestChallenge>=30;
   const challengeVeteran=challengesCompleted.length>=5;
   const shopSpent=(state.purchases||[]).reduce((s,p)=>s+(p.cost||0),0);
   const cosmeticsOwned=Object.keys((state.cosmetics&&state.cosmetics.owned)||{}).length;
   const habitsEverCreated=state.habits.length;
+  const trackingDays=isoDaysBetween(state.trackingStart,todayISO());
   return[
-    {key:"achHalfYear",emo:"&#128081;",title:T.achHalfYear,desc:T.achHalfYearD,on:goodMonths>=6},
-    {key:"achYear",emo:"&#127942;",title:T.achYear,desc:T.achYearD,on:goodMonths>=12},
-    {key:"achPerfectionist",emo:"&#128142;",title:T.achPerfectionist,desc:T.achPerfectionistD,on:perfectMonths>=3},
-    {key:"ach6Clean",emo:"&#129482;",title:T.ach6Clean,desc:T.ach6CleanD,on:cleanMonths>=6},
-    {key:"achUnbreakable",emo:"&#128293;",title:T.achUnbreakable,desc:T.achUnbreakableD,on:maxStreak>=21},
-    {key:"achRewardCollector",emo:"&#127805;",title:T.achRewardCollector,desc:T.achRewardCollectorD,on:totalRew>=50},
+    {key:"achHalfYear",emo:"&#128081;",title:T.achHalfYear,desc:T.achHalfYearD,on:goodMonths>=6,progress:{cur:goodMonths,target:6}},
+    {key:"achYear",emo:"&#127942;",title:T.achYear,desc:T.achYearD,on:goodMonths>=12,progress:{cur:goodMonths,target:12}},
+    {key:"achPerfectionist",emo:"&#128142;",title:T.achPerfectionist,desc:T.achPerfectionistD,on:perfectMonths>=3,progress:{cur:perfectMonths,target:3}},
+    {key:"ach6Clean",emo:"&#129482;",title:T.ach6Clean,desc:T.ach6CleanD,on:cleanMonths>=6,progress:{cur:cleanMonths,target:6}},
+    {key:"achUnbreakable",emo:"&#128293;",title:T.achUnbreakable,desc:T.achUnbreakableD,on:maxStreak>=21,progress:{cur:maxStreak,target:21}},
+    {key:"achRewardCollector",emo:"&#127805;",title:T.achRewardCollector,desc:T.achRewardCollectorD,on:totalRew>=50,progress:{cur:totalRew,target:50}},
     {key:"achYearPositive",emo:"&#128176;",title:T.achYearPositive,desc:T.achYearPositiveD,on:hs.length>0&&yearNet>0},
-    {key:"achLevel25",emo:"&#11088;",title:T.achLevel25,desc:T.achLevel25D,on:level>=25},
-    {key:"achLevel50",emo:"&#127775;",title:T.achLevel50,desc:T.achLevel50D,on:level>=50},
-    {key:"achLevel75",emo:"&#128171;",title:T.achLevel75,desc:T.achLevel75D,on:level>=75},
-    {key:"achLevel100",emo:"&#128081;",title:T.achLevel100,desc:T.achLevel100D,on:level>=100},
+    {key:"achLevel25",emo:"&#11088;",title:T.achLevel25,desc:T.achLevel25D,on:level>=25,progress:{cur:level,target:25}},
+    {key:"achLevel50",emo:"&#127775;",title:T.achLevel50,desc:T.achLevel50D,on:level>=50,progress:{cur:level,target:50}},
+    {key:"achLevel75",emo:"&#128171;",title:T.achLevel75,desc:T.achLevel75D,on:level>=75,progress:{cur:level,target:75}},
+    {key:"achLevel100",emo:"&#128081;",title:T.achLevel100,desc:T.achLevel100D,on:level>=100,progress:{cur:level,target:100}},
     {key:"achCasinoPlinko",emo:"&#127920;",title:T.achCasinoPlinko,desc:T.achCasinoPlinkoD,on:plinkoJackpot},
     {key:"achCasinoDouble",emo:"&#9898;",title:T.achCasinoDouble,desc:T.achCasinoDoubleD,on:doubleWhiteWin},
     {key:"achCasinoCrash",emo:"&#128200;",title:T.achCasinoCrash,desc:T.achCasinoCrashD,on:crashHighCashout},
     {key:"achCasinoBJ",emo:"&#127183;",title:T.achCasinoBJ,desc:T.achCasinoBJD,on:blackjackNatural},
-    {key:"achCasinoHighRoller",emo:"&#128176;",title:T.achCasinoHighRoller,desc:T.achCasinoHighRollerD,on:casinoWagered>=1000},
+    {key:"achCasinoHighRoller",emo:"&#128176;",title:T.achCasinoHighRoller,desc:T.achCasinoHighRollerD,on:casinoWagered>=1000,progress:{cur:Math.round(casinoWagered),target:1000}},
     {key:"achCasinoPlinkoMax",emo:"💥",title:T.achCasinoPlinkoMax,desc:T.achCasinoPlinkoMaxD,on:plinkoMaxMult},
-    {key:"achCasinoDoubleStreak",emo:"🔁",title:T.achCasinoDoubleStreak,desc:T.achCasinoDoubleStreakD,on:doubleStreak3},
+    {key:"achCasinoDoubleStreak",emo:"🔁",title:T.achCasinoDoubleStreak,desc:T.achCasinoDoubleStreakD,on:doubleStreak3,progress:{cur:doubleWinStreak,target:3}},
     {key:"achCasinoCrash50",emo:"🌠",title:T.achCasinoCrash50,desc:T.achCasinoCrash50D,on:crash50},
     {key:"achCasinoCrash100",emo:"☄️",title:T.achCasinoCrash100,desc:T.achCasinoCrash100D,on:crash100},
     {key:"achCasinoBJDoubleWin",emo:"💪",title:T.achCasinoBJDoubleWin,desc:T.achCasinoBJDoubleWinD,on:bjDoubleWin},
     {key:"achCasinoMines",emo:"💎",title:T.achCasinoMines,desc:T.achCasinoMinesD,on:minesCleared},
     {key:"achCasinoMinesBig",emo:"🧨",title:T.achCasinoMinesBig,desc:T.achCasinoMinesBigD,on:minesBigCashout},
-    {key:"achCasinoAllGames",emo:"🎪",title:T.achCasinoAllGames,desc:T.achCasinoAllGamesD,on:allGamesPlayed},
+    {key:"achCasinoAllGames",emo:"🎪",title:T.achCasinoAllGames,desc:T.achCasinoAllGamesD,on:allGamesPlayed,progress:{cur:gamesPlayedCount,target:5}},
     {key:"achCasinoBigWin",emo:"💵",title:T.achCasinoBigWin,desc:T.achCasinoBigWinD,on:casinoBigWin},
-    {key:"achCasinoVeteran",emo:"🏅",title:T.achCasinoVeteran,desc:T.achCasinoVeteranD,on:casinoVeteran},
-    {key:"achCasinoHotHand",emo:"🔥",title:T.achCasinoHotHand,desc:T.achCasinoHotHandD,on:hotHand5},
-    {key:"achCasinoWhale",emo:"🐋",title:T.achCasinoWhale,desc:T.achCasinoWhaleD,on:casinoWhale},
+    {key:"achCasinoVeteran",emo:"🏅",title:T.achCasinoVeteran,desc:T.achCasinoVeteranD,on:casinoVeteran,progress:{cur:casinoBets.length,target:100}},
+    {key:"achCasinoHotHand",emo:"🔥",title:T.achCasinoHotHand,desc:T.achCasinoHotHandD,on:hotHand5,progress:{cur:hotHandStreak,target:5}},
+    {key:"achCasinoWhale",emo:"🐋",title:T.achCasinoWhale,desc:T.achCasinoWhaleD,on:casinoWhale,progress:{cur:Math.round(casinoWagered),target:5000}},
     {key:"achSavingsFirst",emo:"🌱",title:T.achSavingsFirst,desc:T.achSavingsFirstD,on:savingsFirst},
-    {key:"achSavingsBig",emo:"🏦",title:T.achSavingsBig,desc:T.achSavingsBigD,on:savingsBig},
+    {key:"achSavingsBig",emo:"🏦",title:T.achSavingsBig,desc:T.achSavingsBigD,on:savingsBig,progress:{cur:Math.round(biggestSaving),target:200}},
     {key:"achSavingsPatient",emo:"⏳",title:T.achSavingsPatient,desc:T.achSavingsPatientD,on:savingsPatient},
-    {key:"achSavingsCollector",emo:"📦",title:T.achSavingsCollector,desc:T.achSavingsCollectorD,on:savingsCollected5},
+    {key:"achSavingsCollector",emo:"📦",title:T.achSavingsCollector,desc:T.achSavingsCollectorD,on:savingsCollected5,progress:{cur:savingsCollectedCount,target:5}},
     {key:"achChallengeFirst",emo:"🚩",title:T.achChallengeFirst,desc:T.achChallengeFirstD,on:challengeFirst},
-    {key:"achChallengeLong",emo:"🏔️",title:T.achChallengeLong,desc:T.achChallengeLongD,on:challengeLong},
-    {key:"achChallengeVeteran",emo:"🏵️",title:T.achChallengeVeteran,desc:T.achChallengeVeteranD,on:challengeVeteran},
-    {key:"achBigSpender",emo:"🛍️",title:T.achBigSpender,desc:T.achBigSpenderD,on:shopSpent>=300},
-    {key:"achCosmeticCollector",emo:"🎨",title:T.achCosmeticCollector,desc:T.achCosmeticCollectorD,on:cosmeticsOwned>=10},
-    {key:"achLevel10",emo:"✨",title:T.achLevel10,desc:T.achLevel10D,on:level>=10},
-    {key:"achHabitBuilder",emo:"🧱",title:T.achHabitBuilder,desc:T.achHabitBuilderD,on:habitsEverCreated>=5},
-    {key:"achHabitArchitect",emo:"🏗️",title:T.achHabitArchitect,desc:T.achHabitArchitectD,on:habitsEverCreated>=10},
+    {key:"achChallengeLong",emo:"🏔️",title:T.achChallengeLong,desc:T.achChallengeLongD,on:challengeLong,progress:{cur:longestChallenge,target:30}},
+    {key:"achChallengeVeteran",emo:"🏵️",title:T.achChallengeVeteran,desc:T.achChallengeVeteranD,on:challengeVeteran,progress:{cur:challengesCompleted.length,target:5}},
+    {key:"achBigSpender",emo:"🛍️",title:T.achBigSpender,desc:T.achBigSpenderD,on:shopSpent>=300,progress:{cur:Math.round(shopSpent),target:300}},
+    {key:"achCosmeticCollector",emo:"🎨",title:T.achCosmeticCollector,desc:T.achCosmeticCollectorD,on:cosmeticsOwned>=10,progress:{cur:cosmeticsOwned,target:10}},
+    {key:"achLevel10",emo:"✨",title:T.achLevel10,desc:T.achLevel10D,on:level>=10,progress:{cur:level,target:10}},
+    {key:"achHabitBuilder",emo:"🧱",title:T.achHabitBuilder,desc:T.achHabitBuilderD,on:habitsEverCreated>=5,progress:{cur:habitsEverCreated,target:5}},
+    {key:"achHabitArchitect",emo:"🏗️",title:T.achHabitArchitect,desc:T.achHabitArchitectD,on:habitsEverCreated>=10,progress:{cur:habitsEverCreated,target:10}},
     {key:"achTopTier",emo:"🎓",title:T.achTopTier,desc:T.achTopTierD,on:everHitTopAchievementTier()},
-    {key:"achVeteranTracker",emo:"📆",title:T.achVeteranTracker,desc:T.achVeteranTrackerD,on:isoDaysBetween(state.trackingStart,todayISO())>=100},
+    {key:"achVeteranTracker",emo:"📆",title:T.achVeteranTracker,desc:T.achVeteranTrackerD,on:trackingDays>=100,progress:{cur:trackingDays,target:100}},
   ];
 }
 
@@ -5690,6 +5839,30 @@ function checkCosmeticAchievementUnlocks(){
     achievementsForMonth(rt.m).forEach(a=>{if(a.on)onKeys.add(a.key)});
   }
   gated.forEach(c=>{if(onKeys.has(c.achKey))state.cosmetics.unlockedViaAchievement[c.id]=true});
+}
+// Finds one achievement definition by key — the year-list first, then (only when the viewed year is
+// the real current one) this month's list, the same two lists checkCosmeticAchievementUnlocks above
+// already searches for its "did it ever fire" boolean — just returning the whole object here instead,
+// so its title/desc/progress can be shown to the user.
+function findAchievementByKey(achKey){
+  const fromYear=achievementsForYear().find(a=>a.key===achKey);
+  if(fromYear)return fromYear;
+  const rt=realTodayParts();
+  if(activeYear()===rt.y){
+    const fromMonth=achievementsForMonth(rt.m).find(a=>a.key===achKey);
+    if(fromMonth)return fromMonth;
+  }
+  return null;
+}
+// What a locked cosmetic's "условие" button reveals: the gating achievement's own title, its
+// description (the actual requirement — previously nowhere visible for cosmetics), and current
+// progress toward it when that achievement tracks a threshold.
+function cosmeticConditionText(achKey,ru){
+  const a=findAchievementByKey(achKey);
+  if(!a)return ru?"Условие неизвестно":"Unknown condition";
+  let txt=`${a.title}: ${a.desc}`;
+  if(a.progress&&a.progress.target)txt+=` (${ru?"сейчас":"now"}: ${a.progress.cur}/${a.progress.target})`;
+  return txt;
 }
 function cosmeticOwned(item){
   if(item.achKey)return!!(state.cosmetics.unlockedViaAchievement&&state.cosmetics.unlockedViaAchievement[item.id]);
@@ -6049,7 +6222,7 @@ function cosmeticCardHTML(item,ru){
   else swatch=`<div class="cos-swatch" style="${item.css}"></div>`;
   const rarityLabel={common:ru?"обычный":"common",rare:ru?"редкий":"rare",epic:ru?"эпик":"epic",legendary:ru?"легендарный":"legendary"}[item.rarity];
   let btn;
-  if(item.achKey&&!owned)btn=`<button class="cos-btn locked" disabled>&#128274; ${ru?"условие":"locked"}</button>`;
+  if(item.achKey&&!owned)btn=`<button class="cos-btn locked" data-cosachkey="${item.achKey}">&#128274; ${ru?"условие":"locked"}</button>`;
   else if(!owned)btn=`<button class="cos-btn" data-cosbuy="${item.id}">${item.cost} ${CURRENCY_TICKER}</button>`;
   else if(equipped)btn=`<button class="cos-btn equipped" data-cosequip="${item.id}">${ru?"Снять":"Unequip"}</button>`;
   else btn=`<button class="cos-btn" data-cosequip="${item.id}">${ru?"Надеть":"Equip"}</button>`;
@@ -6080,8 +6253,10 @@ function cosmeticsShopHTML(avail,ru){
   </div>`;
 }
 function wireCosmeticsShop(body){
+  const ru=state.lang!=="en";
   body.querySelectorAll("[data-cosbuy]").forEach(b=>b.onclick=()=>buyCosmetic(b.dataset.cosbuy));
   body.querySelectorAll("[data-cosequip]").forEach(b=>b.onclick=()=>equipCosmetic(b.dataset.cosequip));
+  body.querySelectorAll("[data-cosachkey]").forEach(b=>b.onclick=()=>toast(cosmeticConditionText(b.dataset.cosachkey,ru)));
   const titleInp=document.getElementById("cosCustomTitleInp");
   if(titleInp)titleInp.oninput=()=>{state.cosmetics.customTitleText=titleInp.value.slice(0,40);save();renderXP()};
 }
@@ -7915,7 +8090,7 @@ function init(){
   if(!sync.code){sync.code=genCode();saveSyncCfg()}
   applyTheme();
   renderScheduleModeUI();
-  editSinCalDays=[];resetSinCalNav();renderSinCal();collapseSinCal();editTiers=[];renderTiersList();editAchTiers=[];renderAchTiersList();
+  editSinCalDays=[];resetSinCalNav();renderSinCal();collapseSinCal();editTiers=[];renderTiersList();editAchTiers=[];renderAchTiersList();editQuotaOverrides=[];renderQuotaOverridesList();
   updateBackupStatusLine();
   checkBackupReminder();
 
@@ -7938,6 +8113,12 @@ function init(){
     readAchTiersFromForm();
     editAchTiers.push({label:"",plusMult:1});
     renderAchTiersList();
+  };
+  document.getElementById("fQuotaOverrideAdd").onclick=()=>{
+    readQuotaOverridesFromForm();
+    const fallbackQuota=+document.getElementById("fWeeklyQuota").value||1;
+    editQuotaOverrides.push({start:todayISO(),end:null,quota:fallbackQuota});
+    renderQuotaOverridesList();
   };
   document.getElementById("fSinCalPrev").onclick=()=>{
     sinCalMonth--;if(sinCalMonth<0){sinCalMonth=11;sinCalYear--;}
