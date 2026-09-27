@@ -3853,7 +3853,12 @@ function renderNoteFreezeBtn(){
   // from when bonus freezes let it exceed the flat cap) shows the real deficit as a negative number,
   // rather than silently flooring at 0 and making an un-freeze look like it did nothing.
   const totalFreezesLeft=MAX_FREEZES-getFreezes(noteMonth).length;
-  btn.classList.toggle("used",!frozen&&totalFreezesLeft<=0);
+  // A day that was EVER legally frozen this month stays clickable (restorable) even over quota — see
+  // toggleFreeze's own everArr check. Without also checking it here, the button's disabled styling
+  // (pointer-events:none) would block the click before toggleFreeze ever got a chance to allow it.
+  const everArr=(state.freezesEverDays&&state.freezesEverDays["m"+noteMonth])||[];
+  const restorable=everArr.includes(noteDay);
+  btn.classList.toggle("used",!frozen&&totalFreezesLeft<=0&&!restorable);
   btn.textContent=frozen?("❄ "+T.dayFrozen):("❄ "+T.freezeThisDay+" ("+totalFreezesLeft+" "+T.left+")");
   btn.onclick=()=>{
     toggleFreeze(noteMonth,noteDay);
@@ -4014,7 +4019,12 @@ function renderToday(){
     </div>`;
 
   if(!frozen){
-    html+=`<div class="freeze-btn ${totalFreezesLeft<=0?'used':''}" id="btnFreezeToday">&#10052; ${T.freezeToday} (${totalFreezesLeft} ${T.left})</div>`;
+    // Same restorable-day exception as renderNoteFreezeBtn — a day EVER legally frozen this month
+    // must stay clickable even over quota, or the disabled styling blocks the click before
+    // toggleFreeze's own everArr check ever gets a chance to allow it.
+    const todayEverArr=(state.freezesEverDays&&state.freezesEverDays["m"+m])||[];
+    const todayRestorable=todayEverArr.includes(d);
+    html+=`<div class="freeze-btn ${(totalFreezesLeft<=0&&!todayRestorable)?'used':''}" id="btnFreezeToday">&#10052; ${T.freezeToday} (${totalFreezesLeft} ${T.left})</div>`;
   }else{
     html+=`<div class="freeze-btn" id="btnUnfreezeToday">&#10052; ${T.dayFrozen}</div>`;
   }
