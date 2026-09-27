@@ -3811,8 +3811,10 @@ function closeNote(){document.getElementById("noteModal").classList.remove("open
 function renderNoteFreezeBtn(){
   const btn=document.getElementById("btnFreezeNoteDay");if(!btn)return;
   const frozen=isFrozen(noteMonth,noteDay);
-  const freezesLeft=Math.max(0,MAX_FREEZES-getFreezes(noteMonth).length);
-  const totalFreezesLeft=freezesLeft;
+  // Unclamped on purpose — a month that froze more days than MAX_FREEZES now allows (e.g. leftover
+  // from when bonus freezes let it exceed the flat cap) shows the real deficit as a negative number,
+  // rather than silently flooring at 0 and making an un-freeze look like it did nothing.
+  const totalFreezesLeft=MAX_FREEZES-getFreezes(noteMonth).length;
   btn.classList.toggle("used",!frozen&&totalFreezesLeft<=0);
   btn.textContent=frozen?("❄ "+T.dayFrozen):("❄ "+T.freezeThisDay+" ("+totalFreezesLeft+" "+T.left+")");
   btn.onclick=()=>{
@@ -3952,7 +3954,9 @@ function renderToday(){
   if(m<0){el.innerHTML=`<div class="empty"><b>${T.notYearYet.replace("{0}",activeYear())}</b></div>`;return}
   const hs=activeHabits().sort((a,b)=>(a.order||0)-(b.order||0));
   const frozen=isFrozen(m,d);
-  const freezesLeft=Math.max(0,MAX_FREEZES-getFreezes(m).length);
+  // Unclamped on purpose — see renderNoteFreezeBtn's comment: a real deficit shows as a negative
+  // number instead of hiding behind a floor of 0.
+  const freezesLeft=MAX_FREEZES-getFreezes(m).length;
   const totalFreezesLeft=freezesLeft;
   const doneCount=hs.filter(h=>!!getChecks(m,h.id)[d]).length;
   const todayXP=hs.reduce((s,h)=>getChecks(m,h.id)[d]?s+xpForCheck(h.weight):s,0);
@@ -3968,7 +3972,7 @@ function renderToday(){
     <div class="today-summary">
       <div class="ts"><div class="tsl">${T.todayDone}</div><div class="tsv" style="color:var(--green)">${doneCount}</div></div>
       <div class="ts"><div class="tsl">${T.remaining}</div><div class="tsv" style="color:var(--accent2)">${hs.length-doneCount}</div></div>
-      <div class="ts"><div class="tsl">${T.freezesLeft}</div><div class="tsv">${freezesLeft}</div></div>
+      <div class="ts"><div class="tsl">${T.freezesLeft}</div><div class="tsv" style="${freezesLeft<0?'color:var(--red)':''}">${freezesLeft}</div></div>
     </div>`;
 
   if(!frozen){
