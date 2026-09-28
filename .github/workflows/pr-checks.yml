@@ -1,0 +1,49 @@
+name: PR checks
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Syntax-check index.html's inline script
+        run: |
+          node -e "
+            const fs = require('fs');
+            const html = fs.readFileSync('index.html', 'utf8');
+            const m = html.match(/<script>([\s\S]*?)<\/script>/);
+            if (!m) throw new Error('index.html: no <script> tag found');
+            fs.writeFileSync('/tmp/app.js', m[1]);
+          "
+          node --check /tmp/app.js
+
+      - name: Syntax-check sw.js and the Cloudflare worker
+        run: |
+          node --check sw.js
+          node --check cloudflare-worker/worker.js
+
+      - name: Validate manifest.json
+        run: node -e "JSON.parse(require('fs').readFileSync('manifest.json', 'utf8'))"
+
+      - name: Verify package-lock.json files are in sync
+        run: |
+          npm ci --no-audit --no-fund --prefix .github/scripts
+          npm ci --no-audit --no-fund --prefix cloudflare-worker
+
+      - name: Run economy engine regression tests
+        run: |
+          npm ci --no-audit --no-fund --prefix tests
+          npm test --prefix tests
