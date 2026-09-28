@@ -1,0 +1,12 @@
+{
+  "name": "habitunity-tests",
+  "private": true,
+  "description": "Regression tests for the economy engine in index.html. Loads the real file through jsdom and calls its actual top-level functions — nothing here reimplements the app's logic, so a test only passes if the shipped code still behaves the way it claims to.",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "jsdom": "^25.0.0"
+  }
+}
