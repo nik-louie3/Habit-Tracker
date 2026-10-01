@@ -1149,7 +1149,7 @@ habitUpdated:"Habit updated",habitAdded:"Habit added",enterName:"Enter a name",e
 confirmDelete:"Delete \"{0}\"? History is preserved, habit marked as deleted.",
 deletedPreserved:"Deleted (history preserved)",archivedBadge:"[archived]",deletedBadge:"[deleted]",
 restoredActive:"Restored to active",restoredLabel:"Restored",
-maxFreezesMsg:"Max {0} freezes per month",
+maxFreezesMsg:"Max {0} freezes per month",maxWeeklySleepMsg:"Max {0} sleep days this week",
 previewMode:"Preview mode — open as file for persistence",
 penaltyBankHint:"Penalty bank: {0}% of {1} = {2} per month. This goes to charity if habits fail.",
 setIncomeHint:"Set your income to see penalty calculations.",
@@ -1267,7 +1267,7 @@ habitUpdated:"Привычка обновлена",habitAdded:"Привычка 
 confirmDelete:"Удалить \"{0}\"? История сохранится, привычка будет помечена как удалённая.",
 deletedPreserved:"Удалено (история сохранена)",archivedBadge:"[архив]",deletedBadge:"[удалено]",
 restoredActive:"Восстановлено в активные",restoredLabel:"Восстановлено",
-maxFreezesMsg:"Максимум {0} заморозок в месяц",
+maxFreezesMsg:"Максимум {0} заморозок в месяц",maxWeeklySleepMsg:"Максимум {0} дней сна в неделю",
 previewMode:"Режим просмотра — откройте как файл для сохранения",
 penaltyBankHint:"Банк штрафов: {0}% от {1} = {2} в месяц. Идёт на благотворительность при невыполнении.",
 setIncomeHint:"Укажите доход для расчёта штрафов.",
@@ -1385,7 +1385,7 @@ habitUpdated:"Hábito actualizado",habitAdded:"Hábito agregado",enterName:"Ingr
 confirmDelete:"¿Eliminar \"{0}\"? El historial se conserva.",
 deletedPreserved:"Eliminado (historial conservado)",archivedBadge:"[archivado]",deletedBadge:"[eliminado]",
 restoredActive:"Restaurado a activos",restoredLabel:"Restaurado",
-maxFreezesMsg:"Máximo {0} congelaciones por mes",
+maxFreezesMsg:"Máximo {0} congelaciones por mes",maxWeeklySleepMsg:"Máximo {0} días de sueño esta semana",
 previewMode:"Modo vista previa — abrir como archivo para persistencia",
 penaltyBankHint:"Banco de multas: {0}% de {1} = {2} por mes. Va a caridad si fallan los hábitos.",
 setIncomeHint:"Indique su ingreso para ver cálculos de multas.",
@@ -1503,7 +1503,7 @@ habitUpdated:"习惯已更新",habitAdded:"习惯已添加",enterName:"请输入
 confirmDelete:"删除 \"{0}\"？历史记录将保留。",
 deletedPreserved:"已删除（历史保留）",archivedBadge:"[已归档]",deletedBadge:"[已删除]",
 restoredActive:"已恢复为活跃",restoredLabel:"已恢复",
-maxFreezesMsg:"每月最多{0}次冻结",
+maxFreezesMsg:"每月最多{0}次冻结",maxWeeklySleepMsg:"本周最多{0}天睡眠",
 previewMode:"预览模式 — 以文件打开以持久保存",
 penaltyBankHint:"罚款库：{0}% × {1} = {2}/月。未完成习惯时捐赠慈善。",
 setIncomeHint:"设置收入以查看罚款计算。",
@@ -1621,7 +1621,7 @@ habitUpdated:"Habitude mise à jour",habitAdded:"Habitude ajoutée",enterName:"E
 confirmDelete:"Supprimer \"{0}\" ? L'historique est conservé.",
 deletedPreserved:"Supprimé (historique conservé)",archivedBadge:"[archivé]",deletedBadge:"[supprimé]",
 restoredActive:"Restauré en actif",restoredLabel:"Restauré",
-maxFreezesMsg:"Max {0} gels par mois",
+maxFreezesMsg:"Max {0} gels par mois",maxWeeklySleepMsg:"Max {0} jours de sommeil cette semaine",
 previewMode:"Mode aperçu — ouvrir comme fichier pour la persistance",
 penaltyBankHint:"Banque de pénalités : {0}% de {1} = {2} par mois. Va en charité si les habitudes échouent.",
 setIncomeHint:"Indiquez votre revenu pour voir les calculs de pénalité.",
@@ -2425,7 +2425,104 @@ function successBonusMult(streakLen){
 // tierUseOut/sinUseOut, if passed objects, are mutated in place with the running per-tier usage
 // counts (unplanned/conscious respectively) — lets the UI ask "what's still available as of day D"
 // without duplicating this whole loop. stopBeforeDay, if set, halts the walk before that day.
-function dailyHabitPointsForMonth(h,year,m,yd,unresolvedOut,tierUseOut,stopBeforeDay,sinUseOut){
+// Resolves points for a CHECKED day — shared by the plain per-day walk and the quota-governed week
+// walk below, so "being checked" always means the same thing regardless of which model is judging
+// the rest of the days around it. Mutates streaks.success/streaks.miss, same as the inline code did.
+function resolveCheckedDay(h,achBucket,d,streaks){
+  streaks.success++;streaks.miss=0;
+  if(h.achievementTiers&&h.achievementTiers.length>0){
+    const loggedAch=achBucket[d];
+    const idx=(loggedAch!==undefined&&h.achievementTiers[loggedAch])?loggedAch:0;
+    return h.achievementTiers[idx].plusMult*h.weight;
+  }
+  return successBonusMult(streaks.success)*h.weight;
+}
+// Resolves points for a day that's a genuine miss — already past, not checked, and not excused by
+// freeze/archive/off-weekday or (in a quota-governed week) the sleep-mark allowance. Shared for the
+// same reason as resolveCheckedDay: a miss means the same thing everywhere, sin/tier handling doesn't
+// change based on which schedule mode happens to be judging the surrounding days.
+function resolveMissedDay(h,streaks,sinBucket,tierBucket,tierUse,sinUse,d,dateISO,unresolvedOut){
+  const hasTiers=h.violationTiers&&h.violationTiers.length>0;
+  const isSin=!!sinBucket[d];
+  const loggedTier=tierBucket[d];
+  if(loggedTier!==undefined&&hasTiers&&h.violationTiers[loggedTier]){
+    streaks.miss++;streaks.success=0;
+    let idx=loggedTier;
+    if(isSin){
+      // Each tier has its OWN calendar (t.sinCalendarDays) — a date marked there is always free
+      // for THAT tier specifically, unconditionally, no sinLimit consumed.
+      const tierCalExempt=(h.violationTiers[idx].sinCalendarDays||[]).includes(dateISO);
+      if(!tierCalExempt){
+        sinUse[idx]=(sinUse[idx]||0)+1;
+        while(h.violationTiers[idx].sinLimit!=null&&sinUse[idx]>h.violationTiers[idx].sinLimit&&idx<h.violationTiers.length-1){
+          idx++;sinUse[idx]=(sinUse[idx]||0)+1;
+        }
+      }
+      return h.violationTiers[idx].sinDeltaMult*h.weight;
+    }
+    // Mirrors the sin branch above, but for the "usual"/unplanned pool: t.calendarDays marks this
+    // tier unconditionally free on this date, no freeLimit consumed.
+    const tierCalExempt=(h.violationTiers[idx].calendarDays||[]).includes(dateISO);
+    if(!tierCalExempt){
+      tierUse[idx]=(tierUse[idx]||0)+1;
+      while(h.violationTiers[idx].freeLimit!=null&&tierUse[idx]>h.violationTiers[idx].freeLimit&&idx<h.violationTiers.length-1){
+        idx++;tierUse[idx]=(tierUse[idx]||0)+1;
+      }
+    }
+    return h.violationTiers[idx].deltaMult*h.weight;
+  }else if(isSin&&hasTiers){
+    streaks.miss++;streaks.success=0;
+    const r=resolveSinTierMiss(h,sinUse,dateISO);
+    if(r.unresolved){if(unresolvedOut)unresolvedOut.push(d);return 0}
+    return r.delta;
+  }else if(isSin&&!hasTiers&&(h.sinCalendarDays||[]).includes(dateISO)){
+    // 0-tier habits use their OWN habit-level calendar instead (full-replacement once tiers exist).
+    // Unconditionally exempt, same as the tier-calendar case above — neutral, streaks untouched.
+    return -1*h.weight;
+  }else if(isSin&&!hasTiers&&h.sinMonthlyQuota){
+    // Habit-level "any day" quota — only used when no violation tiers are configured (once tiers
+    // exist, each tier's OWN sinLimit governs this entirely, same replace-not-add pattern used
+    // everywhere else). sinUse is repurposed here under a non-numeric key so this counter survives
+    // across the whole month's loop without a dedicated output parameter.
+    sinUse._habit=(sinUse._habit||0)+1;
+    if(sinUse._habit<=h.sinMonthlyQuota){
+      return -1*h.weight; // within quota: neutral, streaks untouched
+    }
+    streaks.miss++;streaks.success=0; // quota exhausted: a real miss from here on
+    return -missPenaltyMult(streaks.miss)*h.weight;
+  }else{
+    const r=resolveUnloggedTierMiss(h,tierUse,dateISO);
+    if(r===null){
+      streaks.miss++;streaks.success=0;
+      return -missPenaltyMult(streaks.miss)*h.weight;
+    }
+    streaks.miss++;streaks.success=0;
+    if(r.unresolved&&unresolvedOut)unresolvedOut.push(d);
+    return r.delta;
+  }
+}
+// True when day d's week is judged as a checked-day-count-vs-target quota rather than independently
+// per day — always true for scheduleMode:"weekly", and true for everyday/offdays habits too for
+// exactly the days an active quotaOverride lends them that same treatment (see activeQuotaOverride).
+function isQuotaGoverned(h,year,m,d){
+  return h.scheduleMode==="weekly"||!!activeQuotaOverride(h,year,m,d);
+}
+// Single per-month scoring pass for every schedule mode. Ordinary days (everyday/offdays with no
+// override active) are judged one at a time, exactly as always — see resolveCheckedDay/resolveMissedDay
+// above for what "judged" means. A quota-governed week (native scheduleMode:"weekly", or an
+// everyday/offdays habit inside an active quotaOverride's dates) is instead judged as a whole chunk:
+// checked days still pay immediately, but an unchecked day only stays neutral if it's explicitly
+// marked "asleep" (toggleWeeklySleepMark) AND the week hasn't already spent its sleep allowance —
+// that allowance is exactly how many check-ins the week can afford to skip and still hit its
+// (excused-adjusted) quota. Anything unchecked beyond the allowance falls through to the exact same
+// sin/violation-tier/silent-miss resolution a daily habit would get, so a weekly-quota habit's tiers
+// finally mean something, and an everyday habit temporarily lent a lighter quota keeps its full tier
+// vocabulary for whichever days end up over the line. A chunk is only judged once every one of its
+// days has fully elapsed — today, and any later still-open chunk, is never touched (matches the old
+// weekly-only behavior). A short chunk at a month boundary, or one containing a pre-creation day,
+// never had a full week to work with, so every unchecked day in it is free with no mark required —
+// exactly like the old weekly scoring's short-chunk exemption.
+function habitPointsForMonth(h,year,m,yd,unresolvedOut,tierUseOut,stopBeforeDay,sinUseOut){
   const totalDays=daysInMonthY(year,m);
   const elapsed=elapsedDaysInMonthY(year,m);
   const rt=realTodayParts();
@@ -2438,165 +2535,70 @@ function dailyHabitPointsForMonth(h,year,m,yd,unresolvedOut,tierUseOut,stopBefor
   const achBucket=(yd.achievementLogs&&yd.achievementLogs[mk]&&yd.achievementLogs[mk][h.id])||{};
   const frozen=(yd.freezesUsed&&yd.freezesUsed[mk])||[];
   const habitFrozenBucket=(yd.habitFreezes&&yd.habitFreezes[mk]&&yd.habitFreezes[mk][h.id])||{};
+  const sleepBucket=(yd.weeklySleepMarks&&yd.weeklySleepMarks[mk]&&yd.weeklySleepMarks[mk][h.id])||{};
   const upper=isCurMonth?rt.d:totalDays;
+  const governedUpper=isCurMonth?rt.d-1:totalDays;
   const tierUse=tierUseOut||{};
   const sinUse=sinUseOut||{};
-  const hasAchTiers=h.achievementTiers&&h.achievementTiers.length>0;
-  let pts=0,curMissStreak=0,curSuccessStreak=0;
-  for(let d=1;d<=upper;d++){
+  const streaks={miss:0,success:0};
+  let pts=0,d=1;
+  while(d<=upper){
     if(stopBeforeDay&&d>=stopBeforeDay)break;
-    if(beforeTrackingStart(year,m,d,h))continue;
+    if(isQuotaGoverned(h,year,m,d)){
+      const{start:chunkStart,end:chunkEnd}=weekBoundsForDay(year,m,d);
+      if(chunkEnd>governedUpper)break; // this week, and any later one, hasn't fully elapsed yet
+      // Which quota governs THIS week — an active override covering the week's own start day, if
+      // any, else the habit's regular weeklyQuota (see effectiveWeeklyQuota).
+      const quota=effectiveWeeklyQuota(h,year,m,chunkStart);
+      const isFullChunk=(chunkEnd-chunkStart+1)===7; // a short chunk at month start/end never gets a full week to work with
+      // Classify-only pre-pass: need the chunk's whole shape (how many were checked, how many days
+      // were never live at all) before we can know how many unchecked days the sleep allowance
+      // actually covers — same reason the old weekly scoring counted a whole chunk before penalizing.
+      let checked=0,excused=0,hasPreCreation=false,liveUnchecked=0;
+      for(let dd=chunkStart;dd<=chunkEnd;dd++){
+        if(beforeTrackingStart(year,m,dd,h)){hasPreCreation=true;continue}
+        if(frozen.includes(dd)||habitFrozenBucket[dd]||isArchivedOn(h,year,m,dd)){excused++;continue}
+        if(h.scheduleMode==="offdays"&&(h.offWeekdays||[]).includes(new Date(year,m,dd).getDay())){excused++;continue}
+        if(checksBucket[dd]){checked++;continue}
+        liveUnchecked++;
+      }
+      const chunkIsJudged=isFullChunk&&!hasPreCreation;
+      const effQuota=Math.max(0,quota-excused);
+      const sleepCap=chunkIsJudged?Math.max(0,liveUnchecked-Math.max(0,effQuota-checked)):0;
+      // Real pass: walk the chunk in actual date order so streaks progress exactly like every other
+      // day in the month — a sleep-marked day within the allowance is skipped just like a freeze,
+      // anything else unchecked falls through to the same miss resolution a daily habit would get.
+      let sleptUsed=0;
+      for(let dd=chunkStart;dd<=chunkEnd;dd++){
+        if(beforeTrackingStart(year,m,dd,h))continue;
+        if(frozen.includes(dd)||habitFrozenBucket[dd]||isArchivedOn(h,year,m,dd))continue;
+        if(h.scheduleMode==="offdays"&&(h.offWeekdays||[]).includes(new Date(year,m,dd).getDay()))continue;
+        if(checksBucket[dd]){pts+=resolveCheckedDay(h,achBucket,dd,streaks);continue}
+        if(!chunkIsJudged)continue; // short/pre-creation chunk: never held to the quota
+        if(sleepBucket[dd]&&sleptUsed<sleepCap){sleptUsed++;continue}
+        pts+=resolveMissedDay(h,streaks,sinBucket,tierBucket,tierUse,sinUse,dd,ymdStr(year,m,dd),unresolvedOut);
+      }
+      d=chunkEnd+1;
+      continue;
+    }
+    if(beforeTrackingStart(year,m,d,h)){d++;continue}
     // Freeze (global or per-habit) must be checked BEFORE checksBucket — freezing a day is a true
     // zero no matter what, even if the habit was already checked before the freeze was applied (e.g.
     // check it, then decide to freeze the whole day anyway); otherwise an already-checked day would
     // keep its success bonus despite being frozen, which defeats the point of freezing it.
-    if(frozen.includes(d))continue;
-    if(habitFrozenBucket[d])continue; // per-habit freeze: a true zero, same as the global freeze above
-    if(checksBucket[d]){
-      curSuccessStreak++;curMissStreak=0;
-      if(hasAchTiers){
-        const loggedAch=achBucket[d];
-        const idx=(loggedAch!==undefined&&h.achievementTiers[loggedAch])?loggedAch:0;
-        pts+=h.achievementTiers[idx].plusMult*h.weight;
-      }else{
-        pts+=successBonusMult(curSuccessStreak)*h.weight;
-      }
-      continue;
-    }
-    if(isArchivedOn(h,year,m,d))continue;
+    if(frozen.includes(d)){d++;continue}
+    if(habitFrozenBucket[d]){d++;continue} // per-habit freeze: a true zero, same as the global freeze above
+    if(checksBucket[d]){pts+=resolveCheckedDay(h,achBucket,d,streaks);d++;continue}
+    if(isArchivedOn(h,year,m,d)){d++;continue}
     // offdays habits: a declared off-weekday is unconditionally excused, exactly like a freeze —
     // it never even reaches the "did you miss it" question, so it can't cost a tier-quota slot either.
-    if(h.scheduleMode==="offdays"&&(h.offWeekdays||[]).includes(new Date(year,m,d).getDay()))continue;
+    if(h.scheduleMode==="offdays"&&(h.offWeekdays||[]).includes(new Date(year,m,d).getDay())){d++;continue}
     const isPast=isCurMonth?d<rt.d:true;
-    if(!isPast)continue;
-    const hasTiers=h.violationTiers&&h.violationTiers.length>0;
-    const isSin=!!sinBucket[d];
-    const dateISO=ymdStr(year,m,d);
-    const loggedTier=tierBucket[d];
-    if(loggedTier!==undefined&&hasTiers&&h.violationTiers[loggedTier]){
-      curMissStreak++;curSuccessStreak=0;
-      let idx=loggedTier;
-      if(isSin){
-        // Each tier has its OWN calendar (t.sinCalendarDays) — a date marked there is always free
-        // for THAT tier specifically, unconditionally, no sinLimit consumed.
-        const tierCalExempt=(h.violationTiers[idx].sinCalendarDays||[]).includes(dateISO);
-        if(!tierCalExempt){
-          sinUse[idx]=(sinUse[idx]||0)+1;
-          while(h.violationTiers[idx].sinLimit!=null&&sinUse[idx]>h.violationTiers[idx].sinLimit&&idx<h.violationTiers.length-1){
-            idx++;sinUse[idx]=(sinUse[idx]||0)+1;
-          }
-        }
-        pts+=h.violationTiers[idx].sinDeltaMult*h.weight;
-      }else{
-        // Mirrors the sin branch above, but for the "usual"/unplanned pool: t.calendarDays marks
-        // this tier unconditionally free on this date, no freeLimit consumed.
-        const tierCalExempt=(h.violationTiers[idx].calendarDays||[]).includes(dateISO);
-        if(!tierCalExempt){
-          tierUse[idx]=(tierUse[idx]||0)+1;
-          while(h.violationTiers[idx].freeLimit!=null&&tierUse[idx]>h.violationTiers[idx].freeLimit&&idx<h.violationTiers.length-1){
-            idx++;tierUse[idx]=(tierUse[idx]||0)+1;
-          }
-        }
-        pts+=h.violationTiers[idx].deltaMult*h.weight;
-      }
-    }else if(isSin&&hasTiers){
-      curMissStreak++;curSuccessStreak=0;
-      const r=resolveSinTierMiss(h,sinUse,dateISO);
-      if(r.unresolved){if(unresolvedOut)unresolvedOut.push(d);}
-      else pts+=r.delta;
-    }else if(isSin&&!hasTiers&&(h.sinCalendarDays||[]).includes(dateISO)){
-      // 0-tier habits use their OWN habit-level calendar instead (full-replacement once tiers exist).
-      // Unconditionally exempt, same as the tier-calendar case above — neutral, streaks untouched.
-      pts+=-1*h.weight;
-    }else if(isSin&&!hasTiers&&h.sinMonthlyQuota){
-      // Habit-level "any day" quota — only used when no violation tiers are configured (once
-      // tiers exist, each tier's OWN sinLimit governs this entirely, same replace-not-add pattern
-      // used everywhere else). sinUse is repurposed here under a non-numeric key so this counter
-      // survives across the whole month's loop without a dedicated output parameter.
-      sinUse._habit=(sinUse._habit||0)+1;
-      if(sinUse._habit<=h.sinMonthlyQuota){
-        pts+=-1*h.weight; // within quota: neutral, streaks untouched
-      }else{
-        curMissStreak++;curSuccessStreak=0; // quota exhausted: a real miss from here on
-        pts+=-missPenaltyMult(curMissStreak)*h.weight;
-      }
-    }else{
-      const r=resolveUnloggedTierMiss(h,tierUse,dateISO);
-      if(r===null){
-        curMissStreak++;curSuccessStreak=0;
-        pts+=-missPenaltyMult(curMissStreak)*h.weight;
-      }else{
-        curMissStreak++;curSuccessStreak=0;
-        pts+=r.delta;if(r.unresolved&&unresolvedOut)unresolvedOut.push(d);
-      }
-    }
+    if(!isPast){d++;continue}
+    pts+=resolveMissedDay(h,streaks,sinBucket,tierBucket,tierUse,sinUse,d,ymdStr(year,m,d),unresolvedOut);
+    d++;
   }
   return pts;
-}
-// Week-chunk scoring for scheduleMode:"weekly" habits (see weekBoundsForDay) — no per-day miss/success
-// at all. A chunk is only judged once every one of its days has fully elapsed; today (and any later,
-// still-open chunk) is never touched. Within a judged chunk: every day actually checked earns the
-// normal base success bonus — being checked always pays, exactly like every other schedule, there's
-// no "doesn't count toward anything" day — and if the chunk's checked count falls short of its
-// quota, the shortfall costs one base miss penalty PER missing check (not one flat penalty for the
-// whole chunk), the same no-cliff, scales-with-the-actual-gap principle every other penalty in this
-// app already uses. A frozen/personally-frozen/archived/pre-creation day inside the chunk lowers
-// that chunk's OWN effective quota by one — the same flat-subtraction excused-day treatment
-// effTarget already gives every other schedule — rather than demanding a catch-up on a day that was
-// genuinely never available. A short chunk at the start or end of the month (the real week it belongs
-// to spills into the next/previous month) never had a full week to work with, so it's never held to
-// the quota either — any checks inside it still pay out, just without judgment. Sin days and violation
-// tiers don't apply here: those are inherently single-day concepts ("declaring today a planned skip"),
-// which doesn't map onto "this week came up short" — a weekly-quota habit is already meant to be
-// forgiving enough on its own that skipping any one given day was the plan all along.
-function weeklyHabitPointsForMonth(h,year,m,yd,unresolvedOut,tierUseOut,stopBeforeDay,sinUseOut){
-  const totalDays=daysInMonthY(year,m);
-  const rt=realTodayParts();
-  const isCurMonth=(year===rt.y&&m===rt.m);
-  if(year>rt.y||(year===rt.y&&m>rt.m))return 0;
-  const mk="m"+m;
-  const checksBucket=(yd.checks&&yd.checks[mk]&&yd.checks[mk][h.id])||{};
-  const frozen=(yd.freezesUsed&&yd.freezesUsed[mk])||[];
-  const habitFrozenBucket=(yd.habitFreezes&&yd.habitFreezes[mk]&&yd.habitFreezes[mk][h.id])||{};
-  const upper=isCurMonth?rt.d-1:totalDays;
-  let pts=0;
-  let chunkStart=1;
-  while(chunkStart<=totalDays){
-    const chunkEnd=weekBoundsForDay(year,m,chunkStart).end;
-    if(stopBeforeDay&&chunkStart>=stopBeforeDay)break;
-    if(chunkEnd>upper)break; // this chunk, and every later one, hasn't fully elapsed yet
-    // Which quota governs THIS week — an active override covering the week's own start day, if any,
-    // else the habit's regular weeklyQuota (see effectiveWeeklyQuota).
-    const quota=effectiveWeeklyQuota(h,year,m,chunkStart);
-    const isFullChunk=(chunkEnd-chunkStart+1)===7; // a short chunk at month start/end never gets a full week to work with
-    let checked=0,excused=0,hasPreCreation=false;
-    for(let d=chunkStart;d<=chunkEnd;d++){
-      // A pre-creation day isn't an EXCUSED obligation (the habit simply didn't exist yet) — unlike
-      // frozen/archived days it doesn't shrink the effective quota by one; instead, like a calendar-
-      // clipped short chunk, the whole chunk just never gets held to the quota at all (see below).
-      // Without this, a habit created partway through a real week could have most of that week's days
-      // "excuse" the quota down to 0 in one shot, on top of the small weekly quota's own smallness.
-      if(beforeTrackingStart(year,m,d,h)){hasPreCreation=true;continue}
-      if(frozen.includes(d)||habitFrozenBucket[d]||isArchivedOn(h,year,m,d)){excused++;continue}
-      if(checksBucket[d]){checked++;pts+=successBonusMult(1)*h.weight}
-    }
-    // A short chunk still pays out any checks it happened to get (above) — being checked always
-    // pays — it's just never held to the quota, since it was never given a full week to meet it.
-    if(isFullChunk&&!hasPreCreation){
-      const effQuota=Math.max(0,quota-excused);
-      const shortfall=Math.max(0,effQuota-checked);
-      if(shortfall>0)pts+=-missPenaltyMult(1)*h.weight*shortfall;
-    }
-    chunkStart=chunkEnd+1;
-  }
-  return pts;
-}
-// Dispatches by schedule: weekly-quota habits get the week-chunk pass above; everyday AND offdays
-// habits both go through dailyHabitPointsForMonth (offdays' excused-weekday handling lives inside
-// that one function already, keyed off h.scheduleMode — no separate path needed for it).
-function habitPointsForMonth(h,year,m,yd,unresolvedOut,tierUseOut,stopBeforeDay,sinUseOut){
-  if(h.scheduleMode==="weekly")return weeklyHabitPointsForMonth(h,year,m,yd,unresolvedOut,tierUseOut,stopBeforeDay,sinUseOut);
-  return dailyHabitPointsForMonth(h,year,m,yd,unresolvedOut,tierUseOut,stopBeforeDay,sinUseOut);
 }
 // Current-month balance for the ACTIVE (bound) year — used by the money pool & UI previews.
 function habitMonthBalance(h,m){return habitPointsForMonth(h,activeYear(),m,state)}
@@ -2698,7 +2700,7 @@ function sinDateIsCalendarFree(h,m,d){
   }
   return (h.sinCalendarDays||[]).includes(dateISO);
 }
-// Replays the exact same sin-resolution walk dailyHabitPointsForMonth's real scoring pass uses,
+// Replays the exact same sin-resolution walk habitPointsForMonth's real scoring pass uses,
 // but across the WHOLE month unconditionally — not gated to already-elapsed days like the real
 // scoring pass has to be (it can't score a day that hasn't happened yet). This is ONLY for quota
 // AVAILABILITY: a day pre-declared for next week must count against the same monthly cap as one
@@ -2764,7 +2766,7 @@ function sinMarkAvailable(h,m,d){
 // rule (an already-declared day stays available even once ITS tier's quota later fills from OTHER
 // days) only covers that one case. It must NOT also cover the governing tier itself changing: without
 // this, logging tier 1 (quota free), declaring it conscious, then switching the SAME day to tier 2
-// (quota already exhausted) would keep the old declaration and let dailyHabitPointsForMonth charge
+// (quota already exhausted) would keep the old declaration and let habitPointsForMonth charge
 // tier 2's lenient sinDeltaMult instead of correctly falling through to its real-miss deltaMult. Call
 // this whenever a day's violationLogs entry changes (set or cleared) so any stale declaration is
 // dropped and has to be consciously re-made against whatever tier now governs the day.
@@ -3714,7 +3716,7 @@ function checkedCount(m,hid){return Object.keys(getChecks(m,hid)).length}
 // target for a month is just its day count, minus every kind of excused day: globally frozen,
 // personally frozen, archived, before the habit's own creation date, or — for offdays habits — one
 // of its declared off-weekdays. A weekly-quota habit has no day-count target at all in the same
-// sense (see weeklyHabitPointsForMonth) — this still returns the same "days available" figure for
+// sense (see habitPointsForMonth) — this still returns the same "days available" figure for
 // it since every %-of-days display that reads effTarget wants *some* sane denominator, just not one
 // shaped around a weekly quota specifically.
 function effTarget(h,m){
@@ -3740,7 +3742,7 @@ function habitScheduleLabel(h){
   return T.everyDay;
 }
 // Live "checked so far in the week-chunk (day,m) currently falls in" + that chunk's effective quota,
-// for the always-visible weekly counter (Today card, Track row) — mirrors weeklyHabitPointsForMonth's
+// for the always-visible weekly counter (Today card, Track row) — mirrors habitPointsForMonth's
 // per-chunk math (an excused day shrinks the effective quota by one; a pre-creation day doesn't, same
 // reasoning as there) but for whichever chunk is CURRENT, elapsed or not, since the whole point is
 // showing live progress before judgment.
@@ -3754,32 +3756,62 @@ function weeklyProgressThisChunk(h,m,d){
   for(let dd=chunkStart;dd<=chunkEnd;dd++){
     if(beforeTrackingStart(year,m,dd,h))continue;
     if(frozenDays.includes(dd)||habitFrozenBucket[dd]||isArchivedOn(h,year,m,dd)){excused++;continue}
+    if(h.scheduleMode==="offdays"&&(h.offWeekdays||[]).includes(new Date(year,m,dd).getDay())){excused++;continue}
     if(c[dd])checked++;
   }
   return{checked,quota:Math.max(0,effectiveWeeklyQuota(h,year,m,chunkStart)-excused)};
 }
-// Whether (m,d) should render as "dormant" for a weekly-quota habit — purely the user's OWN manual
-// mark (see toggleWeeklySleepMark). This used to also auto-derive dormant from the week's quota
-// already being met by other checked days, but showing that automatically on every remaining day of
-// the week, on top of the always-offered manual toggle icon, looked cluttered — so the display is
-// manual-only now; the toggle icon is still always offered on an unchecked day regardless of quota
-// status, letting the user decide for themselves which days to mark. Purely a display concept either
-// way: weeklyHabitPointsForMonth never reads this signal, so it can never change the score. A checked
-// day is never dormant.
+// Whether (m,d) should render as "dormant" for a quota-governed habit (native scheduleMode:"weekly",
+// or an everyday/offdays habit inside an active quotaOverride) — purely the user's OWN manual mark
+// (see toggleWeeklySleepMark). A checked day is never dormant.
 function weeklyDayIsDormant(h,m,d){
-  if(h.scheduleMode!=="weekly")return false;
+  if(!isQuotaGoverned(h,activeYear(),m,d))return false;
   if(getChecks(m,h.id)[d])return false;
   const mk="m"+m;
   return!!(state.weeklySleepMarks&&state.weeklySleepMarks[mk]&&state.weeklySleepMarks[mk][h.id]&&state.weeklySleepMarks[mk][h.id][d]);
 }
-// Toggles the manual sleep mark on (m,hid,d) — purely cosmetic bookkeeping, no recalcPoints() needed
-// since nothing scoring-related ever reads state.weeklySleepMarks.
+// How many sleep-marks the week containing d can hold in total, and how many are already spent —
+// mirrors the exact excused/effQuota/shortfall math habitPointsForMonth's real scoring pass uses for
+// a judged chunk (see its comment), so the toggle below can never allow marking more days than
+// scoring would actually honor. Used only for the ACTIVE year's live state (the toggle/UI never need
+// another year's).
+function weeklySleepBudget(h,year,m,d){
+  const{start:chunkStart,end:chunkEnd}=weekBoundsForDay(year,m,d);
+  const isFullChunk=(chunkEnd-chunkStart+1)===7;
+  const mk="m"+m;
+  const checksBucket=getChecks(m,h.id);
+  const frozenDays=getFreezes(m);
+  const habitFrozenBucket=(state.habitFreezes&&state.habitFreezes[mk]&&state.habitFreezes[mk][h.id])||{};
+  const sleepBucket=(state.weeklySleepMarks&&state.weeklySleepMarks[mk]&&state.weeklySleepMarks[mk][h.id])||{};
+  let checked=0,excused=0,hasPreCreation=false,liveUnchecked=0,used=0;
+  for(let dd=chunkStart;dd<=chunkEnd;dd++){
+    if(beforeTrackingStart(year,m,dd,h)){hasPreCreation=true;continue}
+    if(frozenDays.includes(dd)||habitFrozenBucket[dd]||isArchivedOn(h,year,m,dd)){excused++;continue}
+    if(h.scheduleMode==="offdays"&&(h.offWeekdays||[]).includes(new Date(year,m,dd).getDay())){excused++;continue}
+    if(checksBucket[dd]){checked++;continue}
+    liveUnchecked++;
+    if(sleepBucket[dd])used++;
+  }
+  const chunkIsJudged=isFullChunk&&!hasPreCreation;
+  const effQuota=Math.max(0,effectiveWeeklyQuota(h,year,m,chunkStart)-excused);
+  const cap=chunkIsJudged?Math.max(0,liveUnchecked-Math.max(0,effQuota-checked)):liveUnchecked;
+  return{cap,used};
+}
+// Toggles the manual sleep mark on (m,hid,d). Unmarking always works; marking a NEW day is capped at
+// the week's sleep allowance (weeklySleepBudget) — the same reasoning MAX_FREEZES already uses for
+// toggleFreeze, just scoped to one habit's one week instead of the whole month.
 function toggleWeeklySleepMark(m,hid,d){
   const mk="m"+m;
   if(!state.weeklySleepMarks[mk])state.weeklySleepMarks[mk]={};
   if(!state.weeklySleepMarks[mk][hid])state.weeklySleepMarks[mk][hid]={};
   const bucket=state.weeklySleepMarks[mk][hid];
-  if(bucket[d])delete bucket[d];else bucket[d]=true;
+  if(bucket[d]){delete bucket[d];save();return}
+  const h=state.habits.find(x=>x.id===hid);
+  if(h){
+    const{cap,used}=weeklySleepBudget(h,activeYear(),m,d);
+    if(used>=cap){toast(T.maxWeeklySleepMsg.replace("{0}",cap));return}
+  }
+  bucket[d]=true;
   save();
 }
 // Shared row-meta text for the Track grid (full render + the single-row fast-path update both call
@@ -3788,8 +3820,8 @@ function toggleWeeklySleepMark(m,hid,d){
 function habitRowMetaHTML(h,m){
   const bal=habitMonthBalance(h,m);
   const balBadge=`<span class="zbadge" style="color:${bal>0?'var(--green)':bal<0?'var(--red)':'var(--dim)'}">${bal>0?'+':''}${bal}</span>`;
-  if(h.scheduleMode==="weekly"){
-    const refDay=(curTodayM()===m)?curTodayD():daysInMonth(m);
+  const refDay=(curTodayM()===m)?curTodayD():daysInMonth(m);
+  if(isQuotaGoverned(h,activeYear(),m,refDay)){
     const wp=weeklyProgressThisChunk(h,m,refDay);
     return `${wp.checked}/${wp.quota} ${T.thisWeek} ${balBadge}`;
   }
@@ -4040,7 +4072,7 @@ function renderToday(){
     grouped[tid].forEach(h=>{
       const done=!!getChecks(m,h.id)[d]||frozen;
       const isOffToday=h.scheduleMode==="offdays"&&(h.offWeekdays||[]).includes(weekday(m,d));
-      const isWeekly=h.scheduleMode==="weekly";
+      const isWeekly=isQuotaGoverned(h,activeYear(),m,d);
       const isDormantToday=isWeekly&&!done&&weeklyDayIsDormant(h,m,d);
       let metaLine;
       if(isDormantToday){
@@ -4068,12 +4100,12 @@ function renderToday(){
       // grid's bare sin-mark/hf-mark/tier-mark) so this view's click-handler wiring below can never
       // cross-match elements sitting in the grid's own (possibly still-in-DOM-but-hidden) markup.
       let tierRow="";
-      // Weekly-mode habits never read violationLogs for SCORING (weeklyHabitPointsForMonth judges the
-      // whole week as one aggregate, never a specific day) — but tier severity is still worth letting
-      // the user record on the one day that actually caused a shortfall, same reasoning as the purely
-      // cosmetic weekly sleep-mark. Sin-mark stays excluded here (see actionRow below) — its corner
-      // slot is now used by the sleep-mark toggle in the Track grid, so only one of the two can live
-      // there without a layout clash, and this was the one actually asked for.
+      // A quota-governed day (native weekly, or an everyday/offdays habit inside an active
+      // quotaOverride) that ends up a real miss beyond its week's sleep allowance reads this exact
+      // tier log for SCORING now (see habitPointsForMonth/resolveMissedDay) — same chip picker as any
+      // other miss. Sin-mark stays excluded here (see actionRow below) — its corner slot is now used
+      // by the sleep-mark toggle in the Track grid, so only one of the two can live there without a
+      // layout clash, and this was the one actually asked for.
       const showTiers=!done&&!frozen&&!isOffToday&&(h.violationTiers||[]).length>0;
       if(showTiers){
         // Named chips, same as achRow above — not the grid's blind cycle-by-number icon, since a
@@ -4307,7 +4339,7 @@ function renderGrid(){
             body+=`<td class="cell ${td?'today-col':''} frozen-cell"><div class="freeze-icon">&#10052;</div></td>`;
           }else if(isArchivedOn(h,activeYear(),m,d)){
             // Matches the frozen-cell treatment above: an archived day is just as excused from
-            // scoring (see dailyHabitPointsForMonth), but without this it rendered as a plain empty
+            // scoring (see habitPointsForMonth), but without this it rendered as a plain empty
             // checkbox — visually indistinguishable from a real miss.
             body+=`<td class="cell ${td?'today-col':''} archived-cell"><div class="archive-icon">&#128230;</div></td>`;
           }else{
@@ -4318,18 +4350,17 @@ function renderGrid(){
             // sleep glyph instead of nothing while unchecked, and none of the sin/tier/freeze marks
             // make sense here since there's nothing to excuse on a day that was never required.
             const isOff=h.scheduleMode==="offdays"&&(h.offWeekdays||[]).includes(weekday(m,d));
-            const isWeekly=h.scheduleMode==="weekly";
+            const isWeekly=isQuotaGoverned(h,activeYear(),m,d);
             const isDormant=!on&&isWeekly&&weeklyDayIsDormant(h,m,d);
             let mark="";
             // Sin and tier marks can now coexist on the same past day (sin no longer requires
             // planning ahead — see allMonthSinUse()/sinMarkAvailable()'s comment for why the quota
             // math already supports this) — both are independent ifs, not else-if, so both render.
-            // Sin-mark specifically is excluded for weekly-mode habits: weeklyHabitPointsForMonth
-            // never reads declaredSins, and its corner slot is now the weekly sleep-mark toggle's, so
-            // showing it here would both do nothing to the score and clash visually. Tier-mark stays
-            // available for weekly-mode though (its own corner is free) — purely as a record of which
-            // day actually caused a shortfall and how severe it was, same reasoning as the sleep-mark:
-            // worth keeping even though it doesn't feed weekly scoring either.
+            // Sin-mark specifically is excluded for a quota-governed day (native weekly, or an
+            // everyday/offdays habit inside an active quotaOverride): the sleep-mark toggle covers the
+            // same "planned skip" role there instead, and the two share the same corner slot. Tier-mark
+            // stays available either way — it's exactly how a real miss on a governed day picks which
+            // violation tier applies now that habitPointsForMonth actually reads it.
             if(!on&&!isOff&&!isWeekly&&sinMarkAvailable(h,m,d)){
               const declared=!!(state.declaredSins["m"+m]&&state.declaredSins["m"+m][h.id]&&state.declaredSins["m"+m][h.id][d]);
               // Differentiate the tooltip: a date marked on the relevant calendar (the habit's own,
@@ -4378,13 +4409,13 @@ function renderGrid(){
       const hid=cell.dataset.h,d=+cell.dataset.d;
       toggleCheck(m,hid,d);
       const isOffDay=h&&h.scheduleMode==="offdays"&&(h.offWeekdays||[]).includes(weekday(m,d));
-      const isWeeklyHabit=h&&h.scheduleMode==="weekly";
+      const isWeeklyHabit=h&&isQuotaGoverned(h,activeYear(),m,d);
       if(h&&((h.achievementTiers&&h.achievementTiers.length)||isOffDay||isWeeklyHabit)){
         // Achievement-tier state, and the day-off glyph swapping back in on uncheck, can't be
-        // represented by simple class/text patching — re-render fully in both cases. Weekly-mode
-        // needs it too: checking/unchecking one day can flip OTHER already-rendered days in the same
-        // row between dormant and normal (the quota just got met, or un-met), which the single-cell
-        // fast path below has no way to reach.
+        // represented by simple class/text patching — re-render fully in both cases. A quota-governed
+        // week needs it too: checking/unchecking one day can flip OTHER already-rendered days in the
+        // same row between dormant and normal (the quota just got met, or un-met), which the
+        // single-cell fast path below has no way to reach.
         renderGrid();renderHero();renderXP();
         offerCheckUndo(m,hid,d,()=>{renderGrid();renderHero();renderXP()});
         return;
@@ -4423,9 +4454,11 @@ function renderGrid(){
   document.querySelectorAll(".sleep-mark").forEach(el=>{
     el.onclick=e=>{
       e.stopPropagation();
-      // Purely cosmetic — no recalcPoints()/renderHero()/renderXP(), nothing scoring-related changes.
+      // A sleep-mark now spends part of the week's quota allowance (see habitPointsForMonth), so it
+      // needs the same recalcPoints()/renderHero()/renderXP() refresh as any other scoring-affecting
+      // mark, not just a grid re-render.
       toggleWeeklySleepMark(m,el.dataset.sleepH,+el.dataset.sleepD);
-      renderGrid();
+      recalcPoints();save();renderGrid();renderHero();renderXP();
     };
   });
   document.querySelectorAll(".tier-mark").forEach(el=>{
