@@ -2546,7 +2546,20 @@ function habitPointsForMonth(h,year,m,yd,unresolvedOut,tierUseOut,stopBeforeDay,
     if(stopBeforeDay&&d>=stopBeforeDay)break;
     if(isQuotaGoverned(h,year,m,d)){
       const{start:chunkStart,end:chunkEnd}=weekBoundsForDay(year,m,d);
-      if(chunkEnd>governedUpper)break; // this week, and any later one, hasn't fully elapsed yet
+      if(chunkEnd>governedUpper){
+        // This week hasn't fully elapsed, so there's no way to judge it yet — but a day that's
+        // already been checked (through today) still earns its bonus immediately, exactly like
+        // every other schedule already does; only the miss/shortfall verdict waits for the chunk
+        // to finish. Nothing after this point in the month can be judged yet either, so this is the
+        // walk's last stop.
+        for(let dd=chunkStart;dd<=Math.min(chunkEnd,upper);dd++){
+          if(beforeTrackingStart(year,m,dd,h))continue;
+          if(frozen.includes(dd)||habitFrozenBucket[dd]||isArchivedOn(h,year,m,dd))continue;
+          if(h.scheduleMode==="offdays"&&(h.offWeekdays||[]).includes(new Date(year,m,dd).getDay()))continue;
+          if(checksBucket[dd])pts+=resolveCheckedDay(h,achBucket,dd,streaks);
+        }
+        break;
+      }
       // Which quota governs THIS week — an active override covering the week's own start day, if
       // any, else the habit's regular weeklyQuota (see effectiveWeeklyQuota).
       const quota=effectiveWeeklyQuota(h,year,m,chunkStart);
