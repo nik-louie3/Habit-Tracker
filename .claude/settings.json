@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": ["Bash(git push origin v*)"]
+  },
+  "autoMode": {
+    "allow": ["$defaults", "Bash(git push origin v*)"]
+  }
+}
