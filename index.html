@@ -2507,6 +2507,14 @@ function resolveMissedDay(h,streaks,sinBucket,tierBucket,tierUse,sinUse,d,dateIS
 function isQuotaGoverned(h,year,m,d){
   return h.scheduleMode==="weekly"||!!activeQuotaOverride(h,year,m,d);
 }
+// Whether day d carries an explicit failure declaration: a valid logged violation tier, or a declared
+// sin. Takes the already-resolved per-habit buckets so the scoring pass and the live UI helpers (which
+// read different year objects) can share it.
+function hasExplicitMiss(h,tierBucket,sinBucket,d){
+  const t=tierBucket[d];
+  if(t!==undefined&&h.violationTiers&&h.violationTiers[t])return true;
+  return !!sinBucket[d];
+}
 // Single per-month scoring pass for every schedule mode. Ordinary days (everyday/offdays with no
 // override active) are judged one at a time, exactly as always — see resolveCheckedDay/resolveMissedDay
 // above for what "judged" means. A quota-governed week (native scheduleMode:"weekly", or an
@@ -2552,11 +2560,15 @@ function habitPointsForMonth(h,year,m,yd,unresolvedOut,tierUseOut,stopBeforeDay,
         // every other schedule already does; only the miss/shortfall verdict waits for the chunk
         // to finish. Nothing after this point in the month can be judged yet either, so this is the
         // walk's last stop.
+        // A day the user explicitly logged as a failure (violation tier / declared sin) is already
+        // a settled verdict, not a "might still be covered by the quota" guess, so it counts
+        // immediately — once it's actually past, same as any daily miss.
         for(let dd=chunkStart;dd<=Math.min(chunkEnd,upper);dd++){
           if(beforeTrackingStart(year,m,dd,h))continue;
           if(frozen.includes(dd)||habitFrozenBucket[dd]||isArchivedOn(h,year,m,dd))continue;
           if(h.scheduleMode==="offdays"&&(h.offWeekdays||[]).includes(new Date(year,m,dd).getDay()))continue;
-          if(checksBucket[dd])pts+=resolveCheckedDay(h,achBucket,dd,streaks);
+          if(checksBucket[dd]){pts+=resolveCheckedDay(h,achBucket,dd,streaks);continue}
+          if(dd<rt.d&&hasExplicitMiss(h,tierBucket,sinBucket,dd))pts+=resolveMissedDay(h,streaks,sinBucket,tierBucket,tierUse,sinUse,dd,ymdStr(year,m,dd),unresolvedOut);
         }
         break;
       }
@@ -2587,6 +2599,13 @@ function habitPointsForMonth(h,year,m,yd,unresolvedOut,tierUseOut,stopBeforeDay,
         if(frozen.includes(dd)||habitFrozenBucket[dd]||isArchivedOn(h,year,m,dd))continue;
         if(h.scheduleMode==="offdays"&&(h.offWeekdays||[]).includes(new Date(year,m,dd).getDay()))continue;
         if(checksBucket[dd]){pts+=resolveCheckedDay(h,achBucket,dd,streaks);continue}
+        // An explicitly logged failure always counts — even in a week whose quota is already met,
+        // a short/pre-creation chunk, and even when the day also carries a sleep-mark (the logged
+        // failure wins, and such a day never spends the week's sleep allowance).
+        if(hasExplicitMiss(h,tierBucket,sinBucket,dd)){
+          pts+=resolveMissedDay(h,streaks,sinBucket,tierBucket,tierUse,sinUse,dd,ymdStr(year,m,dd),unresolvedOut);
+          continue;
+        }
         if(!chunkIsJudged)continue; // short/pre-creation chunk: never held to the quota
         if(sleepBucket[dd]&&sleptUsed<sleepCap){sleptUsed++;continue}
         pts+=resolveMissedDay(h,streaks,sinBucket,tierBucket,tierUse,sinUse,dd,ymdStr(year,m,dd),unresolvedOut);
@@ -3786,6 +3805,9 @@ function weeklyDayIsDormant(h,m,d){
   if(!isQuotaGoverned(h,activeYear(),m,d))return false;
   if(getChecks(m,h.id)[d])return false;
   const mk="m"+m;
+  const tierBucket=(state.violationLogs&&state.violationLogs[mk]&&state.violationLogs[mk][h.id])||{};
+  const sinBucket=(state.declaredSins&&state.declaredSins[mk]&&state.declaredSins[mk][h.id])||{};
+  if(hasExplicitMiss(h,tierBucket,sinBucket,d))return false; // a logged failure overrides the sleep-mark
   return!!(state.weeklySleepMarks&&state.weeklySleepMarks[mk]&&state.weeklySleepMarks[mk][h.id]&&state.weeklySleepMarks[mk][h.id][d]);
 }
 // How many sleep-marks the week containing d can hold in total, and how many are already spent —
@@ -3801,6 +3823,8 @@ function weeklySleepBudget(h,year,m,d){
   const frozenDays=getFreezes(m);
   const habitFrozenBucket=(state.habitFreezes&&state.habitFreezes[mk]&&state.habitFreezes[mk][h.id])||{};
   const sleepBucket=(state.weeklySleepMarks&&state.weeklySleepMarks[mk]&&state.weeklySleepMarks[mk][h.id])||{};
+  const tierBucket=(state.violationLogs&&state.violationLogs[mk]&&state.violationLogs[mk][h.id])||{};
+  const sinBucket=(state.declaredSins&&state.declaredSins[mk]&&state.declaredSins[mk][h.id])||{};
   let checked=0,excused=0,hasPreCreation=false,liveUnchecked=0,used=0;
   for(let dd=chunkStart;dd<=chunkEnd;dd++){
     if(beforeTrackingStart(year,m,dd,h)){hasPreCreation=true;continue}
@@ -3808,7 +3832,7 @@ function weeklySleepBudget(h,year,m,d){
     if(h.scheduleMode==="offdays"&&(h.offWeekdays||[]).includes(new Date(year,m,dd).getDay())){excused++;continue}
     if(checksBucket[dd]){checked++;continue}
     liveUnchecked++;
-    if(sleepBucket[dd])used++;
+    if(sleepBucket[dd]&&!hasExplicitMiss(h,tierBucket,sinBucket,dd))used++; // a logged failure wins over a sleep-mark, so it never spends allowance
   }
   const chunkIsJudged=isFullChunk&&!hasPreCreation;
   const effQuota=Math.max(0,effectiveWeeklyQuota(h,year,m,chunkStart)-excused);
