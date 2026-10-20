@@ -207,8 +207,10 @@ textarea.inp{resize:vertical;min-height:60px}
 .fbtn.active{background:var(--accent);color:#000;border-color:var(--accent)}
 .hlist .hitem{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}
 .hlist .hitem:last-child{border-bottom:none}
-.hitem .drag-handle{cursor:grab;color:var(--dim);font-size:16px;padding:0 4px;user-select:none}
-.hitem .drag-handle:active{cursor:grabbing}
+.hitem .drag-handle,.titem .drag-handle{cursor:grab;color:var(--dim);font-size:16px;padding:0 4px;user-select:none}
+.hitem .drag-handle:active,.titem .drag-handle:active{cursor:grabbing}
+td.cname[draggable]{cursor:grab}
+td.cname.dragging,.tag-group-header.dragging,.titem.dragging{opacity:.4}
 .hitem .info{flex:1;min-width:0}
 .hitem .nm{font-size:14px;font-weight:700}
 .hitem .nm .archived-badge{font-size:10px;color:var(--accent2);margin-left:6px}
@@ -4280,14 +4282,7 @@ function initTodayDragDrop(el){
     item.ondragover=e=>{e.preventDefault();e.dataTransfer.dropEffect="move"};
     item.ondrop=e=>{
       e.preventDefault();
-      if(!dragId||dragId===item.dataset.h)return;
-      const from=state.habits.findIndex(h=>h.id===dragId);
-      const to=state.habits.findIndex(h=>h.id===item.dataset.h);
-      if(from<0||to<0)return;
-      const[moved]=state.habits.splice(from,1);
-      state.habits.splice(to,0,moved);
-      state.habits.forEach((h,i)=>h.order=i);
-      save();renderToday();
+      if(reorderHabit(dragId,item.dataset.h))renderToday();
     };
   });
 }
@@ -4364,7 +4359,7 @@ function renderGrid(){
     if(!grouped[tid])continue;
     const tag=getTag(tid);
     const collapsed=collapsedTags[tid];
-    body+=`<tr><td colspan="${N+1}"><div class="tag-group-header ${collapsed?'collapsed':''}" data-tag="${tid}">
+    body+=`<tr><td colspan="${N+1}"><div class="tag-group-header ${collapsed?'collapsed':''}" data-tag="${tid}"${tid!=="none"?' draggable="true"':''}>
       <span class="tgdot" style="background:${tag.color}"></span>${escapeHtml(tag.name)}
       <span style="font-weight:400;color:var(--dim);font-size:11px">(${grouped[tid].length})</span>
       <span class="arrow">&#9660;</span></div></td></tr>`;
@@ -4373,7 +4368,7 @@ function renderGrid(){
       grouped[tid].forEach(h=>{
         const c=getChecks(m,h.id);
         const notesTip=habitNotesTooltip(h);
-        body+=`<tr><td class="cname"><div class="rowname">
+        body+=`<tr><td class="cname" draggable="true" data-h="${h.id}" data-tg="${tid}"><div class="rowname">
           <span class="dot" style="background:${tag.color}"></span>
           <div><div${notesTip?` title="${escapeHtml(notesTip)}"`:''}>${escapeHtml(h.name)}</div>
           <div class="rowmeta">${habitRowMetaHTML(h,m)}</div>
@@ -4549,6 +4544,47 @@ function renderGrid(){
     };
   });
 
+  // Reorder habits by dragging the name cell. Only inside the same tag group: a drop on another
+  // group's row is refused (no preventDefault, so the cursor shows "not allowed") and never changes
+  // a habit's tag. setData() is required for a drag to start in Firefox.
+  let dragHabitId=null,dragHabitTag=null;
+  document.querySelectorAll("td.cname[data-h]").forEach(cell=>{
+    cell.ondragstart=e=>{
+      dragHabitId=cell.dataset.h;dragHabitTag=cell.dataset.tg;
+      cell.classList.add("dragging");
+      e.dataTransfer.effectAllowed="move";e.dataTransfer.setData("text/plain",dragHabitId);
+    };
+    cell.ondragend=()=>{dragHabitId=dragHabitTag=null;cell.classList.remove("dragging")};
+    cell.ondragover=e=>{
+      if(!dragHabitId||cell.dataset.tg!==dragHabitTag)return;
+      e.preventDefault();e.dataTransfer.dropEffect="move";
+    };
+    cell.ondrop=e=>{
+      e.preventDefault();
+      if(cell.dataset.tg!==dragHabitTag)return;
+      if(reorderHabit(dragHabitId,cell.dataset.h))renderGrid();
+    };
+  });
+
+  // Reorder tag groups by dragging a group header (the untagged "none" group stays last and isn't draggable).
+  let dragGroupTag=null;
+  document.querySelectorAll(".tag-group-header[draggable]").forEach(hdr=>{
+    hdr.ondragstart=e=>{
+      dragGroupTag=hdr.dataset.tag;
+      hdr.classList.add("dragging");
+      e.dataTransfer.effectAllowed="move";e.dataTransfer.setData("text/plain",dragGroupTag);
+    };
+    hdr.ondragend=()=>{dragGroupTag=null;hdr.classList.remove("dragging")};
+    hdr.ondragover=e=>{
+      if(!dragGroupTag)return; // a habit is being dragged over the header, not a group
+      e.preventDefault();e.dataTransfer.dropEffect="move";
+    };
+    hdr.ondrop=e=>{
+      e.preventDefault();
+      if(reorderTag(dragGroupTag,hdr.dataset.tag))renderGrid();
+    };
+  });
+
   document.querySelectorAll(".day-header").forEach(th=>{
     th.onclick=()=>openNote(m,+th.dataset.d);
   });
@@ -4600,6 +4636,31 @@ function moveTag(id,dir){
   const i=state.tags.findIndex(t=>t.id===id);if(i<0)return;
   const j=i+dir;if(j<0||j>=state.tags.length)return;
   const[t]=state.tags.splice(i,1);state.tags.splice(j,0,t);save();
+}
+/* Drag-and-drop reorders: the dragged item takes the drop target's place (lands after it when dragged
+   down, before it when dragged up). Return true only when the order actually changed, so each
+   caller re-renders just then. Habit order is one shared list (h.order) for Today/Months/Habits. */
+function reorderHabit(fromId,toId){
+  if(!fromId||fromId===toId)return false;
+  const from=state.habits.findIndex(h=>h.id===fromId);
+  const to=state.habits.findIndex(h=>h.id===toId);
+  if(from<0||to<0)return false;
+  const[moved]=state.habits.splice(from,1);
+  state.habits.splice(to,0,moved);
+  state.habits.forEach((h,i)=>h.order=i);
+  save();
+  return true;
+}
+// "none" (untagged habits) is a pseudo-group, not an entry of state.tags, so it never matches here.
+function reorderTag(fromId,toId){
+  if(!fromId||fromId===toId)return false;
+  const from=state.tags.findIndex(t=>t.id===fromId);
+  const to=state.tags.findIndex(t=>t.id===toId);
+  if(from<0||to<0)return false;
+  const[moved]=state.tags.splice(from,1);
+  state.tags.splice(to,0,moved);
+  save();
+  return true;
 }
 function tagOrderList(){return[...state.tags.map(t=>t.id),"none"]}
 
@@ -4688,14 +4749,7 @@ function initDragDrop(el){
     item.ondragover=e=>{e.preventDefault();e.dataTransfer.dropEffect="move"};
     item.ondrop=e=>{
       e.preventDefault();
-      if(!dragId||dragId===item.dataset.id)return;
-      const from=state.habits.findIndex(h=>h.id===dragId);
-      const to=state.habits.findIndex(h=>h.id===item.dataset.id);
-      if(from<0||to<0)return;
-      const[moved]=state.habits.splice(from,1);
-      state.habits.splice(to,0,moved);
-      state.habits.forEach((h,i)=>h.order=i);
-      save();renderHabitList();
+      if(reorderHabit(dragId,item.dataset.id))renderHabitList();
     };
   });
 }
@@ -7373,7 +7427,8 @@ function renderAccentGrid(){
 let editingTagId=null,tagColorVal="#4A90D9";
 function renderTagList(){
   const el=document.getElementById("tagList");
-  el.innerHTML=state.tags.map(t=>`<div class="titem">
+  el.innerHTML=state.tags.map(t=>`<div class="titem" draggable="true" data-tid="${t.id}">
+    <span class="drag-handle">&#10495;</span>
     <div class="move-col"><button class="move-btn" data-tmvup="${t.id}">&#9650;</button><button class="move-btn" data-tmvdn="${t.id}">&#9660;</button></div>
     <span class="tag-dot" style="background:${t.color}"></span>
     <div style="flex:1"><div style="font-size:14px;font-weight:700">${escapeHtml(t.name)}</div>
@@ -7383,6 +7438,19 @@ function renderTagList(){
   el.querySelectorAll("[data-edittag]").forEach(b=>b.onclick=()=>openTagModal(b.dataset.edittag));
   el.querySelectorAll("[data-tmvup]").forEach(b=>b.onclick=()=>{moveTag(b.dataset.tmvup,-1);renderTagList()});
   el.querySelectorAll("[data-tmvdn]").forEach(b=>b.onclick=()=>{moveTag(b.dataset.tmvdn,1);renderTagList()});
+  let dragTid=null;
+  el.querySelectorAll(".titem[draggable]").forEach(item=>{
+    item.ondragstart=e=>{dragTid=item.dataset.tid;item.classList.add("dragging");e.dataTransfer.effectAllowed="move";e.dataTransfer.setData("text/plain",dragTid)};
+    item.ondragend=()=>{dragTid=null;item.classList.remove("dragging")};
+    item.ondragover=e=>{
+      if(!dragTid)return;
+      e.preventDefault();e.dataTransfer.dropEffect="move";
+    };
+    item.ondrop=e=>{
+      e.preventDefault();
+      if(reorderTag(dragTid,item.dataset.tid))renderTagList();
+    };
+  });
 }
 
 function openTagModal(id){
