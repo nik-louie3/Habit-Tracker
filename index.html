@@ -393,6 +393,16 @@ td.cname.dragging,.tag-group-header.dragging,.titem.dragging{opacity:.4}
 .today-item[draggable]{cursor:grab}
 .today-item.dragging{opacity:.4}
 .today-item .ti-drag{color:var(--tdim);font-size:14px;padding:0 2px;user-select:none;cursor:grab;flex:0 0 auto}
+/* Touch/pen drag-to-reorder (see initTouchReorder): the ⠿ handle owns the gesture, so it opts out of
+   scrolling while the rest of a row keeps scrolling and tapping as usual. */
+.ti-drag,.hitem .drag-handle{touch-action:none;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+.touch-dragging{position:relative;z-index:30;opacity:.92;background:var(--panel);box-shadow:0 8px 24px rgba(0,0,0,.35);transition:none!important}
+.reorder-target{outline:2px dashed var(--accent);outline-offset:-2px}
+/* A 14-16px glyph is a hard target for a thumb: grow its hit area without moving anything. */
+@media (hover:none){
+  .today-item .ti-drag{padding:14px 8px;margin:-14px -6px}
+  .hitem .drag-handle{padding:14px 8px;margin:-14px -4px}
+}
 
 /* WEEKLY CHART */
 .week-chart{display:flex;align-items:flex-end;gap:8px;height:120px;padding:12px 0}
@@ -4336,6 +4346,7 @@ function initTodayDragDrop(el){
       if(reorderHabit(dragId,item.dataset.h))renderToday();
     };
   });
+  initTouchReorder(el,".today-item",".ti-drag",row=>row.dataset.h,(from,to)=>{if(reorderHabit(from,to))renderToday()});
 }
 
 /* ===== TRACK VIEW ===== */
@@ -4681,13 +4692,86 @@ function populateTagSelect(){
   sel.innerHTML=state.tags.map(t=>`<option value="${t.id}">${escapeHtml(t.name)}</option>`).join("");
 }
 
-/* ===== REORDER HELPERS (work on mobile via buttons; drag works on desktop) ===== */
+/* ===== REORDER HELPERS (▲▼ buttons everywhere; drag: native for a mouse, pointer events for touch/pen) ===== */
 function moveHabit(id,dir){
   const list=state.habits.slice().sort((a,b)=>(a.order||0)-(b.order||0));
   const i=list.findIndex(h=>h.id===id);if(i<0)return;
   const j=i+dir;if(j<0||j>=list.length)return;
   const a=list[i],b=list[j],tmp=a.order;a.order=b.order;b.order=tmp;
   save();
+}
+// Native HTML5 drag-and-drop (initTodayDragDrop / initDragDrop) never starts from a finger, so on touch
+// and pen the ⠿ handle drives its own pointer-events drag; a mouse keeps the native path. The row
+// follows the finger, the row under it is highlighted, the page scrolls near the top/bottom edge, and
+// releasing calls onDrop(draggedId,targetId). A cancelled gesture (or a list re-render mid-drag)
+// changes nothing. rowSel rows each contain one handleSel; idOf(row) gives a row's habit id.
+function initTouchReorder(root,rowSel,handleSel,idOf,onDrop){
+  root.querySelectorAll(rowSel).forEach(row=>{
+    const handle=row.querySelector(handleSel);
+    if(!handle)return;
+    let active=null,swallowClick=false;
+    const pickTarget=()=>{
+      const r=row.getBoundingClientRect();
+      for(const el of document.elementsFromPoint(r.left+r.width/2,active.y)){
+        const t=el.closest&&el.closest(rowSel);
+        if(t&&t!==row&&root.contains(t))return t;
+      }
+      return null;
+    };
+    const paint=()=>{
+      row.style.transform=`translateY(${(active.y-active.startY)+(window.scrollY-active.startScroll)}px)`;
+      const t=pickTarget();
+      if(t!==active.target){
+        if(active.target)active.target.classList.remove("reorder-target");
+        if(t)t.classList.add("reorder-target");
+        active.target=t;
+      }
+    };
+    const tick=()=>{
+      if(!active)return;
+      if(!row.isConnected){end(false);return}
+      const edge=70,step=14;
+      if(active.y<edge)window.scrollBy(0,-step);
+      else if(active.y>window.innerHeight-edge)window.scrollBy(0,step);
+      paint();
+      active.raf=requestAnimationFrame(tick);
+    };
+    const end=commit=>{
+      if(!active)return;
+      const a=active;active=null;
+      cancelAnimationFrame(a.raf);
+      row.classList.remove("touch-dragging");row.style.transform="";
+      if(a.target)a.target.classList.remove("reorder-target");
+      row.draggable=a.wasDraggable;
+      try{handle.releasePointerCapture(a.id)}catch(_){}
+      // a drag that moved must not also be read as the tap that follows the release
+      if(a.moved){swallowClick=true;setTimeout(()=>{swallowClick=false},80)}
+      if(commit&&a.target)onDrop(idOf(row),idOf(a.target));
+    };
+    handle.addEventListener("click",e=>{if(swallowClick){e.stopPropagation();e.preventDefault()}},true);
+    handle.addEventListener("pointerdown",e=>{
+      if(e.pointerType==="mouse"||active||!e.isPrimary)return;
+      e.preventDefault();
+      active={id:e.pointerId,y:e.clientY,startY:e.clientY,startScroll:window.scrollY,target:null,moved:false,wasDraggable:row.draggable,raf:0};
+      row.draggable=false; // keeps the browser's own press-and-hold drag from taking the gesture over
+      row.classList.add("touch-dragging");
+      try{handle.setPointerCapture(e.pointerId)}catch(_){}
+      active.raf=requestAnimationFrame(tick);
+    });
+    handle.addEventListener("pointermove",e=>{
+      if(!active||e.pointerId!==active.id)return;
+      active.y=e.clientY;
+      if(Math.abs(e.clientY-active.startY)>6)active.moved=true;
+      paint();
+    });
+    handle.addEventListener("pointerup",e=>{
+      if(!active||e.pointerId!==active.id)return;
+      active.y=e.clientY;paint();end(true);
+    });
+    handle.addEventListener("pointercancel",e=>{if(active&&e.pointerId===active.id)end(false)});
+    handle.addEventListener("lostpointercapture",e=>{if(active&&e.pointerId===active.id)end(false)});
+    handle.addEventListener("contextmenu",e=>{if(active)e.preventDefault()});
+  });
 }
 function moveTag(id,dir){
   const i=state.tags.findIndex(t=>t.id===id);if(i<0)return;
@@ -4699,6 +4783,10 @@ function moveTag(id,dir){
    caller re-renders just then. Habit order is one shared list (h.order) for Today/Months/Habits. */
 function reorderHabit(fromId,toId){
   if(!fromId||fromId===toId)return false;
+  // Every list shows habits sorted by h.order, which the ▲▼ buttons edit without touching the array.
+  // Line the array up with that order first, or the indexes below pick the wrong slots (a drag after
+  // any ▲▼ press landed on the wrong row, or nowhere).
+  state.habits.sort((a,b)=>(a.order||0)-(b.order||0));
   const from=state.habits.findIndex(h=>h.id===fromId);
   const to=state.habits.findIndex(h=>h.id===toId);
   if(from<0||to<0)return false;
@@ -4809,6 +4897,7 @@ function initDragDrop(el){
       if(reorderHabit(dragId,item.dataset.id))renderHabitList();
     };
   });
+  initTouchReorder(el,".hitem",".drag-handle",row=>row.dataset.id,(from,to)=>{if(reorderHabit(from,to))renderHabitList()});
 }
 
 // Shared Monday-first weekday header row, reused by both the general sin-calendar and every
