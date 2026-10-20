@@ -214,8 +214,10 @@ textarea.inp{resize:vertical;min-height:60px}
 .fbtn.active{background:var(--accent);color:#000;border-color:var(--accent)}
 .hlist .hitem{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}
 .hlist .hitem:last-child{border-bottom:none}
-.hitem .drag-handle{cursor:grab;color:var(--dim);font-size:16px;padding:0 4px;user-select:none}
-.hitem .drag-handle:active{cursor:grabbing}
+.hitem .drag-handle,.titem .drag-handle{cursor:grab;color:var(--dim);font-size:16px;padding:0 4px;user-select:none}
+.hitem .drag-handle:active,.titem .drag-handle:active{cursor:grabbing}
+td.cname[draggable]{cursor:grab}
+td.cname.dragging,.tag-group-header.dragging,.titem.dragging{opacity:.4}
 .hitem .info{flex:1;min-width:0}
 .hitem .nm{font-size:14px;font-weight:700}
 .hitem .nm .archived-badge{font-size:10px;color:var(--accent2);margin-left:6px}
@@ -1078,7 +1080,7 @@ closeBtn2:"Close",
 filterTitle:"Filters",selectAll:"Select all",deselectAll:"Deselect all",filterMonths:"Months",filterHabits:"Habits",filterTags:"Tags",
 weeklyPattern:"Weekly Pattern",tagPerformance:"Tag Performance",streaksBoard:"Streaks Leaderboard",habitHeatmap:"Habit Heatmap",
 topStreaks:"Top streaks across all months",avgByDay:"Average completion by day of week",perfByTag:"Performance by tag category",
-heatmapDesc:"Daily completion intensity across the year",daysLabel:"days",
+heatmapDesc:"Completion rate by habit and month",daysLabel:"days",
 done:"done",todayDone:"Done",remaining:"Remaining",freezesLeft:"Freezes left",
 freezeToday:"Freeze today",freezeThisDay:"Freeze this day",left:"left",dayFrozen:"Day is frozen — tap to unfreeze",
 perfectDayToday:"Perfect day! The bonus applies once today has fully elapsed.",
@@ -1196,7 +1198,7 @@ closeBtn2:"Закрыть",
 filterTitle:"Фильтры",selectAll:"Выбрать все",deselectAll:"Снять все",filterMonths:"Месяцы",filterHabits:"Привычки",filterTags:"Теги",
 weeklyPattern:"Недельный паттерн",tagPerformance:"Эффективность тегов",streaksBoard:"Рейтинг серий",habitHeatmap:"Тепловая карта",
 topStreaks:"Лучшие серии за все месяцы",avgByDay:"Средний % выполнения по дням недели",perfByTag:"Результативность по категориям тегов",
-heatmapDesc:"Интенсивность выполнения по дням года",daysLabel:"дн.",
+heatmapDesc:"Выполнение нормы по привычкам и месяцам",daysLabel:"дн.",
 done:"выполнено",todayDone:"Сделано",remaining:"Осталось",freezesLeft:"Заморозок осталось",
 freezeToday:"Заморозить день",freezeThisDay:"Заморозить этот день",left:"ост.",dayFrozen:"День заморожен — нажмите для отмены",
 perfectDayToday:"Идеальный день! Бонус применится, когда день полностью завершится.",
@@ -1314,7 +1316,7 @@ closeBtn2:"Cerrar",
 filterTitle:"Filtros",selectAll:"Seleccionar todo",deselectAll:"Deseleccionar todo",filterMonths:"Meses",filterHabits:"Hábitos",filterTags:"Etiquetas",
 weeklyPattern:"Patrón semanal",tagPerformance:"Rendimiento por etiqueta",streaksBoard:"Ranking de rachas",habitHeatmap:"Mapa de calor",
 topStreaks:"Mejores rachas de todos los meses",avgByDay:"Promedio de cumplimiento por día de semana",perfByTag:"Rendimiento por categoría",
-heatmapDesc:"Intensidad de cumplimiento diario durante el año",daysLabel:"días",
+heatmapDesc:"Cumplimiento por hábito y mes",daysLabel:"días",
 done:"hecho",todayDone:"Hecho",remaining:"Restante",freezesLeft:"Congelaciones rest.",
 freezeToday:"Congelar hoy",freezeThisDay:"Congelar este día",left:"rest.",dayFrozen:"Día congelado — toca para descongelar",
 perfectDayToday:"¡Día perfecto! La bonificación se aplicará cuando termine el día.",
@@ -1432,7 +1434,7 @@ closeBtn2:"关闭",
 filterTitle:"筛选",selectAll:"全选",deselectAll:"取消全选",filterMonths:"月份",filterHabits:"习惯",filterTags:"标签",
 weeklyPattern:"每周模式",tagPerformance:"标签表现",streaksBoard:"连续排行榜",habitHeatmap:"热力图",
 topStreaks:"所有月份最佳连续记录",avgByDay:"按星期几的平均完成率",perfByTag:"按标签类别的表现",
-heatmapDesc:"全年每日完成强度",daysLabel:"天",
+heatmapDesc:"按习惯和月份的完成率",daysLabel:"天",
 done:"完成",todayDone:"已完成",remaining:"剩余",freezesLeft:"剩余冻结",
 freezeToday:"冻结今天",freezeThisDay:"冻结这一天",left:"剩余",dayFrozen:"已冻结 — 点击解冻",
 perfectDayToday:"完美的一天！奖励将在今天结束后生效。",
@@ -1550,7 +1552,7 @@ closeBtn2:"Fermer",
 filterTitle:"Filtres",selectAll:"Tout sélectionner",deselectAll:"Tout désélectionner",filterMonths:"Mois",filterHabits:"Habitudes",filterTags:"Étiquettes",
 weeklyPattern:"Modèle hebdomadaire",tagPerformance:"Performance par étiquette",streaksBoard:"Classement des séries",habitHeatmap:"Carte thermique",
 topStreaks:"Meilleures séries de tous les mois",avgByDay:"Moyenne d'achèvement par jour de semaine",perfByTag:"Performance par catégorie",
-heatmapDesc:"Intensité d'achèvement quotidien sur l'année",daysLabel:"jours",
+heatmapDesc:"Taux d'achèvement par habitude et par mois",daysLabel:"jours",
 done:"fait",todayDone:"Fait",remaining:"Restant",freezesLeft:"Gels restants",
 freezeToday:"Geler aujourd'hui",freezeThisDay:"Geler ce jour",left:"rest.",dayFrozen:"Jour gelé — appuyez pour dégeler",
 perfectDayToday:"Journée parfaite ! Le bonus s'appliquera une fois la journée terminée.",
@@ -4341,10 +4343,10 @@ function initTodayDragDrop(el){
     item.ondragover=e=>{e.preventDefault();e.dataTransfer.dropEffect="move"};
     item.ondrop=e=>{
       e.preventDefault();
-      if(dragId&&moveHabitTo(dragId,item.dataset.h))renderToday();
+      if(reorderHabit(dragId,item.dataset.h))renderToday();
     };
   });
-  initTouchReorder(el,".today-item",".ti-drag",row=>row.dataset.h,(from,to)=>{if(moveHabitTo(from,to))renderToday()});
+  initTouchReorder(el,".today-item",".ti-drag",row=>row.dataset.h,(from,to)=>{if(reorderHabit(from,to))renderToday()});
 }
 
 /* ===== TRACK VIEW ===== */
@@ -4419,7 +4421,7 @@ function renderGrid(){
     if(!grouped[tid])continue;
     const tag=getTag(tid);
     const collapsed=collapsedTags[tid];
-    body+=`<tr><td colspan="${N+1}"><div class="tag-group-header ${collapsed?'collapsed':''}" data-tag="${tid}">
+    body+=`<tr><td colspan="${N+1}"><div class="tag-group-header ${collapsed?'collapsed':''}" data-tag="${tid}"${tid!=="none"?' draggable="true"':''}>
       <span class="tgdot" style="background:${tag.color}"></span>${escapeHtml(tag.name)}
       <span style="font-weight:400;color:var(--dim);font-size:11px">(${grouped[tid].length})</span>
       <span class="arrow">&#9660;</span></div></td></tr>`;
@@ -4428,7 +4430,7 @@ function renderGrid(){
       grouped[tid].forEach(h=>{
         const c=getChecks(m,h.id);
         const notesTip=habitNotesTooltip(h);
-        body+=`<tr><td class="cname"><div class="rowname">
+        body+=`<tr><td class="cname" draggable="true" data-h="${h.id}" data-tg="${tid}"><div class="rowname">
           <span class="dot" style="background:${tag.color}"></span>
           <div><div${notesTip?` title="${escapeHtml(notesTip)}" data-hnote="${h.id}"`:''}>${escapeHtml(h.name)}</div>
           <div class="rowmeta">${habitRowMetaHTML(h,m)}</div>
@@ -4604,6 +4606,47 @@ function renderGrid(){
     };
   });
 
+  // Reorder habits by dragging the name cell. Only inside the same tag group: a drop on another
+  // group's row is refused (no preventDefault, so the cursor shows "not allowed") and never changes
+  // a habit's tag. setData() is required for a drag to start in Firefox.
+  let dragHabitId=null,dragHabitTag=null;
+  document.querySelectorAll("td.cname[data-h]").forEach(cell=>{
+    cell.ondragstart=e=>{
+      dragHabitId=cell.dataset.h;dragHabitTag=cell.dataset.tg;
+      cell.classList.add("dragging");
+      e.dataTransfer.effectAllowed="move";e.dataTransfer.setData("text/plain",dragHabitId);
+    };
+    cell.ondragend=()=>{dragHabitId=dragHabitTag=null;cell.classList.remove("dragging")};
+    cell.ondragover=e=>{
+      if(!dragHabitId||cell.dataset.tg!==dragHabitTag)return;
+      e.preventDefault();e.dataTransfer.dropEffect="move";
+    };
+    cell.ondrop=e=>{
+      e.preventDefault();
+      if(cell.dataset.tg!==dragHabitTag)return;
+      if(reorderHabit(dragHabitId,cell.dataset.h))renderGrid();
+    };
+  });
+
+  // Reorder tag groups by dragging a group header (the untagged "none" group stays last and isn't draggable).
+  let dragGroupTag=null;
+  document.querySelectorAll(".tag-group-header[draggable]").forEach(hdr=>{
+    hdr.ondragstart=e=>{
+      dragGroupTag=hdr.dataset.tag;
+      hdr.classList.add("dragging");
+      e.dataTransfer.effectAllowed="move";e.dataTransfer.setData("text/plain",dragGroupTag);
+    };
+    hdr.ondragend=()=>{dragGroupTag=null;hdr.classList.remove("dragging")};
+    hdr.ondragover=e=>{
+      if(!dragGroupTag)return; // a habit is being dragged over the header, not a group
+      e.preventDefault();e.dataTransfer.dropEffect="move";
+    };
+    hdr.ondrop=e=>{
+      e.preventDefault();
+      if(reorderTag(dragGroupTag,hdr.dataset.tag))renderGrid();
+    };
+  });
+
   document.querySelectorAll(".day-header").forEach(th=>{
     th.onclick=()=>openNote(m,+th.dataset.d);
   });
@@ -4656,21 +4699,6 @@ function moveHabit(id,dir){
   const j=i+dir;if(j<0||j>=list.length)return;
   const a=list[i],b=list[j],tmp=a.order;a.order=b.order;b.order=tmp;
   save();
-}
-// Drops habit dragId onto targetId's slot. Works on the order every list actually displays (sorted by
-// .order, which the ▲▼ buttons edit) — not on state.habits' array positions, which stop matching it as
-// soon as one ▲▼ is used, making a later drag land on the wrong row or not move at all.
-// Returns whether anything moved, so callers know whether to re-render.
-function moveHabitTo(dragId,targetId){
-  if(!dragId||dragId===targetId)return false;
-  const list=state.habits.slice().sort((a,b)=>(a.order||0)-(b.order||0));
-  const from=list.findIndex(h=>h.id===dragId),to=list.findIndex(h=>h.id===targetId);
-  if(from<0||to<0)return false;
-  const[moved]=list.splice(from,1);
-  list.splice(to,0,moved);
-  list.forEach((h,i)=>h.order=i);
-  save();
-  return true;
 }
 // Native HTML5 drag-and-drop (initTodayDragDrop / initDragDrop) never starts from a finger, so on touch
 // and pen the ⠿ handle drives its own pointer-events drag; a mouse keeps the native path. The row
@@ -4749,6 +4777,35 @@ function moveTag(id,dir){
   const i=state.tags.findIndex(t=>t.id===id);if(i<0)return;
   const j=i+dir;if(j<0||j>=state.tags.length)return;
   const[t]=state.tags.splice(i,1);state.tags.splice(j,0,t);save();
+}
+/* Drag-and-drop reorders: the dragged item takes the drop target's place (lands after it when dragged
+   down, before it when dragged up). Return true only when the order actually changed, so each
+   caller re-renders just then. Habit order is one shared list (h.order) for Today/Months/Habits. */
+function reorderHabit(fromId,toId){
+  if(!fromId||fromId===toId)return false;
+  // Every list shows habits sorted by h.order, which the ▲▼ buttons edit without touching the array.
+  // Line the array up with that order first, or the indexes below pick the wrong slots (a drag after
+  // any ▲▼ press landed on the wrong row, or nowhere).
+  state.habits.sort((a,b)=>(a.order||0)-(b.order||0));
+  const from=state.habits.findIndex(h=>h.id===fromId);
+  const to=state.habits.findIndex(h=>h.id===toId);
+  if(from<0||to<0)return false;
+  const[moved]=state.habits.splice(from,1);
+  state.habits.splice(to,0,moved);
+  state.habits.forEach((h,i)=>h.order=i);
+  save();
+  return true;
+}
+// "none" (untagged habits) is a pseudo-group, not an entry of state.tags, so it never matches here.
+function reorderTag(fromId,toId){
+  if(!fromId||fromId===toId)return false;
+  const from=state.tags.findIndex(t=>t.id===fromId);
+  const to=state.tags.findIndex(t=>t.id===toId);
+  if(from<0||to<0)return false;
+  const[moved]=state.tags.splice(from,1);
+  state.tags.splice(to,0,moved);
+  save();
+  return true;
 }
 function tagOrderList(){return[...state.tags.map(t=>t.id),"none"]}
 
@@ -4837,10 +4894,10 @@ function initDragDrop(el){
     item.ondragover=e=>{e.preventDefault();e.dataTransfer.dropEffect="move"};
     item.ondrop=e=>{
       e.preventDefault();
-      if(dragId&&moveHabitTo(dragId,item.dataset.id))renderHabitList();
+      if(reorderHabit(dragId,item.dataset.id))renderHabitList();
     };
   });
-  initTouchReorder(el,".hitem",".drag-handle",row=>row.dataset.id,(from,to)=>{if(moveHabitTo(from,to))renderHabitList()});
+  initTouchReorder(el,".hitem",".drag-handle",row=>row.dataset.id,(from,to)=>{if(reorderHabit(from,to))renderHabitList()});
 }
 
 // Shared Monday-first weekday header row, reused by both the general sin-calendar and every
@@ -7516,7 +7573,8 @@ function renderAccentGrid(){
 let editingTagId=null,tagColorVal="#4A90D9";
 function renderTagList(){
   const el=document.getElementById("tagList");
-  el.innerHTML=state.tags.map(t=>`<div class="titem">
+  el.innerHTML=state.tags.map(t=>`<div class="titem" draggable="true" data-tid="${t.id}">
+    <span class="drag-handle">&#10495;</span>
     <div class="move-col"><button class="move-btn" data-tmvup="${t.id}">&#9650;</button><button class="move-btn" data-tmvdn="${t.id}">&#9660;</button></div>
     <span class="tag-dot" style="background:${t.color}"></span>
     <div style="flex:1"><div style="font-size:14px;font-weight:700">${escapeHtml(t.name)}</div>
@@ -7526,6 +7584,19 @@ function renderTagList(){
   el.querySelectorAll("[data-edittag]").forEach(b=>b.onclick=()=>openTagModal(b.dataset.edittag));
   el.querySelectorAll("[data-tmvup]").forEach(b=>b.onclick=()=>{moveTag(b.dataset.tmvup,-1);renderTagList()});
   el.querySelectorAll("[data-tmvdn]").forEach(b=>b.onclick=()=>{moveTag(b.dataset.tmvdn,1);renderTagList()});
+  let dragTid=null;
+  el.querySelectorAll(".titem[draggable]").forEach(item=>{
+    item.ondragstart=e=>{dragTid=item.dataset.tid;item.classList.add("dragging");e.dataTransfer.effectAllowed="move";e.dataTransfer.setData("text/plain",dragTid)};
+    item.ondragend=()=>{dragTid=null;item.classList.remove("dragging")};
+    item.ondragover=e=>{
+      if(!dragTid)return;
+      e.preventDefault();e.dataTransfer.dropEffect="move";
+    };
+    item.ondrop=e=>{
+      e.preventDefault();
+      if(reorderTag(dragTid,item.dataset.tid))renderTagList();
+    };
+  });
 }
 
 function openTagModal(id){

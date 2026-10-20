@@ -37,6 +37,7 @@ function loadApp() {
       freshState, migrate, STORE_KEY,
       missPenaltyMult, successBonusMult,
       activeQuotaOverride, effectiveWeeklyQuota, effectiveTierLabel,
+      reorderHabit, reorderTag,
     };
   `;
   window.eval(appSource + "\n" + capture);
