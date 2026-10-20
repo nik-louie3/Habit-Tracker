@@ -152,6 +152,9 @@ td.archived-cell{position:relative}
   border-radius:14px;padding:14px 16px;margin-bottom:8px;cursor:pointer;transition:transform .1s}
 .today-item:active{transform:scale(.98)}
 .today-item .ti-name{flex:1;font-size:15px;font-weight:700}
+/* Touch screens: a long-press on a habit's name opens its note (see openHabitNote), so keep the OS
+   from starting a text selection / callout menu on that same press. */
+@media (hover:none){.ti-name[data-hnote]{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}}
 .today-item .ti-streak{font-size:11px;color:var(--dim);margin-top:2px}
 .today-item .ti-check{width:38px;height:38px;border-radius:12px;border:2px solid var(--line);
   display:flex;align-items:center;justify-content:center;font-size:20px;flex:0 0 auto;transition:.15s}
@@ -988,6 +991,14 @@ textarea.inp{resize:vertical;min-height:60px}
   </div>
 </div>
 
+<div class="modal" id="habitNoteModal">
+  <div class="modal-content">
+    <h3 id="habitNoteTitle"></h3>
+    <div id="habitNoteBody" style="white-space:pre-wrap;font-size:14px;line-height:1.45"></div>
+    <button class="btn ghost" style="margin-top:12px" id="btnCloseHabitNote"><span id="lBtnCloseHabitNote">Close</span></button>
+  </div>
+</div>
+
 <div class="modal" id="tagModal">
   <div class="modal-content">
     <h3 id="tagModalTitle">New Tag</h3>
@@ -1668,7 +1679,7 @@ function applyLang(){
     lMyHabits:T.myHabits,lHabitListDesc:T.habitListDesc,
     lPenaltyBankLabel:T.penaltyBankLabel,
     lResetTitle:T.resetTitle,lResetDesc:T.resetDesc,lBtnResetHabits:T.loadDefaults,
-    lNotePrefix:T.notePrefix,lBtnSaveNote:T.saveBtn,lBtnCloseNote:T.closeBtn,
+    lNotePrefix:T.notePrefix,lBtnSaveNote:T.saveBtn,lBtnCloseNote:T.closeBtn,lBtnCloseHabitNote:T.closeBtn,
     lTagNameLabel:T.tagNameLabel,lColorLabel:T.colorLabel,
     lBtnSaveTag:T.saveTagBtn,lBtnCloseTag:T.cancel,lBtnDeleteTag:T.deleteTagBtn,
     gridHintText:T.gridHint,lHowToCreate:T.howToCreate,
@@ -2276,6 +2287,41 @@ function habitNotesTooltip(h){
   (h.violationTiers||[]).forEach(t=>{if(t.description)parts.push(`${t.label||'?'}: ${t.description}`)});
   (h.achievementTiers||[]).forEach(t=>{if(t.description)parts.push(`${t.label||'?'}: ${t.description}`)});
   return parts.join("\n");
+}
+// A phone has no hover, so the title tooltip built from habitNotesTooltip never shows there. On
+// hover-less screens the same text opens in a modal instead (long-press on Today, tap on Track);
+// everywhere else the plain title tooltip is left exactly as it was.
+function noHover(){return!!(window.matchMedia&&window.matchMedia("(hover: none)").matches)}
+function openHabitNote(hid){
+  const h=state.habits.find(x=>x.id===hid);if(!h)return;
+  const tip=habitNotesTooltip(h);if(!tip)return;
+  document.getElementById("habitNoteTitle").textContent=h.name;
+  document.getElementById("habitNoteBody").textContent=tip;
+  document.getElementById("habitNoteModal").classList.add("open");
+}
+function closeHabitNote(){document.getElementById("habitNoteModal").classList.remove("open")}
+// Today: a plain tap anywhere on a habit's row already toggles its check, so the note can't live on
+// tap here — it opens on a ~500ms press of the name instead. A press that opened the note must not
+// also be read as the tap that checks the habit, hence the touchend/click suppression below.
+function wireTodayNotePress(root){
+  if(!noHover())return;
+  root.querySelectorAll(".ti-name[data-hnote]").forEach(nameEl=>{
+    let timer=null,fired=false,sx=0,sy=0;
+    const cancel=()=>{clearTimeout(timer);timer=null};
+    nameEl.addEventListener("touchstart",e=>{
+      const t=e.touches[0];sx=t.clientX;sy=t.clientY;fired=false;
+      cancel();
+      timer=setTimeout(()=>{timer=null;fired=true;openHabitNote(nameEl.dataset.hnote)},500);
+    },{passive:true});
+    nameEl.addEventListener("touchmove",e=>{
+      const t=e.touches[0];
+      if(Math.abs(t.clientX-sx)>10||Math.abs(t.clientY-sy)>10)cancel(); // scrolling, not a press
+    },{passive:true});
+    nameEl.addEventListener("touchend",e=>{cancel();if(fired&&e.cancelable)e.preventDefault()});
+    nameEl.addEventListener("touchcancel",cancel); // incl. the browser taking the press over for a drag
+    nameEl.addEventListener("contextmenu",e=>{if(fired)e.preventDefault()});
+    nameEl.addEventListener("click",e=>{if(fired){fired=false;e.stopPropagation();e.preventDefault()}},true);
+  });
 }
 function countArchivedDaysInMonth(h,year,m){
   if(!Array.isArray(h.archivePeriods)||!h.archivePeriods.length)return 0;
@@ -4186,7 +4232,7 @@ function renderToday(){
       html+=`<div class="today-item" draggable="true" data-h="${h.id}">
         <span class="ti-drag">&#10495;</span>
         <div class="move-col"><button class="move-btn" data-mvup="${h.id}">&#9650;</button><button class="move-btn" data-mvdn="${h.id}">&#9660;</button></div>
-        <div style="flex:1"><div class="ti-name"${notesTip?` title="${escapeHtml(notesTip)}"`:''}>${escapeHtml(h.name)}</div>
+        <div style="flex:1"><div class="ti-name"${notesTip?` title="${escapeHtml(notesTip)}" data-hnote="${h.id}"`:''}>${escapeHtml(h.name)}</div>
         <div class="ti-streak">${metaLine}</div>${achRow}${tierRow}${actionRow}</div>
         <div class="ti-check ${done?'done':''}" style="--chkcolor:${tag.color};${done?'background:'+tag.color:''}">
           ${done?'&#10003;':''}</div>
@@ -4265,6 +4311,7 @@ function renderToday(){
   el.querySelectorAll("[data-mvdn]").forEach(b=>b.onclick=e=>{e.stopPropagation();moveHabit(b.dataset.mvdn,1);renderToday()});
 
   initTodayDragDrop(el);
+  wireTodayNotePress(el);
 
   const fb=document.getElementById("btnFreezeToday");
   if(fb)fb.onclick=()=>{toggleFreeze(m,d);renderToday()};
@@ -4375,7 +4422,7 @@ function renderGrid(){
         const notesTip=habitNotesTooltip(h);
         body+=`<tr><td class="cname"><div class="rowname">
           <span class="dot" style="background:${tag.color}"></span>
-          <div><div${notesTip?` title="${escapeHtml(notesTip)}"`:''}>${escapeHtml(h.name)}</div>
+          <div><div${notesTip?` title="${escapeHtml(notesTip)}" data-hnote="${h.id}"`:''}>${escapeHtml(h.name)}</div>
           <div class="rowmeta">${habitRowMetaHTML(h,m)}</div>
           </div></div></td>`;
         for(let d=1;d<=N;d++){
@@ -4551,6 +4598,12 @@ function renderGrid(){
 
   document.querySelectorAll(".day-header").forEach(th=>{
     th.onclick=()=>openNote(m,+th.dataset.d);
+  });
+
+  // Track's name cell has no tap action of its own, so on a hover-less screen a plain tap opens the
+  // habit's note (the title tooltip can't show there) — see openHabitNote.
+  if(noHover())document.querySelectorAll("td.cname [data-hnote]").forEach(nameEl=>{
+    nameEl.onclick=()=>openHabitNote(nameEl.dataset.hnote);
   });
 }
 function updateRowMeta(tr,hid){
@@ -8349,6 +8402,8 @@ function init(){
   // notes
   document.getElementById("btnSaveNote").onclick=()=>{setNote(noteMonth,noteDay,document.getElementById("noteText").value);closeNote();renderGrid();toast(T.noteSaved)};
   document.getElementById("btnCloseNote").onclick=closeNote;
+  document.getElementById("btnCloseHabitNote").onclick=closeHabitNote;
+  document.getElementById("habitNoteModal").onclick=e=>{if(e.target===document.getElementById("habitNoteModal"))closeHabitNote()};
 
   // level modal
   document.getElementById("btnCloseLevel").onclick=closeLevelModal;
