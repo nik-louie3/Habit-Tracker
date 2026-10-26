@@ -40,6 +40,8 @@ function loadApp() {
       reorderHabit, reorderTag,
       getFreezes, isFrozen, toggleFreeze, activeYear, realTodayParts, recalcPoints, dailyUnit,
       freezeAllowance, paidFreezesBought, nextFreezePrice, freezePurchaseBlock, canBuyFreeze, buyFreeze,
+      latestFreezeReceipt, isSellableFreezeReceipt, freezeSellBlock, sellFreeze, offerFreezeSale,
+      freezeBtnInfo, cancelPurchase,
       // confirm() is not implemented in jsdom — tests install their own answer per case.
       setConfirm: (fn) => { window.confirm = fn; },
     };
