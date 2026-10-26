@@ -42,6 +42,8 @@ function loadApp() {
       freezeAllowance, paidFreezesBought, nextFreezePrice, freezePurchaseBlock, canBuyFreeze, buyFreeze,
       latestFreezeReceipt, isSellableFreezeReceipt, freezeSellBlock, sellFreeze, offerFreezeSale,
       freezeBtnInfo, cancelPurchase,
+      PEAK_PRIZE_DAYS, PEAK_GAMES_PER_MONTH, PEAK_SESSION, PEAK_DEVICE,
+      peakPrizeInli, peakPayoutOnWrong, peakGamesThisMonth, peakAttemptsLeft, peakStartGame, peakFinishGame, peakDropInterrupted,
       // confirm() is not implemented in jsdom — tests install their own answer per case.
       setConfirm: (fn) => { window.confirm = fn; },
     };

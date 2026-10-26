@@ -15,7 +15,7 @@
 
 Файлы: `index.html`, `tests/load-app.js`, `tests/peak-core.test.js`.
 
-- Состояние `state.peak = {games:[], seen:[], active:null}`: `games` — завершённые игры `{id, year, month, date, reached, payoutDays, payoutInli, lifelines[], end}` (`end`: `walk`/`wrong`/`timeout`/`violation`/`top`); `seen` — показанные id вопросов; `active` — незавершённая игра (если есть при загрузке → проигрыш, выплата 0).
+- Состояние `state.peak = {games:[], seen:[], active:null}`: `games` — завершённые игры `{id, year, month, date, reached, payoutDays, payoutInli, lifelines[], end}` (`end`: `walk`/`wrong`/`timeout`/`violation`/`interrupted`/`top`); `seen` — показанные id вопросов; `active` — незавершённая игра (если есть при загрузке → проигрыш, выплата 0).
 - Миграция в `migrate()`; пустое значение в `freshState()`.
 - Константы: `PEAK_PRIZE_DAYS` (лесенка B), `PEAK_SAFE=[5,10]`, `PEAK_GAMES_PER_MONTH=3`, `PEAK_SECONDS=120`.
 - Чистые функции: `peakPrizeInli(level)` (дни × `dailyUnit()`), `peakPayoutOnWrong(level)` (несгораемая), `peakGamesThisMonth(year,month)`, `peakAttemptsLeft()`, `peakStartGame()` (списывает попытку сразу, создаёт `active`), `peakFinishGame(end, reached)` (пишет чек с замороженной суммой в `games`, чистит `active`, вызывает `recalcPoints()`), `peakDropInterrupted()` (на загрузке).

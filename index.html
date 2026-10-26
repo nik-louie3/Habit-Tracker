@@ -648,6 +648,7 @@ td.cname.dragging,.tag-group-header.dragging,.titem.dragging{opacity:.4}
       <button class="tab" data-view="habits">&#127919; Habits</button>
       <button class="tab" data-view="rewards">&#127942; Shop</button>
       <button class="tab" data-view="casino">&#127920; Casino</button>
+      <button class="tab" data-view="peak" style="display:none">&#9650; Peak</button>
       <button class="tab" data-view="stats">&#128200; Analytics</button>
       <button class="tab" data-view="settings">&#9881; Settings</button>
     </nav>
@@ -855,6 +856,11 @@ td.cname.dragging,.tag-group-header.dragging,.titem.dragging{opacity:.4}
   <!-- CASINO -->
   <section id="view-casino">
     <div id="casinoBody"></div>
+  </section>
+
+  <!-- PEAK INLI -->
+  <section id="view-peak">
+    <div id="peakBody"></div>
   </section>
 
   <!-- STATS -->
@@ -1184,6 +1190,7 @@ freezeFundsMsg:"Not enough INLI: you need {0}, you have {1}",freezeDebtMsg:"Sett
 freezeSellBtn:"Sell the extra freeze back (+{0})",freezeSoldMsg:"Freeze sold back (+{0} INLI)",
 sellFreezeConfirm:"Sell the extra freeze back? {0} INLI will be refunded and this month's slot is gone. Balance: {1} INLI.",
 freezeSellInUseMsg:"Un-freeze one of your days first: every freeze slot is in use",
+tabPeak:"Peak",peakTitle:"INLI Peak",peakTagline:"15 questions. One summit.",peakAttemptsLeft:"Attempts left this month: {0} of {1}",peakSoon:"The game opens soon.",
 previewMode:"Preview mode — open as file for persistence",
 penaltyBankHint:"Penalty bank: {0}% of {1} = {2} per month. This goes to charity if habits fail.",
 setIncomeHint:"Set your income to see penalty calculations.",
@@ -1308,6 +1315,7 @@ freezeFundsMsg:"Не хватает INLI: нужно {0}, на балансе {1
 freezeSellBtn:"Продать заморозку обратно (+{0})",freezeSoldMsg:"Заморозка продана (+{0} INLI)",
 sellFreezeConfirm:"Продать дополнительную заморозку обратно? Вернётся {0} INLI, слот на этот месяц пропадёт. Баланс: {1} INLI.",
 freezeSellInUseMsg:"Сначала снимите заморозку с одного из дней: все слоты заняты",
+tabPeak:"Пик",peakTitle:"Пик INLI",peakTagline:"15 вопросов. Одна вершина.",peakAttemptsLeft:"Осталось попыток в этом месяце: {0} из {1}",peakSoon:"Игра скоро откроется.",
 previewMode:"Режим просмотра — откройте как файл для сохранения",
 penaltyBankHint:"Банк штрафов: {0}% от {1} = {2} в месяц. Идёт на благотворительность при невыполнении.",
 setIncomeHint:"Укажите доход для расчёта штрафов.",
@@ -1432,6 +1440,7 @@ freezeFundsMsg:"INLI insuficientes: necesitas {0}, tienes {1}",freezeDebtMsg:"Sa
 freezeSellBtn:"Vender la congelación extra (+{0})",freezeSoldMsg:"Congelación vendida (+{0} INLI)",
 sellFreezeConfirm:"¿Vender la congelación extra? Se devolverán {0} INLI y se pierde el espacio de este mes. Saldo: {1} INLI.",
 freezeSellInUseMsg:"Primero quita la congelación de un día: todos los espacios están en uso",
+tabPeak:"Cima",peakTitle:"Cima INLI",peakTagline:"15 preguntas. Una cumbre.",peakAttemptsLeft:"Intentos restantes este mes: {0} de {1}",peakSoon:"El juego se abrirá pronto.",
 previewMode:"Modo vista previa — abrir como archivo para persistencia",
 penaltyBankHint:"Banco de multas: {0}% de {1} = {2} por mes. Va a caridad si fallan los hábitos.",
 setIncomeHint:"Indique su ingreso para ver cálculos de multas.",
@@ -1556,6 +1565,7 @@ freezeFundsMsg:"INLI 不足：需要 {0}，当前 {1}",freezeDebtMsg:"请先还�
 freezeSellBtn:"退回额外冻结（+{0}）",freezeSoldMsg:"已退回冻结（+{0} INLI）",
 sellFreezeConfirm:"退回这次额外冻结？将退还 {0} INLI，本月的名额随之消失。余额：{1} INLI。",
 freezeSellInUseMsg:"请先取消某一天的冻结：所有名额都已占用",
+tabPeak:"之巅",peakTitle:"INLI 之巅",peakTagline:"15 个问题，一座山巅。",peakAttemptsLeft:"本月剩余次数：{0} / {1}",peakSoon:"游戏即将开放。",
 previewMode:"预览模式 — 以文件打开以持久保存",
 penaltyBankHint:"罚款库：{0}% × {1} = {2}/月。未完成习惯时捐赠慈善。",
 setIncomeHint:"设置收入以查看罚款计算。",
@@ -1680,6 +1690,7 @@ freezeFundsMsg:"INLI insuffisants : il faut {0}, vous avez {1}",freezeDebtMsg:"R
 freezeSellBtn:"Revendre le gel supplémentaire (+{0})",freezeSoldMsg:"Gel revendu (+{0} INLI)",
 sellFreezeConfirm:"Revendre le gel supplémentaire ? {0} INLI seront remboursés et l'emplacement de ce mois disparaît. Solde : {1} INLI.",
 freezeSellInUseMsg:"Dégelez d'abord un jour : tous les emplacements sont utilisés",
+tabPeak:"Sommet",peakTitle:"Sommet INLI",peakTagline:"15 questions. Un sommet.",peakAttemptsLeft:"Essais restants ce mois-ci : {0} sur {1}",peakSoon:"Le jeu ouvre bientôt.",
 previewMode:"Mode aperçu — ouvrir comme fichier pour la persistance",
 penaltyBankHint:"Banque de pénalités : {0}% de {1} = {2} par mois. Va en charité si les habitudes échouent.",
 setIncomeHint:"Indiquez votre revenu pour voir les calculs de pénalité.",
@@ -1695,10 +1706,11 @@ function applyLang(){
   const appTitleWithYear=T.appTitle+" "+activeYear();
   document.querySelector(".eyebrow").textContent=appTitleWithYear;
   document.title=appTitleWithYear;
-  const tvs=["today","track","habits","rewards","casino","stats","settings"];
-  const tls=[T.tabToday,T.tabMonths,T.tabHabits,(T.tabRewards||"Пряники"),T.tabCasino,T.tabAnalytics,T.tabSettings];
-  const tic=["⚡","📅","🎯","🏆","🎰","📈","⚙"];
+  const tvs=["today","track","habits","rewards","casino","peak","stats","settings"];
+  const tls=[T.tabToday,T.tabMonths,T.tabHabits,(T.tabRewards||"Пряники"),T.tabCasino,T.tabPeak,T.tabAnalytics,T.tabSettings];
+  const tic=["⚡","📅","🎯","🏆","🎰","▲","📈","⚙"];
   document.querySelectorAll(".tab").forEach(t=>{const i=tvs.indexOf(t.dataset.view);if(i>=0)t.textContent=tic[i]+" "+tls[i]});
+  const peakTab=document.querySelector('.tab[data-view="peak"]');if(peakTab)peakTab.style.display=peakEnabled()?"":"none";
   const ids={lDarkMode:T.darkMode,lAccentColor:T.accentColor,lLanguage:T.language,
     lAppearance:T.appearance,lTagsTitle:T.tagsTitle,lTagsDesc:T.tagsDesc,lBtnAddTag:T.addTag,
     lCloudSync:T.cloudSync,lCloudSyncDesc:T.cloudSyncDesc,
@@ -1962,6 +1974,8 @@ function freshState(){
     // purchases/savings: every round's bet and payout are locked in the moment it resolves, never
     // re-derived from anything (there's nothing to re-derive an already-drawn random outcome from).
     casinoBets:[],
+    // Peak INLI quiz: finished games as frozen receipts, shown question ids, and the one running game.
+    peak:{games:[],seen:[],active:null},
     // Casino play-money mode: an entirely separate, user-declared number that never touches
     // recalcPoints()/state.points at all — casinoMode picks which wallet the games currently play
     // against, casinoVirtualBalance is that number (null until the user sets a starting value the
@@ -2239,6 +2253,11 @@ function migrate(){
   if(!Array.isArray(state.achievementClaims))state.achievementClaims=[];
   if(!Array.isArray(state.challenges))state.challenges=[];
   if(!Array.isArray(state.casinoBets))state.casinoBets=[];
+  if(!state.peak||typeof state.peak!=="object")state.peak={games:[],seen:[],active:null};
+  if(!Array.isArray(state.peak.games))state.peak.games=[];
+  if(!Array.isArray(state.peak.seen))state.peak.seen=[];
+  if(!state.peak.active||typeof state.peak.active!=="object")state.peak.active=null;
+  peakDropInterrupted();
   if(state.casinoMode!=="real"&&state.casinoMode!=="virtual")state.casinoMode="real";
   if(typeof state.casinoVirtualBalance!=="number"||!isFinite(state.casinoVirtualBalance))state.casinoVirtualBalance=null;
   recalcXP();
@@ -3446,6 +3465,8 @@ function recalcPoints(){
   // Casino: each round's net (payout minus bet) is a frozen historical fact the instant it resolves
   // (see placeCasinoBet), so — exactly like purchases/savings — this is a plain sum, never replayed.
   pts+=(state.casinoBets||[]).reduce((s,b)=>s+(b.payout-b.bet),0);
+  // Peak INLI: finished games are frozen receipts too (see peakRecord), a plain sum.
+  pts+=((state.peak&&state.peak.games)||[]).reduce((s,g)=>s+(g.payoutInli||0),0);
   // Real-money debt settlement: a fixed historical offset, exactly like purchases/savings above —
   // never a mutable "current debt" field that could drift. forgiveCurrentDebt() sets this to exactly
   // enough to zero out whatever the raw negative sum was at the moment it was clicked; it never
@@ -3475,6 +3496,66 @@ function forgiveCurrentDebt(){
   if((state.points||0)>=0)return;
   state.debtForgiven=(state.debtForgiven||0)+Math.abs(state.points);
   recalcPoints();save();
+}
+/* ===== PEAK INLI (quiz game) — see docs/superpowers/specs/2026-10-26-peak-inli-design.md =====
+   15 questions, safe sums after the 5th and 10th, INLI-only prizes, 3 games per calendar month.
+   Prizes are set in DAYS and turned into INLI at payout time (days × dailyUnit(), like shop prices),
+   then stored as a frozen receipt in state.peak.games — recalcPoints() just sums those receipts. A game
+   takes its attempt the moment it starts; one found unfinished after a reload is a loss paying 0. */
+const PEAK_PRIZE_DAYS=[0.03,0.06,0.09,0.15,0.25,0.35,0.5,0.6,0.75,1.0,1.2,1.5,1.9,2.4,3.0];
+const PEAK_SAFE_LEVELS=[5,10];
+const PEAK_GAMES_PER_MONTH=3;
+const PEAK_SECONDS=120;
+const PEAK_MAX_GAME_MS=35*60*1000; // 15 questions × 2 min plus slack: an "active" game older than this is dead
+const PEAK_SESSION=Math.random().toString(36).slice(2,10); // one per page load
+const PEAK_DEVICE=(()=>{try{let d=localStorage.getItem("peak_device");if(!d){d=Math.random().toString(36).slice(2,10);localStorage.setItem("peak_device",d)}return d}catch(e){return"dev"}})();
+// Hidden until the question bank exists: on for development with localStorage.peakDev="1".
+function peakEnabled(){try{return localStorage.getItem("peakDev")==="1"}catch(e){return false}}
+function peakDays(level){return level>=1&&level<=15?PEAK_PRIZE_DAYS[level-1]:0}
+function peakPrizeInli(level){return Math.round(peakDays(level)*dailyUnit())}
+// The highest safe level already cleared once `cleared` questions have been answered correctly.
+function peakSafeCleared(cleared){let s=0;PEAK_SAFE_LEVELS.forEach(l=>{if(cleared>=l)s=l});return s}
+// Payout for answering question `level` wrongly (or running out of time): the last safe sum cleared.
+function peakPayoutOnWrong(level){return peakPrizeInli(peakSafeCleared(level-1))}
+function peakGamesThisMonth(year,m){
+  const p=state.peak,fin=(p&&p.games||[]).filter(g=>g.year===year&&g.month===m).length;
+  return fin+((p&&p.active&&p.active.year===year&&p.active.month===m)?1:0);
+}
+function peakAttemptsLeft(){const rt=realTodayParts();return Math.max(0,PEAK_GAMES_PER_MONTH-peakGamesThisMonth(rt.y,rt.m))}
+function peakStartGame(){
+  if(!state.peak)state.peak={games:[],seen:[],active:null};
+  if(state.peak.active||peakAttemptsLeft()<=0)return null;
+  const rt=realTodayParts();
+  state.peak.active={id:uid(),year:rt.y,month:rt.m,startedAt:Date.now(),device:PEAK_DEVICE,session:PEAK_SESSION,level:1,lifelines:[]};
+  save();
+  return state.peak.active;
+}
+// Writes the finished game; `reached` = questions answered correctly. How it ended decides the payout:
+// walk = the prize reached, top = the top prize, wrong/timeout = the safe sum, violation/interrupted = 0.
+function peakRecord(end,reached,a){
+  let days=0;
+  if(end==="walk")days=peakDays(reached);
+  else if(end==="top")days=peakDays(15);
+  else if(end==="wrong"||end==="timeout")days=peakDays(peakSafeCleared(reached));
+  const g={id:a.id,year:a.year,month:a.month,date:Date.now(),reached,end,payoutDays:days,payoutInli:Math.round(days*dailyUnit()),lifelines:a.lifelines||[]};
+  state.peak.games.push(g);state.peak.active=null;
+  return g;
+}
+function peakFinishGame(end,reached){
+  const a=state.peak&&state.peak.active;if(!a)return null;
+  const g=peakRecord(end,reached,a);
+  recalcPoints();save();
+  return g;
+}
+// An unfinished game is a loss the moment its page is gone: found on the SAME device under another
+// page session (a reload) it is dropped at once; one from another device (it arrived through sync) or
+// one older than any real game could last is dropped only when stale.
+function peakDropInterrupted(){
+  const a=state.peak&&state.peak.active;if(!a)return false;
+  const stale=Date.now()-a.startedAt>PEAK_MAX_GAME_MS;
+  if(!stale&&!(a.device===PEAK_DEVICE&&a.session!==PEAK_SESSION))return false;
+  peakRecord("interrupted",Math.max(0,(a.level||1)-1),a);
+  return true;
 }
 /* ===== MONEY POOL (weighted, no cliff — replaces per-habit zone-rate escalation) =====
    pool = income × ratePct; each failed habit owes pool × (weight / Σ weight of active habits).
@@ -8369,8 +8450,18 @@ function switchView(v){
   if(v==="habits")renderHabitsManager();
   if(v==="rewards")renderRewards();
   if(v==="casino")renderCasino();
+  if(v==="peak")renderPeak();
   if(v==="stats")renderStats();
   if(v==="settings")renderSettings();
+}
+// Step 1 of Peak INLI: only the frame (attempts left). The game itself comes in the next steps.
+function renderPeak(){
+  const el=document.getElementById("peakBody");if(!el)return;
+  const left=peakAttemptsLeft();
+  el.innerHTML=`<div class="card"><div class="eyebrow">${T.peakTitle}</div>
+    <h3 style="margin:6px 0">${T.peakTagline}</h3>
+    <p class="sub">${T.peakAttemptsLeft.replace("{0}",left).replace("{1}",PEAK_GAMES_PER_MONTH)}</p>
+    <p class="hint">${T.peakSoon}</p></div>`;
 }
 function rerenderActive(){
   if(currentView==="today")renderToday();
@@ -8378,6 +8469,7 @@ function rerenderActive(){
   else if(currentView==="habits")renderHabitsManager();
   else if(currentView==="rewards")renderRewards();
   else if(currentView==="casino")renderCasino();
+  else if(currentView==="peak")renderPeak();
   else if(currentView==="stats")renderStats();
   else if(currentView==="settings")renderSettings();
   renderXP();
