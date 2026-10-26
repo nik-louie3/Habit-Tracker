@@ -1177,6 +1177,9 @@ confirmDelete:"Delete \"{0}\"? History is preserved, habit marked as deleted.",
 deletedPreserved:"Deleted (history preserved)",archivedBadge:"[archived]",deletedBadge:"[deleted]",
 restoredActive:"Restored to active",restoredLabel:"Restored",
 maxFreezesMsg:"Max {0} freezes per month",maxWeeklySleepMsg:"Max {0} sleep days this week",
+freezePurchaseName:"Freeze",freezeBuyFor:"buy for {0}",freezeBoughtMsg:"Freeze bought (−{0} INLI)",
+buyFreezeConfirm:"Free freezes are used up. Buy an extra one for {0} INLI? That is paid freeze {1} of {2} this month. Balance: {3} INLI.",
+freezeFundsMsg:"Not enough INLI: you need {0}, you have {1}",freezeDebtMsg:"Settle your debt first — purchases are blocked",
 previewMode:"Preview mode — open as file for persistence",
 penaltyBankHint:"Penalty bank: {0}% of {1} = {2} per month. This goes to charity if habits fail.",
 setIncomeHint:"Set your income to see penalty calculations.",
@@ -1295,6 +1298,9 @@ confirmDelete:"Удалить \"{0}\"? История сохранится, пр
 deletedPreserved:"Удалено (история сохранена)",archivedBadge:"[архив]",deletedBadge:"[удалено]",
 restoredActive:"Восстановлено в активные",restoredLabel:"Восстановлено",
 maxFreezesMsg:"Максимум {0} заморозок в месяц",maxWeeklySleepMsg:"Максимум {0} дней сна в неделю",
+freezePurchaseName:"Заморозка",freezeBuyFor:"купить за {0}",freezeBoughtMsg:"Заморозка куплена (−{0} INLI)",
+buyFreezeConfirm:"Бесплатные заморозки закончились. Купить дополнительную за {0} INLI? Это платная заморозка {1} из {2} в этом месяце. Баланс: {3} INLI.",
+freezeFundsMsg:"Не хватает INLI: нужно {0}, на балансе {1}",freezeDebtMsg:"Сначала закройте долг — покупки заблокированы",
 previewMode:"Режим просмотра — откройте как файл для сохранения",
 penaltyBankHint:"Банк штрафов: {0}% от {1} = {2} в месяц. Идёт на благотворительность при невыполнении.",
 setIncomeHint:"Укажите доход для расчёта штрафов.",
@@ -1413,6 +1419,9 @@ confirmDelete:"¿Eliminar \"{0}\"? El historial se conserva.",
 deletedPreserved:"Eliminado (historial conservado)",archivedBadge:"[archivado]",deletedBadge:"[eliminado]",
 restoredActive:"Restaurado a activos",restoredLabel:"Restaurado",
 maxFreezesMsg:"Máximo {0} congelaciones por mes",maxWeeklySleepMsg:"Máximo {0} días de sueño esta semana",
+freezePurchaseName:"Congelación",freezeBuyFor:"comprar por {0}",freezeBoughtMsg:"Congelación comprada (−{0} INLI)",
+buyFreezeConfirm:"Se acabaron las congelaciones gratis. ¿Comprar una extra por {0} INLI? Es la congelación de pago {1} de {2} este mes. Saldo: {3} INLI.",
+freezeFundsMsg:"INLI insuficientes: necesitas {0}, tienes {1}",freezeDebtMsg:"Salda primero tu deuda: las compras están bloqueadas",
 previewMode:"Modo vista previa — abrir como archivo para persistencia",
 penaltyBankHint:"Banco de multas: {0}% de {1} = {2} por mes. Va a caridad si fallan los hábitos.",
 setIncomeHint:"Indique su ingreso para ver cálculos de multas.",
@@ -1531,6 +1540,9 @@ confirmDelete:"删除 \"{0}\"？历史记录将保留。",
 deletedPreserved:"已删除（历史保留）",archivedBadge:"[已归档]",deletedBadge:"[已删除]",
 restoredActive:"已恢复为活跃",restoredLabel:"已恢复",
 maxFreezesMsg:"每月最多{0}次冻结",maxWeeklySleepMsg:"本周最多{0}天睡眠",
+freezePurchaseName:"冻结",freezeBuyFor:"花费{0}购买",freezeBoughtMsg:"已购买冻结（−{0} INLI）",
+buyFreezeConfirm:"免费冻结已用完。花 {0} INLI 购买一次额外冻结？这是本月第 {1} 次付费冻结，上限 {2} 次。余额：{3} INLI。",
+freezeFundsMsg:"INLI 不足：需要 {0}，当前 {1}",freezeDebtMsg:"请先还清债务——购买已被锁定",
 previewMode:"预览模式 — 以文件打开以持久保存",
 penaltyBankHint:"罚款库：{0}% × {1} = {2}/月。未完成习惯时捐赠慈善。",
 setIncomeHint:"设置收入以查看罚款计算。",
@@ -1649,6 +1661,9 @@ confirmDelete:"Supprimer \"{0}\" ? L'historique est conservé.",
 deletedPreserved:"Supprimé (historique conservé)",archivedBadge:"[archivé]",deletedBadge:"[supprimé]",
 restoredActive:"Restauré en actif",restoredLabel:"Restauré",
 maxFreezesMsg:"Max {0} gels par mois",maxWeeklySleepMsg:"Max {0} jours de sommeil cette semaine",
+freezePurchaseName:"Gel",freezeBuyFor:"acheter pour {0}",freezeBoughtMsg:"Gel acheté (−{0} INLI)",
+buyFreezeConfirm:"Les gels gratuits sont épuisés. Acheter un gel supplémentaire pour {0} INLI ? C'est le gel payant {1} sur {2} ce mois-ci. Solde : {3} INLI.",
+freezeFundsMsg:"INLI insuffisants : il faut {0}, vous avez {1}",freezeDebtMsg:"Réglez d'abord votre dette : les achats sont bloqués",
 previewMode:"Mode aperçu — ouvrir comme fichier pour la persistance",
 penaltyBankHint:"Banque de pénalités : {0}% de {1} = {2} par mois. Va en charité si les habitudes échouent.",
 setIncomeHint:"Indiquez votre revenu pour voir les calculs de pénalité.",
@@ -1723,6 +1738,13 @@ function activeYear(){
   return Math.min(LAST_YEAR,Math.max(FIRST_YEAR,now));
 }
 const MAX_FREEZES=3;
+// Extra whole-day freezes that can be BOUGHT on top of MAX_FREEZES (see freezeAllowance). Priced in
+// days of dailyUnit() like every shop reward, so the price floats with the workload: 3.65 and 5.48
+// days are 500 and 750 INLI for the default habit set. Even the first costs more than one plain
+// missed day (-3×weight, about 2.7 days), so buying never beats simply missing on points alone — it
+// pays off for what a miss would also break: a streak, the weekly bonus, a perfect month.
+const FREEZE_PRICE_DAYS=[3.65,5.48];
+const MAX_PAID_FREEZES=FREEZE_PRICE_DAYS.length;
 // Points-economy currency name — a proper noun, deliberately NOT localized (same in every language).
 const CURRENCY_NAME="Inlounity";
 const CURRENCY_TICKER="INLI";
@@ -3575,30 +3597,99 @@ function getChecks(m,hid){
   return state.checks[mk][hid];
 }
 // Leveling up used to also earn a bonus freeze; that reward is now paid in currency instead (see
-// levelRewardAmount/totalLevelRewardEarned below) — the monthly freeze allowance is a fixed
-// MAX_FREEZES per month, from nowhere else, full stop.
+// levelRewardAmount/totalLevelRewardEarned below). A month's freeze allowance is MAX_FREEZES free
+// ones plus up to MAX_PAID_FREEZES bought for that exact month (see freezeAllowance) — nothing
+// accumulates across months, and no level, streak or achievement hands out more.
 function getFreezes(m){return state.freezesUsed["m"+m]||[]}
 function isFrozen(m,d){return getFreezes(m).includes(d)}
+// Paid freezes are ordinary state.purchases receipts (kind:"freeze", stamped with the year/month they
+// were bought for), so recalcPoints() charges them and the shop's purchase history lists them with no
+// ledger of their own. A slot belongs to the month it was bought in and expires with it; it stays
+// bought even if the day using it is un-frozen again, so it can move to another day of that month.
+function paidFreezesBought(year,m){
+  return(state.purchases||[]).filter(p=>p.kind==="freeze"&&p.year===year&&p.month===m).length;
+}
+function freezeAllowance(m){return MAX_FREEZES+paidFreezesBought(activeYear(),m)}
+// INLI price of the NEXT paid freeze for (year,m), or null once the cap is reached.
+function nextFreezePrice(year,m){
+  const n=paidFreezesBought(year,m);
+  if(n>=MAX_PAID_FREEZES)return null;
+  return Math.round(FREEZE_PRICE_DAYS[n]*dailyUnit());
+}
+// Why a paid freeze can't be bought for month m right now: "month" (only the real current month of
+// the year being shown can buy — otherwise any old month could be bought back after the fact), "max"
+// (the cap is reached), "debt" (the same gate every shop purchase has) or "funds"; null when it can.
+function freezePurchaseBlock(m){
+  const rt=realTodayParts(),year=activeYear();
+  if(year!==rt.y||m!==rt.m)return"month";
+  const price=nextFreezePrice(year,m);
+  if(price===null)return"max";
+  if(debtBlocksPurchases())return"debt";
+  if((state.points||0)<price)return"funds";
+  return null;
+}
+// True when a paid slot exists to be bought for m at all (funds or debt may still stop it) — decides
+// whether the freeze buttons stay clickable and show a price once the free ones are spent.
+function canBuyFreeze(m){const b=freezePurchaseBlock(m);return b!=="month"&&b!=="max"}
+function buyFreeze(m){
+  const block=freezePurchaseBlock(m);
+  if(block)return block;
+  const year=activeYear();
+  if(!state.purchases)state.purchases=[];
+  // Frozen receipt like buyRewardFlat's: the price paid is captured here and never re-derived.
+  state.purchases.push({id:uid(),kind:"freeze",year,month:m,name:T.freezePurchaseName,emo:"❄",cost:nextFreezePrice(year,m),date:Date.now()});
+  recalcPoints();save();
+  return"ok";
+}
+// The question behind toggleFreeze once the free freezes are spent. Returns true after a slot has been
+// bought (the caller then freezes the day), false when nothing should happen — a refusal says why.
+function offerFreezePurchase(m){
+  const block=freezePurchaseBlock(m);
+  const year=activeYear(),price=nextFreezePrice(year,m),bal=Math.round(state.points||0);
+  if(block==="debt"){toast(T.freezeDebtMsg);return false}
+  if(block==="funds"){toast(T.freezeFundsMsg.replace("{0}",price).replace("{1}",bal));return false}
+  if(block)return false;
+  const nth=paidFreezesBought(year,m)+1;
+  if(!confirm(T.buyFreezeConfirm.replace("{0}",price).replace("{1}",nth).replace("{2}",MAX_PAID_FREEZES).replace("{3}",bal)))return false;
+  if(buyFreeze(m)!=="ok")return false;
+  toast(T.freezeBoughtMsg.replace("{0}",price));
+  return true;
+}
+// What the two freeze buttons (Today, day-note modal) show for day d of month m: the free freezes
+// left, or — once they're spent and a paid slot can still be bought — its price instead.
+function freezeBtnInfo(m,d){
+  // Unclamped on purpose: a month holding more freezes than the allowance (grandfathered ones) shows
+  // the real deficit as a negative number instead of a floor of 0.
+  const left=freezeAllowance(m)-getFreezes(m).length;
+  const restorable=((state.freezesEverDays&&state.freezesEverDays["m"+m])||[]).includes(d);
+  const buyable=left<=0&&!restorable&&canBuyFreeze(m);
+  return{left,buyable,used:left<=0&&!restorable&&!buyable,price:buyable?nextFreezePrice(activeYear(),m):null};
+}
 // Toggles the whole-day freeze. A day that has EVER legitimately been frozen this month (tracked in
 // freezesEverDays, e.g. one frozen back when a bonus pool or a looser MAX_FREEZES allowed it) can
 // always be put back — a later rule tightening shouldn't strand a day that was legal when it was
-// set, and un-freezing it by mistake shouldn't cost it permanently. This never allows freezing a
-// genuinely NEW day beyond the current MAX_FREEZES: that still only opens up once the month's active
-// count drops back under the limit. Mirrors the same reasoning habitFreezeEverDays already uses for
-// per-habit freezes, just without that one's extra eviction bookkeeping — a global freeze doesn't
-// compete with a shrinking per-habit quota, so nothing here ever needs to be evicted.
+// set, and un-freezing it by mistake shouldn't cost it permanently. A genuinely NEW day beyond the
+// month's allowance needs a paid slot (offered in the current month only, see freezePurchaseBlock),
+// otherwise it only opens up once the month's active count drops back under the limit. Mirrors the
+// same reasoning habitFreezeEverDays already uses for per-habit freezes, just without that one's
+// extra eviction bookkeeping — a global freeze doesn't compete with a shrinking per-habit quota, so
+// nothing here ever needs to be evicted.
 function toggleFreeze(m,d){
   const mk="m"+m;
+  const everDays=(state.freezesEverDays&&state.freezesEverDays[mk])||[];
+  if(!isFrozen(m,d)&&getFreezes(m).length>=freezeAllowance(m)&&!everDays.includes(d)&&canBuyFreeze(m)){
+    if(!offerFreezePurchase(m))return;
+  }
   if(!state.freezesUsed[mk])state.freezesUsed[mk]=[];
   const arr=state.freezesUsed[mk];
   if(!state.freezesEverDays[mk])state.freezesEverDays[mk]=[];
   const everArr=state.freezesEverDays[mk];
   const idx=arr.indexOf(d);
   if(idx>=0)arr.splice(idx,1);
-  else if(arr.length<MAX_FREEZES||everArr.includes(d)){
+  else if(arr.length<freezeAllowance(m)||everArr.includes(d)){
     arr.push(d);
     if(!everArr.includes(d))everArr.push(d);
-  }else{toast(T.maxFreezesMsg.replace("{0}",MAX_FREEZES));return}
+  }else{toast(T.maxFreezesMsg.replace("{0}",freezeAllowance(m)));return}
   save();
 }
 // One-time currency reward for reaching level lv (replaces the old level->bonus-freeze reward).
@@ -3987,17 +4078,13 @@ function closeNote(){document.getElementById("noteModal").classList.remove("open
 function renderNoteFreezeBtn(){
   const btn=document.getElementById("btnFreezeNoteDay");if(!btn)return;
   const frozen=isFrozen(noteMonth,noteDay);
-  // Unclamped on purpose — a month that froze more days than MAX_FREEZES now allows (e.g. leftover
-  // from when bonus freezes let it exceed the flat cap) shows the real deficit as a negative number,
-  // rather than silently flooring at 0 and making an un-freeze look like it did nothing.
-  const totalFreezesLeft=MAX_FREEZES-getFreezes(noteMonth).length;
-  // A day that was EVER legally frozen this month stays clickable (restorable) even over quota — see
-  // toggleFreeze's own everArr check. Without also checking it here, the button's disabled styling
-  // (pointer-events:none) would block the click before toggleFreeze ever got a chance to allow it.
-  const everArr=(state.freezesEverDays&&state.freezesEverDays["m"+noteMonth])||[];
-  const restorable=everArr.includes(noteDay);
-  btn.classList.toggle("used",!frozen&&totalFreezesLeft<=0&&!restorable);
-  btn.textContent=frozen?("❄ "+T.dayFrozen):("❄ "+T.freezeThisDay+" ("+totalFreezesLeft+" "+T.left+")");
+  // freezeBtnInfo keeps the count unclamped (a deficit shows as a negative number), and keeps the
+  // button clickable for a day that was EVER legally frozen this month (restorable even over quota,
+  // see toggleFreeze's own everArr check) or one a paid slot can still be bought for — the disabled
+  // styling (pointer-events:none) would otherwise block the click before toggleFreeze could allow it.
+  const fz=freezeBtnInfo(noteMonth,noteDay);
+  btn.classList.toggle("used",!frozen&&fz.used);
+  btn.textContent=frozen?("❄ "+T.dayFrozen):("❄ "+T.freezeThisDay+" ("+(fz.buyable?T.freezeBuyFor.replace("{0}",fz.price+" "+CURRENCY_TICKER):fz.left+" "+T.left)+")");
   btn.onclick=()=>{
     toggleFreeze(noteMonth,noteDay);
     renderNoteFreezeBtn();
@@ -4137,8 +4224,7 @@ function renderToday(){
   const frozen=isFrozen(m,d);
   // Unclamped on purpose — see renderNoteFreezeBtn's comment: a real deficit shows as a negative
   // number instead of hiding behind a floor of 0.
-  const freezesLeft=MAX_FREEZES-getFreezes(m).length;
-  const totalFreezesLeft=freezesLeft;
+  const freezesLeft=freezeAllowance(m)-getFreezes(m).length;
   const doneCount=hs.filter(h=>!!getChecks(m,h.id)[d]).length;
   const todayXP=hs.reduce((s,h)=>getChecks(m,h.id)[d]?s+xpForCheck(h.weight):s,0);
 
@@ -4157,12 +4243,11 @@ function renderToday(){
     </div>`;
 
   if(!frozen){
-    // Same restorable-day exception as renderNoteFreezeBtn — a day EVER legally frozen this month
-    // must stay clickable even over quota, or the disabled styling blocks the click before
-    // toggleFreeze's own everArr check ever gets a chance to allow it.
-    const todayEverArr=(state.freezesEverDays&&state.freezesEverDays["m"+m])||[];
-    const todayRestorable=todayEverArr.includes(d);
-    html+=`<div class="freeze-btn ${(totalFreezesLeft<=0&&!todayRestorable)?'used':''}" id="btnFreezeToday">&#10052; ${T.freezeToday} (${totalFreezesLeft} ${T.left})</div>`;
+    // Same rules as renderNoteFreezeBtn (see freezeBtnInfo): a day EVER legally frozen this month, or
+    // one a paid slot can still be bought for, must stay clickable even with no free freeze left, or
+    // the disabled styling blocks the click before toggleFreeze ever gets a chance to allow it.
+    const fz=freezeBtnInfo(m,d);
+    html+=`<div class="freeze-btn ${fz.used?'used':''}" id="btnFreezeToday">&#10052; ${T.freezeToday} (${fz.buyable?T.freezeBuyFor.replace("{0}",fz.price+" "+CURRENCY_TICKER):fz.left+" "+T.left})</div>`;
   }else{
     html+=`<div class="freeze-btn" id="btnUnfreezeToday">&#10052; ${T.dayFrozen}</div>`;
   }
@@ -5933,7 +6018,9 @@ function achievementsForYear(){
   const longestChallenge=Math.max(0,...challengesCompleted.map(c=>c.days),0);
   const challengeLong=longestChallenge>=30;
   const challengeVeteran=challengesCompleted.length>=5;
-  const shopSpent=(state.purchases||[]).reduce((s,p)=>s+(p.cost||0),0);
+  // A paid freeze is a receipt in the same ledger but not a shop reward — leaving it in would let a
+  // freeze purchase unlock "Big Spender" (and its currency payout).
+  const shopSpent=(state.purchases||[]).filter(p=>p.kind!=="freeze").reduce((s,p)=>s+(p.cost||0),0);
   const cosmeticsOwned=Object.keys((state.cosmetics&&state.cosmetics.owned)||{}).length;
   const habitsEverCreated=state.habits.length;
   const trackingDays=isoDaysBetween(state.trackingStart,todayISO());
@@ -6399,8 +6486,10 @@ function renderRewards(){
     ?editForm(null)
     :`<button class="btn ghost" id="brAddBtn" style="margin-top:10px;width:100%">+ ${ru?'Добавить награду':'Add reward'}</button>`;
 
+  // A paid freeze names the month it belongs to and has no cancel/refund: its slot is already part of
+  // that month's allowance (see paidFreezesBought), so refunding it would just be a free undo.
   const historyRows=purchases.slice(0,20).map(p=>
-    `<div class="reward-item"><span class="br-emo" style="font-size:18px">${p.emo||'🎁'}</span><div class="ri-name">${escapeHtml(p.name)}</div><div class="ri-reward">&minus;${p.cost} ${CURRENCY_TICKER}</div><button class="move-btn" data-prcancel="${p.id}" title="${ru?'Отменить и вернуть деньги':'Cancel and refund'}">↩</button></div>`
+    `<div class="reward-item"><span class="br-emo" style="font-size:18px">${p.emo||'🎁'}</span><div class="ri-name">${escapeHtml(p.name)}${p.kind==="freeze"?` · ${T.monthsShort[p.month]} ${p.year}`:''}</div><div class="ri-reward">&minus;${p.cost} ${CURRENCY_TICKER}</div>${p.kind==="freeze"?'':`<button class="move-btn" data-prcancel="${p.id}" title="${ru?'Отменить и вернуть деньги':'Cancel and refund'}">↩</button>`}</div>`
   ).join('');
 
   const debt=debtRub();
@@ -6544,6 +6633,7 @@ function cancelPurchase(purchaseId){
   const idx=(state.purchases||[]).findIndex(p=>p.id===purchaseId);
   if(idx<0)return;
   const p=state.purchases[idx];
+  if(p.kind==="freeze")return; // no refund for a paid freeze — see the purchase-history rows
   const ru=state.lang!=="en";
   if(!confirm(ru?`Отменить покупку «${p.name}»? Деньги (${p.cost} ${CURRENCY_TICKER}) вернутся на баланс.`:`Cancel purchase "${p.name}"? ${p.cost} ${CURRENCY_TICKER} will be refunded.`))return;
   state.purchases.splice(idx,1);

@@ -38,6 +38,10 @@ function loadApp() {
       missPenaltyMult, successBonusMult,
       activeQuotaOverride, effectiveWeeklyQuota, effectiveTierLabel,
       reorderHabit, reorderTag,
+      getFreezes, isFrozen, toggleFreeze, activeYear, realTodayParts, recalcPoints, dailyUnit,
+      freezeAllowance, paidFreezesBought, nextFreezePrice, freezePurchaseBlock, canBuyFreeze, buyFreeze,
+      // confirm() is not implemented in jsdom — tests install their own answer per case.
+      setConfirm: (fn) => { window.confirm = fn; },
     };
   `;
   window.eval(appSource + "\n" + capture);
