@@ -1003,6 +1003,7 @@ td.cname.dragging,.tag-group-header.dragging,.titem.dragging{opacity:.4}
     <textarea class="inp" id="noteText" rows="4" placeholder="What happened this day..."></textarea>
     <button class="btn primary" style="margin-top:10px" id="btnSaveNote"><span id="lBtnSaveNote">Save</span></button>
     <div class="freeze-btn" id="btnFreezeNoteDay" style="margin-top:10px;margin-bottom:0"></div>
+    <div class="freeze-btn" id="btnSellFreezeNoteDay" style="margin-top:6px;margin-bottom:0;display:none"></div>
     <button class="btn ghost" style="margin-top:6px" id="btnCloseNote"><span id="lBtnCloseNote">Close</span></button>
   </div>
 </div>
@@ -1180,6 +1181,9 @@ maxFreezesMsg:"Max {0} freezes per month",maxWeeklySleepMsg:"Max {0} sleep days 
 freezePurchaseName:"Freeze",freezeBuyFor:"buy for {0}",freezeBoughtMsg:"Freeze bought (−{0} INLI)",
 buyFreezeConfirm:"Free freezes are used up. Buy an extra one for {0} INLI? That is paid freeze {1} of {2} this month. Balance: {3} INLI.",
 freezeFundsMsg:"Not enough INLI: you need {0}, you have {1}",freezeDebtMsg:"Settle your debt first — purchases are blocked",
+freezeSellBtn:"Sell the extra freeze back (+{0})",freezeSoldMsg:"Freeze sold back (+{0} INLI)",
+sellFreezeConfirm:"Sell the extra freeze back? {0} INLI will be refunded and this month's slot is gone. Balance: {1} INLI.",
+freezeSellInUseMsg:"Un-freeze one of your days first: every freeze slot is in use",
 previewMode:"Preview mode — open as file for persistence",
 penaltyBankHint:"Penalty bank: {0}% of {1} = {2} per month. This goes to charity if habits fail.",
 setIncomeHint:"Set your income to see penalty calculations.",
@@ -1301,6 +1305,9 @@ maxFreezesMsg:"Максимум {0} заморозок в месяц",maxWeeklyS
 freezePurchaseName:"Заморозка",freezeBuyFor:"купить за {0}",freezeBoughtMsg:"Заморозка куплена (−{0} INLI)",
 buyFreezeConfirm:"Бесплатные заморозки закончились. Купить дополнительную за {0} INLI? Это платная заморозка {1} из {2} в этом месяце. Баланс: {3} INLI.",
 freezeFundsMsg:"Не хватает INLI: нужно {0}, на балансе {1}",freezeDebtMsg:"Сначала закройте долг — покупки заблокированы",
+freezeSellBtn:"Продать заморозку обратно (+{0})",freezeSoldMsg:"Заморозка продана (+{0} INLI)",
+sellFreezeConfirm:"Продать дополнительную заморозку обратно? Вернётся {0} INLI, слот на этот месяц пропадёт. Баланс: {1} INLI.",
+freezeSellInUseMsg:"Сначала снимите заморозку с одного из дней: все слоты заняты",
 previewMode:"Режим просмотра — откройте как файл для сохранения",
 penaltyBankHint:"Банк штрафов: {0}% от {1} = {2} в месяц. Идёт на благотворительность при невыполнении.",
 setIncomeHint:"Укажите доход для расчёта штрафов.",
@@ -1422,6 +1429,9 @@ maxFreezesMsg:"Máximo {0} congelaciones por mes",maxWeeklySleepMsg:"Máximo {0}
 freezePurchaseName:"Congelación",freezeBuyFor:"comprar por {0}",freezeBoughtMsg:"Congelación comprada (−{0} INLI)",
 buyFreezeConfirm:"Se acabaron las congelaciones gratis. ¿Comprar una extra por {0} INLI? Es la congelación de pago {1} de {2} este mes. Saldo: {3} INLI.",
 freezeFundsMsg:"INLI insuficientes: necesitas {0}, tienes {1}",freezeDebtMsg:"Salda primero tu deuda: las compras están bloqueadas",
+freezeSellBtn:"Vender la congelación extra (+{0})",freezeSoldMsg:"Congelación vendida (+{0} INLI)",
+sellFreezeConfirm:"¿Vender la congelación extra? Se devolverán {0} INLI y se pierde el espacio de este mes. Saldo: {1} INLI.",
+freezeSellInUseMsg:"Primero quita la congelación de un día: todos los espacios están en uso",
 previewMode:"Modo vista previa — abrir como archivo para persistencia",
 penaltyBankHint:"Banco de multas: {0}% de {1} = {2} por mes. Va a caridad si fallan los hábitos.",
 setIncomeHint:"Indique su ingreso para ver cálculos de multas.",
@@ -1543,6 +1553,9 @@ maxFreezesMsg:"每月最多{0}次冻结",maxWeeklySleepMsg:"本周最多{0}天�
 freezePurchaseName:"冻结",freezeBuyFor:"花费{0}购买",freezeBoughtMsg:"已购买冻结（−{0} INLI）",
 buyFreezeConfirm:"免费冻结已用完。花 {0} INLI 购买一次额外冻结？这是本月第 {1} 次付费冻结，上限 {2} 次。余额：{3} INLI。",
 freezeFundsMsg:"INLI 不足：需要 {0}，当前 {1}",freezeDebtMsg:"请先还清债务——购买已被锁定",
+freezeSellBtn:"退回额外冻结（+{0}）",freezeSoldMsg:"已退回冻结（+{0} INLI）",
+sellFreezeConfirm:"退回这次额外冻结？将退还 {0} INLI，本月的名额随之消失。余额：{1} INLI。",
+freezeSellInUseMsg:"请先取消某一天的冻结：所有名额都已占用",
 previewMode:"预览模式 — 以文件打开以持久保存",
 penaltyBankHint:"罚款库：{0}% × {1} = {2}/月。未完成习惯时捐赠慈善。",
 setIncomeHint:"设置收入以查看罚款计算。",
@@ -1664,6 +1677,9 @@ maxFreezesMsg:"Max {0} gels par mois",maxWeeklySleepMsg:"Max {0} jours de sommei
 freezePurchaseName:"Gel",freezeBuyFor:"acheter pour {0}",freezeBoughtMsg:"Gel acheté (−{0} INLI)",
 buyFreezeConfirm:"Les gels gratuits sont épuisés. Acheter un gel supplémentaire pour {0} INLI ? C'est le gel payant {1} sur {2} ce mois-ci. Solde : {3} INLI.",
 freezeFundsMsg:"INLI insuffisants : il faut {0}, vous avez {1}",freezeDebtMsg:"Réglez d'abord votre dette : les achats sont bloqués",
+freezeSellBtn:"Revendre le gel supplémentaire (+{0})",freezeSoldMsg:"Gel revendu (+{0} INLI)",
+sellFreezeConfirm:"Revendre le gel supplémentaire ? {0} INLI seront remboursés et l'emplacement de ce mois disparaît. Solde : {1} INLI.",
+freezeSellInUseMsg:"Dégelez d'abord un jour : tous les emplacements sont utilisés",
 previewMode:"Mode aperçu — ouvrir comme fichier pour la persistance",
 penaltyBankHint:"Banque de pénalités : {0}% de {1} = {2} par mois. Va en charité si les habitudes échouent.",
 setIncomeHint:"Indiquez votre revenu pour voir les calculs de pénalité.",
@@ -3655,15 +3671,79 @@ function offerFreezePurchase(m){
   toast(T.freezeBoughtMsg.replace("{0}",price));
   return true;
 }
-// What the two freeze buttons (Today, day-note modal) show for day d of month m: the free freezes
-// left, or — once they're spent and a paid slot can still be bought — its price instead.
+// The newest paid-freeze receipt of (year,m) — the one a sale takes back, so the cheap first slot is
+// never left stranded behind the expensive second one and the price ladder simply rewinds. A tie on
+// the timestamp goes to the later entry.
+function latestFreezeReceipt(year,m){
+  let best=null;
+  (state.purchases||[]).forEach(p=>{
+    if(p.kind==="freeze"&&p.year===year&&p.month===m&&(!best||(p.date||0)>=(best.date||0)))best=p;
+  });
+  return best;
+}
+// Whether receipt p is the one that can be sold back right now (drives the ↩ button in the shop history).
+function isSellableFreezeReceipt(p){
+  return p.kind==="freeze"&&p.year===activeYear()&&freezeSellBlock(p.month)===null&&latestFreezeReceipt(p.year,p.month)===p;
+}
+// Why the latest paid slot of month m can't be sold right now: "month" (only the real current month
+// — an older month's slots expired with it), "none" (nothing was bought) or "inuse" (every slot, free
+// and paid, is taken by a frozen day, so one of them has to be un-frozen first); null when it can.
+function freezeSellBlock(m){
+  const rt=realTodayParts(),year=activeYear();
+  if(year!==rt.y||m!==rt.m)return"month";
+  if(!latestFreezeReceipt(year,m))return"none";
+  if(getFreezes(m).length>=freezeAllowance(m))return"inuse";
+  return null;
+}
+// freezesEverDays remembers every day ever frozen this month so it can always be put back (see
+// toggleFreeze). That is only safe while the allowance never shrinks: after a sale it would let a day
+// be re-frozen over the limit for free (buy, freeze a day, un-freeze it, sell, freeze it again). So
+// the memory is trimmed to the new allowance — every day frozen right now stays, then as many of the
+// most recently remembered inactive ones as still fit.
+function trimFreezeMemory(m){
+  const mk="m"+m,ever=state.freezesEverDays&&state.freezesEverDays[mk];
+  if(!ever)return;
+  const active=getFreezes(m),cap=freezeAllowance(m);
+  if(ever.length<=cap)return;
+  const inactive=ever.filter(d=>!active.includes(d));
+  const room=Math.max(0,cap-active.length);
+  const keep=inactive.slice(inactive.length-Math.min(room,inactive.length));
+  state.freezesEverDays[mk]=ever.filter(d=>active.includes(d)||keep.includes(d));
+}
+// Sells the latest paid slot of month m back at exactly what it cost (the receipt's frozen price, not
+// today's — that floats with the habit weights). Allowed in debt: it only returns money.
+function sellFreeze(m){
+  const block=freezeSellBlock(m);
+  if(block)return block;
+  const r=latestFreezeReceipt(activeYear(),m);
+  state.purchases.splice(state.purchases.indexOf(r),1);
+  trimFreezeMemory(m);
+  recalcPoints();save();
+  return"ok";
+}
+// The question behind every "sell it back" button. Returns true after a sale; false when nothing
+// should happen — a refusal because every slot is in use says what to do about it.
+function offerFreezeSale(m){
+  const block=freezeSellBlock(m);
+  if(block==="inuse"){toast(T.freezeSellInUseMsg);return false}
+  if(block)return false;
+  const refund=latestFreezeReceipt(activeYear(),m).cost;
+  if(!confirm(T.sellFreezeConfirm.replace("{0}",refund).replace("{1}",Math.round(state.points||0))))return false;
+  if(sellFreeze(m)!=="ok")return false;
+  toast(T.freezeSoldMsg.replace("{0}",refund));
+  return true;
+}
+// What the freeze buttons (Today, day-note modal) show for day d of month m: the free freezes left,
+// or — once they're spent and a paid slot can still be bought — its price instead; and, when a spare
+// paid slot exists, what selling it back would return (null otherwise).
 function freezeBtnInfo(m,d){
   // Unclamped on purpose: a month holding more freezes than the allowance (grandfathered ones) shows
   // the real deficit as a negative number instead of a floor of 0.
   const left=freezeAllowance(m)-getFreezes(m).length;
   const restorable=((state.freezesEverDays&&state.freezesEverDays["m"+m])||[]).includes(d);
   const buyable=left<=0&&!restorable&&canBuyFreeze(m);
-  return{left,buyable,used:left<=0&&!restorable&&!buyable,price:buyable?nextFreezePrice(activeYear(),m):null};
+  const sellable=freezeSellBlock(m)===null?latestFreezeReceipt(activeYear(),m):null;
+  return{left,buyable,used:left<=0&&!restorable&&!buyable,price:buyable?nextFreezePrice(activeYear(),m):null,sellRefund:sellable?sellable.cost:null};
 }
 // Toggles the whole-day freeze. A day that has EVER legitimately been frozen this month (tracked in
 // freezesEverDays, e.g. one frozen back when a bonus pool or a looser MAX_FREEZES allowed it) can
@@ -4085,13 +4165,23 @@ function renderNoteFreezeBtn(){
   const fz=freezeBtnInfo(noteMonth,noteDay);
   btn.classList.toggle("used",!frozen&&fz.used);
   btn.textContent=frozen?("❄ "+T.dayFrozen):("❄ "+T.freezeThisDay+" ("+(fz.buyable?T.freezeBuyFor.replace("{0}",fz.price+" "+CURRENCY_TICKER):fz.left+" "+T.left)+")");
-  btn.onclick=()=>{
-    toggleFreeze(noteMonth,noteDay);
+  // Re-derives the balance after any freeze action (a frozen day is no longer a miss, a paid slot costs
+  // INLI, a sale returns it) and refreshes everything that shows it.
+  const refreshAfterFreeze=()=>{
+    recalcPoints();renderXP();
     renderNoteFreezeBtn();
     if(typeof renderGrid==="function"&&currentView==="track")renderGrid();
     if(typeof renderToday==="function"&&currentView==="today")renderToday();
     if(typeof renderHero==="function")renderHero();
   };
+  btn.onclick=()=>{toggleFreeze(noteMonth,noteDay);refreshAfterFreeze()};
+  // A spare paid slot can be sold back right here, at what it cost.
+  const sellBtn=document.getElementById("btnSellFreezeNoteDay");
+  if(sellBtn){
+    sellBtn.style.display=fz.sellRefund!==null?"":"none";
+    sellBtn.textContent=fz.sellRefund!==null?("↩ "+T.freezeSellBtn.replace("{0}",fz.sellRefund+" "+CURRENCY_TICKER)):"";
+    sellBtn.onclick=()=>{if(offerFreezeSale(noteMonth))refreshAfterFreeze()};
+  }
 }
 
 /* ===== VERSION HISTORY ===== */
@@ -4242,14 +4332,18 @@ function renderToday(){
       <div class="ts"><div class="tsl">${T.freezesLeft}</div><div class="tsv" style="${freezesLeft<0?'color:var(--red)':''}">${freezesLeft}</div></div>
     </div>`;
 
+  const fz=freezeBtnInfo(m,d);
   if(!frozen){
     // Same rules as renderNoteFreezeBtn (see freezeBtnInfo): a day EVER legally frozen this month, or
     // one a paid slot can still be bought for, must stay clickable even with no free freeze left, or
     // the disabled styling blocks the click before toggleFreeze ever gets a chance to allow it.
-    const fz=freezeBtnInfo(m,d);
     html+=`<div class="freeze-btn ${fz.used?'used':''}" id="btnFreezeToday">&#10052; ${T.freezeToday} (${fz.buyable?T.freezeBuyFor.replace("{0}",fz.price+" "+CURRENCY_TICKER):fz.left+" "+T.left})</div>`;
   }else{
     html+=`<div class="freeze-btn" id="btnUnfreezeToday">&#10052; ${T.dayFrozen}</div>`;
+  }
+  // A spare paid slot (bought but not holding a frozen day) can be sold back at what it cost.
+  if(fz.sellRefund!==null){
+    html+=`<div class="freeze-btn" id="btnSellFreezeToday">&#8617; ${T.freezeSellBtn.replace("{0}",fz.sellRefund+" "+CURRENCY_TICKER)}</div>`;
   }
 
   if(hs.length>0&&doneCount===hs.length){
@@ -4414,10 +4508,14 @@ function renderToday(){
   initTodayDragDrop(el);
   wireTodayNotePress(el);
 
+  // A freeze changes the balance (a frozen day is no longer a miss, a paid one costs INLI, a sale
+  // returns it), so each of these re-derives it and refreshes the points pill before re-rendering.
   const fb=document.getElementById("btnFreezeToday");
-  if(fb)fb.onclick=()=>{toggleFreeze(m,d);renderToday()};
+  if(fb)fb.onclick=()=>{toggleFreeze(m,d);recalcPoints();renderXP();renderToday()};
   const ub=document.getElementById("btnUnfreezeToday");
-  if(ub)ub.onclick=()=>{toggleFreeze(m,d);renderToday()};
+  if(ub)ub.onclick=()=>{toggleFreeze(m,d);recalcPoints();renderXP();renderToday()};
+  const sb=document.getElementById("btnSellFreezeToday");
+  if(sb)sb.onclick=()=>{if(offerFreezeSale(m)){renderXP();renderToday()}};
 }
 
 function initTodayDragDrop(el){
@@ -6486,11 +6584,13 @@ function renderRewards(){
     ?editForm(null)
     :`<button class="btn ghost" id="brAddBtn" style="margin-top:10px;width:100%">+ ${ru?'Добавить награду':'Add reward'}</button>`;
 
-  // A paid freeze names the month it belongs to and has no cancel/refund: its slot is already part of
-  // that month's allowance (see paidFreezesBought), so refunding it would just be a free undo.
-  const historyRows=purchases.slice(0,20).map(p=>
-    `<div class="reward-item"><span class="br-emo" style="font-size:18px">${p.emo||'🎁'}</span><div class="ri-name">${escapeHtml(p.name)}${p.kind==="freeze"?` · ${T.monthsShort[p.month]} ${p.year}`:''}</div><div class="ri-reward">&minus;${p.cost} ${CURRENCY_TICKER}</div>${p.kind==="freeze"?'':`<button class="move-btn" data-prcancel="${p.id}" title="${ru?'Отменить и вернуть деньги':'Cancel and refund'}">↩</button>`}</div>`
-  ).join('');
+  // A paid freeze names the month it belongs to. Only the latest one of the current month, and only
+  // while it is spare (not holding a frozen day), can be sold back — see isSellableFreezeReceipt.
+  const historyRows=purchases.slice(0,20).map(p=>{
+    const canUndo=p.kind!=="freeze"||isSellableFreezeReceipt(p);
+    const undoTitle=p.kind==="freeze"?(ru?'Продать обратно':'Sell back'):(ru?'Отменить и вернуть деньги':'Cancel and refund');
+    return`<div class="reward-item"><span class="br-emo" style="font-size:18px">${p.emo||'🎁'}</span><div class="ri-name">${escapeHtml(p.name)}${p.kind==="freeze"?` · ${T.monthsShort[p.month]} ${p.year}`:''}</div><div class="ri-reward">&minus;${p.cost} ${CURRENCY_TICKER}</div>${canUndo?`<button class="move-btn" data-prcancel="${p.id}" title="${undoTitle}">↩</button>`:''}</div>`;
+  }).join('');
 
   const debt=debtRub();
   body.innerHTML=rewardsSubtabsHTML(ru)+`
@@ -6633,7 +6733,12 @@ function cancelPurchase(purchaseId){
   const idx=(state.purchases||[]).findIndex(p=>p.id===purchaseId);
   if(idx<0)return;
   const p=state.purchases[idx];
-  if(p.kind==="freeze")return; // no refund for a paid freeze — see the purchase-history rows
+  if(p.kind==="freeze"){
+    // A paid freeze goes through its own sale flow (full refund, LIFO, memory trim) and only when this
+    // is the latest sellable one — the history only shows the button then, this guards a stale click.
+    if(isSellableFreezeReceipt(p)&&offerFreezeSale(p.month)){renderRewards();renderXP()}
+    return;
+  }
   const ru=state.lang!=="en";
   if(!confirm(ru?`Отменить покупку «${p.name}»? Деньги (${p.cost} ${CURRENCY_TICKER}) вернутся на баланс.`:`Cancel purchase "${p.name}"? ${p.cost} ${CURRENCY_TICKER} will be refunded.`))return;
   state.purchases.splice(idx,1);
