@@ -23,6 +23,28 @@ input,select,textarea{font-size:16px}
 .wrap{max-width:1100px;margin:0 auto;padding:0 14px}
 
 /* PEAK INLI */
+.pk-top{display:flex;justify-content:flex-end}
+.pk-snd{background:transparent;border:1px solid var(--line);color:var(--text);border-radius:10px;padding:5px 9px;font-size:14px;cursor:pointer}
+.pk-hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px}
+.pk-word{display:flex;flex-direction:column;align-items:center;line-height:1;margin-top:4px}
+.pk-word span{font-size:34px;font-weight:900;letter-spacing:.18em;padding-left:.18em}
+.pk-word b{font-size:13px;font-weight:800;letter-spacing:.62em;padding-left:.62em;color:var(--accent);margin-top:6px}
+.pk-tag{font-size:13px;color:var(--dim);margin:8px 0 12px}
+.pk-att{text-align:center;font-size:12px;color:var(--dim)}
+.pk-dots{display:flex;gap:8px;justify-content:center;margin:6px 0 10px}
+.pk-dots i{width:34px;height:8px;border-radius:5px;background:var(--accent)}.pk-dots i.used{background:var(--line)}
+.pk-rules{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.pk-rules div{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:12px;line-height:1.4;color:var(--dim)}
+.pk-stage::after{content:"";position:absolute;left:0;right:0;bottom:0;height:150px;pointer-events:none;opacity:.55;border-radius:0 0 20px 20px;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 150' preserveAspectRatio='none'><polygon points='0,150 0,100 120,60 200,92 330,28 430,84 540,50 650,96 780,20 880,78 1000,44 1100,88 1200,64 1200,150' fill='%23060818'/><polygon points='0,150 0,124 160,92 260,116 410,72 520,112 700,84 840,118 980,80 1100,110 1200,96 1200,150' fill='%23040510'/></svg>") bottom/100% 100% no-repeat}
+.pk-stage>*{position:relative;z-index:1}.pk-stage>.pk-ov{position:absolute;z-index:5}
+.pk-bl{display:flex;align-items:center;gap:8px}
+@keyframes pkIn{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+@keyframes pkPulse{50%{opacity:.35}}@keyframes pkPop{0%{transform:scale(.97)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
+.pk-in .pk-opt{animation:pkIn .45s both}.pk-in .pk-opt:nth-child(1){animation-delay:.15s}.pk-in .pk-opt:nth-child(2){animation-delay:.3s}.pk-in .pk-opt:nth-child(3){animation-delay:.45s}.pk-in .pk-opt:nth-child(4){animation-delay:.6s}
+.pk-guard i{animation:pkPulse 1.6s infinite}.pk-opt.ok{animation:pkPop .5s}
+@media(prefers-reduced-motion:reduce){.pk-in .pk-opt,.pk-guard i,.pk-opt.ok{animation:none}}
+@media(max-width:820px){.pk-rules{grid-template-columns:1fr}}
 .pk-lock{user-select:none;-webkit-user-select:none}
 .pk-wrap{max-width:620px;margin:6px auto 0}
 .pk-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px}
@@ -1252,6 +1274,7 @@ sellFreezeConfirm:"Sell the extra freeze back? {0} INLI will be refunded and thi
 freezeSellInUseMsg:"Un-freeze one of your days first: every freeze slot is in use",
 tabPeak:"Peak",peakTitle:"INLI Peak",peakTagline:"15 questions. One summit.",peakAttemptsLeft:"Attempts left this month: {0} of {1}",peakSoon:"The game opens soon.",
 peakChkTab:"Tab is active",peakChkFocus:"Window is in focus",peakChkFull:"Full screen",peakChkFullNA:"Full screen is not available on this device — only practice mode",peakChkDnd:"Do Not Disturb is on",peakBtnOn:"Turn on",peakBtnYes:"Yes",peakStart:"Start game",peakPractice:"Practice (soon)",peakNoBank:"Questions are not available in this language yet",peakCountdown:"Starting in {0}…",peakQOf:"Question {0} of 15",peakLl5050:"50:50",peakLlPhone:"Phone a friend",peakLlAudience:"Ask the audience",peakLlDouble:"Double dip",peakWalk:"Take {0} INLI and stop",peakWalkAsk:"Take {0} INLI and end the game?",peakFinalQ:"Is that your final answer?",peakFinalYes:"Yes, final",peakFinalNo:"Let me think",peakRight:"Correct!",peakWrong:"Wrong. You fall to the safe sum: {0} INLI",peakTimeUp:"Time is up. You fall to the safe sum: {0} INLI",peakRetry:"Missed! Pick again — there is no third chance.",peakDoubleOn:"Double dip is on: you may miss once. It burns after your answer either way.",peakCombo:"Double dip cannot be combined with 50:50 on one question.",peakFriend:"I think it's {0}. I'm about {1}% sure.",peakClose:"Close",peakGuard:"Protection active",peakOver:"Game over",peakTopMsg:"You reached the summit!",peakReached:"Cleared {0} of 15",peakPayout:"+{0} INLI",peakViolationTitle:"Game interrupted",peakViolation_hidden:"The tab was hidden",peakViolation_blur:"The window lost focus",peakViolation_fullscreen:"You left full screen",peakViolationNote:"Fair-play rules: stay on this tab in full screen while the game runs. The attempt is used, payout 0 INLI.",peakCancelled:"Start cancelled: the window must stay active and in full screen.",peakSafeNote:"◆ safe sum",
+peakWordPeak:"PEAK",peakRuleTime:"⏱ 2 minutes per question — the clock runs during lifelines too.",peakRuleSafe:"◆ Safe sums after questions 5 and 10.",peakRuleLife:"🛟 4 lifelines: 50:50, phone, audience, Double dip.",peakRuleFair:"🔒 Leave the window and the game is lost.",
 previewMode:"Preview mode — open as file for persistence",
 penaltyBankHint:"Penalty bank: {0}% of {1} = {2} per month. This goes to charity if habits fail.",
 setIncomeHint:"Set your income to see penalty calculations.",
@@ -1378,6 +1401,7 @@ sellFreezeConfirm:"Продать дополнительную заморозк�
 freezeSellInUseMsg:"Сначала снимите заморозку с одного из дней: все слоты заняты",
 tabPeak:"Пик",peakTitle:"Пик INLI",peakTagline:"15 вопросов. Одна вершина.",peakAttemptsLeft:"Осталось попыток в этом месяце: {0} из {1}",peakSoon:"Игра скоро откроется.",
 peakChkTab:"Вкладка активна",peakChkFocus:"Окно в фокусе",peakChkFull:"Полный экран",peakChkFullNA:"Полный экран недоступен на этом устройстве — только «Тренировка»",peakChkDnd:"Режим «Не беспокоить» включён",peakBtnOn:"Включить",peakBtnYes:"Да",peakStart:"Начать игру",peakPractice:"Тренировка (скоро)",peakNoBank:"Вопросов на этом языке пока нет",peakCountdown:"Старт через {0}…",peakQOf:"Вопрос {0} из 15",peakLl5050:"50:50",peakLlPhone:"Звонок другу",peakLlAudience:"Помощь зала",peakLlDouble:"Двойной шанс",peakWalk:"Забрать {0} INLI и закончить",peakWalkAsk:"Забрать {0} INLI и закончить игру?",peakFinalQ:"Это ваш окончательный ответ?",peakFinalYes:"Да, окончательный",peakFinalNo:"Подумаю",peakRight:"Верно!",peakWrong:"Неверно. Вы падаете на несгораемую сумму: {0} INLI",peakTimeUp:"Время вышло. Вы падаете на несгораемую сумму: {0} INLI",peakRetry:"Мимо! Выбери ещё раз — третьего шанса не будет.",peakDoubleOn:"Двойной шанс включён: можно ошибиться один раз. Подсказка сгорит после ответа в любом случае.",peakCombo:"«Двойной шанс» нельзя совмещать с 50:50 на одном вопросе.",peakFriend:"Думаю, это {0}. Уверен примерно на {1}%.",peakClose:"Закрыть",peakGuard:"Защита активна",peakOver:"Игра окончена",peakTopMsg:"Вы на вершине!",peakReached:"Пройдено вопросов: {0} из 15",peakPayout:"+{0} INLI",peakViolationTitle:"Игра прервана",peakViolation_hidden:"Вкладка была скрыта",peakViolation_blur:"Окно потеряло фокус",peakViolation_fullscreen:"Вы вышли из полноэкранного режима",peakViolationNote:"Правила честной игры: пока идёт игра, вкладка должна быть активной и на весь экран. Попытка использована, выплата 0 INLI.",peakCancelled:"Старт отменён: окно должно оставаться активным и на весь экран.",peakSafeNote:"◆ несгораемая сумма",
+peakWordPeak:"ПИК",peakRuleTime:"⏱ 2 минуты на вопрос — время идёт и во время подсказок.",peakRuleSafe:"◆ Несгораемые суммы после 5-го и 10-го вопроса.",peakRuleLife:"🛟 4 подсказки: 50:50, звонок, зал, «Двойной шанс».",peakRuleFair:"🔒 Выйдешь из окна — игра проиграна.",
 previewMode:"Режим просмотра — откройте как файл для сохранения",
 penaltyBankHint:"Банк штрафов: {0}% от {1} = {2} в месяц. Идёт на благотворительность при невыполнении.",
 setIncomeHint:"Укажите доход для расчёта штрафов.",
@@ -1504,6 +1528,7 @@ sellFreezeConfirm:"¿Vender la congelación extra? Se devolverán {0} INLI y se 
 freezeSellInUseMsg:"Primero quita la congelación de un día: todos los espacios están en uso",
 tabPeak:"Cima",peakTitle:"Cima INLI",peakTagline:"15 preguntas. Una cumbre.",peakAttemptsLeft:"Intentos restantes este mes: {0} de {1}",peakSoon:"El juego se abrirá pronto.",
 peakChkTab:"Pestaña activa",peakChkFocus:"Ventana en primer plano",peakChkFull:"Pantalla completa",peakChkFullNA:"Pantalla completa no disponible en este dispositivo: solo modo práctica",peakChkDnd:"«No molestar» activado",peakBtnOn:"Activar",peakBtnYes:"Sí",peakStart:"Empezar",peakPractice:"Práctica (pronto)",peakNoBank:"Aún no hay preguntas en este idioma",peakCountdown:"Empieza en {0}…",peakQOf:"Pregunta {0} de 15",peakLl5050:"50:50",peakLlPhone:"Llamada a un amigo",peakLlAudience:"Público",peakLlDouble:"Doble oportunidad",peakWalk:"Retirar {0} INLI",peakWalkAsk:"¿Retirar {0} INLI y terminar?",peakFinalQ:"¿Es tu respuesta final?",peakFinalYes:"Sí, final",peakFinalNo:"Lo pienso",peakRight:"¡Correcto!",peakWrong:"Incorrecto. Caes a la suma segura: {0} INLI",peakTimeUp:"Se acabó el tiempo. Caes a la suma segura: {0} INLI",peakRetry:"¡Fallaste! Elige otra vez: no hay tercera oportunidad.",peakDoubleOn:"Doble oportunidad activa: puedes fallar una vez. Se gasta al responder, aciertes o no.",peakCombo:"La doble oportunidad no se combina con 50:50 en la misma pregunta.",peakFriend:"Creo que es {0}. Estoy seguro al {1}%.",peakClose:"Cerrar",peakGuard:"Protección activa",peakOver:"Fin del juego",peakTopMsg:"¡Has llegado a la cima!",peakReached:"Superadas {0} de 15",peakPayout:"+{0} INLI",peakViolationTitle:"Juego interrumpido",peakViolation_hidden:"La pestaña se ocultó",peakViolation_blur:"La ventana perdió el foco",peakViolation_fullscreen:"Saliste de pantalla completa",peakViolationNote:"Reglas de juego limpio: mantén esta pestaña en pantalla completa mientras juegas. Intento usado, pago 0 INLI.",peakCancelled:"Inicio cancelado: la ventana debe seguir activa y en pantalla completa.",peakSafeNote:"◆ suma segura",
+peakWordPeak:"CIMA",peakRuleTime:"⏱ 2 minutos por pregunta; el reloj corre también durante las ayudas.",peakRuleSafe:"◆ Sumas seguras tras las preguntas 5 y 10.",peakRuleLife:"🛟 4 ayudas: 50:50, llamada, público, doble oportunidad.",peakRuleFair:"🔒 Si sales de la ventana, pierdes la partida.",
 previewMode:"Modo vista previa — abrir como archivo para persistencia",
 penaltyBankHint:"Banco de multas: {0}% de {1} = {2} por mes. Va a caridad si fallan los hábitos.",
 setIncomeHint:"Indique su ingreso para ver cálculos de multas.",
@@ -1630,6 +1655,7 @@ sellFreezeConfirm:"退回这次额外冻结？将退还 {0} INLI，本月的名�
 freezeSellInUseMsg:"请先取消某一天的冻结：所有名额都已占用",
 tabPeak:"之巅",peakTitle:"INLI 之巅",peakTagline:"15 个问题，一座山巅。",peakAttemptsLeft:"本月剩余次数：{0} / {1}",peakSoon:"游戏即将开放。",
 peakChkTab:"标签页处于活动状态",peakChkFocus:"窗口处于焦点",peakChkFull:"全屏",peakChkFullNA:"此设备不支持全屏——仅可使用练习模式",peakChkDnd:"已开启勿扰模式",peakBtnOn:"开启",peakBtnYes:"是",peakStart:"开始游戏",peakPractice:"练习（即将推出）",peakNoBank:"该语言的题库尚未提供",peakCountdown:"{0} 秒后开始…",peakQOf:"第 {0} 题，共 15 题",peakLl5050:"50:50",peakLlPhone:"求助朋友",peakLlAudience:"观众投票",peakLlDouble:"双重机会",peakWalk:"带走 {0} INLI 并结束",peakWalkAsk:"带走 {0} INLI 并结束游戏？",peakFinalQ:"这是你的最终答案吗？",peakFinalYes:"是的，最终答案",peakFinalNo:"再想想",peakRight:"正确！",peakWrong:"错误。你退回保底金额：{0} INLI",peakTimeUp:"时间到。你退回保底金额：{0} INLI",peakRetry:"答错了！请再选一次——没有第三次机会。",peakDoubleOn:"双重机会已开启：可以错一次。无论对错，回答后即用完。",peakCombo:"同一题不能同时使用双重机会和 50:50。",peakFriend:"我觉得是 {0}，大约有 {1}% 把握。",peakClose:"关闭",peakGuard:"防作弊已启用",peakOver:"游戏结束",peakTopMsg:"你登顶了！",peakReached:"已通过 {0} / 15 题",peakPayout:"+{0} INLI",peakViolationTitle:"游戏中断",peakViolation_hidden:"标签页被隐藏",peakViolation_blur:"窗口失去了焦点",peakViolation_fullscreen:"你退出了全屏",peakViolationNote:"公平游戏规则：游戏期间必须停留在本标签页并保持全屏。本次机会已用掉，奖励 0 INLI。",peakCancelled:"已取消开始：窗口必须保持活动并全屏。",peakSafeNote:"◆ 保底金额",
+peakWordPeak:"之巅",peakRuleTime:"⏱ 每题 2 分钟，使用求助时计时不停。",peakRuleSafe:"◆ 第 5 题和第 10 题后有保底金额。",peakRuleLife:"🛟 4 个求助：50:50、求助朋友、观众投票、双重机会。",peakRuleFair:"🔒 离开窗口即判负。",
 previewMode:"预览模式 — 以文件打开以持久保存",
 penaltyBankHint:"罚款库：{0}% × {1} = {2}/月。未完成习惯时捐赠慈善。",
 setIncomeHint:"设置收入以查看罚款计算。",
@@ -1756,6 +1782,7 @@ sellFreezeConfirm:"Revendre le gel supplémentaire ? {0} INLI seront remboursés
 freezeSellInUseMsg:"Dégelez d'abord un jour : tous les emplacements sont utilisés",
 tabPeak:"Sommet",peakTitle:"Sommet INLI",peakTagline:"15 questions. Un sommet.",peakAttemptsLeft:"Essais restants ce mois-ci : {0} sur {1}",peakSoon:"Le jeu ouvre bientôt.",
 peakChkTab:"Onglet actif",peakChkFocus:"Fenêtre au premier plan",peakChkFull:"Plein écran",peakChkFullNA:"Plein écran indisponible sur cet appareil : mode entraînement uniquement",peakChkDnd:"Mode « Ne pas déranger » activé",peakBtnOn:"Activer",peakBtnYes:"Oui",peakStart:"Commencer",peakPractice:"Entraînement (bientôt)",peakNoBank:"Pas encore de questions dans cette langue",peakCountdown:"Début dans {0}…",peakQOf:"Question {0} sur 15",peakLl5050:"50:50",peakLlPhone:"Appel à un ami",peakLlAudience:"Avis du public",peakLlDouble:"Double chance",peakWalk:"Prendre {0} INLI et arrêter",peakWalkAsk:"Prendre {0} INLI et terminer ?",peakFinalQ:"Est-ce votre réponse finale ?",peakFinalYes:"Oui, définitif",peakFinalNo:"Je réfléchis",peakRight:"Exact !",peakWrong:"Faux. Vous retombez au palier : {0} INLI",peakTimeUp:"Temps écoulé. Vous retombez au palier : {0} INLI",peakRetry:"Raté ! Choisissez encore : pas de troisième chance.",peakDoubleOn:"Double chance activée : une erreur permise. Elle est consommée après votre réponse.",peakCombo:"La double chance ne se combine pas avec le 50:50 sur une même question.",peakFriend:"Je pense que c'est {0}. J'en suis sûr à {1} %.",peakClose:"Fermer",peakGuard:"Protection active",peakOver:"Partie terminée",peakTopMsg:"Vous êtes au sommet !",peakReached:"{0} sur 15 réussies",peakPayout:"+{0} INLI",peakViolationTitle:"Partie interrompue",peakViolation_hidden:"L'onglet a été masqué",peakViolation_blur:"La fenêtre a perdu le focus",peakViolation_fullscreen:"Vous avez quitté le plein écran",peakViolationNote:"Fair-play : restez sur cet onglet en plein écran pendant la partie. Essai utilisé, gain 0 INLI.",peakCancelled:"Début annulé : la fenêtre doit rester active et en plein écran.",peakSafeNote:"◆ palier",
+peakWordPeak:"SOMMET",peakRuleTime:"⏱ 2 minutes par question ; le temps tourne aussi pendant les jokers.",peakRuleSafe:"◆ Paliers après les questions 5 et 10.",peakRuleLife:"🛟 4 jokers : 50:50, appel, public, double chance.",peakRuleFair:"🔒 Quittez la fenêtre et la partie est perdue.",
 previewMode:"Mode aperçu — ouvrir comme fichier pour la persistance",
 penaltyBankHint:"Banque de pénalités : {0}% de {1} = {2} par mois. Va en charité si les habitudes échouent.",
 setIncomeHint:"Indiquez votre revenu pour voir les calculs de pénalité.",
@@ -8596,6 +8623,86 @@ function switchView(v){
   if(v==="stats")renderStats();
   if(v==="settings")renderSettings();
 }
+// ----- Peak INLI: logo and sound (all synthesised in the browser: no audio files, nothing to license) -----
+let _pkLogoId=0;
+// Faceted golden peak: left light face, right dark face, snow cap, two background peaks, 14 path dots
+// (the larger ones mark the safe sums after questions 5 and 10) and a gem on the summit.
+function peakLogo(size){
+  const id="pkl"+(++_pkLogoId);let dots="";
+  for(let i=0;i<14;i++){
+    const t=i/13,x=26+t*26+(i%2?2.4:-2.4)*(1-t*.5),y=104-t*50,safe=(i===4||i===9);
+    dots+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${safe?3.1:1.9}" fill="${safe?"#fffbe0":"#3a2600"}" opacity="${safe?1:.8}"/>`;
+  }
+  return`<svg viewBox="0 0 120 124" width="${size}" height="${(size*124/120).toFixed(1)}" role="img" aria-label="${T.peakTitle}"><defs>
+    <linearGradient id="${id}a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3b0"/><stop offset=".55" stop-color="#ffd400"/><stop offset="1" stop-color="#e09500"/></linearGradient>
+    <linearGradient id="${id}b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb200"/><stop offset="1" stop-color="#8f4700"/></linearGradient>
+    <linearGradient id="${id}m" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe980"/><stop offset="1" stop-color="#f0a800"/></linearGradient>
+    <linearGradient id="${id}n" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d98300"/><stop offset="1" stop-color="#6b3300"/></linearGradient>
+    <linearGradient id="${id}r" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b27200"/><stop offset="1" stop-color="#5a3000"/></linearGradient>
+    <radialGradient id="${id}c" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#cfd6ff" stop-opacity=".95"/><stop offset="1" stop-color="#6c7bff" stop-opacity="0"/></radialGradient></defs>
+    <circle cx="60" cy="15" r="14" fill="url(#${id}c)"/><polygon points="0,114 22,78 44,114" fill="url(#${id}r)"/><polygon points="76,114 98,84 120,114" fill="url(#${id}r)"/>
+    <polygon points="8,114 40,58 60,28 60,114" fill="url(#${id}a)"/><polygon points="60,28 84,62 112,114 60,114" fill="url(#${id}b)"/>
+    <polygon points="40,58 60,28 60,80 47,72" fill="url(#${id}m)" opacity=".9"/><polygon points="84,62 60,28 60,80 73,74" fill="url(#${id}n)" opacity=".85"/>
+    <polygon points="60,28 72.7,46 66,43.5 60,52 54,43.5 48,46" fill="#fff" opacity=".93"/>${dots}
+    <polygon points="60,6 66.5,15 60,24 53.5,15" fill="#eef0ff"/><polygon points="60,6 66.5,15 60,15" fill="#b8c2ff"/></svg>`;
+}
+let peakAc=null,peakMaster=null,peakLoop=null;
+function peakSoundOn(){try{return localStorage.getItem("peakMute")!=="1"}catch(e){return true}}
+function peakSetSound(on){
+  try{localStorage.setItem("peakMute",on?"0":"1")}catch(e){}
+  if(!on)peakTension(false);else if(peakUi.mode==="play")peakTension(true);
+}
+// One AudioContext, created from the player's own click; null when muted or unsupported.
+function peakAudio(){
+  if(!peakSoundOn())return null;
+  try{
+    if(!peakAc){const C=window.AudioContext||window.webkitAudioContext;if(!C)return null;peakAc=new C();peakMaster=peakAc.createGain();peakMaster.gain.value=.32;peakMaster.connect(peakAc.destination)}
+    if(peakAc.state==="suspended")peakAc.resume();
+    return peakAc;
+  }catch(e){return null}
+}
+function peakTone(f,t,d,type,v,a,r,to,lp){
+  const c=peakAc,o=c.createOscillator(),g=c.createGain();o.type=type||"sine";o.frequency.setValueAtTime(f,t);if(to)o.frequency.exponentialRampToValueAtTime(to,t+d);
+  a=a||.01;r=r||.12;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+a);g.gain.setValueAtTime(v,t+Math.max(a,d-r));g.gain.linearRampToValueAtTime(0,t+d);
+  let n=o;if(lp){const f2=c.createBiquadFilter();f2.type="lowpass";f2.frequency.value=lp;o.connect(f2);n=f2}
+  n.connect(g);g.connect(peakMaster);o.start(t);o.stop(t+d+.05);
+}
+function peakNoise(t,d,v,hp){
+  const c=peakAc,b=c.createBuffer(1,Math.max(1,Math.floor(c.sampleRate*d)),c.sampleRate),x=b.getChannelData(0);
+  for(let i=0;i<x.length;i++)x[i]=(Math.random()*2-1)*(1-i/x.length);
+  const src=c.createBufferSource(),g=c.createGain(),f=c.createBiquadFilter();f.type="highpass";f.frequency.value=hp;src.buffer=b;g.gain.value=v;src.connect(f);f.connect(g);g.connect(peakMaster);src.start(t);
+}
+const peakHz=n=>440*Math.pow(2,(n-69)/12);
+function peakSfx(name){
+  const c=peakAudio();if(!c)return;const t=c.currentTime,hz=peakHz;
+  if(name==="final"){peakTone(55,t,1.4,"sawtooth",.28,.5,.5,40,260);peakTone(110,t+.9,.5,"triangle",.35,.01,.3,55);peakNoise(t+.92,.25,.3,300)}
+  else if(name==="correct"){[72,76,79,84].forEach((n,i)=>{peakTone(hz(n),t+i*.13,.5,"sawtooth",.2,.01,.25,null,2600);peakTone(hz(n)/2,t+i*.13,.5,"triangle",.18)});[91,95,98].forEach((n,i)=>peakTone(hz(n),t+.55+i*.07,.5,"sine",.12,.005,.4))}
+  else if(name==="wrong"){peakTone(196,t,.9,"sawtooth",.3,.02,.5,92,700);peakTone(207,t,.9,"sawtooth",.25,.02,.5,98,700);peakNoise(t,.18,.2,1200)}
+  else if(name==="lifeline"){[84,88,91,96].forEach((n,i)=>peakTone(hz(n),t+i*.07,.35,"sine",.16,.005,.25))}
+  else if(name==="tick"){peakNoise(t,.05,.35,2500);peakTone(1200,t,.04,"square",.06,.001,.03)}
+  else if(name==="win"){[60,64,67,72,76,79,84].forEach((n,i)=>{peakTone(hz(n),t+i*.12,.8,"sawtooth",.2,.01,.5,null,2800);peakTone(hz(n)/2,t+i*.12,.8,"triangle",.18)});[96,100,103,108].forEach((n,i)=>peakTone(hz(n),t+1+i*.09,.9,"sine",.12,.005,.7))}
+  else if(name==="violation"){peakTone(110,t,.5,"sawtooth",.3,.01,.2,98);peakTone(117,t,.5,"sawtooth",.3,.01,.2,104);peakTone(110,t+.55,.9,"sawtooth",.3,.01,.5,60,500);peakNoise(t+.55,.4,.2,800)}
+}
+// The suspense bed under a question: a low drone, a slow filter sweep, a heartbeat and a minor arpeggio.
+function peakTension(on){
+  if(peakLoop){clearInterval(peakLoop.id);peakLoop.nodes.forEach(n=>{try{n.stop()}catch(e){}});peakLoop=null}
+  if(!on)return;
+  const c=peakAudio();if(!c)return;
+  const t0=c.currentTime,nodes=[],g=c.createGain(),f=c.createBiquadFilter();
+  g.gain.value=.16;f.type="lowpass";f.frequency.value=420;g.connect(f);f.connect(peakMaster);
+  [55,55.4,82.4].forEach(fr=>{const o=c.createOscillator();o.type="sawtooth";o.frequency.value=fr;o.connect(g);o.start(t0);nodes.push(o)});
+  const lfo=c.createOscillator(),lg=c.createGain();lfo.frequency.value=.12;lg.gain.value=180;lfo.connect(lg);lg.connect(f.frequency);lfo.start(t0);nodes.push(lfo);
+  const seq=[57,60,64,60,57,59,63,59];let i=0;
+  const step=()=>{
+    if(peakUi.mode!=="play"){peakTension(false);return}
+    const t=c.currentTime+.05;peakTone(peakHz(seq[i%8]+12),t,.4,"triangle",.07,.01,.3);if(i%2===0)peakTone(80,t,.22,"sine",.35,.002,.2,38);i++;
+  };
+  step();peakLoop={id:setInterval(step,550),nodes};
+}
+// The tick sounds once per second during the last 20 seconds; returns the second to tick for, or null.
+function peakTickDue(left,last){const s=Math.ceil(left);return(s>=1&&s<=20&&s!==last)?s:null}
+// A short pause is part of the drama; shortened when the system asks for reduced motion.
+function peakDelay(ms){try{return window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches?Math.min(ms,400):ms}catch(e){return ms}}
 // ----- Peak INLI: screen, timer and fair-play protection -----
 let peakUi={mode:"idle",game:null,bank:null,bankLang:null,dnd:false,left:PEAK_SECONDS,qStart:0,sel:-1,note:"",noteCls:"",overlay:null,reason:"",end:null,count:3};
 let peakTimerId=null,peakNextId=null,peakCountId=null,peakGuardId=null,peakListening=false;
@@ -8622,7 +8729,7 @@ function peakBreach(reason){
   if(peakUi.mode!=="play"&&peakUi.mode!=="reveal")return;
   peakStopTimers();
   const reached=Math.max(0,peakUi.game.level-1);
-  peakUi.end=peakFinishGame("violation",reached);peakUi.reason=reason;peakUi.mode="violation";peakUi.dnd=false;
+  peakUi.end=peakFinishGame("violation",reached);peakUi.reason=reason;peakUi.mode="violation";peakUi.dnd=false;peakTension(false);peakSfx("violation");
   peakGuard(false);peakExitFull();renderXP();renderPeak();
 }
 function peakCheckGuard(){
@@ -8643,6 +8750,7 @@ function peakInitListeners(){
 }
 function peakBegin(){
   if(!peakCanStart())return;
+  peakAudio(); // created from the player's own click
   peakUi.mode="count";peakUi.count=3;peakGuard(true);renderPeak();
   peakCountId=setInterval(()=>{
     if(peakUi.mode!=="count"){clearInterval(peakCountId);return}
@@ -8659,8 +8767,8 @@ function peakAskNext(){
   const g=peakUi.game,q=peakQ(g);
   if(!state.peak.seen.includes(q.id))state.peak.seen.push(q.id);
   state.peak.active.level=g.level;state.peak.active.lifelines=g.used.slice();save();
-  Object.assign(peakUi,{mode:"play",sel:-1,note:"",noteCls:"",overlay:null,qStart:performance.now(),left:PEAK_SECONDS});
-  peakRunTimer();renderPeak();
+  Object.assign(peakUi,{mode:"play",sel:-1,note:"",noteCls:"",overlay:null,qStart:performance.now(),left:PEAK_SECONDS,fresh:true,lastTick:0});
+  peakRunTimer();renderPeak();peakTension(true);
 }
 function peakRunTimer(){
   clearInterval(peakTimerId);
@@ -8668,36 +8776,41 @@ function peakRunTimer(){
     if(peakUi.mode!=="play"){clearInterval(peakTimerId);return}
     peakUi.left=Math.max(0,PEAK_SECONDS-(performance.now()-peakUi.qStart)/1000);
     const t=document.getElementById("pkTimer");if(t)t.outerHTML=peakTimerHTML();
+    const due=peakTickDue(peakUi.left,peakUi.lastTick);if(due!==null){peakUi.lastTick=due;peakSfx("tick")}
     if(peakUi.left<=0){clearInterval(peakTimerId);peakReveal(peakTimeout(peakUi.game),"timeout")}
   },250);
 }
 function peakFinish(end,reached){
-  peakUi.end=peakFinishGame(end,reached);peakUi.mode="end";peakUi.dnd=false;
+  peakUi.end=peakFinishGame(end,reached);peakUi.mode="end";peakUi.dnd=false;peakTension(false);
   peakGuard(false);peakExitFull();renderXP();renderPeak();
 }
 // Shows the outcome for a moment, then moves on or ends the game.
 function peakReveal(res,how){
-  peakUi.mode="reveal";peakUi.overlay=null;peakUi.revealRes=res;clearInterval(peakTimerId);
+  peakUi.mode="reveal";peakUi.overlay=null;peakUi.revealRes=res;clearInterval(peakTimerId);peakTension(false);
   const g=peakUi.game;
   // keep the stored game in step at once: a reload during the pause must count this answer too
   if(state.peak.active){state.peak.active.level=g.level;save()}
-  if(res.result==="right"){peakUi.note=T.peakRight;peakUi.noteCls="ok";renderPeak();peakNextId=setTimeout(peakAskNext,1700);return}
-  if(res.result==="top"){peakUi.note=T.peakTopMsg;peakUi.noteCls="ok";renderPeak();peakNextId=setTimeout(()=>peakFinish("top",15),1900);return}
+  if(res.result==="right"){peakUi.note=T.peakRight;peakUi.noteCls="ok";renderPeak();peakSfx("correct");peakNextId=setTimeout(peakAskNext,1700);return}
+  if(res.result==="top"){peakUi.note=T.peakTopMsg;peakUi.noteCls="ok";renderPeak();peakSfx("win");peakNextId=setTimeout(()=>peakFinish("top",15),1900);return}
   const safe=peakPayoutOnWrong(res.reached+1);
-  peakUi.note=(how==="timeout"?T.peakTimeUp:T.peakWrong).replace("{0}",safe);peakUi.noteCls="bad";renderPeak();
+  peakUi.note=(how==="timeout"?T.peakTimeUp:T.peakWrong).replace("{0}",safe);peakUi.noteCls="bad";renderPeak();peakSfx("wrong");
   peakNextId=setTimeout(()=>peakFinish(how==="timeout"?"timeout":"wrong",res.reached),2400);
 }
 function peakConfirm(){
   const g=peakUi.game,res=peakAnswer(g,peakUi.sel);
   peakUi.overlay=null;
-  if(res.result==="retry"){peakUi.sel=-1;peakUi.note=T.peakRetry;peakUi.noteCls="bad";renderPeak();return}
+  if(res.result==="retry"){peakUi.sel=-1;peakUi.note=T.peakRetry;peakUi.noteCls="bad";renderPeak();peakSfx("wrong");return}
   if(res.result==="invalid"){renderPeak();return}
-  peakReveal(res,"answer");
+  // the stored game follows at once, then a suspense beat before the verdict (the timer is stopped)
+  if(state.peak.active){state.peak.active.level=g.level;save()}
+  peakUi.mode="reveal";peakUi.revealRes=null;clearInterval(peakTimerId);peakTension(false);peakSfx("final");renderPeak();
+  peakNextId=setTimeout(()=>peakReveal(res,"answer"),peakDelay(1400));
 }
 function peakLifeline(kind){
   if(peakUi.mode!=="play"||peakUi.overlay)return;
   const g=peakUi.game,r=peakUseLifeline(g,kind);
   if(!r.ok){if(r.reason==="combo"){peakUi.note=T.peakCombo;peakUi.noteCls="bad"}renderPeak();return}
+  peakSfx("lifeline");
   state.peak.active.lifelines=g.used.slice();save();
   peakUi.noteCls="";peakUi.note=kind==="double"?T.peakDoubleOn:"";
   if(kind==="phone"||kind==="audience")peakUi.overlay=Object.assign({type:kind},r);
@@ -8707,18 +8820,23 @@ function peakTimerHTML(){
   const s=Math.ceil(peakUi.left),C=2*Math.PI*22,off=C*(1-peakUi.left/PEAK_SECONDS),low=s<=20;
   return`<div class="pk-ring ${low?"low":""}" id="pkTimer"><svg width="54" height="54"><circle cx="27" cy="27" r="22" fill="none" stroke="#2a3170" stroke-width="5"/><circle cx="27" cy="27" r="22" fill="none" stroke="${low?"#e74c3c":"#ffd400"}" stroke-width="5" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${off}"/></svg><b>${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}</b></div>`;
 }
+const peakSndBtn=()=>`<button class="pk-snd" data-pk="snd" title="${peakSoundOn()?"🔊":"🔇"}">${peakSoundOn()?"🔊":"🔇"}</button>`;
+function peakDots(){const used=PEAK_GAMES_PER_MONTH-peakAttemptsLeft();return`<div class="pk-dots">${Array.from({length:PEAK_GAMES_PER_MONTH},(_,i)=>`<i class="${i<used?"used":""}"></i>`).join("")}</div>`}
 function peakGateHTML(){
   const ok=(b,l,btn)=>`<li class="${b?"ok":"wait"}"><i>${b?"✓":"•"}</i>${l}${!b&&btn?btn:""}</li>`;
   const full=peakFullSupported()?ok(!!document.fullscreenElement,T.peakChkFull,`<button data-pk="fs">${T.peakBtnOn}</button>`):`<li class="wait"><i>!</i>${T.peakChkFullNA}</li>`;
   const bank=peakUi.bank?"":`<li class="wait"><i>!</i>${T.peakNoBank}</li>`;
-  return`<div class="pk-wrap"><div class="pk-card"><div class="eyebrow">${T.peakTitle}</div><h3 style="margin:6px 0">${T.peakTagline}</h3>
-    <p class="sub">${T.peakAttemptsLeft.replace("{0}",peakAttemptsLeft()).replace("{1}",PEAK_GAMES_PER_MONTH)}</p>
+  return`<div class="pk-wrap"><div class="pk-card"><div class="pk-top">${peakSndBtn()}</div>
+    <div class="pk-hero">${peakLogo(104)}<div class="pk-word"><span>${T.peakWordPeak}</span><b>INLI</b></div><div class="pk-tag">${T.peakTagline}</div></div>
+    <div class="pk-att">${T.peakAttemptsLeft.replace("{0}",peakAttemptsLeft()).replace("{1}",PEAK_GAMES_PER_MONTH)}</div>${peakDots()}
+    <div class="pk-rules"><div>${T.peakRuleTime}</div><div>${T.peakRuleSafe}</div><div>${T.peakRuleLife}</div><div>${T.peakRuleFair}</div></div>
     <ul class="pk-check">${ok(!document.hidden,T.peakChkTab)}${ok(document.hasFocus(),T.peakChkFocus)}${full}${ok(peakUi.dnd,T.peakChkDnd,`<button data-pk="dnd">${T.peakBtnYes}</button>`)}${bank}</ul>
     <div class="pk-btns"><button class="pk-btn" data-pk="start" ${peakCanStart()?"":"disabled"}>${T.peakStart}</button><button class="pk-btn ghost" disabled>${T.peakPractice}</button></div></div></div>`;
 }
 function peakCountHTML(){return`<div class="pk-wrap"><div class="pk-card" style="text-align:center"><div class="eyebrow">${T.peakTitle}</div><div class="pk-big">${peakUi.count}</div><p class="sub">${T.peakCountdown.replace("{0}",peakUi.count)}</p></div></div>`}
 function peakPlayHTML(){
   const g=peakUi.game,q=peakQ(g),shown=g.shown[g.level-1],vis=peakVisible(g),rev=peakUi.mode==="reveal",res=peakUi.revealRes||{};
+  const fresh=peakUi.fresh;peakUi.fresh=false;
   const opts=shown.map((orig,pos)=>{
     let cls="";
     if(g.gone.includes(orig))cls="gone";else if(g.struck.includes(orig))cls="cross";
@@ -8741,22 +8859,22 @@ function peakPlayHTML(){
     const bars=shown.filter(i=>o.percent[i]!==undefined).map(i=>`<div><span style="height:${Math.max(6,o.percent[i]*1.3)}px"></span>${o.percent[i]}%<br>${"ABCD"[shown.indexOf(i)]}</div>`).join("");
     ov=`<div class="pk-ov"><div class="pk-panel"><h4>${T.peakLlAudience}</h4><div class="pk-bars">${bars}</div><div class="pk-btns"><button class="pk-btn ghost" data-pk="no">${T.peakClose}</button></div></div></div>`;
   }
-  return`<div class="pk-stage"><div class="pk-bar"><div class="pk-bl">▲ ${T.peakTitle}</div><div class="pk-bc"><b>${T.peakQOf.replace("{0}",g.level)}</b></div>
-    <div class="pk-br"><span class="pk-guard"><i></i>${T.peakGuard}</span>${peakTimerHTML()}</div></div>
+  return`<div class="pk-stage"><div class="pk-bar"><div class="pk-bl">${peakLogo(26)}<span>${T.peakTitle}</span></div><div class="pk-bc"><b>${T.peakQOf.replace("{0}",g.level)}</b></div>
+    <div class="pk-br">${peakSndBtn()}<span class="pk-guard"><i></i>${T.peakGuard}</span>${peakTimerHTML()}</div></div>
     <div class="pk-game"><div class="pk-main"><div class="pk-q pk-hex"><span>${escapeHtml(q.q)}</span></div>
     ${peakUi.note?`<div class="pk-banner ${peakUi.noteCls}">${peakUi.note}</div>`:""}
-    <div class="pk-opts">${opts}</div><div class="pk-lls">${lls}</div>
+    <div class="pk-opts ${fresh?"pk-in":""}">${opts}</div><div class="pk-lls">${lls}</div>
     ${rev?"":`<button class="pk-walk" data-pk="walk">${T.peakWalk.replace("{0}",`<b>${peakPrizeInli(g.level-1)}</b>`)}</button>`}</div>${lad}</div>${ov}</div>`;
 }
 function peakEndHTML(){
   const g=peakUi.end||{};
-  return`<div class="pk-wrap"><div class="pk-card" style="text-align:center"><div class="eyebrow">${g.end==="top"?T.peakTopMsg:T.peakOver}</div>
+  return`<div class="pk-wrap"><div class="pk-card" style="text-align:center"><div class="pk-hero">${peakLogo(84)}<div class="eyebrow" style="margin-top:8px">${g.end==="top"?T.peakTopMsg:T.peakOver}</div></div>
     <div class="pk-big">${T.peakPayout.replace("{0}",g.payoutInli||0)}</div><p class="sub">${T.peakReached.replace("{0}",g.reached||0)}</p>
-    <p class="sub">${T.peakAttemptsLeft.replace("{0}",peakAttemptsLeft()).replace("{1}",PEAK_GAMES_PER_MONTH)}</p>
+    <p class="sub">${T.peakAttemptsLeft.replace("{0}",peakAttemptsLeft()).replace("{1}",PEAK_GAMES_PER_MONTH)}</p>${peakDots()}
     <div class="pk-btns"><button class="pk-btn" data-pk="close">${T.peakClose}</button></div></div></div>`;
 }
 function peakViolationHTML(){
-  return`<div class="pk-wrap"><div class="pk-card" style="text-align:center;border-color:#7b2a2a"><div class="eyebrow" style="color:#ff9a8f">${T.peakViolationTitle}</div>
+  return`<div class="pk-wrap"><div class="pk-card" style="text-align:center;border-color:#7b2a2a"><div class="pk-hero">${peakLogo(70)}<div class="eyebrow" style="margin-top:8px;color:#ff9a8f">${T.peakViolationTitle}</div></div>
     <div class="pk-big" style="color:#ff6b5e">0 INLI</div><p class="sub">${T["peakViolation_"+peakUi.reason]||""}</p><p class="hint">${T.peakViolationNote}</p>
     <div class="pk-btns"><button class="pk-btn" data-pk="close">${T.peakClose}</button></div></div></div>`;
 }
@@ -8778,6 +8896,7 @@ function renderPeak(){
     else if(a==="walkyes"){peakStopTimers();peakFinish("walk",peakUi.game.level-1)}
     else if(a==="yes")peakConfirm();
     else if(a==="no"){if(peakUi.overlay&&peakUi.overlay.type==="final")peakUi.sel=-1;peakUi.overlay=null;renderPeak()}
+    else if(a==="snd"){peakSetSound(!peakSoundOn());renderPeak()}
     else if(a==="close"){peakUi.mode="idle";peakUi.game=null;peakUi.overlay=null;renderPeak()}
   };
 }
