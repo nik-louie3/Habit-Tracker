@@ -1,0 +1,1262 @@
+[
+ {
+  "id": "p0101",
+  "level": 1,
+  "category": "science",
+  "q": "What is the chemical formula of water?",
+  "options": [
+   "H₂O",
+   "CO₂",
+   "O₂",
+   "NaCl"
+  ],
+  "correct": 0,
+  "explanation": "A water molecule has two hydrogen atoms and one oxygen atom."
+ },
+ {
+  "id": "p0102",
+  "level": 1,
+  "category": "geography",
+  "q": "Which city is the capital of France?",
+  "options": [
+   "Marseille",
+   "Paris",
+   "Lyon",
+   "Nice"
+  ],
+  "correct": 1,
+  "explanation": "Paris is the capital and largest city of France."
+ },
+ {
+  "id": "p0103",
+  "level": 1,
+  "category": "daily",
+  "q": "How many days are there in a week?",
+  "options": [
+   "8",
+   "6",
+   "7",
+   "5"
+  ],
+  "correct": 2,
+  "explanation": "A week has seven days."
+ },
+ {
+  "id": "p0104",
+  "level": 1,
+  "category": "science",
+  "q": "Which planet of the Solar System is called the Red Planet?",
+  "options": [
+   "Jupiter",
+   "Venus",
+   "Mercury",
+   "Mars"
+  ],
+  "correct": 3,
+  "explanation": "Mars looks reddish because of iron oxides on its surface."
+ },
+ {
+  "id": "p0105",
+  "level": 1,
+  "category": "history",
+  "q": "Who was the first human in space?",
+  "options": [
+   "Yuri Gagarin",
+   "Neil Armstrong",
+   "Alan Shepard",
+   "Buzz Aldrin"
+  ],
+  "correct": 0,
+  "explanation": "Yuri Gagarin made the first human spaceflight on 12 April 1961."
+ },
+ {
+  "id": "p0106",
+  "level": 1,
+  "category": "literature",
+  "q": "Who wrote the play «Romeo and Juliet»?",
+  "options": [
+   "Mark Twain",
+   "William Shakespeare",
+   "Charles Dickens",
+   "Jane Austen"
+  ],
+  "correct": 1,
+  "explanation": "«Romeo and Juliet» is a tragedy by William Shakespeare."
+ },
+ {
+  "id": "p0107",
+  "level": 1,
+  "category": "art",
+  "q": "Which artist painted the «Mona Lisa»?",
+  "options": [
+   "Michelangelo",
+   "Raphael",
+   "Leonardo da Vinci",
+   "Rembrandt"
+  ],
+  "correct": 2,
+  "explanation": "The «Mona Lisa» was painted by Leonardo da Vinci in the early 16th century."
+ },
+ {
+  "id": "p0108",
+  "level": 1,
+  "category": "music",
+  "q": "How many strings does a classical guitar have?",
+  "options": [
+   "5",
+   "7",
+   "4",
+   "6"
+  ],
+  "correct": 3,
+  "explanation": "A classical guitar has six strings."
+ },
+ {
+  "id": "p0109",
+  "level": 1,
+  "category": "film",
+  "q": "What is the name of Disney's famous mouse in red shorts?",
+  "options": [
+   "Mickey Mouse",
+   "Goofy",
+   "Pluto",
+   "Donald Duck"
+  ],
+  "correct": 0,
+  "explanation": "Mickey Mouse is the best-known character of Walt Disney's studio."
+ },
+ {
+  "id": "p0110",
+  "level": 1,
+  "category": "sport",
+  "q": "How many players of one team are on the pitch in football (soccer) at once, goalkeeper included?",
+  "options": [
+   "9",
+   "11",
+   "12",
+   "10"
+  ],
+  "correct": 1,
+  "explanation": "Each football team fields 11 players at a time."
+ },
+ {
+  "id": "p0111",
+  "level": 1,
+  "category": "food",
+  "q": "What is cheese made from?",
+  "options": [
+   "Honey",
+   "Flour",
+   "Milk",
+   "Eggs"
+  ],
+  "correct": 2,
+  "explanation": "Cheese is made from milk that is curdled and drained of whey."
+ },
+ {
+  "id": "p0112",
+  "level": 1,
+  "category": "health",
+  "q": "Which organ pumps blood around the human body?",
+  "options": [
+   "The lungs",
+   "The stomach",
+   "The liver",
+   "The heart"
+  ],
+  "correct": 3,
+  "explanation": "The heart works as a pump that pushes blood through the vessels."
+ },
+ {
+  "id": "p0113",
+  "level": 1,
+  "category": "tech",
+  "q": "Which device is mainly used to type text into a computer?",
+  "options": [
+   "A keyboard",
+   "A printer",
+   "A monitor",
+   "Speakers"
+  ],
+  "correct": 0,
+  "explanation": "The keyboard is the main device for entering text."
+ },
+ {
+  "id": "p0114",
+  "level": 1,
+  "category": "language",
+  "q": "Which language is the official language of Brazil?",
+  "options": [
+   "French",
+   "Portuguese",
+   "English",
+   "Spanish"
+  ],
+  "correct": 1,
+  "explanation": "Brazil speaks Portuguese, a legacy of its colonial history."
+ },
+ {
+  "id": "p0115",
+  "level": 1,
+  "category": "society",
+  "q": "What do we call a person whose job is to put out fires?",
+  "options": [
+   "A cook",
+   "A builder",
+   "A firefighter",
+   "A doctor"
+  ],
+  "correct": 2,
+  "explanation": "Firefighters put out fires and rescue people."
+ },
+ {
+  "id": "p0116",
+  "level": 1,
+  "category": "geography",
+  "q": "Which is the largest ocean on Earth?",
+  "options": [
+   "The Indian",
+   "The Arctic",
+   "The Atlantic",
+   "The Pacific"
+  ],
+  "correct": 3,
+  "explanation": "The Pacific covers about a third of the planet's surface."
+ },
+ {
+  "id": "p0117",
+  "level": 1,
+  "category": "science",
+  "q": "How many legs does a spider have?",
+  "options": [
+   "8",
+   "4",
+   "6",
+   "10"
+  ],
+  "correct": 0,
+  "explanation": "Spiders have eight legs, which sets them apart from insects."
+ },
+ {
+  "id": "p0118",
+  "level": 1,
+  "category": "daily",
+  "q": "Which traffic-light colour means «stop»?",
+  "options": [
+   "Yellow",
+   "Red",
+   "Green",
+   "Blue"
+  ],
+  "correct": 1,
+  "explanation": "A red light forbids moving on."
+ },
+ {
+  "id": "p0119",
+  "level": 1,
+  "category": "history",
+  "q": "In which country are the pyramids of Giza?",
+  "options": [
+   "Mexico",
+   "India",
+   "Egypt",
+   "Greece"
+  ],
+  "correct": 2,
+  "explanation": "The pyramids of Giza stand near Cairo, in Egypt."
+ },
+ {
+  "id": "p0120",
+  "level": 1,
+  "category": "literature",
+  "q": "Which fairy-tale heroine lost a glass slipper at the ball?",
+  "options": [
+   "Snow White",
+   "The Little Mermaid",
+   "Little Red Riding Hood",
+   "Cinderella"
+  ],
+  "correct": 3,
+  "explanation": "Cinderella lost her slipper, and the prince found her by it."
+ },
+ {
+  "id": "p0121",
+  "level": 1,
+  "category": "music",
+  "q": "On which instrument will you find black and white keys?",
+  "options": [
+   "The piano",
+   "The violin",
+   "The drum",
+   "The flute"
+  ],
+  "correct": 0,
+  "explanation": "The piano has black and white keys."
+ },
+ {
+  "id": "p0122",
+  "level": 1,
+  "category": "sport",
+  "q": "Which sport is played with a racket and a shuttlecock?",
+  "options": [
+   "Swimming",
+   "Badminton",
+   "Boxing",
+   "Football"
+  ],
+  "correct": 1,
+  "explanation": "Badminton is played with rackets and a shuttlecock."
+ },
+ {
+  "id": "p0123",
+  "level": 1,
+  "category": "food",
+  "q": "Which fruit, according to legend, fell on Isaac Newton's head?",
+  "options": [
+   "A pear",
+   "A banana",
+   "An apple",
+   "An orange"
+  ],
+  "correct": 2,
+  "explanation": "Legend says a falling apple inspired Newton's thoughts on gravity."
+ },
+ {
+  "id": "p0124",
+  "level": 1,
+  "category": "health",
+  "q": "How many teeth does an adult have, wisdom teeth included?",
+  "options": [
+   "36",
+   "30",
+   "28",
+   "32"
+  ],
+  "correct": 3,
+  "explanation": "A full set of permanent teeth is 32."
+ },
+ {
+  "id": "p0125",
+  "level": 1,
+  "category": "science",
+  "q": "Which star is the closest to Earth?",
+  "options": [
+   "The Sun",
+   "The North Star",
+   "Proxima Centauri",
+   "Sirius"
+  ],
+  "correct": 0,
+  "explanation": "The closest star to Earth is our Sun."
+ },
+ {
+  "id": "p0126",
+  "level": 1,
+  "category": "geography",
+  "q": "On which continent is Egypt?",
+  "options": [
+   "Asia",
+   "Africa",
+   "Europe",
+   "Australia"
+  ],
+  "correct": 1,
+  "explanation": "Egypt lies in the north-east of Africa."
+ },
+ {
+  "id": "p0127",
+  "level": 1,
+  "category": "tech",
+  "q": "What is the worldwide network that connects computers called?",
+  "options": [
+   "The telephone",
+   "Television",
+   "The Internet",
+   "Radio"
+  ],
+  "correct": 2,
+  "explanation": "The Internet connects billions of devices around the world."
+ },
+ {
+  "id": "p0128",
+  "level": 1,
+  "category": "science",
+  "q": "Which animal is traditionally called the «king of beasts»?",
+  "options": [
+   "The tiger",
+   "The bear",
+   "The elephant",
+   "The lion"
+  ],
+  "correct": 3,
+  "explanation": "The lion is traditionally called the king of beasts."
+ },
+ {
+  "id": "p0129",
+  "level": 1,
+  "category": "society",
+  "q": "Which holiday is celebrated on 1 January in many countries?",
+  "options": [
+   "New Year's Day",
+   "Halloween",
+   "Thanksgiving",
+   "Easter"
+  ],
+  "correct": 0,
+  "explanation": "1 January is the first day of the calendar year."
+ },
+ {
+  "id": "p0130",
+  "level": 1,
+  "category": "art",
+  "q": "Which colour do you get by mixing blue and yellow paint?",
+  "options": [
+   "Purple",
+   "Green",
+   "Orange",
+   "Brown"
+  ],
+  "correct": 1,
+  "explanation": "Mixing blue and yellow paint gives green."
+ },
+ {
+  "id": "p0201",
+  "level": 2,
+  "category": "science",
+  "q": "Which gas do people need to breathe to live?",
+  "options": [
+   "Carbon dioxide",
+   "Nitrogen",
+   "Helium",
+   "Oxygen"
+  ],
+  "correct": 3,
+  "explanation": "The body needs oxygen to breathe."
+ },
+ {
+  "id": "p0202",
+  "level": 2,
+  "category": "geography",
+  "q": "Which city is the capital of Japan?",
+  "options": [
+   "Tokyo",
+   "Kyoto",
+   "Nagoya",
+   "Osaka"
+  ],
+  "correct": 0,
+  "explanation": "Tokyo is the capital of Japan."
+ },
+ {
+  "id": "p0203",
+  "level": 2,
+  "category": "history",
+  "q": "In which city is the Colosseum?",
+  "options": [
+   "Athens",
+   "Rome",
+   "Paris",
+   "Madrid"
+  ],
+  "correct": 1,
+  "explanation": "The Colosseum is an ancient amphitheatre in the centre of Rome."
+ },
+ {
+  "id": "p0204",
+  "level": 2,
+  "category": "literature",
+  "q": "Who is the author of the Harry Potter books?",
+  "options": [
+   "C. S. Lewis",
+   "J. R. R. Tolkien",
+   "J. K. Rowling",
+   "Roald Dahl"
+  ],
+  "correct": 2,
+  "explanation": "The Harry Potter series was written by J. K. Rowling."
+ },
+ {
+  "id": "p0205",
+  "level": 2,
+  "category": "art",
+  "q": "Which painter, according to the famous story, cut off part of his own ear?",
+  "options": [
+   "Claude Monet",
+   "Salvador Dalí",
+   "Pablo Picasso",
+   "Vincent van Gogh"
+  ],
+  "correct": 3,
+  "explanation": "Van Gogh injured his ear in 1888."
+ },
+ {
+  "id": "p0206",
+  "level": 2,
+  "category": "music",
+  "q": "Which composer wrote the «Moonlight Sonata»?",
+  "options": [
+   "Ludwig van Beethoven",
+   "Johann Sebastian Bach",
+   "Frédéric Chopin",
+   "Wolfgang Amadeus Mozart"
+  ],
+  "correct": 0,
+  "explanation": "The «Moonlight Sonata» is a work by Beethoven."
+ },
+ {
+  "id": "p0207",
+  "level": 2,
+  "category": "film",
+  "q": "In which 1997 film did Leonardo DiCaprio star aboard a huge ill-fated liner?",
+  "options": [
+   "The Matrix",
+   "Titanic",
+   "Gladiator",
+   "Avatar"
+  ],
+  "correct": 1,
+  "explanation": "In Titanic DiCaprio played Jack Dawson."
+ },
+ {
+  "id": "p0208",
+  "level": 2,
+  "category": "sport",
+  "q": "How many rings are there on the Olympic flag?",
+  "options": [
+   "7",
+   "6",
+   "5",
+   "4"
+  ],
+  "correct": 2,
+  "explanation": "Five interlocked rings symbolise the union of five parts of the world."
+ },
+ {
+  "id": "p0209",
+  "level": 2,
+  "category": "food",
+  "q": "Which plant's beans is chocolate made from?",
+  "options": [
+   "Kidney bean",
+   "Coffee",
+   "Soy",
+   "Cocoa"
+  ],
+  "correct": 3,
+  "explanation": "Chocolate is made from cocoa beans."
+ },
+ {
+  "id": "p0210",
+  "level": 2,
+  "category": "health",
+  "q": "Which vitamin does the body make in the skin under sunlight?",
+  "options": [
+   "Vitamin D",
+   "Vitamin B12",
+   "Vitamin K",
+   "Vitamin C"
+  ],
+  "correct": 0,
+  "explanation": "Vitamin D is made in the skin when it is exposed to sunlight."
+ },
+ {
+  "id": "p0211",
+  "level": 2,
+  "category": "tech",
+  "q": "Which company makes the iPhone?",
+  "options": [
+   "Nokia",
+   "Apple",
+   "Samsung",
+   "Sony"
+  ],
+  "correct": 1,
+  "explanation": "The iPhone is made by Apple."
+ },
+ {
+  "id": "p0212",
+  "level": 2,
+  "category": "language",
+  "q": "Which language is the main official language of Spain?",
+  "options": [
+   "German",
+   "Italian",
+   "Spanish",
+   "Portuguese"
+  ],
+  "correct": 2,
+  "explanation": "Spain's official language is Spanish (Castilian)."
+ },
+ {
+  "id": "p0213",
+  "level": 2,
+  "category": "society",
+  "q": "What is the international organisation headquartered in New York that unites almost all countries called?",
+  "options": [
+   "The WTO",
+   "NATO",
+   "The European Union",
+   "The United Nations"
+  ],
+  "correct": 3,
+  "explanation": "The United Nations was founded in 1945."
+ },
+ {
+  "id": "p0214",
+  "level": 2,
+  "category": "science",
+  "q": "How many planets are there in the Solar System?",
+  "options": [
+   "8",
+   "10",
+   "7",
+   "9"
+  ],
+  "correct": 0,
+  "explanation": "The Solar System has eight planets."
+ },
+ {
+  "id": "p0215",
+  "level": 2,
+  "category": "geography",
+  "q": "Which is the largest country in the world by area?",
+  "options": [
+   "China",
+   "Russia",
+   "The United States",
+   "Canada"
+  ],
+  "correct": 1,
+  "explanation": "Russia is the largest country by area."
+ },
+ {
+  "id": "p0216",
+  "level": 2,
+  "category": "history",
+  "q": "Who was the first president of the United States?",
+  "options": [
+   "Benjamin Franklin",
+   "Abraham Lincoln",
+   "George Washington",
+   "Thomas Jefferson"
+  ],
+  "correct": 2,
+  "explanation": "George Washington held office in 1789–1797."
+ },
+ {
+  "id": "p0217",
+  "level": 2,
+  "category": "daily",
+  "q": "How many hours are there in a day?",
+  "options": [
+   "12",
+   "36",
+   "48",
+   "24"
+  ],
+  "correct": 3,
+  "explanation": "A day has twenty-four hours."
+ },
+ {
+  "id": "p0218",
+  "level": 2,
+  "category": "literature",
+  "q": "Who wrote the novel «Crime and Punishment»?",
+  "options": [
+   "Fyodor Dostoevsky",
+   "Anton Chekhov",
+   "Ivan Turgenev",
+   "Maxim Gorky"
+  ],
+  "correct": 0,
+  "explanation": "The novel was published in 1866."
+ },
+ {
+  "id": "p0219",
+  "level": 2,
+  "category": "art",
+  "q": "In which city is the Louvre museum?",
+  "options": [
+   "Vienna",
+   "Paris",
+   "Rome",
+   "London"
+  ],
+  "correct": 1,
+  "explanation": "The Louvre is the great art museum of Paris."
+ },
+ {
+  "id": "p0220",
+  "level": 2,
+  "category": "music",
+  "q": "How many basic notes are there in an octave (do, re, mi…)?",
+  "options": [
+   "8",
+   "5",
+   "7",
+   "12"
+  ],
+  "correct": 2,
+  "explanation": "Do, re, mi, fa, sol, la, si — seven basic notes."
+ },
+ {
+  "id": "p0221",
+  "level": 2,
+  "category": "film",
+  "q": "What is the name of the green ogre hero of the DreamWorks animated films?",
+  "options": [
+   "Donkey",
+   "Puss in Boots",
+   "Fiona",
+   "Shrek"
+  ],
+  "correct": 3,
+  "explanation": "Shrek is the hero of the 2001 animated film of the same name."
+ },
+ {
+  "id": "p0222",
+  "level": 2,
+  "category": "sport",
+  "q": "In which sport do players perform a «slam dunk»?",
+  "options": [
+   "Basketball",
+   "Handball",
+   "Water polo",
+   "Volleyball"
+  ],
+  "correct": 0,
+  "explanation": "A slam dunk is a powerful shot from above into the basket."
+ },
+ {
+  "id": "p0223",
+  "level": 2,
+  "category": "food",
+  "q": "Which country is regarded as the birthplace of pizza?",
+  "options": [
+   "Greece",
+   "Italy",
+   "France",
+   "Mexico"
+  ],
+  "correct": 1,
+  "explanation": "Modern pizza comes from Naples, Italy."
+ },
+ {
+  "id": "p0224",
+  "level": 2,
+  "category": "health",
+  "q": "What is measured with a thermometer?",
+  "options": [
+   "Weight",
+   "Pressure",
+   "Temperature",
+   "Height"
+  ],
+  "correct": 2,
+  "explanation": "A thermometer measures temperature."
+ },
+ {
+  "id": "p0225",
+  "level": 2,
+  "category": "tech",
+  "q": "What does the abbreviation «PC» usually stand for?",
+  "options": [
+   "Postal client",
+   "Printed card",
+   "Portable camera",
+   "Personal computer"
+  ],
+  "correct": 3,
+  "explanation": "PC stands for personal computer."
+ },
+ {
+  "id": "p0226",
+  "level": 2,
+  "category": "science",
+  "q": "What is the force that pulls objects towards the Earth called?",
+  "options": [
+   "Gravity",
+   "Magnetism",
+   "Inertia",
+   "Friction"
+  ],
+  "correct": 0,
+  "explanation": "Gravity is the force of attraction."
+ },
+ {
+  "id": "p0227",
+  "level": 2,
+  "category": "geography",
+  "q": "On which continent is Brazil?",
+  "options": [
+   "North America",
+   "South America",
+   "Asia",
+   "Africa"
+  ],
+  "correct": 1,
+  "explanation": "Brazil is the largest country of South America."
+ },
+ {
+  "id": "p0228",
+  "level": 2,
+  "category": "society",
+  "q": "What is the profession of a person who treats animals?",
+  "options": [
+   "A paediatrician",
+   "A dentist",
+   "A veterinarian",
+   "A pharmacist"
+  ],
+  "correct": 2,
+  "explanation": "A veterinarian treats animals."
+ },
+ {
+  "id": "p0229",
+  "level": 2,
+  "category": "history",
+  "q": "In which country did the ancient Olympic Games originate?",
+  "options": [
+   "Persia",
+   "Egypt",
+   "Italy",
+   "Greece"
+  ],
+  "correct": 3,
+  "explanation": "The ancient Olympic Games were held at Olympia in Greece."
+ },
+ {
+  "id": "p0230",
+  "level": 2,
+  "category": "science",
+  "q": "Which is the largest animal on Earth?",
+  "options": [
+   "The blue whale",
+   "The great white shark",
+   "The African elephant",
+   "The giraffe"
+  ],
+  "correct": 0,
+  "explanation": "The blue whale is the largest known animal."
+ },
+ {
+  "id": "p0301",
+  "level": 3,
+  "category": "science",
+  "q": "What is the chemical symbol of gold?",
+  "options": [
+   "Fe",
+   "Go",
+   "Au",
+   "Ag"
+  ],
+  "correct": 2,
+  "explanation": "Au comes from the Latin aurum."
+ },
+ {
+  "id": "p0302",
+  "level": 3,
+  "category": "geography",
+  "q": "Which city is the capital of Canada?",
+  "options": [
+   "Vancouver",
+   "Toronto",
+   "Montreal",
+   "Ottawa"
+  ],
+  "correct": 3,
+  "explanation": "Canada's capital is Ottawa, not the largest city, Toronto."
+ },
+ {
+  "id": "p0303",
+  "level": 3,
+  "category": "history",
+  "q": "In which year did the First World War begin?",
+  "options": [
+   "1914",
+   "1918",
+   "1939",
+   "1905"
+  ],
+  "correct": 0,
+  "explanation": "The war began in the summer of 1914."
+ },
+ {
+  "id": "p0304",
+  "level": 3,
+  "category": "literature",
+  "q": "Who wrote the novel «Pride and Prejudice»?",
+  "options": [
+   "Agatha Christie",
+   "Jane Austen",
+   "Emily Brontë",
+   "Mary Shelley"
+  ],
+  "correct": 1,
+  "explanation": "The novel was published in 1813."
+ },
+ {
+  "id": "p0305",
+  "level": 3,
+  "category": "art",
+  "q": "Which artist painted «The Scream»?",
+  "options": [
+   "Gustav Klimt",
+   "Henri Matisse",
+   "Edvard Munch",
+   "Francisco Goya"
+  ],
+  "correct": 2,
+  "explanation": "«The Scream» is the best-known work of the Norwegian Edvard Munch."
+ },
+ {
+  "id": "p0306",
+  "level": 3,
+  "category": "music",
+  "q": "In which country was the band The Beatles formed?",
+  "options": [
+   "Australia",
+   "The United States",
+   "Ireland",
+   "The United Kingdom"
+  ],
+  "correct": 3,
+  "explanation": "The Beatles were formed in Liverpool, England."
+ },
+ {
+  "id": "p0307",
+  "level": 3,
+  "category": "film",
+  "q": "Who directed both «Jaws» and «Schindler's List»?",
+  "options": [
+   "Steven Spielberg",
+   "Martin Scorsese",
+   "George Lucas",
+   "Christopher Nolan"
+  ],
+  "correct": 0,
+  "explanation": "Both films were directed by Steven Spielberg."
+ },
+ {
+  "id": "p0308",
+  "level": 3,
+  "category": "sport",
+  "q": "In which country were the 2016 Summer Olympic Games held?",
+  "options": [
+   "The United Kingdom",
+   "Brazil",
+   "Japan",
+   "China"
+  ],
+  "correct": 1,
+  "explanation": "The 2016 Games were hosted by Rio de Janeiro."
+ },
+ {
+  "id": "p0309",
+  "level": 3,
+  "category": "food",
+  "q": "Which spice is generally considered the most expensive in the world by weight?",
+  "options": [
+   "Black pepper",
+   "Paprika",
+   "Saffron",
+   "Cinnamon"
+  ],
+  "correct": 2,
+  "explanation": "Saffron is harvested by hand from crocus flowers."
+ },
+ {
+  "id": "p0310",
+  "level": 3,
+  "category": "health",
+  "q": "Which substance in the blood carries oxygen?",
+  "options": [
+   "Glucose",
+   "Insulin",
+   "Adrenaline",
+   "Haemoglobin"
+  ],
+  "correct": 3,
+  "explanation": "Haemoglobin in red blood cells binds oxygen."
+ },
+ {
+  "id": "p0311",
+  "level": 3,
+  "category": "tech",
+  "q": "Who co-founded Microsoft together with Paul Allen?",
+  "options": [
+   "Bill Gates",
+   "Mark Zuckerberg",
+   "Elon Musk",
+   "Steve Jobs"
+  ],
+  "correct": 0,
+  "explanation": "Microsoft was founded by Bill Gates and Paul Allen in 1975."
+ },
+ {
+  "id": "p0312",
+  "level": 3,
+  "category": "language",
+  "q": "Which language has the most native speakers in the world?",
+  "options": [
+   "English",
+   "Mandarin Chinese",
+   "Hindi",
+   "Spanish"
+  ],
+  "correct": 1,
+  "explanation": "Mandarin Chinese has the most native speakers."
+ },
+ {
+  "id": "p0313",
+  "level": 3,
+  "category": "society",
+  "q": "How many permanent members does the UN Security Council have?",
+  "options": [
+   "10",
+   "7",
+   "5",
+   "3"
+  ],
+  "correct": 2,
+  "explanation": "The five are the US, Russia, China, the UK and France."
+ },
+ {
+  "id": "p0314",
+  "level": 3,
+  "category": "science",
+  "q": "Which planet is best known for its bright rings?",
+  "options": [
+   "Venus",
+   "Mars",
+   "Mercury",
+   "Saturn"
+  ],
+  "correct": 3,
+  "explanation": "Saturn's rings are visible even through a small telescope."
+ },
+ {
+  "id": "p0315",
+  "level": 3,
+  "category": "geography",
+  "q": "Which mountain is the highest above sea level?",
+  "options": [
+   "Mount Everest",
+   "Mont Blanc",
+   "Kilimanjaro",
+   "Elbrus"
+  ],
+  "correct": 0,
+  "explanation": "Everest rises to about 8,849 m above sea level."
+ },
+ {
+  "id": "p0316",
+  "level": 3,
+  "category": "history",
+  "q": "Who led the 1492 voyage that brought Europeans to the Americas?",
+  "options": [
+   "Ferdinand Magellan",
+   "Christopher Columbus",
+   "Vasco da Gama",
+   "Marco Polo"
+  ],
+  "correct": 1,
+  "explanation": "Columbus landed in the Caribbean in 1492."
+ },
+ {
+  "id": "p0317",
+  "level": 3,
+  "category": "science",
+  "q": "How many degrees are there in a right angle?",
+  "options": [
+   "180",
+   "45",
+   "90",
+   "60"
+  ],
+  "correct": 2,
+  "explanation": "A right angle is 90 degrees."
+ },
+ {
+  "id": "p0318",
+  "level": 3,
+  "category": "literature",
+  "q": "Who wrote the novel «Les Misérables»?",
+  "options": [
+   "Honoré de Balzac",
+   "Alexandre Dumas",
+   "Gustave Flaubert",
+   "Victor Hugo"
+  ],
+  "correct": 3,
+  "explanation": "«Les Misérables» was published by Victor Hugo in 1862."
+ },
+ {
+  "id": "p0319",
+  "level": 3,
+  "category": "art",
+  "q": "In which city is the Prado Museum?",
+  "options": [
+   "Madrid",
+   "Barcelona",
+   "Lisbon",
+   "Milan"
+  ],
+  "correct": 0,
+  "explanation": "The Prado is the main art museum of Madrid."
+ },
+ {
+  "id": "p0320",
+  "level": 3,
+  "category": "music",
+  "q": "Who composed the opera «The Magic Flute»?",
+  "options": [
+   "Gioachino Rossini",
+   "Wolfgang Amadeus Mozart",
+   "Giuseppe Verdi",
+   "Richard Wagner"
+  ],
+  "correct": 1,
+  "explanation": "Mozart composed it in 1791."
+ },
+ {
+  "id": "p0321",
+  "level": 3,
+  "category": "film",
+  "q": "Which studio made «Toy Story», the first full-length computer-animated film?",
+  "options": [
+   "Warner Bros.",
+   "DreamWorks",
+   "Pixar",
+   "Paramount"
+  ],
+  "correct": 2,
+  "explanation": "«Toy Story» (1995) was made by Pixar."
+ },
+ {
+  "id": "p0322",
+  "level": 3,
+  "category": "sport",
+  "q": "How many players of one team are on the court at once in volleyball?",
+  "options": [
+   "7",
+   "8",
+   "5",
+   "6"
+  ],
+  "correct": 3,
+  "explanation": "Volleyball is played six a side."
+ },
+ {
+  "id": "p0323",
+  "level": 3,
+  "category": "food",
+  "q": "What is the traditional Japanese drink sake made from?",
+  "options": [
+   "Rice",
+   "Wheat",
+   "Potatoes",
+   "Grapes"
+  ],
+  "correct": 0,
+  "explanation": "Sake is a rice-based drink."
+ },
+ {
+  "id": "p0324",
+  "level": 3,
+  "category": "health",
+  "q": "Which is the largest human organ by surface area?",
+  "options": [
+   "The liver",
+   "The skin",
+   "The intestine",
+   "The lungs"
+  ],
+  "correct": 1,
+  "explanation": "The skin is the largest organ by surface area."
+ },
+ {
+  "id": "p0325",
+  "level": 3,
+  "category": "tech",
+  "q": "What does the abbreviation USB stand for?",
+  "options": [
+   "Unified System Board",
+   "Universal Storage Box",
+   "Universal Serial Bus",
+   "United Signal Band"
+  ],
+  "correct": 2,
+  "explanation": "USB is short for Universal Serial Bus."
+ },
+ {
+  "id": "p0326",
+  "level": 3,
+  "category": "science",
+  "q": "Which gas makes up most of the Earth's atmosphere?",
+  "options": [
+   "Oxygen",
+   "Argon",
+   "Carbon dioxide",
+   "Nitrogen"
+  ],
+  "correct": 3,
+  "explanation": "Nitrogen makes up about 78% of the atmosphere."
+ },
+ {
+  "id": "p0327",
+  "level": 3,
+  "category": "geography",
+  "q": "The outline of which European country is often compared to a boot?",
+  "options": [
+   "Italy",
+   "Greece",
+   "Spain",
+   "Portugal"
+  ],
+  "correct": 0,
+  "explanation": "The Italian peninsula looks like a boot."
+ },
+ {
+  "id": "p0328",
+  "level": 3,
+  "category": "society",
+  "q": "What is the currency of Japan called?",
+  "options": [
+   "The yuan",
+   "The yen",
+   "The won",
+   "The rupee"
+  ],
+  "correct": 1,
+  "explanation": "Japan's currency is the yen."
+ },
+ {
+  "id": "p0329",
+  "level": 3,
+  "category": "history",
+  "q": "Which civilisation built the city of Machu Picchu?",
+  "options": [
+   "The Egyptians",
+   "The Maya",
+   "The Incas",
+   "The Aztecs"
+  ],
+  "correct": 2,
+  "explanation": "The Incas built Machu Picchu in the Andes in the 15th century."
+ },
+ {
+  "id": "p0330",
+  "level": 3,
+  "category": "geography",
+  "q": "What is the largest hot desert in the world called?",
+  "options": [
+   "The Atacama",
+   "The Kalahari",
+   "The Gobi",
+   "The Sahara"
+  ],
+  "correct": 3,
+  "explanation": "The Sahara is the largest hot desert on Earth."
+ }
+]
