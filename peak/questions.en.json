@@ -3806,5 +3806,1307 @@
   ],
   "correct": 2,
   "explanation": "New Zealand did so in 1893."
+ },
+ {
+  "id": "p1001",
+  "level": 10,
+  "category": "science",
+  "q": "Which star, apart from the Sun, is closest to Earth?",
+  "options": [
+   "Sirius",
+   "Vega",
+   "Betelgeuse",
+   "Proxima Centauri"
+  ],
+  "correct": 3,
+  "explanation": "Proxima Centauri is about 4.2 light-years away."
+ },
+ {
+  "id": "p1002",
+  "level": 10,
+  "category": "science",
+  "q": "What does the science of entomology study?",
+  "options": [
+   "Insects",
+   "Fish",
+   "Birds",
+   "Fungi"
+  ],
+  "correct": 0,
+  "explanation": "Entomology is the branch of zoology that studies insects."
+ },
+ {
+  "id": "p1003",
+  "level": 10,
+  "category": "science",
+  "q": "What is the approximate speed of light in a vacuum?",
+  "options": [
+   "150,000 km/s",
+   "300,000 km/s",
+   "3,000,000 km/s",
+   "30,000 km/s"
+  ],
+  "correct": 1,
+  "explanation": "The speed of light in a vacuum is about 299,792 km/s."
+ },
+ {
+  "id": "p1004",
+  "level": 10,
+  "category": "science",
+  "q": "What is the change in direction of a light ray passing from air into water called?",
+  "options": [
+   "Diffraction",
+   "Interference",
+   "Refraction",
+   "Polarization"
+  ],
+  "correct": 2,
+  "explanation": "Refraction occurs at the boundary between media of different optical density."
+ },
+ {
+  "id": "p1005",
+  "level": 10,
+  "category": "geography",
+  "q": "Which country has the longest coastline in the world?",
+  "options": [
+   "Indonesia",
+   "Russia",
+   "Australia",
+   "Canada"
+  ],
+  "correct": 3,
+  "explanation": "Canada's coastline is over 200,000 km including its islands."
+ },
+ {
+  "id": "p1006",
+  "level": 10,
+  "category": "geography",
+  "q": "Which lake is shared by Kenya, Uganda and Tanzania?",
+  "options": [
+   "Lake Victoria",
+   "Lake Tanganyika",
+   "Lake Malawi",
+   "Lake Chad"
+  ],
+  "correct": 0,
+  "explanation": "Lake Victoria is the largest lake in Africa."
+ },
+ {
+  "id": "p1007",
+  "level": 10,
+  "category": "history",
+  "q": "Which two countries fought the Hundred Years' War (1337–1453)?",
+  "options": [
+   "Sweden and Russia",
+   "England and France",
+   "Spain and Portugal",
+   "Germany and Poland"
+  ],
+  "correct": 1,
+  "explanation": "English and French kings fought over the French throne and lands."
+ },
+ {
+  "id": "p1008",
+  "level": 10,
+  "category": "history",
+  "q": "Which people carved the ancient city of Petra, in present-day Jordan, into the rock?",
+  "options": [
+   "The Egyptians",
+   "The Romans",
+   "The Nabataeans",
+   "The Phoenicians"
+  ],
+  "correct": 2,
+  "explanation": "Petra was the capital of the Nabataean Kingdom."
+ },
+ {
+  "id": "p1009",
+  "level": 10,
+  "category": "history",
+  "q": "What is the 1215 document that limited the power of the English king called?",
+  "options": [
+   "Bill of Rights",
+   "Golden Bull",
+   "Habeas Corpus Act",
+   "Magna Carta"
+  ],
+  "correct": 3,
+  "explanation": "King John signed the Magna Carta."
+ },
+ {
+  "id": "p1010",
+  "level": 10,
+  "category": "literature",
+  "q": "Who wrote the novel «Fathers and Sons»?",
+  "options": [
+   "Ivan Turgenev",
+   "Ivan Goncharov",
+   "Nikolai Leskov",
+   "Fyodor Dostoevsky"
+  ],
+  "correct": 0,
+  "explanation": "Turgenev's novel was published in 1862."
+ },
+ {
+  "id": "p1011",
+  "level": 10,
+  "category": "literature",
+  "q": "Who created the detective Sherlock Holmes?",
+  "options": [
+   "Edgar Allan Poe",
+   "Arthur Conan Doyle",
+   "G. K. Chesterton",
+   "Agatha Christie"
+  ],
+  "correct": 1,
+  "explanation": "The first Holmes story appeared in 1887."
+ },
+ {
+  "id": "p1012",
+  "level": 10,
+  "category": "art",
+  "q": "Which painter created «The Starry Night»?",
+  "options": [
+   "Paul Gauguin",
+   "Paul Cézanne",
+   "Vincent van Gogh",
+   "Édouard Manet"
+  ],
+  "correct": 2,
+  "explanation": "Van Gogh painted it in 1889."
+ },
+ {
+  "id": "p1013",
+  "level": 10,
+  "category": "art",
+  "q": "In which Paris museum is the «Mona Lisa» kept?",
+  "options": [
+   "The Rodin Museum",
+   "The Musée d'Orsay",
+   "The Centre Pompidou",
+   "The Louvre"
+  ],
+  "correct": 3,
+  "explanation": "Leonardo da Vinci's «Mona Lisa» is in the Louvre."
+ },
+ {
+  "id": "p1014",
+  "level": 10,
+  "category": "music",
+  "q": "Who composed the opera «La traviata»?",
+  "options": [
+   "Giuseppe Verdi",
+   "Gioachino Rossini",
+   "Richard Wagner",
+   "Giacomo Puccini"
+  ],
+  "correct": 0,
+  "explanation": "Verdi's «La traviata» premiered in 1853."
+ },
+ {
+  "id": "p1015",
+  "level": 10,
+  "category": "music",
+  "q": "How many lines does a musical staff have?",
+  "options": [
+   "6",
+   "5",
+   "7",
+   "4"
+  ],
+  "correct": 1,
+  "explanation": "A musical staff has five lines."
+ },
+ {
+  "id": "p1016",
+  "level": 10,
+  "category": "film",
+  "q": "Who played the title role in «Forrest Gump» (1994)?",
+  "options": [
+   "Kevin Spacey",
+   "Brad Pitt",
+   "Tom Hanks",
+   "Tim Robbins"
+  ],
+  "correct": 2,
+  "explanation": "Tom Hanks played Forrest Gump and won an Oscar for it."
+ },
+ {
+  "id": "p1017",
+  "level": 10,
+  "category": "film",
+  "q": "Which 1997 film by James Cameron won 11 Oscars?",
+  "options": [
+   "«Aliens»",
+   "«Avatar»",
+   "«Terminator 2»",
+   "«Titanic»"
+  ],
+  "correct": 3,
+  "explanation": "«Titanic» shares the record for Oscar wins: 11."
+ },
+ {
+  "id": "p1018",
+  "level": 10,
+  "category": "sport",
+  "q": "In which country was the first football World Cup held in 1930?",
+  "options": [
+   "Uruguay",
+   "Italy",
+   "Brazil",
+   "England"
+  ],
+  "correct": 0,
+  "explanation": "Uruguay hosted and won the first World Cup."
+ },
+ {
+  "id": "p1019",
+  "level": 10,
+  "category": "sport",
+  "q": "Who became world chess champion in 1985 by beating Anatoly Karpov?",
+  "options": [
+   "Mikhail Tal",
+   "Garry Kasparov",
+   "Bobby Fischer",
+   "Vladimir Kramnik"
+  ],
+  "correct": 1,
+  "explanation": "Kasparov became world champion in 1985 at the age of 22."
+ },
+ {
+  "id": "p1020",
+  "level": 10,
+  "category": "food",
+  "q": "Which spice is considered the most expensive in the world by weight?",
+  "options": [
+   "Black pepper",
+   "Cinnamon",
+   "Saffron",
+   "Turmeric"
+  ],
+  "correct": 2,
+  "explanation": "Saffron is harvested by hand from crocus stigmas."
+ },
+ {
+  "id": "p1021",
+  "level": 10,
+  "category": "food",
+  "q": "Which grain is traditionally used to make Japanese sake?",
+  "options": [
+   "Wheat",
+   "Barley",
+   "Millet",
+   "Rice"
+  ],
+  "correct": 3,
+  "explanation": "Sake is made by fermenting rice."
+ },
+ {
+  "id": "p1022",
+  "level": 10,
+  "category": "health",
+  "q": "Which blood group (ABO system) is the «universal donor» for red blood cells?",
+  "options": [
+   "Type O",
+   "Type A",
+   "Type AB",
+   "Type B"
+  ],
+  "correct": 0,
+  "explanation": "Group O red blood cells suit most recipients."
+ },
+ {
+  "id": "p1023",
+  "level": 10,
+  "category": "health",
+  "q": "How many bones does an adult human skeleton have?",
+  "options": [
+   "256",
+   "206",
+   "306",
+   "106"
+  ],
+  "correct": 1,
+  "explanation": "An adult human has 206 bones."
+ },
+ {
+  "id": "p1024",
+  "level": 10,
+  "category": "tech",
+  "q": "What does the abbreviation PDF stand for?",
+  "options": [
+   "Printable Data File",
+   "Personal Document Form",
+   "Portable Document Format",
+   "Public Data Format"
+  ],
+  "correct": 2,
+  "explanation": "PDF is a portable document format created by Adobe."
+ },
+ {
+  "id": "p1025",
+  "level": 10,
+  "category": "tech",
+  "q": "What is malware that encrypts your files and demands a payment called?",
+  "options": [
+   "A network worm",
+   "Adware",
+   "Spyware",
+   "Ransomware"
+  ],
+  "correct": 3,
+  "explanation": "This kind of malware is called ransomware."
+ },
+ {
+  "id": "p1026",
+  "level": 10,
+  "category": "daily",
+  "q": "How many hours are there in one week?",
+  "options": [
+   "168",
+   "148",
+   "144",
+   "188"
+  ],
+  "correct": 0,
+  "explanation": "24 hours × 7 days = 168 hours."
+ },
+ {
+  "id": "p1027",
+  "level": 10,
+  "category": "daily",
+  "q": "How many minutes are there in a day?",
+  "options": [
+   "1,600",
+   "1,440",
+   "1,240",
+   "1,200"
+  ],
+  "correct": 1,
+  "explanation": "24 hours × 60 minutes = 1,440 minutes."
+ },
+ {
+  "id": "p1028",
+  "level": 10,
+  "category": "language",
+  "q": "What are homonyms?",
+  "options": [
+   "Words with opposite meanings",
+   "Words borrowed from another language",
+   "Same spelling and sound, but different meanings",
+   "Words with similar meanings"
+  ],
+  "correct": 2,
+  "explanation": "For example, a «bank» of a river and a «bank» for money."
+ },
+ {
+  "id": "p1029",
+  "level": 10,
+  "category": "language",
+  "q": "How many cases does Russian have (in standard school grammar)?",
+  "options": [
+   "7",
+   "8",
+   "5",
+   "6"
+  ],
+  "correct": 3,
+  "explanation": "School grammar lists six cases, from nominative to prepositional."
+ },
+ {
+  "id": "p1030",
+  "level": 10,
+  "category": "society",
+  "q": "Which UN body has five permanent members with veto power?",
+  "options": [
+   "The Security Council",
+   "The General Assembly",
+   "The Secretariat",
+   "The Economic and Social Council"
+  ],
+  "correct": 0,
+  "explanation": "The permanent members are China, France, Russia, the UK and the US."
+ },
+ {
+  "id": "p1031",
+  "level": 10,
+  "category": "society",
+  "q": "Which of these countries is not a member of the European Union?",
+  "options": [
+   "Belgium",
+   "Norway",
+   "Ireland",
+   "Greece"
+  ],
+  "correct": 1,
+  "explanation": "Norway is not in the EU, though it belongs to the European Economic Area."
+ },
+ {
+  "id": "p1101",
+  "level": 11,
+  "category": "science",
+  "q": "Which elementary particle carries the electromagnetic force?",
+  "options": [
+   "The neutrino",
+   "The electron",
+   "The photon",
+   "The gluon"
+  ],
+  "correct": 2,
+  "explanation": "The photon is the quantum of the electromagnetic field."
+ },
+ {
+  "id": "p1102",
+  "level": 11,
+  "category": "science",
+  "q": "Which of Newton's laws says that every action has an equal and opposite reaction?",
+  "options": [
+   "The first law",
+   "The law of gravitation",
+   "The second law",
+   "The third law"
+  ],
+  "correct": 3,
+  "explanation": "This is Newton's third law of motion."
+ },
+ {
+  "id": "p1103",
+  "level": 11,
+  "category": "science",
+  "q": "Which planet in the Solar System rotates «on its side», with an axial tilt of about 98°?",
+  "options": [
+   "Uranus",
+   "Saturn",
+   "Venus",
+   "Neptune"
+  ],
+  "correct": 0,
+  "explanation": "Uranus's axis lies almost in the plane of its orbit."
+ },
+ {
+  "id": "p1104",
+  "level": 11,
+  "category": "geography",
+  "q": "Which city is the capital of Kazakhstan?",
+  "options": [
+   "Tashkent",
+   "Astana",
+   "Bishkek",
+   "Almaty"
+  ],
+  "correct": 1,
+  "explanation": "The capital is Astana; Almaty is the largest city."
+ },
+ {
+  "id": "p1105",
+  "level": 11,
+  "category": "geography",
+  "q": "Which desert runs along the Atlantic coast of Namibia?",
+  "options": [
+   "The Atacama",
+   "The Kalahari",
+   "The Namib",
+   "The Gobi"
+  ],
+  "correct": 2,
+  "explanation": "The Namib is one of the oldest deserts in the world."
+ },
+ {
+  "id": "p1106",
+  "level": 11,
+  "category": "geography",
+  "q": "Which of these countries does the equator pass through?",
+  "options": [
+   "Tanzania",
+   "Venezuela",
+   "Peru",
+   "Ecuador"
+  ],
+  "correct": 3,
+  "explanation": "The equator crosses Ecuador (the name itself means «equator»); Peru, Venezuela and Tanzania are off the line."
+ },
+ {
+  "id": "p1107",
+  "level": 11,
+  "category": "history",
+  "q": "Which 1648 peace ended the Thirty Years' War?",
+  "options": [
+   "The Peace of Westphalia",
+   "The Peace of Utrecht",
+   "The Peace of Vienna",
+   "The Peace of Paris"
+  ],
+  "correct": 0,
+  "explanation": "The Peace of Westphalia laid the foundations of the European state system."
+ },
+ {
+  "id": "p1108",
+  "level": 11,
+  "category": "history",
+  "q": "Who became the first emperor of unified China in 221 BC?",
+  "options": [
+   "Sun Yat-sen",
+   "Qin Shi Huang",
+   "Kublai Khan",
+   "Mao Zedong"
+  ],
+  "correct": 1,
+  "explanation": "Qin Shi Huang united the warring states into a single empire."
+ },
+ {
+  "id": "p1109",
+  "level": 11,
+  "category": "history",
+  "q": "Whose empire did Hernán Cortés conquer in 1519–1521?",
+  "options": [
+   "The Inca",
+   "The Toltecs",
+   "The Aztecs",
+   "The Maya"
+  ],
+  "correct": 2,
+  "explanation": "Cortés took the Aztec capital Tenochtitlan in 1521."
+ },
+ {
+  "id": "p1110",
+  "level": 11,
+  "category": "literature",
+  "q": "Who wrote the novel «The Master and Margarita»?",
+  "options": [
+   "Yevgeny Zamyatin",
+   "Vladimir Nabokov",
+   "Boris Pasternak",
+   "Mikhail Bulgakov"
+  ],
+  "correct": 3,
+  "explanation": "Bulgakov worked on the novel from the late 1920s until his death in 1940."
+ },
+ {
+  "id": "p1111",
+  "level": 11,
+  "category": "literature",
+  "q": "Who wrote the novel «Wuthering Heights»?",
+  "options": [
+   "Emily Brontë",
+   "Mary Shelley",
+   "Jane Austen",
+   "Charlotte Brontë"
+  ],
+  "correct": 0,
+  "explanation": "Emily Brontë's novel was published in 1847."
+ },
+ {
+  "id": "p1112",
+  "level": 11,
+  "category": "art",
+  "q": "Who painted «Black Square»?",
+  "options": [
+   "Marc Chagall",
+   "Kazimir Malevich",
+   "El Lissitzky",
+   "Wassily Kandinsky"
+  ],
+  "correct": 1,
+  "explanation": "Malevich first showed «Black Square» in 1915."
+ },
+ {
+  "id": "p1113",
+  "level": 11,
+  "category": "art",
+  "q": "In which Italian city is the Uffizi Gallery located?",
+  "options": [
+   "Rome",
+   "Milan",
+   "Florence",
+   "Venice"
+  ],
+  "correct": 2,
+  "explanation": "The Uffizi in Florence holds Renaissance masterpieces."
+ },
+ {
+  "id": "p1114",
+  "level": 11,
+  "category": "music",
+  "q": "Who composed the opera cycle «The Ring of the Nibelung»?",
+  "options": [
+   "Giuseppe Verdi",
+   "Richard Strauss",
+   "Johann Strauss",
+   "Richard Wagner"
+  ],
+  "correct": 3,
+  "explanation": "Wagner worked on the tetralogy for about 26 years."
+ },
+ {
+  "id": "p1115",
+  "level": 11,
+  "category": "music",
+  "q": "Which of these tempo markings is the fastest?",
+  "options": [
+   "Presto",
+   "Adagio",
+   "Andante",
+   "Largo"
+  ],
+  "correct": 0,
+  "explanation": "Presto means very fast."
+ },
+ {
+  "id": "p1116",
+  "level": 11,
+  "category": "film",
+  "q": "Which film is considered the first feature-length talkie (1927)?",
+  "options": [
+   "«The Great Dictator»",
+   "«The Jazz Singer»",
+   "«Metropolis»",
+   "«Modern Times»"
+  ],
+  "correct": 1,
+  "explanation": "«The Jazz Singer» opened the era of sound film."
+ },
+ {
+  "id": "p1117",
+  "level": 11,
+  "category": "film",
+  "q": "Which country gave the world the cinematic «New Wave» (Godard, Truffaut)?",
+  "options": [
+   "Italy",
+   "The United Kingdom",
+   "France",
+   "Japan"
+  ],
+  "correct": 2,
+  "explanation": "The New Wave emerged in France in the late 1950s."
+ },
+ {
+  "id": "p1118",
+  "level": 11,
+  "category": "sport",
+  "q": "How many players per team are on the field at once in rugby union?",
+  "options": [
+   "13",
+   "11",
+   "7",
+   "15"
+  ],
+  "correct": 3,
+  "explanation": "Rugby union fields 15 players per team."
+ },
+ {
+  "id": "p1119",
+  "level": 11,
+  "category": "sport",
+  "q": "What surface is used at the French Open (Roland Garros)?",
+  "options": [
+   "Clay",
+   "Carpet",
+   "Hard court",
+   "Grass"
+  ],
+  "correct": 0,
+  "explanation": "Roland Garros is played on red clay."
+ },
+ {
+  "id": "p1120",
+  "level": 11,
+  "category": "food",
+  "q": "Which plant produces vanilla pods?",
+  "options": [
+   "A cactus",
+   "An orchid",
+   "A palm",
+   "A fern"
+  ],
+  "correct": 1,
+  "explanation": "Vanilla comes from the pods of an orchid of the genus Vanilla."
+ },
+ {
+  "id": "p1121",
+  "level": 11,
+  "category": "food",
+  "q": "What is the Italian dessert made of mascarpone, coffee and ladyfingers called?",
+  "options": [
+   "Panna cotta",
+   "Semifreddo",
+   "Tiramisu",
+   "Cannoli"
+  ],
+  "correct": 2,
+  "explanation": "Tiramisu means «pick me up» in Italian."
+ },
+ {
+  "id": "p1122",
+  "level": 11,
+  "category": "health",
+  "q": "Which hormone is produced in darkness and regulates the sleep cycle?",
+  "options": [
+   "Adrenaline",
+   "Testosterone",
+   "Thyroxine",
+   "Melatonin"
+  ],
+  "correct": 3,
+  "explanation": "Melatonin is produced by the pineal gland."
+ },
+ {
+  "id": "p1123",
+  "level": 11,
+  "category": "health",
+  "q": "A deficiency of which vitamin causes scurvy?",
+  "options": [
+   "Vitamin C",
+   "Vitamin A",
+   "Vitamin D",
+   "Vitamin B12"
+  ],
+  "correct": 0,
+  "explanation": "Scurvy results from a long-term lack of vitamin C."
+ },
+ {
+  "id": "p1124",
+  "level": 11,
+  "category": "tech",
+  "q": "What does the abbreviation SSD stand for?",
+  "options": [
+   "System Storage Disk",
+   "Solid State Drive",
+   "Speed Server Disk",
+   "Standard Save Drive"
+  ],
+  "correct": 1,
+  "explanation": "An SSD stores data in flash memory chips."
+ },
+ {
+  "id": "p1125",
+  "level": 11,
+  "category": "tech",
+  "q": "Which prefix in a web address shows a secure connection?",
+  "options": [
+   "FTP",
+   "SMTP",
+   "HTTPS",
+   "DNS"
+  ],
+  "correct": 2,
+  "explanation": "HTTPS encrypts data between the browser and the site."
+ },
+ {
+  "id": "p1126",
+  "level": 11,
+  "category": "daily",
+  "q": "In which month does the summer solstice fall in the Northern Hemisphere?",
+  "options": [
+   "May",
+   "July",
+   "August",
+   "June"
+  ],
+  "correct": 3,
+  "explanation": "The longest day of the year is around 21 June."
+ },
+ {
+  "id": "p1127",
+  "level": 11,
+  "category": "daily",
+  "q": "What temperature in Celsius corresponds to 32 °F?",
+  "options": [
+   "0 °C",
+   "−32 °C",
+   "10 °C",
+   "32 °C"
+  ],
+  "correct": 0,
+  "explanation": "32 °F is the freezing point of water, 0 °C."
+ },
+ {
+  "id": "p1128",
+  "level": 11,
+  "category": "language",
+  "q": "Which language family does Russian belong to?",
+  "options": [
+   "Turkic",
+   "Indo-European",
+   "Kartvelian",
+   "Uralic"
+  ],
+  "correct": 1,
+  "explanation": "Russian belongs to the Slavic branch of the Indo-European family."
+ },
+ {
+  "id": "p1129",
+  "level": 11,
+  "category": "language",
+  "q": "What is the Japanese syllabary mainly used to write foreign loanwords called?",
+  "options": [
+   "Kanji",
+   "Hangul",
+   "Katakana",
+   "Hiragana"
+  ],
+  "correct": 2,
+  "explanation": "Katakana is used for loanwords and foreign names."
+ },
+ {
+  "id": "p1130",
+  "level": 11,
+  "category": "society",
+  "q": "What is inflation?",
+  "options": [
+   "A rise in unemployment",
+   "An increase in taxes",
+   "A fall in the general price level",
+   "A rise in the general price level"
+  ],
+  "correct": 3,
+  "explanation": "With inflation, the same amount of money buys fewer goods."
+ },
+ {
+  "id": "p1131",
+  "level": 11,
+  "category": "society",
+  "q": "In which city is the NATO headquarters located?",
+  "options": [
+   "Brussels",
+   "Geneva",
+   "Washington",
+   "Paris"
+  ],
+  "correct": 0,
+  "explanation": "NATO's headquarters is in Brussels."
+ },
+ {
+  "id": "p1201",
+  "level": 12,
+  "category": "science",
+  "q": "Which chemical element has atomic number 6 and underlies organic chemistry?",
+  "options": [
+   "Silicon",
+   "Carbon",
+   "Oxygen",
+   "Nitrogen"
+  ],
+  "correct": 1,
+  "explanation": "Carbon is the basis of organic compounds."
+ },
+ {
+  "id": "p1202",
+  "level": 12,
+  "category": "science",
+  "q": "What does Avogadro's number (about 6.02·10²³) represent?",
+  "options": [
+   "The number of atoms in the Sun",
+   "The charge of an electron",
+   "The number of particles in one mole of a substance",
+   "The speed of light in a vacuum"
+  ],
+  "correct": 2,
+  "explanation": "One mole of a substance contains about 6.02·10²³ elementary particles."
+ },
+ {
+  "id": "p1203",
+  "level": 12,
+  "category": "science",
+  "q": "What does the redshift in the spectra of distant galaxies usually indicate?",
+  "options": [
+   "That they are very hot",
+   "That they do not rotate",
+   "That they are moving toward us",
+   "That they are moving away from us"
+  ],
+  "correct": 3,
+  "explanation": "Redshift is linked to the expansion of the Universe."
+ },
+ {
+  "id": "p1204",
+  "level": 12,
+  "category": "geography",
+  "q": "In which country is the legendary city of Timbuktu?",
+  "options": [
+   "Mali",
+   "Ethiopia",
+   "Nigeria",
+   "Egypt"
+  ],
+  "correct": 0,
+  "explanation": "Timbuktu is an ancient trading and learning centre on the southern edge of the Sahara."
+ },
+ {
+  "id": "p1205",
+  "level": 12,
+  "category": "geography",
+  "q": "Which is the largest island in the world, not counting continents?",
+  "options": [
+   "Borneo",
+   "Greenland",
+   "New Guinea",
+   "Madagascar"
+  ],
+  "correct": 1,
+  "explanation": "Greenland covers more than 2 million km²."
+ },
+ {
+  "id": "p1206",
+  "level": 12,
+  "category": "geography",
+  "q": "Which canal links the Mediterranean and the Red Sea?",
+  "options": [
+   "The Panama Canal",
+   "The Corinth Canal",
+   "The Suez Canal",
+   "The Kiel Canal"
+  ],
+  "correct": 2,
+  "explanation": "The Suez Canal opened in 1869."
+ },
+ {
+  "id": "p1207",
+  "level": 12,
+  "category": "history",
+  "q": "Who won the Battle of Hastings in 1066?",
+  "options": [
+   "Richard the Lionheart",
+   "Alfred the Great",
+   "Harold Godwinson",
+   "William the Conqueror"
+  ],
+  "correct": 3,
+  "explanation": "William of Normandy won and became King of England."
+ },
+ {
+  "id": "p1208",
+  "level": 12,
+  "category": "history",
+  "q": "In which year did the Ottomans capture Constantinople?",
+  "options": [
+   "1453",
+   "1492",
+   "1389",
+   "1204"
+  ],
+  "correct": 0,
+  "explanation": "Mehmed II took the city on 29 May 1453, ending the Byzantine Empire."
+ },
+ {
+  "id": "p1209",
+  "level": 12,
+  "category": "history",
+  "q": "Which 1494 treaty divided the spheres of influence of Spain and Portugal?",
+  "options": [
+   "The Treaty of Nerchinsk",
+   "The Treaty of Tordesillas",
+   "The Treaty of Utrecht",
+   "The Edict of Nantes"
+  ],
+  "correct": 1,
+  "explanation": "The treaty drew a line along a meridian in the Atlantic."
+ },
+ {
+  "id": "p1210",
+  "level": 12,
+  "category": "literature",
+  "q": "Who wrote the novel «Dracula» (1897)?",
+  "options": [
+   "Edgar Allan Poe",
+   "Mary Shelley",
+   "Bram Stoker",
+   "Robert Louis Stevenson"
+  ],
+  "correct": 2,
+  "explanation": "Bram Stoker's novel was published in 1897."
+ },
+ {
+  "id": "p1211",
+  "level": 12,
+  "category": "literature",
+  "q": "Who wrote the novel «Frankenstein; or, The Modern Prometheus»?",
+  "options": [
+   "Jane Austen",
+   "George Eliot",
+   "Emily Brontë",
+   "Mary Shelley"
+  ],
+  "correct": 3,
+  "explanation": "Mary Shelley published the novel in 1818."
+ },
+ {
+  "id": "p1212",
+  "level": 12,
+  "category": "art",
+  "q": "Who painted «The Scream» (1893)?",
+  "options": [
+   "Edvard Munch",
+   "Franz Marc",
+   "Egon Schiele",
+   "Gustav Klimt"
+  ],
+  "correct": 0,
+  "explanation": "Munch made several versions of «The Scream»."
+ },
+ {
+  "id": "p1213",
+  "level": 12,
+  "category": "art",
+  "q": "Which architectural style features pointed arches and stained glass, as in Notre-Dame?",
+  "options": [
+   "Baroque",
+   "Gothic",
+   "Romanesque",
+   "Classicism"
+  ],
+  "correct": 1,
+  "explanation": "Gothic architecture is known for pointed vaults and large stained-glass windows."
+ },
+ {
+  "id": "p1214",
+  "level": 12,
+  "category": "music",
+  "q": "Who composed the «St Matthew Passion»?",
+  "options": [
+   "Joseph Haydn",
+   "George Frideric Handel",
+   "Johann Sebastian Bach",
+   "Franz Schubert"
+  ],
+  "correct": 2,
+  "explanation": "Bach wrote the «St Matthew Passion» in the 1720s."
+ },
+ {
+  "id": "p1215",
+  "level": 12,
+  "category": "music",
+  "q": "What is a piece for a solo instrument accompanied by an orchestra called?",
+  "options": [
+   "A symphony",
+   "A serenade",
+   "An overture",
+   "A concerto"
+  ],
+  "correct": 3,
+  "explanation": "In a concerto the soloist interacts with the orchestra."
+ },
+ {
+  "id": "p1216",
+  "level": 12,
+  "category": "film",
+  "q": "Who directed «Blade Runner» (1982)?",
+  "options": [
+   "Ridley Scott",
+   "James Cameron",
+   "Paul Verhoeven",
+   "Denis Villeneuve"
+  ],
+  "correct": 0,
+  "explanation": "Ridley Scott directed it, based on a novel by Philip K. Dick."
+ },
+ {
+  "id": "p1217",
+  "level": 12,
+  "category": "film",
+  "q": "Which actor played Vito Corleone in «The Godfather» (1972)?",
+  "options": [
+   "Al Pacino",
+   "Marlon Brando",
+   "Robert De Niro",
+   "James Caan"
+  ],
+  "correct": 1,
+  "explanation": "Brando won an Oscar for the role."
+ },
+ {
+  "id": "p1218",
+  "level": 12,
+  "category": "sport",
+  "q": "How many points does a touchdown score in American football?",
+  "options": [
+   "1",
+   "3",
+   "6",
+   "7"
+  ],
+  "correct": 2,
+  "explanation": "A touchdown is worth 6 points, with an extra-point attempt to follow."
+ },
+ {
+  "id": "p1219",
+  "level": 12,
+  "category": "sport",
+  "q": "Who was the first person to run a mile in under four minutes, in 1954?",
+  "options": [
+   "Paavo Nurmi",
+   "Emil Zátopek",
+   "Sebastian Coe",
+   "Roger Bannister"
+  ],
+  "correct": 3,
+  "explanation": "Bannister ran 3:59.4 in Oxford on 6 May 1954."
+ },
+ {
+  "id": "p1220",
+  "level": 12,
+  "category": "food",
+  "q": "Which grain is the main ingredient of bourbon whiskey?",
+  "options": [
+   "Corn",
+   "Barley",
+   "Rye",
+   "Oats"
+  ],
+  "correct": 0,
+  "explanation": "US rules require a bourbon grain mix to be at least 51% corn."
+ },
+ {
+  "id": "p1221",
+  "level": 12,
+  "category": "food",
+  "q": "What is the French sauce of egg yolks and butter served with eggs Benedict called?",
+  "options": [
+   "Béarnaise",
+   "Hollandaise",
+   "Velouté",
+   "Béchamel"
+  ],
+  "correct": 1,
+  "explanation": "Hollandaise is the classic sauce for eggs Benedict."
+ },
+ {
+  "id": "p1222",
+  "level": 12,
+  "category": "health",
+  "q": "Which human organ produces bile?",
+  "options": [
+   "The pancreas",
+   "The spleen",
+   "The liver",
+   "The stomach"
+  ],
+  "correct": 2,
+  "explanation": "Bile is produced by the liver and stored in the gallbladder."
+ },
+ {
+  "id": "p1223",
+  "level": 12,
+  "category": "health",
+  "q": "Which vitamin is produced in the skin under sunlight?",
+  "options": [
+   "Vitamin B1",
+   "Vitamin C",
+   "Vitamin K",
+   "Vitamin D"
+  ],
+  "correct": 3,
+  "explanation": "Ultraviolet light triggers vitamin D synthesis in the skin."
+ },
+ {
+  "id": "p1224",
+  "level": 12,
+  "category": "tech",
+  "q": "Who is considered the first programmer for writing an algorithm for Babbage's Analytical Engine?",
+  "options": [
+   "Ada Lovelace",
+   "John von Neumann",
+   "Grace Hopper",
+   "Alan Turing"
+  ],
+  "correct": 0,
+  "explanation": "Ada Lovelace described an algorithm for Bernoulli numbers in 1843."
+ },
+ {
+  "id": "p1225",
+  "level": 12,
+  "category": "tech",
+  "q": "What does RAM stand for?",
+  "options": [
+   "Rapid Active Memory",
+   "Random Access Memory",
+   "Remote Access Module",
+   "Read-only Access Module"
+  ],
+  "correct": 1,
+  "explanation": "RAM is fast, volatile memory used by running programs."
+ },
+ {
+  "id": "p1226",
+  "level": 12,
+  "category": "daily",
+  "q": "How many seconds are there in a day?",
+  "options": [
+   "3,600",
+   "14,400",
+   "86,400",
+   "864,000"
+  ],
+  "correct": 2,
+  "explanation": "24 × 60 × 60 = 86,400 seconds."
+ },
+ {
+  "id": "p1227",
+  "level": 12,
+  "category": "daily",
+  "q": "How many hours are there in a leap year?",
+  "options": [
+   "8,760",
+   "8,640",
+   "8,808",
+   "8,784"
+  ],
+  "correct": 3,
+  "explanation": "366 days × 24 hours = 8,784 hours."
+ },
+ {
+  "id": "p1228",
+  "level": 12,
+  "category": "language",
+  "q": "What is the official language of Brazil?",
+  "options": [
+   "Portuguese",
+   "French",
+   "English",
+   "Spanish"
+  ],
+  "correct": 0,
+  "explanation": "Brazil is the largest Portuguese-speaking country in the world."
+ },
+ {
+  "id": "p1229",
+  "level": 12,
+  "category": "language",
+  "q": "What is a palindrome?",
+  "options": [
+   "A word with the opposite meaning",
+   "A word or phrase that reads the same in both directions",
+   "A word formed by shortening a phrase",
+   "A word borrowed from Latin"
+  ],
+  "correct": 1,
+  "explanation": "For example, «level» or «A man, a plan, a canal: Panama»."
+ },
+ {
+  "id": "p1230",
+  "level": 12,
+  "category": "society",
+  "q": "Which UN document adopted in 1948 proclaimed basic human rights?",
+  "options": [
+   "The Geneva Convention",
+   "The UN Charter",
+   "The Universal Declaration of Human Rights",
+   "The Helsinki Final Act"
+  ],
+  "correct": 2,
+  "explanation": "The UN General Assembly adopted it on 10 December 1948."
+ },
+ {
+  "id": "p1231",
+  "level": 12,
+  "category": "society",
+  "q": "Which institution sets monetary policy for the eurozone?",
+  "options": [
+   "The European Parliament",
+   "The European Commission",
+   "The International Monetary Fund",
+   "The European Central Bank"
+  ],
+  "correct": 3,
+  "explanation": "The European Central Bank is based in Frankfurt."
  }
 ]
