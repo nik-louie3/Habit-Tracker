@@ -738,7 +738,7 @@ td.cname.dragging,.tag-group-header.dragging,.titem.dragging{opacity:.4}
       <button class="tab" data-view="habits">&#127919; Habits</button>
       <button class="tab" data-view="rewards">&#127942; Shop</button>
       <button class="tab" data-view="casino">&#127920; Casino</button>
-      <button class="tab" data-view="peak" style="display:none">&#9650; Peak</button>
+      <button class="tab" data-view="peak">&#9650; Peak</button>
       <button class="tab" data-view="stats">&#128200; Analytics</button>
       <button class="tab" data-view="settings">&#9881; Settings</button>
     </nav>
@@ -1810,7 +1810,6 @@ function applyLang(){
   const tls=[T.tabToday,T.tabMonths,T.tabHabits,(T.tabRewards||"Пряники"),T.tabCasino,T.tabPeak,T.tabAnalytics,T.tabSettings];
   const tic=["⚡","📅","🎯","🏆","🎰","▲","📈","⚙"];
   document.querySelectorAll(".tab").forEach(t=>{const i=tvs.indexOf(t.dataset.view);if(i>=0)t.textContent=tic[i]+" "+tls[i]});
-  const peakTab=document.querySelector('.tab[data-view="peak"]');if(peakTab)peakTab.style.display=peakEnabled()?"":"none";
   const ids={lDarkMode:T.darkMode,lAccentColor:T.accentColor,lLanguage:T.language,
     lAppearance:T.appearance,lTagsTitle:T.tagsTitle,lTagsDesc:T.tagsDesc,lBtnAddTag:T.addTag,
     lCloudSync:T.cloudSync,lCloudSyncDesc:T.cloudSyncDesc,
@@ -3609,8 +3608,6 @@ const PEAK_SECONDS=120;
 const PEAK_MAX_GAME_MS=35*60*1000; // 15 questions × 2 min plus slack: an "active" game older than this is dead
 const PEAK_SESSION=Math.random().toString(36).slice(2,10); // one per page load
 const PEAK_DEVICE=(()=>{try{let d=localStorage.getItem("peak_device");if(!d){d=Math.random().toString(36).slice(2,10);localStorage.setItem("peak_device",d)}return d}catch(e){return"dev"}})();
-// Hidden until the question bank exists: on for development with localStorage.peakDev="1".
-function peakEnabled(){try{return localStorage.getItem("peakDev")==="1"}catch(e){return false}}
 function peakDays(level){return level>=1&&level<=15?PEAK_PRIZE_DAYS[level-1]:0}
 function peakPrizeInli(level){return Math.round(peakDays(level)*dailyUnit())}
 // The highest safe level already cleared once `cleared` questions have been answered correctly.
