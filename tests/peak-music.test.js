@@ -2,7 +2,7 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const { loadApp } = require("./load-app.js");
 
-// jsdom has no Web Audio, so the game's own cue and bed code never runs in the other sound tests. This
+// jsdom has no Web Audio, so the game's own cue code never runs in the other sound tests. This
 // stand-in implements just enough of the API for the real code to run end to end and be counted.
 function fakeAudio() {
   const log = { started: 0, stopped: 0, noise: 0 };
@@ -20,67 +20,6 @@ function fakeAudio() {
   return { Ctx, log };
 }
 const sound = (log) => log.started + log.noise;
-
-test("peakTier — questions 1-5 calm, 6-10 serious, 11-15 tense", () => {
-  const a = loadApp();
-  try {
-    const tiers = [];
-    for (let l = 1; l <= 15; l++) tiers.push(a.peakTier(l));
-    assert.deepEqual(tiers, [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2]);
-  } finally { a.close(); }
-});
-
-test("the suspense bed picks up with every tier — a quicker, louder pulse and a warmer drone", () => {
-  const a = loadApp();
-  try {
-    assert.equal(a.PEAK_BED.length, 3);
-    const [t0, t1, t2] = a.PEAK_BED;
-    assert.ok(t0.bpm < t1.bpm && t1.bpm < t2.bpm, "each tier's heartbeat is quicker");
-    assert.ok(t0.beatV < t1.beatV && t1.beatV < t2.beatV, "and a little louder");
-    assert.ok(t0.cut < t1.cut && t1.cut < t2.cut, "the drone gets brighter");
-    assert.ok(t0.drone.length < t1.drone.length && t1.drone.length < t2.drone.length, "and gains voices");
-    for (const bed of a.PEAK_BED) {
-      assert.ok(bed.vol[0] < bed.vol[1], "the drone swells over the question");
-      assert.ok(!("seq" in bed), "no melody: the bed is a drone and a pulse");
-    }
-    assert.ok(t0.vol[1] <= t1.vol[1] && t1.vol[1] <= t2.vol[1]);
-  } finally { a.close(); }
-});
-
-test("the drone is consonant — only the root, its fifth and octaves, never a minor second or tritone", () => {
-  const a = loadApp();
-  try {
-    const consonant = [1, 1.5, 2, 3, 4];
-    for (const bed of a.PEAK_BED) {
-      const root = bed.drone[0];
-      assert.ok(root >= 100, "the root sits where a phone speaker can still play it");
-      for (const f of bed.drone) {
-        const r = f / root;
-        assert.ok(consonant.some((c) => Math.abs(r - c) / c < 0.01), f + " Hz is not a fifth or octave of " + root);
-      }
-    }
-  } finally { a.close(); }
-});
-
-test("peakTension — each tier starts its own drone, filter drift and first heartbeat, and stops them all", () => {
-  const a = loadApp();
-  try {
-    const { Ctx, log } = fakeAudio();
-    a.setAudioContext(Ctx);
-    // drone voices + the filter LFO + the first lub-dub (two soft thumps)
-    const expected = [5, 6, 7];
-    [1, 7, 13].forEach((level, tier) => {
-      a.peakUi.mode = "play";
-      a.peakUi.game = { level };
-      const before = log.started, stoppedBefore = log.stopped;
-      a.peakTension(true);
-      assert.equal(log.started - before, expected[tier], "tier " + tier + " starts " + expected[tier] + " voices");
-      a.peakTension(false);
-      assert.ok(log.stopped - stoppedBefore >= a.PEAK_BED[tier].drone.length + 1, "tier " + tier + " stops its drone and LFO");
-    });
-    a.peakUi.mode = "idle"; // leaves nothing running between beats
-  } finally { a.close(); }
-});
 
 test("every cue really sounds, and a safe sum is grander than an ordinary one", () => {
   const a = loadApp();
@@ -119,9 +58,31 @@ test("a muted game makes no sound at all", () => {
     const { Ctx, log } = fakeAudio();
     a.setAudioContext(Ctx);
     a.peakSetSound(false);
-    a.peakUi.mode = "play"; a.peakUi.game = { level: 12 };
-    a.peakTension(true);
-    for (const cue of ["final", "correct", "wrong", "win"]) a.peakSfx(cue, 5);
+    for (const cue of ["final", "correct", "wrong", "win", "tick", "strike"]) a.peakSfx(cue, 5);
     assert.equal(sound(log), 0);
+  } finally { a.close(); }
+});
+
+// There is no background music: a question starts in silence and only events (an answer, a lifeline, the
+// last 20 seconds, ...) make a sound.
+test("a question starts in silence — there is no background music", () => {
+  const a = loadApp();
+  try {
+    const { Ctx, log } = fakeAudio();
+    a.setAudioContext(Ctx);
+    const st = a.freshState();
+    st.habits = [{ id: "h1", name: "h1", weight: 119, order: 0, tagId: null }];
+    a.setState(st);
+    const bank = [];
+    for (let l = 1; l <= 15; l++) bank.push({ id: "r" + l, level: l, category: "c" + (l % 9), q: "Q" + l, options: ["a", "b", "c", "d"], correct: l % 4, explanation: "E" + l });
+    const ui = a.peakUi;
+    ui.bank = bank; ui.bankLang = st.lang || "ru"; ui.practice = true; ui.picks = {};
+    ui.game = a.peakNewGame(bank, () => 0.5);
+    for (const level of [1, 7, 13]) {
+      ui.game.level = level;
+      a.peakAskNext();
+      assert.equal(ui.mode, "play");
+      assert.equal(sound(log), 0, "question " + level + " begins with no sound at all");
+    }
   } finally { a.close(); }
 });

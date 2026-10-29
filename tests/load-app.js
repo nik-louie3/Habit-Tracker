@@ -45,10 +45,9 @@ function loadApp() {
       PEAK_PRIZE_DAYS, PEAK_GAMES_PER_MONTH, PEAK_SESSION, PEAK_DEVICE,
       peakPrizeInli, peakPayoutOnWrong, peakGamesThisMonth, peakAttemptsLeft, peakStartGame, peakFinishGame, peakDropInterrupted,
       peakPickQuestions, peakNewGame, peakQ, peakVisible, peakUseLifeline, peakAnswer, peakTimeout, peakWalkAway,
-      peakSoundOn, peakSetSound, peakSfx, peakTension, peakTickDue,
+      peakSoundOn, peakSetSound, peakSfx, peakTickDue,
       peakUi, peakAskNext, peakConfirm, peakReveal, peakPlayHTML,
-      peakTier, PEAK_BED,
-      // jsdom has no Web Audio: tests install a stand-in so the real cue/bed code actually runs.
+      // jsdom has no Web Audio: tests install a stand-in so the real cue code actually runs.
       setAudioContext: (C) => { window.AudioContext = C; },
       peakMonthStats, peakReviewItems,
       // confirm() is not implemented in jsdom — tests install their own answer per case.

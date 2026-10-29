@@ -8665,11 +8665,10 @@ function peakLogo(size){
     <polygon points="60,28 72.7,46 66,43.5 60,52 54,43.5 48,46" fill="#fff" opacity=".93"/>${dots}
     <polygon points="60,6 66.5,15 60,24 53.5,15" fill="#eef0ff"/><polygon points="60,6 66.5,15 60,15" fill="#b8c2ff"/></svg>`;
 }
-let peakAc=null,peakMaster=null,peakLoop=null;
+let peakAc=null,peakMaster=null;
 function peakSoundOn(){try{return localStorage.getItem("peakMute")!=="1"}catch(e){return true}}
 function peakSetSound(on){
   try{localStorage.setItem("peakMute",on?"0":"1")}catch(e){}
-  if(!on)peakTension(false);else if(peakUi.mode==="play")peakTension(true);
 }
 // One AudioContext, created from the player's own click; null when muted or unsupported.
 function peakAudio(){
@@ -8724,35 +8723,6 @@ function peakSfx(name,lv){
   }
   else if(name==="violation"){peakTone(110,t,.5,"sawtooth",.3,.01,.2,98);peakTone(117,t,.5,"sawtooth",.3,.01,.2,104);peakTone(110,t+.55,.9,"sawtooth",.3,.01,.5,60,500);peakNoise(t+.55,.4,.2,800)}
 }
-// The mood of the suspense bed follows the questions: 1-5 calm, 6-10 serious, 11-15 tense. There is no melody:
-// only the pulse and the warmth of the drone change.
-function peakTier(level){return level>=11?2:level>=6?1:0}
-// drone = the held notes (Hz), all consonant — a fifth and octaves of A; cut = the drone filter's centre (Hz);
-// bpm = the heartbeat's pace; beatV = its volume; vol = [start,end] drone level over a question's two minutes.
-const PEAK_BED=[
-  {drone:[110,164.8],cut:520,bpm:60,beatV:.28,vol:[.07,.125]},
-  {drone:[110,164.8,220],cut:680,bpm:72,beatV:.36,vol:[.085,.155]},
-  {drone:[110,164.8,220,329.6],cut:860,bpm:84,beatV:.4,vol:[.088,.158]},
-];
-// The suspense bed under a question: a soft drone swelling over the question's two minutes, a slow filter
-// drift and a quiet heartbeat that picks up with the harder questions.
-function peakTension(on){
-  if(peakLoop){clearInterval(peakLoop.id);peakLoop.nodes.forEach(n=>{try{n.stop()}catch(e){}});peakLoop=null}
-  if(!on)return;
-  const c=peakAudio();if(!c)return;
-  const bed=PEAK_BED[peakTier(peakUi.game?peakUi.game.level:1)];
-  const t0=c.currentTime,nodes=[],g=c.createGain(),f=c.createBiquadFilter();
-  g.gain.setValueAtTime(bed.vol[0],t0);g.gain.linearRampToValueAtTime(bed.vol[1],t0+PEAK_SECONDS);
-  f.type="lowpass";f.frequency.value=bed.cut;g.connect(f);f.connect(peakMaster);
-  bed.drone.forEach((fr,k)=>{const o=c.createOscillator();o.type=k===0?"sine":"triangle";o.frequency.value=fr;o.connect(g);o.start(t0);nodes.push(o)});
-  const lfo=c.createOscillator(),lg=c.createGain();lfo.frequency.value=.1;lg.gain.value=bed.cut*.25;lfo.connect(lg);lg.connect(f.frequency);lfo.start(t0);nodes.push(lfo);
-  const step=()=>{
-    if(peakUi.mode!=="play"){peakTension(false);return}
-    const t=c.currentTime+.05;
-    peakTone(150,t,.22,"sine",bed.beatV,.004,.16,70);peakTone(130,t+.17,.2,"sine",bed.beatV*.7,.004,.15,64); // lub-dub
-  };
-  step();peakLoop={id:setInterval(step,60000/bed.bpm),nodes};
-}
 // The tick sounds once per second during the last 20 seconds; returns the second to tick for, or null.
 function peakTickDue(left,last){const s=Math.ceil(left);return(s>=1&&s<=20&&s!==last)?s:null}
 // A short pause is part of the drama; shortened when the system asks for reduced motion.
@@ -8784,7 +8754,7 @@ function peakBreach(reason){
   if(peakUi.mode!=="play"&&peakUi.mode!=="reveal")return;
   peakStopTimers();
   const reached=Math.max(0,peakUi.game.level-1);
-  peakUi.end=peakFinishGame("violation",reached);peakUi.reason=reason;peakUi.mode="violation";peakUi.dnd=false;peakTension(false);peakSfx("violation");
+  peakUi.end=peakFinishGame("violation",reached);peakUi.reason=reason;peakUi.mode="violation";peakUi.dnd=false;peakSfx("violation");
   peakGuard(false);peakExitFull();renderXP();renderPeak();
 }
 function peakCheckGuard(){
@@ -8818,7 +8788,7 @@ function peakBegin(){
 function peakAbortPractice(){
   try{
     if(!peakUi.practice||peakUi.mode==="idle")return;
-    peakStopTimers();peakTension(false);Object.assign(peakUi,{mode:"idle",game:null,overlay:null,practice:false,picks:{}});
+    peakStopTimers();Object.assign(peakUi,{mode:"idle",game:null,overlay:null,practice:false,picks:{}});
   }catch(e){}
 }
 function peakBeginPractice(){
@@ -8840,7 +8810,7 @@ function peakAskNext(){
     state.peak.active.level=g.level;state.peak.active.lifelines=g.used.slice();save();
   }
   Object.assign(peakUi,{mode:"play",sel:-1,note:"",noteCls:"",overlay:null,shot:null,qStart:performance.now(),left:PEAK_SECONDS,fresh:true,lastTick:0});
-  peakRunTimer();renderPeak();peakTension(true);
+  peakRunTimer();renderPeak();
 }
 function peakRunTimer(){
   clearInterval(peakTimerId);
@@ -8853,12 +8823,12 @@ function peakRunTimer(){
   },250);
 }
 function peakFinish(end,reached){
-  peakUi.end=peakUi.practice?{end,reached,payoutInli:0,practice:true}:peakFinishGame(end,reached);peakUi.mode="end";peakUi.dnd=false;peakTension(false);
+  peakUi.end=peakUi.practice?{end,reached,payoutInli:0,practice:true}:peakFinishGame(end,reached);peakUi.mode="end";peakUi.dnd=false;
   peakGuard(false);peakExitFull();renderXP();renderPeak();
 }
 // Shows the outcome for a moment, then moves on or ends the game.
 function peakReveal(res,how){
-  peakUi.mode="reveal";peakUi.overlay=null;peakUi.revealRes=res;clearInterval(peakTimerId);peakTension(false);
+  peakUi.mode="reveal";peakUi.overlay=null;peakUi.revealRes=res;clearInterval(peakTimerId);
   const g=peakUi.game;
   // keep the stored game in step at once: a reload during the pause must count this answer too
   if(!peakUi.practice&&state.peak.active){state.peak.active.level=g.level;save()}
@@ -8876,7 +8846,7 @@ function peakConfirm(){
   if(res.result==="invalid"){renderPeak();return}
   // the stored game follows at once, then a suspense beat before the verdict (the timer is stopped)
   if(!peakUi.practice&&state.peak.active){state.peak.active.level=g.level;save()}
-  peakUi.mode="reveal";peakUi.revealRes=null;peakUi.shot=shot;clearInterval(peakTimerId);peakTension(false);peakSfx("final");renderPeak();
+  peakUi.mode="reveal";peakUi.revealRes=null;peakUi.shot=shot;clearInterval(peakTimerId);peakSfx("final");renderPeak();
   peakNextId=setTimeout(()=>peakReveal(res,"answer"),peakDelay(1400));
 }
 function peakLifeline(kind){
