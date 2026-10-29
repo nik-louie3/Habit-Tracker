@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Пик INLI — макет</title>
+<style>
+:root{--bg:#0a0a0a;--panel:#151515;--panel2:#1e1e1e;--line:#2a2a2a;--text:#fff;--dim:#9a9a9a;--tdim:#555;
+  --accent:#ffd400;--accent2:#ff7a00;--green:#2ecc71;--red:#e74c3c;
+  --ink:#0b0e22;--ink2:#151b3d;--glow:#6c7bff;--goldline:#8a6d00}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1100px;margin:0 auto;padding:0 14px 60px}
+.eyebrow{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--accent2);font-weight:700}
+h1{margin:6px 0 4px;font-size:26px;font-weight:800;letter-spacing:-.01em}
+h1 b{color:var(--accent)}
+h2{margin:34px 0 4px;font-size:18px;font-weight:800}
+p.sub{margin:0 0 14px;color:var(--dim);font-size:13px;line-height:1.5;max-width:760px}
+.top{padding:22px 0 6px;border-bottom:1px solid var(--line)}
+.logos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.lcard{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 12px 14px;text-align:center}
+.lcard .art{display:flex;justify-content:center;align-items:center;min-height:150px}
+.lcard h3{margin:8px 0 2px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.lcard p{margin:0;color:var(--dim);font-size:12px;line-height:1.45}
+.row-sizes{display:flex;gap:12px;justify-content:center;align-items:center;margin-top:10px}
+.wm{display:flex;flex-direction:column;align-items:center;line-height:1;margin-top:6px}
+.wm span{font-size:30px;font-weight:900;letter-spacing:.18em;padding-left:.18em}
+.wm b{font-size:13px;font-weight:800;letter-spacing:.62em;padding-left:.62em;color:var(--accent);margin-top:5px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 14px}
+.chip{background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:999px;padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer}
+.chip.on{background:var(--accent);color:#000;border-color:var(--accent)}
+.chip:active{transform:scale(.96)}
+
+/* ===== STAGE ===== */
+.stage{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);min-height:640px;
+  background:
+   linear-gradient(180deg,rgba(8,10,28,.0) 55%,rgba(0,0,0,.65) 100%),
+   radial-gradient(900px 420px at 50% -10%,#2a3578 0%,rgba(30,38,92,.55) 38%,rgba(10,12,34,0) 70%),
+   linear-gradient(180deg,#0c1030,#07091c 70%,#050612);
+  padding:16px}
+.stage::after{content:"";position:absolute;left:0;right:0;bottom:0;height:150px;pointer-events:none;opacity:.55;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 150' preserveAspectRatio='none'><polygon points='0,150 0,100 120,60 200,92 330,28 430,84 540,50 650,96 780,20 880,78 1000,44 1100,88 1200,64 1200,150' fill='%23060818'/><polygon points='0,150 0,124 160,92 260,116 410,72 520,112 700,84 840,118 980,80 1100,110 1200,96 1200,150' fill='%23040510'/></svg>") bottom/100% 100% no-repeat}
+.stage>*{position:relative;z-index:1}
+.bar{display:flex;align-items:center;gap:12px;justify-content:space-between;margin-bottom:12px}
+.bar .l{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.22em;font-weight:800;text-transform:uppercase}
+.bar .l b{color:var(--accent)}
+.bar .c{font-size:12px;color:#b9c0ee;text-align:center;line-height:1.35}
+.bar .c b{color:#fff;font-size:14px}
+.bar .r{display:flex;align-items:center;gap:10px}
+.guard{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#7fe3a8;
+  background:rgba(46,204,113,.1);border:1px solid rgba(46,204,113,.35);padding:5px 9px;border-radius:999px;white-space:nowrap}
+.guard i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.35}}
+.ring{position:relative;width:54px;height:54px;flex:0 0 auto}
+.ring svg{transform:rotate(-90deg)}
+.ring b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;font-variant-numeric:tabular-nums}
+.ring.low b{color:var(--red)}
+.game{display:grid;grid-template-columns:1fr 188px;gap:16px;align-items:start}
+.main{display:flex;flex-direction:column;gap:12px;min-width:0}
+
+/* hex shapes */
+.hex{position:relative;clip-path:polygon(18px 0,calc(100% - 18px) 0,100% 50%,calc(100% - 18px) 100%,18px 100%,0 50%);background:var(--b,var(--goldline))}
+.hex::before{content:"";position:absolute;inset:2px;clip-path:polygon(17px 0,calc(100% - 17px) 0,100% 50%,calc(100% - 17px) 100%,17px 100%,0 50%);background:var(--f,var(--ink2))}
+.hex>*{position:relative}
+.question{--b:#b88f00;--f:linear-gradient(180deg,#171e4a,#0c1131);padding:26px 40px;text-align:center;font-size:20px;font-weight:700;line-height:1.35;min-height:96px;display:flex;align-items:center;justify-content:center}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{--b:#4b568f;--f:linear-gradient(180deg,#141a40,#0b0f2c);border:0;color:#fff;text-align:left;font:inherit;font-size:16px;font-weight:600;
+  padding:15px 28px;display:flex;gap:12px;align-items:center;cursor:pointer;min-height:56px}
+.opt i{font-style:normal;color:var(--accent);font-weight:900}
+.opt:hover{--b:#ffd400}
+.opt.sel{--b:var(--accent);--f:linear-gradient(180deg,#4a3d00,#2a2200)}
+.opt.sel i{color:#fff}
+.opt.ok{--b:var(--green);--f:linear-gradient(180deg,#0f5a31,#093a20)}
+.opt.bad{--b:var(--red);--f:linear-gradient(180deg,#6a1717,#3d0d0d)}
+.opt.cross{--b:#7b2a2a;--f:#1a0d12;color:#9a6a6a;text-decoration:line-through;pointer-events:none}
+.opt.gone{opacity:.16;pointer-events:none}
+.opt.ok i,.opt.bad i{color:#fff}
+.lls{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:2px}
+.ll{width:86px;text-align:center;font-size:10px;letter-spacing:.06em;color:#b9c0ee;font-weight:700}
+.ll .ci{position:relative;width:62px;height:62px;margin:0 auto 6px;border-radius:50%;border:2px solid #4b568f;background:radial-gradient(circle at 35% 30%,#2a3270,#10163a);
+  display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:15px;cursor:pointer}
+.ll .ci:hover{border-color:var(--accent)}
+.ll.used .ci{opacity:.35;pointer-events:none}
+.ll.used .ci::after{content:"";position:absolute;left:8px;right:8px;top:50%;height:3px;background:var(--red);transform:rotate(-38deg);border-radius:2px}
+.ll.active .ci{border-color:var(--accent);box-shadow:0 0 0 3px rgba(255,212,0,.25),0 0 22px rgba(255,212,0,.55)}
+.ll svg{width:28px;height:28px}
+.walk{align-self:center;background:transparent;border:1px solid #4b568f;color:#dfe3ff;border-radius:999px;padding:11px 22px;font-weight:800;font-size:13px;letter-spacing:.04em;cursor:pointer}
+.walk b{color:var(--accent)}
+.walk:hover{border-color:var(--accent)}
+.ladder{list-style:none;margin:0;padding:8px;background:rgba(8,10,30,.72);border:1px solid #2a3170;border-radius:16px;display:flex;flex-direction:column;gap:3px;backdrop-filter:blur(6px)}
+.ladder li{display:flex;align-items:center;gap:8px;padding:5px 9px;border-radius:8px;font-size:12px;font-weight:700;color:#8e97cf;font-variant-numeric:tabular-nums}
+.ladder li em{font-style:normal;width:18px;color:#6c76b3;text-align:right}
+.ladder li span{margin-left:auto}
+.ladder li.safe{color:#fff3b0}
+.ladder li.safe em{color:var(--accent)}
+.ladder li.done{color:#6bd69a}
+.ladder li.done em{color:#6bd69a}
+.ladder li.cur{background:linear-gradient(90deg,#ffd400,#ff9d00);color:#000}
+.ladder li.cur em{color:#000}
+.ladder li.top{color:#ffe98a}
+.ladder small{display:block;color:#6c76b3;font-size:9px;text-align:center;padding:5px 0 2px;letter-spacing:.06em}
+
+/* overlays and cards */
+.overlay{position:absolute;inset:0;z-index:5;background:rgba(3,4,16,.72);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:18px}
+.panel{width:min(480px,100%);background:linear-gradient(180deg,#171e4a,#0c1131);border:1px solid #5a63a8;border-radius:20px;padding:20px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.panel h4{margin:0 0 10px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.bars{display:flex;gap:14px;align-items:flex-end;height:150px;justify-content:center}
+.bars div{width:54px;text-align:center;font-size:12px;font-weight:800}
+.bars div span{display:block;border-radius:8px 8px 3px 3px;background:linear-gradient(180deg,#ffd400,#e08a00);margin-bottom:6px}
+.bars div.lo span{background:linear-gradient(180deg,#8f9be8,#4b568f)}
+.bubble{background:#1f2860;border-radius:16px 16px 16px 4px;padding:12px 14px;font-size:14px;line-height:1.45;margin-top:8px}
+.who{display:flex;gap:10px;align-items:center;font-size:13px;font-weight:800}
+.avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#ffd400,#ff7a00);display:flex;align-items:center;justify-content:center;color:#000;font-weight:900}
+.btns{display:flex;gap:10px;justify-content:center;margin-top:14px}
+.btn{border:0;border-radius:12px;padding:12px 22px;font-weight:800;font-size:14px;cursor:pointer;color:#000;background:var(--accent)}
+.btn.ghost{background:transparent;color:#dfe3ff;border:1px solid #4b568f}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+.banner{text-align:center;font-weight:800;font-size:14px;padding:10px 14px;border-radius:12px}
+.banner.ok{background:rgba(46,204,113,.14);border:1px solid rgba(46,204,113,.5);color:#8ff0b8}
+.banner.bad{background:rgba(231,76,60,.14);border:1px solid rgba(231,76,60,.5);color:#ff9a8f}
+.banner.info{background:rgba(255,212,0,.1);border:1px solid rgba(255,212,0,.4);color:#ffe98a}
+.ribbon{background:repeating-linear-gradient(135deg,#1d2a66 0 14px,#16205a 14px 28px);border:1px solid #3a4694;color:#cfd6ff;text-align:center;
+  font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:8px;border-radius:10px;margin-bottom:12px}
+.center{max-width:620px;margin:6px auto 0}
+.card{background:rgba(9,12,36,.8);border:1px solid #2f3a86;border-radius:20px;padding:22px;backdrop-filter:blur(6px)}
+.card .hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px}
+.tag{font-size:13px;color:#b9c0ee;margin:4px 0 14px}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.rules div{background:rgba(255,255,255,.04);border:1px solid #2a3170;border-radius:12px;padding:10px 12px;font-size:12px;line-height:1.4;color:#cfd6ff}
+.rules b{display:block;color:#fff;font-size:12px;margin-bottom:2px}
+.check{list-style:none;margin:10px 0 4px;padding:0;display:flex;flex-direction:column;gap:7px}
+.check li{display:flex;align-items:center;gap:10px;font-size:13px;padding:9px 12px;background:rgba(255,255,255,.04);border:1px solid #2a3170;border-radius:12px}
+.check li i{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-style:normal;font-weight:900;font-size:12px;flex:0 0 auto}
+.check li.ok i{background:var(--green);color:#000}
+.check li.wait i{background:#2a3170;color:#9aa4ee}
+.check li button{margin-left:auto;background:var(--accent);color:#000;border:0;border-radius:8px;padding:5px 10px;font-weight:800;font-size:11px;cursor:pointer}
+.attempts{display:flex;gap:8px;justify-content:center;margin:6px 0}
+.attempts i{width:34px;height:8px;border-radius:5px;background:var(--accent)}
+.attempts i.used{background:#2a3170}
+.big{font-size:40px;font-weight:900;color:var(--accent);margin:6px 0 0;letter-spacing:-.02em}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}
+.kv div{background:rgba(255,255,255,.04);border:1px solid #2a3170;border-radius:12px;padding:10px 12px;font-size:12px;color:#b9c0ee}
+.kv b{display:block;color:#fff;font-size:16px;margin-top:2px}
+.note{font-size:11px;color:var(--dim);margin-top:10px;line-height:1.5}
+.sound{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.sound .chip{display:flex;gap:6px;align-items:center}
+.foot{margin-top:30px;color:var(--dim);font-size:12px;line-height:1.6;border-top:1px solid var(--line);padding-top:14px}
+@media(max-width:820px){
+  .logos{grid-template-columns:1fr}
+  .game{grid-template-columns:1fr}
+  .ladder{flex-direction:row;flex-wrap:wrap;justify-content:center;order:-1}
+  .ladder li{flex-direction:column;gap:0;padding:4px 6px;min-width:52px;text-align:center}
+  .ladder li em{width:auto;text-align:center}.ladder li span{margin:0;font-size:10px}
+  .ladder small{display:none}
+  .opts{grid-template-columns:1fr}
+  .question{padding:22px 34px;font-size:17px}
+  .bar{flex-wrap:wrap}
+  .rules{grid-template-columns:1fr}.kv{grid-template-columns:1fr}
+  .stage{padding:12px}
+  .lls{gap:8px}.ll{width:74px}.ll .ci{width:56px;height:56px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="eyebrow">Habitunity · макет для утверждения</div>
+    <h1>Пик <b>INLI</b></h1>
+    <p class="sub">Викторина на 15 вопросов. Награда только в INLI, 3 игры в месяц. Ниже: три варианта знака, все экраны игры (кликай по вкладкам) и пробные звуки. Это макет: ничего из этого ещё не в приложении.</p>
+  </div>
+
+  <h2>1. Знак</h2>
+  <p class="sub">Золото и чёрный — как в приложении. Вершина — это «Пик», 15 точек — вопросы, крупные точки — несгораемые суммы на 5 и 10 вопросе.</p>
+  <div class="logos" id="logos"></div>
+
+  <h2>2. Экраны игры</h2>
+  <p class="sub">Суммы показаны для набора привычек по умолчанию (1 день = 137 INLI). У тебя они пересчитаются по твоей нагрузке: ступени заданы в днях.</p>
+  <div class="chips" id="tabs"></div>
+  <div class="stage" id="stage"></div>
+
+  <h2>3. Звук</h2>
+  <p class="sub">Всё синтезируется в браузере, это оригинальные звуки без файлов и без проблем с авторскими правами. Я не могу прослушать их сам, поэтому оценивать на слух тебе. Звучат только по нажатию.</p>
+  <div class="sound" id="sound"></div>
+
+  <div class="foot">
+    <b>Что здесь не показано:</b> анимации появления вариантов и ответа (в игре они будут с задержками, как в телеигре), вибрация на телефоне, сами тексты 5 языков. Название локализуется: Пик INLI · INLI Peak · Cima INLI · INLI 之巅 · Sommet INLI.
+  </div>
+</div>
+
+<script>
+/* ---------- logos ---------- */
+let _g=0;
+function logoPeak(size){
+  const id='p'+(++_g);let dots='';
+  for(let i=0;i<14;i++){
+    const t=i/13,x=26+t*26+(i%2?2.4:-2.4)*(1-t*.5),y=104-t*50,safe=(i===4||i===9);
+    dots+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${safe?3.1:1.9}" fill="${safe?'#fffbe0':'#3a2600'}" opacity="${safe?1:.8}"/>`;
+  }
+  return `<svg viewBox="0 0 120 124" width="${size}" height="${(size*124/120).toFixed(1)}" role="img" aria-label="Пик INLI">
+  <defs>
+    <linearGradient id="${id}a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3b0"/><stop offset=".55" stop-color="#ffd400"/><stop offset="1" stop-color="#e09500"/></linearGradient>
+    <linearGradient id="${id}b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb200"/><stop offset="1" stop-color="#8f4700"/></linearGradient>
+    <linearGradient id="${id}m" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe980"/><stop offset="1" stop-color="#f0a800"/></linearGradient>
+    <linearGradient id="${id}n" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d98300"/><stop offset="1" stop-color="#6b3300"/></linearGradient>
+    <linearGradient id="${id}r" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b27200"/><stop offset="1" stop-color="#5a3000"/></linearGradient>
+    <radialGradient id="${id}c" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#cfd6ff" stop-opacity=".95"/><stop offset="1" stop-color="#6c7bff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <circle cx="60" cy="15" r="14" fill="url(#${id}c)"/>
+  <polygon points="0,114 22,78 44,114" fill="url(#${id}r)"/>
+  <polygon points="76,114 98,84 120,114" fill="url(#${id}r)"/>
+  <polygon points="8,114 40,58 60,28 60,114" fill="url(#${id}a)"/>
+  <polygon points="60,28 84,62 112,114 60,114" fill="url(#${id}b)"/>
+  <polygon points="40,58 60,28 60,80 47,72" fill="url(#${id}m)" opacity=".9"/>
+  <polygon points="84,62 60,28 60,80 73,74" fill="url(#${id}n)" opacity=".85"/>
+  <polygon points="60,28 72.7,46 66,43.5 60,52 54,43.5 48,46" fill="#fff" opacity=".93"/>
+  ${dots}
+  <polygon points="60,6 66.5,15 60,24 53.5,15" fill="#eef0ff"/><polygon points="60,6 66.5,15 60,15" fill="#b8c2ff"/>
+  </svg>`;
+}
+function logoBadge(size){
+  const id='p'+(++_g);
+  return `<svg viewBox="0 0 120 120" width="${size}" height="${size}" role="img" aria-label="Пик INLI">
+  <defs><linearGradient id="${id}a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff3b0"/><stop offset=".5" stop-color="#ffd400"/><stop offset="1" stop-color="#d98a00"/></linearGradient>
+  <linearGradient id="${id}b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe566"/><stop offset="1" stop-color="#d98a00"/></linearGradient>
+  <radialGradient id="${id}c" cx=".5" cy=".45" r=".6"><stop offset="0" stop-color="#2b3680"/><stop offset="1" stop-color="#0b0e22"/></radialGradient></defs>
+  <polygon points="60,5 108,32 108,88 60,115 12,88 12,32" fill="url(#${id}c)" stroke="url(#${id}a)" stroke-width="4.5" stroke-linejoin="round"/>
+  <polygon points="60,15 98,37 98,83 60,105 22,83 22,37" fill="none" stroke="#ffd400" stroke-opacity=".28" stroke-width="1"/>
+  <polygon points="26,86 50,50 60,64 72,44 96,86" fill="url(#${id}b)"/>
+  <polygon points="72,44 80,58 65,58" fill="#fff" opacity=".9"/><polygon points="50,50 56,59 44,59" fill="#fff" opacity=".7"/>
+  <polygon points="72,24 78,33 72,42 66,33" fill="#eef0ff"/><polygon points="72,24 78,33 72,33" fill="#b8c2ff"/>
+  <path d="M30 94h60" stroke="#ffd400" stroke-width="2.4" stroke-linecap="round" opacity=".6"/>
+  </svg>`;
+}
+function logoSteps(size){
+  const id='p'+(++_g);let r='';
+  for(let i=0;i<15;i++){
+    const h=8+i*6.1,x=4+i*7.1,y=112-h,safe=(i===4||i===9),top=i===14;
+    r+=`<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="5.8" height="${h.toFixed(1)}" rx="1.6" fill="${top?'#fff':safe?'#fff3b0':`url(#${id}a)`}" opacity="${top||safe?1:.92}"/>`;
+  }
+  return `<svg viewBox="0 0 120 124" width="${size}" height="${(size*124/120).toFixed(1)}" role="img" aria-label="Пик INLI">
+  <defs><linearGradient id="${id}a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd400"/><stop offset="1" stop-color="#a85a00"/></linearGradient>
+  <radialGradient id="${id}g" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#ffd400" stop-opacity="0"/></radialGradient></defs>
+  <circle cx="106.4" cy="14" r="13" fill="url(#${id}g)"/>
+  ${r}
+  <polygon points="106.4,4 111.4,11 106.4,18 101.4,11" fill="#fff"/>
+  </svg>`;
+}
+const wm=(s)=>`<div class="wm"><span style="font-size:${s}px">ПИК</span><b>INLI</b></div>`;
+document.getElementById('logos').innerHTML=
+ [[logoPeak,'А · Грань вершины','Огранённая вершина с самоцветом на пике. 15 точек — путь по вопросам, крупные — несгораемые суммы. Мой выбор.'],
+  [logoBadge,'Б · Знак-щит','Шестигранник в духе телеигры, но с горой внутри. Хорош для иконки и значка вкладки.'],
+  [logoSteps,'В · Ступени','15 ступеней, поднимающихся к сияющему пику. Самый прямой знак «лестницы», но менее запоминающийся.']]
+ .map(([f,t,d])=>`<div class="lcard"><div class="art">${f(128)}</div>${wm(30)}<h3>${t}</h3><p>${d}</p>
+  <div class="row-sizes">${f(48)}${f(28)}${f(16)}</div></div>`).join('');
+
+/* ---------- game screens ---------- */
+const DAYS=[0.03,0.06,0.09,0.15,0.25,0.35,0.5,0.6,0.75,1.0,1.2,1.5,1.9,2.4,3.0];
+const INLI=DAYS.map(d=>Math.round(d*136.85));
+const Q={n:7,cat:'Искусство и архитектура',text:'В каком городе находится знаменитый храм Саграда Фамилия?',opts:['Мадрид','Барселона','Лиссабон','Милан']};
+const ic={
+ phone:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>',
+ aud:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M5 20V12M10 20V5M15 20v-9M20 20V8"/></svg>',
+ dbl:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6z"/><text x="12" y="15.5" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" stroke="none">2</text></svg>'};
+function ring(sec,total,low){
+  const C=2*Math.PI*22,off=C*(1-sec/total);
+  return `<div class="ring ${low?'low':''}" data-ring><svg width="54" height="54"><circle cx="27" cy="27" r="22" fill="none" stroke="#2a3170" stroke-width="5"/>
+  <circle cx="27" cy="27" r="22" fill="none" stroke="${low?'#e74c3c':'#ffd400'}" stroke-width="5" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${off}"/></svg><b>${Math.floor(sec/60)}:${String(sec%60).padStart(2,'0')}</b></div>`;
+}
+function ladder(cur,doneUpTo){
+  let h='<ul class="ladder">';
+  for(let i=15;i>=1;i--){
+    const c=(i===cur)?'cur':(i<=doneUpTo?'done':''),s=(i===5||i===10)?' safe':'',t=i===15?' top':'';
+    h+=`<li class="${c}${s}${t}"><em>${i}</em>${(i===5||i===10)?'◆':''}<span>${INLI[i-1]}</span></li>`;
+  }
+  return h+'<small>◆ несгораемая сумма</small></ul>';
+}
+function lls(st){const L=[['5050','50:50','50:50'],['phone','Звонок другу',ic.phone],['aud','Помощь зала',ic.aud],['dbl','Двойной шанс',ic.dbl]];
+  return '<div class="lls">'+L.map(([k,n,i])=>`<div class="ll ${st[k]||''}"><div class="ci">${i}</div>${n}</div>`).join('')+'</div>'}
+function quiz(o){
+  o=Object.assign({n:7,sec:102,sel:-1,cls:{},gone:[],ll:{},overlay:'',banner:'',ribbon:'',guard:true,walk:true},o);
+  const opts=Q.opts.map((t,i)=>`<button class="opt hex ${o.cls[i]||''} ${o.gone.includes(i)?'gone':''} ${i===o.sel&&!o.cls[i]?'sel':''}"><i>${'ABCD'[i]}</i><span>${t}</span></button>`).join('');
+  return `${o.ribbon}<div class="bar"><div class="l">${logoPeak(26)}<span>ПИК <b>INLI</b></span></div>
+   <div class="c"><b>Вопрос ${o.n} из 15</b><br>${Q.cat}</div>
+   <div class="r">${o.guard?'<div class="guard"><i></i>Защита активна</div>':''}${ring(o.sec,120,o.sec<=20)}</div></div>
+   <div class="game"><div class="main">
+     <div class="question hex"><span>${Q.text}</span></div>
+     ${o.banner}
+     <div class="opts">${opts}</div>
+     ${lls(o.ll)}
+     ${o.walk?`<button class="walk">Забрать <b>${INLI[o.n-2]} INLI</b> и закончить</button>`:''}
+   </div>${ladder(o.n,o.n-1)}</div>${o.overlay}`;
+}
+const attempts=(used)=>'<div class="attempts">'+[0,1,2].map(i=>`<i class="${i<used?'used':''}"></i>`).join('')+'</div>';
+const SCREENS={
+ start:{t:'Старт',h:()=>`<div class="center"><div class="card"><div class="hero">${logoPeak(104)}${wm(34)}<div class="tag">15 вопросов. Одна вершина.</div></div>
+  <div style="text-align:center;font-size:12px;color:#b9c0ee">Попыток в этом месяце</div>${attempts(0)}<div style="text-align:center;font-size:12px;color:#8e97cf">осталось 3 из 3 · обновятся 1-го числа</div>
+  <div class="rules"><div><b>⏱ 2 минуты на вопрос</b>Время идёт и во время подсказок.</div><div><b>◆ Несгораемые суммы</b>После 5-го и 10-го вопроса.</div>
+   <div><b>🛟 4 подсказки</b>50:50, звонок, зал и «Двойной шанс».</div><div><b>🔒 Честная игра</b>Выйдешь из окна — игра проиграна.</div></div>
+  <ul class="check"><li class="ok"><i>✓</i>Вкладка активна</li><li class="ok"><i>✓</i>Окно в фокусе</li>
+   <li class="wait"><i>3</i>Полный экран <button>Включить</button></li><li class="wait"><i>4</i>Режим «Не беспокоить» включён <button>Да</button></li></ul>
+  <div class="btns"><button class="btn" disabled>Начать игру</button><button class="btn ghost">Тренировка</button></div>
+  <div class="note" style="text-align:center">Кнопка станет активной, когда все 4 пункта будут отмечены. Попытка списывается в момент старта.</div></div></div>`},
+ q:{t:'Вопрос',h:()=>quiz({})},
+ '5050':{t:'50:50',h:()=>quiz({gone:[0,3],ll:{'5050':'used'},banner:'<div class="banner info">Осталось два варианта</div>'})},
+ phone:{t:'Звонок другу',h:()=>quiz({ll:{phone:'used'},sec:88,overlay:`<div class="overlay"><div class="panel"><h4>Звонок другу</h4><div class="who"><div class="avatar">А</div>Алекс · 30 секунд</div>
+   <div class="bubble">Привет! Это Барселона, я там был и видел этот собор вживую. Думаю, на 90% уверен.</div><div class="btns"><button class="btn ghost">Закрыть</button></div></div></div>`})},
+ aud:{t:'Помощь зала',h:()=>quiz({ll:{aud:'used'},sec:90,overlay:`<div class="overlay"><div class="panel"><h4>Помощь зала</h4><div class="bars">
+   <div class="lo"><span style="height:12px"></span>8%<br>A</div><div><span style="height:104px"></span>71%<br>B</div><div class="lo"><span style="height:22px"></span>14%<br>C</div><div class="lo"><span style="height:11px"></span>7%<br>D</div></div>
+   <div class="btns"><button class="btn ghost">Закрыть</button></div></div></div>`})},
+ dbl:{t:'Двойной шанс',h:()=>quiz({ll:{dbl:'active'},banner:'<div class="banner info">Двойной шанс включён: можно ошибиться один раз. Подсказка сгорит после ответа в любом случае.</div>'})},
+ dbl2:{t:'Двойной: 1-я ошибка',h:()=>quiz({ll:{dbl:'active'},cls:{0:'cross'},sec:71,banner:'<div class="banner bad">Мимо! Выбери ещё раз — второго шанса не будет.</div>'})},
+ final:{t:'Окончательный ответ',h:()=>quiz({sel:1,overlay:`<div class="overlay"><div class="panel" style="text-align:center"><h4>Ваш окончательный ответ?</h4>
+   <div style="font-size:22px;font-weight:800;margin:6px 0 2px"><span style="color:var(--accent)">B</span> Барселона</div><div class="btns"><button class="btn">Да, окончательный</button><button class="btn ghost">Подумаю</button></div></div></div>`})},
+ right:{t:'Верно',h:()=>quiz({cls:{1:'ok'},sel:1,sec:64,banner:'<div class="banner ok">Верно! Вы на ступени 7 — 68 INLI. Следующий вопрос через 3…</div>',walk:false})},
+ wrong:{t:'Неверно',h:()=>quiz({cls:{1:'ok',2:'bad'},sec:64,banner:'<div class="banner bad">Неверно. Вы падаете на несгораемую сумму: 34 INLI</div>',walk:false})},
+ result:{t:'Итог',h:()=>`<div class="center"><div class="card" style="text-align:center"><div class="hero">${logoPeak(84)}<div class="eyebrow" style="margin-top:8px">Игра окончена</div></div>
+  <div class="big">+34 INLI</div><div style="color:#b9c0ee;font-size:13px">0,25 дня вашей нагрузки · зачислено на баланс</div>
+  <div class="kv"><div>Дошли до вопроса<b>7 из 15</b></div><div>Подсказок использовано<b>2 из 4</b></div><div>Лучший результат месяца<b>34 INLI</b></div><div>Попыток осталось<b>2 из 3</b></div></div>
+  ${attempts(1)}<div class="btns"><button class="btn">Закрыть</button><button class="btn ghost">Разобрать вопросы</button></div></div></div>`},
+ violation:{t:'Нарушение',h:()=>`<div class="center"><div class="card" style="text-align:center;border-color:#7b2a2a"><div class="hero">${logoPeak(70)}<div class="eyebrow" style="margin-top:8px;color:#ff9a8f">Игра прервана</div></div>
+  <div class="big" style="color:#ff6b5e">0 INLI</div><div style="color:#ffb1a8;font-size:14px;margin-top:6px">Окно игры потеряло фокус на вопросе 7</div>
+  <div class="note" style="color:#b9c0ee">Правила честной игры: вкладка должна быть активной и на весь экран, пока идёт игра. Попытка использована.</div>${attempts(1)}
+  <div class="btns"><button class="btn">Понятно</button></div></div></div>`},
+ practice:{t:'Тренировка',h:()=>quiz({ribbon:'<div class="ribbon">Тренировка · INLI не начисляются · защита и лимиты выключены</div>',guard:false,walk:true})}
+};
+const tabs=document.getElementById('tabs'),stage=document.getElementById('stage');let timer=null,cur='start';
+function render(id){
+  cur=id;stage.innerHTML=SCREENS[id].h();
+  [...tabs.children].forEach(c=>c.classList.toggle('on',c.dataset.id===id));
+  clearInterval(timer);
+  const rg=stage.querySelector('[data-ring]');
+  if(rg){
+    const [m,sec]=rg.textContent.split(':').map(Number);let s=m*60+sec;
+    timer=setInterval(()=>{
+      const holder=stage.querySelector('[data-ring]');if(!holder){clearInterval(timer);return}
+      if(s>0)s--;const tmp=document.createElement('div');tmp.innerHTML=ring(s,120,s<=20);holder.replaceWith(tmp.firstElementChild);
+    },1000);
+  }
+}
+tabs.innerHTML=Object.entries(SCREENS).map(([k,v])=>`<button class="chip" data-id="${k}">${v.t}</button>`).join('');
+tabs.onclick=e=>{const b=e.target.closest('.chip');if(b)render(b.dataset.id)};
+render('q');
+
+/* ---------- sound ---------- */
+let ac=null,master=null,loop=null;
+function A(){if(!ac){ac=new (window.AudioContext||window.webkitAudioContext)();master=ac.createGain();master.gain.value=.32;master.connect(ac.destination)}if(ac.state==='suspended')ac.resume();return ac}
+function tone(f,t,d,type='sine',v=.4,a=.01,r=.12,to=null,lp=null){
+  const c=A(),o=c.createOscillator(),g=c.createGain();o.type=type;o.frequency.setValueAtTime(f,t);if(to)o.frequency.exponentialRampToValueAtTime(to,t+d);
+  g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+a);g.gain.setValueAtTime(v,t+Math.max(a,d-r));g.gain.linearRampToValueAtTime(0,t+d);
+  let n=o;if(lp){const f2=c.createBiquadFilter();f2.type='lowpass';f2.frequency.value=lp;o.connect(f2);n=f2}
+  n.connect(g);g.connect(master);o.start(t);o.stop(t+d+.05)}
+function noise(t,d,v=.25,hp=3000){const c=A(),b=c.createBuffer(1,c.sampleRate*d,c.sampleRate),x=b.getChannelData(0);for(let i=0;i<x.length;i++)x[i]=(Math.random()*2-1)*(1-i/x.length);
+  const s=c.createBufferSource(),g=c.createGain(),f=c.createBiquadFilter();f.type='highpass';f.frequency.value=hp;s.buffer=b;g.gain.value=v;s.connect(f);f.connect(g);g.connect(master);s.start(t)}
+const hz=(n)=>440*Math.pow(2,(n-69)/12);
+const SND={
+ final(){const t=A().currentTime;tone(55,t,1.4,'sawtooth',.28,.5,.5,40,260);tone(110,t+.9,.5,'triangle',.35,.01,.3,55);noise(t+.92,.25,.3,300)},
+ correct(){const t=A().currentTime;[72,76,79,84].forEach((n,i)=>{tone(hz(n),t+i*.13,.5,'sawtooth',.2,.01,.25,null,2600);tone(hz(n)/2,t+i*.13,.5,'triangle',.18)});
+   [91,95,98].forEach((n,i)=>tone(hz(n),t+.55+i*.07,.5,'sine',.12,.005,.4))},
+ wrong(){const t=A().currentTime;tone(196,t,.9,'sawtooth',.3,.02,.5,92,700);tone(207,t,.9,'sawtooth',.25,.02,.5,98,700);noise(t,.18,.2,1200)},
+ lifeline(){const t=A().currentTime;[84,88,91,96].forEach((n,i)=>tone(hz(n),t+i*.07,.35,'sine',.16,.005,.25))},
+ tick(){const t=A().currentTime;noise(t,.05,.35,2500);tone(1200,t,.04,'square',.06,.001,.03)},
+ win(){const t=A().currentTime;[60,64,67,72,76,79,84].forEach((n,i)=>{tone(hz(n),t+i*.12,.8,'sawtooth',.2,.01,.5,null,2800);tone(hz(n)/2,t+i*.12,.8,'triangle',.18)});
+   [96,100,103,108].forEach((n,i)=>tone(hz(n),t+1+i*.09,.9,'sine',.12,.005,.7))},
+ violation(){const t=A().currentTime;tone(110,t,.5,'sawtooth',.3,.01,.2,98);tone(117,t,.5,'sawtooth',.3,.01,.2,104);tone(110,t+.55,.9,'sawtooth',.3,.01,.5,60,500);noise(t+.55,.4,.2,800)}
+};
+function tension(on){
+  if(loop){clearInterval(loop.id);loop.nodes.forEach(n=>{try{n.stop()}catch(e){}});loop=null}
+  if(!on)return;
+  const c=A(),t0=c.currentTime,nodes=[];
+  const g=c.createGain();g.gain.value=.16;const f=c.createBiquadFilter();f.type='lowpass';f.frequency.value=420;g.connect(f);f.connect(master);
+  [55,55.4,82.4].forEach(fr=>{const o=c.createOscillator();o.type='sawtooth';o.frequency.value=fr;o.connect(g);o.start(t0);nodes.push(o)});
+  const lfo=c.createOscillator(),lg=c.createGain();lfo.frequency.value=.12;lg.gain.value=180;lfo.connect(lg);lg.connect(f.frequency);lfo.start(t0);nodes.push(lfo);
+  const seq=[57,60,64,60,57,59,63,59],beat=.55;let i=0;
+  const step=()=>{const t=c.currentTime+.05;tone(hz(seq[i%8]+12),t,.4,'triangle',.07,.01,.3);if(i%2===0)tone(80,t,.22,'sine',.35,.002,.2,38);i++};
+  step();loop={id:setInterval(step,beat*1000),nodes};
+}
+document.getElementById('sound').innerHTML=[
+ ['loop','▶ Напряжённый фон (вкл/выкл)'],['final','Окончательный ответ'],['correct','Верно'],['wrong','Неверно'],['lifeline','Подсказка'],['tick','Тик таймера'],['win','Вершина! (15 из 15)'],['violation','Нарушение']]
+ .map(([k,t])=>`<button class="chip" data-s="${k}">${t}</button>`).join('');
+document.getElementById('sound').onclick=e=>{const b=e.target.closest('[data-s]');if(!b)return;const k=b.dataset.s;
+  if(k==='loop'){const on=!loop;tension(on);b.classList.toggle('on',on);b.textContent=(on?'■':'▶')+' Напряжённый фон (вкл/выкл)'}else SND[k]()};
+</script>
+</body>
+</html>
