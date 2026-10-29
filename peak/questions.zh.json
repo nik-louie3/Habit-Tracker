@@ -1,0 +1,6414 @@
+[
+ {
+  "id": "p0101",
+  "level": 1,
+  "category": "science",
+  "q": "水的化学式是什么？",
+  "options": [
+   "H₂O",
+   "CO₂",
+   "O₂",
+   "NaCl"
+  ],
+  "correct": 0,
+  "explanation": "一个水分子由两个氢原子和一个氧原子组成。"
+ },
+ {
+  "id": "p0102",
+  "level": 1,
+  "category": "geography",
+  "q": "法国的首都是哪座城市？",
+  "options": [
+   "马赛",
+   "巴黎",
+   "里昂",
+   "尼斯"
+  ],
+  "correct": 1,
+  "explanation": "巴黎是法国的首都，也是法国最大的城市。"
+ },
+ {
+  "id": "p0103",
+  "level": 1,
+  "category": "daily",
+  "q": "一周有几天？",
+  "options": [
+   "8",
+   "6",
+   "7",
+   "5"
+  ],
+  "correct": 2,
+  "explanation": "一周有七天。"
+ },
+ {
+  "id": "p0104",
+  "level": 1,
+  "category": "science",
+  "q": "太阳系中哪颗行星被称为“红色星球”？",
+  "options": [
+   "木星",
+   "金星",
+   "水星",
+   "火星"
+  ],
+  "correct": 3,
+  "explanation": "火星表面富含氧化铁，所以看起来泛红。"
+ },
+ {
+  "id": "p0105",
+  "level": 1,
+  "category": "history",
+  "q": "谁是第一个进入太空的人？",
+  "options": [
+   "尤里·加加林",
+   "尼尔·阿姆斯特朗",
+   "艾伦·谢泼德",
+   "巴兹·奥尔德林"
+  ],
+  "correct": 0,
+  "explanation": "1961年4月12日，尤里·加加林完成了人类首次太空飞行。"
+ },
+ {
+  "id": "p0106",
+  "level": 1,
+  "category": "literature",
+  "q": "话剧《罗密欧与朱丽叶》的作者是谁？",
+  "options": [
+   "马克·吐温",
+   "威廉·莎士比亚",
+   "查尔斯·狄更斯",
+   "简·奥斯汀"
+  ],
+  "correct": 1,
+  "explanation": "《罗密欧与朱丽叶》是莎士比亚的悲剧。"
+ },
+ {
+  "id": "p0107",
+  "level": 1,
+  "category": "art",
+  "q": "《蒙娜丽莎》是哪位艺术家画的？",
+  "options": [
+   "米开朗基罗",
+   "拉斐尔",
+   "列奥纳多·达·芬奇",
+   "伦勃朗"
+  ],
+  "correct": 2,
+  "explanation": "《蒙娜丽莎》由列奥纳多·达·芬奇创作于16世纪初。"
+ },
+ {
+  "id": "p0108",
+  "level": 1,
+  "category": "music",
+  "q": "一把古典吉他有几根弦？",
+  "options": [
+   "5",
+   "7",
+   "4",
+   "6"
+  ],
+  "correct": 3,
+  "explanation": "古典吉他有六根弦。"
+ },
+ {
+  "id": "p0109",
+  "level": 1,
+  "category": "film",
+  "q": "迪士尼那只穿红色短裤的著名老鼠叫什么？",
+  "options": [
+   "米老鼠",
+   "高飞",
+   "布鲁托",
+   "唐老鸭"
+  ],
+  "correct": 0,
+  "explanation": "米老鼠是华特·迪士尼工作室最著名的角色。"
+ },
+ {
+  "id": "p0110",
+  "level": 1,
+  "category": "sport",
+  "q": "足球比赛中，一支球队同时有几名球员在场上（含守门员）？",
+  "options": [
+   "9",
+   "11",
+   "12",
+   "10"
+  ],
+  "correct": 1,
+  "explanation": "每支足球队同时派出11名球员。"
+ },
+ {
+  "id": "p0111",
+  "level": 1,
+  "category": "food",
+  "q": "奶酪是用什么做的？",
+  "options": [
+   "蜂蜜",
+   "面粉",
+   "牛奶",
+   "鸡蛋"
+  ],
+  "correct": 2,
+  "explanation": "奶酪是用牛奶凝固后滤去乳清制成的。"
+ },
+ {
+  "id": "p0112",
+  "level": 1,
+  "category": "health",
+  "q": "哪个器官负责把血液输送到人体全身？",
+  "options": [
+   "肺",
+   "胃",
+   "肝",
+   "心脏"
+  ],
+  "correct": 3,
+  "explanation": "心脏就像一个泵，把血液推送到血管中。"
+ },
+ {
+  "id": "p0113",
+  "level": 1,
+  "category": "tech",
+  "q": "在电脑上输入文字主要使用什么设备？",
+  "options": [
+   "键盘",
+   "打印机",
+   "显示器",
+   "音箱"
+  ],
+  "correct": 0,
+  "explanation": "键盘是输入文字的主要设备。"
+ },
+ {
+  "id": "p0114",
+  "level": 1,
+  "category": "language",
+  "q": "巴西的官方语言是什么？",
+  "options": [
+   "法语",
+   "葡萄牙语",
+   "英语",
+   "西班牙语"
+  ],
+  "correct": 1,
+  "explanation": "巴西说葡萄牙语，这是殖民历史留下的遗产。"
+ },
+ {
+  "id": "p0115",
+  "level": 1,
+  "category": "society",
+  "q": "以扑灭火灾为职业的人叫什么？",
+  "options": [
+   "厨师",
+   "建筑工人",
+   "消防员",
+   "医生"
+  ],
+  "correct": 2,
+  "explanation": "消防员负责灭火和救人。"
+ },
+ {
+  "id": "p0116",
+  "level": 1,
+  "category": "geography",
+  "q": "地球上最大的海洋是哪一个？",
+  "options": [
+   "印度洋",
+   "北冰洋",
+   "大西洋",
+   "太平洋"
+  ],
+  "correct": 3,
+  "explanation": "太平洋约占地球表面积的三分之一。"
+ },
+ {
+  "id": "p0117",
+  "level": 1,
+  "category": "science",
+  "q": "蜘蛛有几条腿？",
+  "options": [
+   "8",
+   "4",
+   "6",
+   "10"
+  ],
+  "correct": 0,
+  "explanation": "蜘蛛有八条腿，这使它与昆虫区别开来。"
+ },
+ {
+  "id": "p0118",
+  "level": 1,
+  "category": "daily",
+  "q": "交通信号灯的哪种颜色表示“停”？",
+  "options": [
+   "黄色",
+   "红色",
+   "绿色",
+   "蓝色"
+  ],
+  "correct": 1,
+  "explanation": "红灯表示禁止通行。"
+ },
+ {
+  "id": "p0119",
+  "level": 1,
+  "category": "history",
+  "q": "吉萨金字塔位于哪个国家？",
+  "options": [
+   "墨西哥",
+   "印度",
+   "埃及",
+   "希腊"
+  ],
+  "correct": 2,
+  "explanation": "吉萨金字塔坐落在埃及开罗附近。"
+ },
+ {
+  "id": "p0120",
+  "level": 1,
+  "category": "literature",
+  "q": "哪位童话女主角在舞会上丢了一只玻璃鞋？",
+  "options": [
+   "白雪公主",
+   "小美人鱼",
+   "小红帽",
+   "灰姑娘"
+  ],
+  "correct": 3,
+  "explanation": "灰姑娘丢了鞋，王子凭这只鞋找到了她。"
+ },
+ {
+  "id": "p0121",
+  "level": 1,
+  "category": "music",
+  "q": "哪种乐器上有黑白两色的琴键？",
+  "options": [
+   "钢琴",
+   "小提琴",
+   "鼓",
+   "长笛"
+  ],
+  "correct": 0,
+  "explanation": "钢琴有黑白两色的琴键。"
+ },
+ {
+  "id": "p0122",
+  "level": 1,
+  "category": "sport",
+  "q": "哪项运动使用球拍和羽毛球？",
+  "options": [
+   "游泳",
+   "羽毛球",
+   "拳击",
+   "足球"
+  ],
+  "correct": 1,
+  "explanation": "羽毛球运动使用球拍和羽毛球。"
+ },
+ {
+  "id": "p0123",
+  "level": 1,
+  "category": "food",
+  "q": "据传说，哪种水果掉在了艾萨克·牛顿的头上？",
+  "options": [
+   "梨",
+   "香蕉",
+   "苹果",
+   "橙子"
+  ],
+  "correct": 2,
+  "explanation": "传说一个落下的苹果启发牛顿思考万有引力。"
+ },
+ {
+  "id": "p0124",
+  "level": 1,
+  "category": "health",
+  "q": "成年人有多少颗牙齿（含智齿）？",
+  "options": [
+   "36",
+   "30",
+   "28",
+   "32"
+  ],
+  "correct": 3,
+  "explanation": "一副完整的恒牙共有32颗。"
+ },
+ {
+  "id": "p0125",
+  "level": 1,
+  "category": "science",
+  "q": "离地球最近的恒星是哪一颗？",
+  "options": [
+   "太阳",
+   "北极星",
+   "比邻星",
+   "天狼星"
+  ],
+  "correct": 0,
+  "explanation": "离地球最近的恒星是我们的太阳。"
+ },
+ {
+  "id": "p0126",
+  "level": 1,
+  "category": "geography",
+  "q": "埃及位于哪个大洲？",
+  "options": [
+   "亚洲",
+   "非洲",
+   "欧洲",
+   "大洋洲"
+  ],
+  "correct": 1,
+  "explanation": "埃及位于非洲东北部。"
+ },
+ {
+  "id": "p0127",
+  "level": 1,
+  "category": "tech",
+  "q": "连接全世界计算机的网络叫什么？",
+  "options": [
+   "电话",
+   "电视",
+   "互联网",
+   "广播"
+  ],
+  "correct": 2,
+  "explanation": "互联网连接着全世界数十亿台设备。"
+ },
+ {
+  "id": "p0128",
+  "level": 1,
+  "category": "science",
+  "q": "哪种动物传统上被称为“百兽之王”？",
+  "options": [
+   "老虎",
+   "熊",
+   "大象",
+   "狮子"
+  ],
+  "correct": 3,
+  "explanation": "狮子传统上被称为百兽之王。"
+ },
+ {
+  "id": "p0129",
+  "level": 1,
+  "category": "society",
+  "q": "许多国家在1月1日庆祝哪个节日？",
+  "options": [
+   "元旦",
+   "万圣节",
+   "感恩节",
+   "复活节"
+  ],
+  "correct": 0,
+  "explanation": "1月1日是公历年的第一天。"
+ },
+ {
+  "id": "p0130",
+  "level": 1,
+  "category": "art",
+  "q": "把蓝色和黄色颜料混合会得到什么颜色？",
+  "options": [
+   "紫色",
+   "绿色",
+   "橙色",
+   "棕色"
+  ],
+  "correct": 1,
+  "explanation": "蓝色和黄色颜料混合得到绿色。"
+ },
+ {
+  "id": "p0201",
+  "level": 2,
+  "category": "science",
+  "q": "人要生存必须呼吸哪种气体？",
+  "options": [
+   "二氧化碳",
+   "氮气",
+   "氦气",
+   "氧气"
+  ],
+  "correct": 3,
+  "explanation": "人体呼吸需要氧气。"
+ },
+ {
+  "id": "p0202",
+  "level": 2,
+  "category": "geography",
+  "q": "日本的首都是哪座城市？",
+  "options": [
+   "东京",
+   "京都",
+   "名古屋",
+   "大阪"
+  ],
+  "correct": 0,
+  "explanation": "东京是日本的首都。"
+ },
+ {
+  "id": "p0203",
+  "level": 2,
+  "category": "history",
+  "q": "罗马斗兽场位于哪座城市？",
+  "options": [
+   "雅典",
+   "罗马",
+   "巴黎",
+   "马德里"
+  ],
+  "correct": 1,
+  "explanation": "罗马斗兽场是位于罗马市中心的古代圆形剧场。"
+ },
+ {
+  "id": "p0204",
+  "level": 2,
+  "category": "literature",
+  "q": "《哈利·波特》系列图书的作者是谁？",
+  "options": [
+   "C. S. 刘易斯",
+   "J. R. R. 托尔金",
+   "J. K. 罗琳",
+   "罗尔德·达尔"
+  ],
+  "correct": 2,
+  "explanation": "《哈利·波特》系列由J. K. 罗琳所著。"
+ },
+ {
+  "id": "p0205",
+  "level": 2,
+  "category": "art",
+  "q": "根据著名的故事，哪位画家割掉了自己的一部分耳朵？",
+  "options": [
+   "克劳德·莫奈",
+   "萨尔瓦多·达利",
+   "巴勃罗·毕加索",
+   "文森特·梵高"
+  ],
+  "correct": 3,
+  "explanation": "梵高在1888年弄伤了自己的耳朵。"
+ },
+ {
+  "id": "p0206",
+  "level": 2,
+  "category": "music",
+  "q": "《月光奏鸣曲》是哪位作曲家写的？",
+  "options": [
+   "路德维希·凡·贝多芬",
+   "约翰·塞巴斯蒂安·巴赫",
+   "弗雷德里克·肖邦",
+   "沃尔夫冈·阿马德乌斯·莫扎特"
+  ],
+  "correct": 0,
+  "explanation": "《月光奏鸣曲》是贝多芬的作品。"
+ },
+ {
+  "id": "p0207",
+  "level": 2,
+  "category": "film",
+  "q": "在1997年的哪部电影中，莱昂纳多·迪卡普里奥登上了一艘不幸的巨轮？",
+  "options": [
+   "黑客帝国",
+   "泰坦尼克号",
+   "角斗士",
+   "阿凡达"
+  ],
+  "correct": 1,
+  "explanation": "在《泰坦尼克号》中，迪卡普里奥饰演杰克·道森。"
+ },
+ {
+  "id": "p0208",
+  "level": 2,
+  "category": "sport",
+  "q": "奥林匹克旗上有几个环？",
+  "options": [
+   "7",
+   "6",
+   "5",
+   "4"
+  ],
+  "correct": 2,
+  "explanation": "五个相扣的圆环象征五大洲的团结。"
+ },
+ {
+  "id": "p0209",
+  "level": 2,
+  "category": "food",
+  "q": "巧克力是用哪种植物的豆子做成的？",
+  "options": [
+   "芸豆",
+   "咖啡",
+   "大豆",
+   "可可"
+  ],
+  "correct": 3,
+  "explanation": "巧克力由可可豆制成。"
+ },
+ {
+  "id": "p0210",
+  "level": 2,
+  "category": "health",
+  "q": "人体在阳光下会在皮肤中合成哪种维生素？",
+  "options": [
+   "维生素D",
+   "维生素B12",
+   "维生素K",
+   "维生素C"
+  ],
+  "correct": 0,
+  "explanation": "皮肤受到阳光照射时会合成维生素D。"
+ },
+ {
+  "id": "p0211",
+  "level": 2,
+  "category": "tech",
+  "q": "iPhone是哪家公司生产的？",
+  "options": [
+   "诺基亚",
+   "苹果",
+   "三星",
+   "索尼"
+  ],
+  "correct": 1,
+  "explanation": "iPhone由苹果公司生产。"
+ },
+ {
+  "id": "p0212",
+  "level": 2,
+  "category": "language",
+  "q": "西班牙的主要官方语言是什么？",
+  "options": [
+   "德语",
+   "意大利语",
+   "西班牙语",
+   "葡萄牙语"
+  ],
+  "correct": 2,
+  "explanation": "西班牙的官方语言是西班牙语（卡斯蒂利亚语）。"
+ },
+ {
+  "id": "p0213",
+  "level": 2,
+  "category": "society",
+  "q": "总部设在纽约、团结几乎所有国家的国际组织叫什么？",
+  "options": [
+   "世界贸易组织",
+   "北约",
+   "欧盟",
+   "联合国"
+  ],
+  "correct": 3,
+  "explanation": "联合国成立于1945年。"
+ },
+ {
+  "id": "p0214",
+  "level": 2,
+  "category": "science",
+  "q": "太阳系有几颗行星？",
+  "options": [
+   "8",
+   "10",
+   "7",
+   "9"
+  ],
+  "correct": 0,
+  "explanation": "太阳系有八颗行星。"
+ },
+ {
+  "id": "p0215",
+  "level": 2,
+  "category": "geography",
+  "q": "世界上面积最大的国家是哪个？",
+  "options": [
+   "中国",
+   "俄罗斯",
+   "美国",
+   "加拿大"
+  ],
+  "correct": 1,
+  "explanation": "俄罗斯是面积最大的国家。"
+ },
+ {
+  "id": "p0216",
+  "level": 2,
+  "category": "history",
+  "q": "美国的第一任总统是谁？",
+  "options": [
+   "本杰明·富兰克林",
+   "亚伯拉罕·林肯",
+   "乔治·华盛顿",
+   "托马斯·杰斐逊"
+  ],
+  "correct": 2,
+  "explanation": "乔治·华盛顿的任期是1789年至1797年。"
+ },
+ {
+  "id": "p0217",
+  "level": 2,
+  "category": "daily",
+  "q": "一天有多少小时？",
+  "options": [
+   "12",
+   "36",
+   "48",
+   "24"
+  ],
+  "correct": 3,
+  "explanation": "一天有二十四小时。"
+ },
+ {
+  "id": "p0218",
+  "level": 2,
+  "category": "literature",
+  "q": "小说《罪与罚》的作者是谁？",
+  "options": [
+   "费奥多尔·陀思妥耶夫斯基",
+   "安东·契诃夫",
+   "伊万·屠格涅夫",
+   "马克西姆·高尔基"
+  ],
+  "correct": 0,
+  "explanation": "这部小说出版于1866年。"
+ },
+ {
+  "id": "p0219",
+  "level": 2,
+  "category": "art",
+  "q": "卢浮宫博物馆位于哪座城市？",
+  "options": [
+   "维也纳",
+   "巴黎",
+   "罗马",
+   "伦敦"
+  ],
+  "correct": 1,
+  "explanation": "卢浮宫是巴黎的大型艺术博物馆。"
+ },
+ {
+  "id": "p0220",
+  "level": 2,
+  "category": "music",
+  "q": "一个八度里有多少个基本音（do、re、mi……）？",
+  "options": [
+   "8",
+   "5",
+   "7",
+   "12"
+  ],
+  "correct": 2,
+  "explanation": "do、re、mi、fa、sol、la、si，共七个基本音。"
+ },
+ {
+  "id": "p0221",
+  "level": 2,
+  "category": "film",
+  "q": "梦工厂动画电影中那个绿色食人魔主角叫什么？",
+  "options": [
+   "驴子",
+   "穿靴子的猫",
+   "菲奥娜",
+   "史莱克"
+  ],
+  "correct": 3,
+  "explanation": "史莱克是2001年同名动画电影的主角。"
+ },
+ {
+  "id": "p0222",
+  "level": 2,
+  "category": "sport",
+  "q": "在哪项运动中球员会做“扣篮”？",
+  "options": [
+   "篮球",
+   "手球",
+   "水球",
+   "排球"
+  ],
+  "correct": 0,
+  "explanation": "扣篮是从上方把球有力地投进篮筐的动作。"
+ },
+ {
+  "id": "p0223",
+  "level": 2,
+  "category": "food",
+  "q": "哪个国家被认为是比萨的发源地？",
+  "options": [
+   "希腊",
+   "意大利",
+   "法国",
+   "墨西哥"
+  ],
+  "correct": 1,
+  "explanation": "现代比萨起源于意大利的那不勒斯。"
+ },
+ {
+  "id": "p0224",
+  "level": 2,
+  "category": "health",
+  "q": "温度计是用来测量什么的？",
+  "options": [
+   "重量",
+   "压力",
+   "温度",
+   "高度"
+  ],
+  "correct": 2,
+  "explanation": "温度计用来测量温度。"
+ },
+ {
+  "id": "p0225",
+  "level": 2,
+  "category": "tech",
+  "q": "缩写“PC”通常代表什么？",
+  "options": [
+   "邮政客户端",
+   "印刷卡",
+   "便携相机",
+   "个人电脑"
+  ],
+  "correct": 3,
+  "explanation": "PC代表个人电脑。"
+ },
+ {
+  "id": "p0226",
+  "level": 2,
+  "category": "science",
+  "q": "把物体拉向地球的力叫什么？",
+  "options": [
+   "重力",
+   "磁力",
+   "惯性",
+   "摩擦力"
+  ],
+  "correct": 0,
+  "explanation": "重力是一种吸引力。"
+ },
+ {
+  "id": "p0227",
+  "level": 2,
+  "category": "geography",
+  "q": "巴西位于哪个大洲？",
+  "options": [
+   "北美洲",
+   "南美洲",
+   "亚洲",
+   "非洲"
+  ],
+  "correct": 1,
+  "explanation": "巴西是南美洲面积最大的国家。"
+ },
+ {
+  "id": "p0228",
+  "level": 2,
+  "category": "society",
+  "q": "给动物看病的人从事什么职业？",
+  "options": [
+   "儿科医生",
+   "牙医",
+   "兽医",
+   "药剂师"
+  ],
+  "correct": 2,
+  "explanation": "兽医给动物治病。"
+ },
+ {
+  "id": "p0229",
+  "level": 2,
+  "category": "history",
+  "q": "古代奥林匹克运动会起源于哪个国家？",
+  "options": [
+   "波斯",
+   "埃及",
+   "意大利",
+   "希腊"
+  ],
+  "correct": 3,
+  "explanation": "古代奥运会在希腊的奥林匹亚举行。"
+ },
+ {
+  "id": "p0230",
+  "level": 2,
+  "category": "science",
+  "q": "地球上最大的动物是哪一种？",
+  "options": [
+   "蓝鲸",
+   "大白鲨",
+   "非洲象",
+   "长颈鹿"
+  ],
+  "correct": 0,
+  "explanation": "蓝鲸是已知最大的动物。"
+ },
+ {
+  "id": "p0301",
+  "level": 3,
+  "category": "science",
+  "q": "黄金的化学符号是什么？",
+  "options": [
+   "Fe",
+   "Go",
+   "Au",
+   "Ag"
+  ],
+  "correct": 2,
+  "explanation": "Au来自拉丁语aurum。"
+ },
+ {
+  "id": "p0302",
+  "level": 3,
+  "category": "geography",
+  "q": "加拿大的首都是哪座城市？",
+  "options": [
+   "温哥华",
+   "多伦多",
+   "蒙特利尔",
+   "渥太华"
+  ],
+  "correct": 3,
+  "explanation": "加拿大的首都是渥太华，而不是最大的城市多伦多。"
+ },
+ {
+  "id": "p0303",
+  "level": 3,
+  "category": "history",
+  "q": "第一次世界大战爆发于哪一年？",
+  "options": [
+   "1914",
+   "1918",
+   "1939",
+   "1905"
+  ],
+  "correct": 0,
+  "explanation": "战争于1914年夏天爆发。"
+ },
+ {
+  "id": "p0304",
+  "level": 3,
+  "category": "literature",
+  "q": "小说《傲慢与偏见》的作者是谁？",
+  "options": [
+   "阿加莎·克里斯蒂",
+   "简·奥斯汀",
+   "艾米莉·勃朗特",
+   "玛丽·雪莱"
+  ],
+  "correct": 1,
+  "explanation": "这部小说出版于1813年。"
+ },
+ {
+  "id": "p0305",
+  "level": 3,
+  "category": "art",
+  "q": "《呐喊》是哪位艺术家的作品？",
+  "options": [
+   "古斯塔夫·克里姆特",
+   "亨利·马蒂斯",
+   "爱德华·蒙克",
+   "弗朗西斯科·戈雅"
+  ],
+  "correct": 2,
+  "explanation": "《呐喊》是挪威画家爱德华·蒙克最著名的作品。"
+ },
+ {
+  "id": "p0306",
+  "level": 3,
+  "category": "music",
+  "q": "披头士乐队成立于哪个国家？",
+  "options": [
+   "澳大利亚",
+   "美国",
+   "爱尔兰",
+   "英国"
+  ],
+  "correct": 3,
+  "explanation": "披头士乐队成立于英国利物浦。"
+ },
+ {
+  "id": "p0307",
+  "level": 3,
+  "category": "film",
+  "q": "《大白鲨》和《辛德勒的名单》都是谁导演的？",
+  "options": [
+   "史蒂文·斯皮尔伯格",
+   "马丁·斯科塞斯",
+   "乔治·卢卡斯",
+   "克里斯托弗·诺兰"
+  ],
+  "correct": 0,
+  "explanation": "这两部电影都由史蒂文·斯皮尔伯格执导。"
+ },
+ {
+  "id": "p0308",
+  "level": 3,
+  "category": "sport",
+  "q": "2016年夏季奥运会在哪个国家举行？",
+  "options": [
+   "英国",
+   "巴西",
+   "日本",
+   "中国"
+  ],
+  "correct": 1,
+  "explanation": "2016年奥运会由里约热内卢主办。"
+ },
+ {
+  "id": "p0309",
+  "level": 3,
+  "category": "food",
+  "q": "按重量计算，哪种香料通常被认为是世界上最贵的？",
+  "options": [
+   "黑胡椒",
+   "红椒粉",
+   "藏红花",
+   "肉桂"
+  ],
+  "correct": 2,
+  "explanation": "藏红花由人工从番红花的花朵中采摘。"
+ },
+ {
+  "id": "p0310",
+  "level": 3,
+  "category": "health",
+  "q": "血液中哪种物质负责运送氧气？",
+  "options": [
+   "葡萄糖",
+   "胰岛素",
+   "肾上腺素",
+   "血红蛋白"
+  ],
+  "correct": 3,
+  "explanation": "红细胞中的血红蛋白能与氧结合。"
+ },
+ {
+  "id": "p0311",
+  "level": 3,
+  "category": "tech",
+  "q": "谁与保罗·艾伦共同创办了微软？",
+  "options": [
+   "比尔·盖茨",
+   "马克·扎克伯格",
+   "埃隆·马斯克",
+   "史蒂夫·乔布斯"
+  ],
+  "correct": 0,
+  "explanation": "微软由比尔·盖茨和保罗·艾伦于1975年创办。"
+ },
+ {
+  "id": "p0312",
+  "level": 3,
+  "category": "language",
+  "q": "世界上母语使用者最多的语言是哪种？",
+  "options": [
+   "英语",
+   "汉语普通话",
+   "印地语",
+   "西班牙语"
+  ],
+  "correct": 1,
+  "explanation": "汉语普通话的母语使用者最多。"
+ },
+ {
+  "id": "p0313",
+  "level": 3,
+  "category": "society",
+  "q": "联合国安理会有几个常任理事国？",
+  "options": [
+   "10",
+   "7",
+   "5",
+   "3"
+  ],
+  "correct": 2,
+  "explanation": "这五国是美国、俄罗斯、中国、英国和法国。"
+ },
+ {
+  "id": "p0314",
+  "level": 3,
+  "category": "science",
+  "q": "哪颗行星以明亮的光环而闻名？",
+  "options": [
+   "金星",
+   "火星",
+   "水星",
+   "土星"
+  ],
+  "correct": 3,
+  "explanation": "用小型望远镜也能看到土星环。"
+ },
+ {
+  "id": "p0315",
+  "level": 3,
+  "category": "geography",
+  "q": "哪座山的海拔最高？",
+  "options": [
+   "珠穆朗玛峰",
+   "勃朗峰",
+   "乞力马扎罗山",
+   "厄尔布鲁士山"
+  ],
+  "correct": 0,
+  "explanation": "珠穆朗玛峰海拔约8849米。"
+ },
+ {
+  "id": "p0316",
+  "level": 3,
+  "category": "history",
+  "q": "谁率领了1492年那次让欧洲人抵达美洲的航行？",
+  "options": [
+   "斐迪南·麦哲伦",
+   "克里斯托弗·哥伦布",
+   "瓦斯科·达·伽马",
+   "马可·波罗"
+  ],
+  "correct": 1,
+  "explanation": "哥伦布于1492年在加勒比海登陆。"
+ },
+ {
+  "id": "p0317",
+  "level": 3,
+  "category": "science",
+  "q": "直角是多少度？",
+  "options": [
+   "180",
+   "45",
+   "90",
+   "60"
+  ],
+  "correct": 2,
+  "explanation": "直角是90度。"
+ },
+ {
+  "id": "p0318",
+  "level": 3,
+  "category": "literature",
+  "q": "小说《悲惨世界》的作者是谁？",
+  "options": [
+   "奥诺雷·德·巴尔扎克",
+   "亚历山大·仲马",
+   "古斯塔夫·福楼拜",
+   "维克多·雨果"
+  ],
+  "correct": 3,
+  "explanation": "《悲惨世界》由维克多·雨果于1862年出版。"
+ },
+ {
+  "id": "p0319",
+  "level": 3,
+  "category": "art",
+  "q": "普拉多博物馆位于哪座城市？",
+  "options": [
+   "马德里",
+   "巴塞罗那",
+   "里斯本",
+   "米兰"
+  ],
+  "correct": 0,
+  "explanation": "普拉多是马德里的主要艺术博物馆。"
+ },
+ {
+  "id": "p0320",
+  "level": 3,
+  "category": "music",
+  "q": "歌剧《魔笛》是谁作曲的？",
+  "options": [
+   "焦阿基诺·罗西尼",
+   "沃尔夫冈·阿马德乌斯·莫扎特",
+   "朱塞佩·威尔第",
+   "理查德·瓦格纳"
+  ],
+  "correct": 1,
+  "explanation": "莫扎特于1791年创作了它。"
+ },
+ {
+  "id": "p0321",
+  "level": 3,
+  "category": "film",
+  "q": "第一部全电脑制作的动画长片《玩具总动员》是哪家工作室制作的？",
+  "options": [
+   "华纳兄弟",
+   "梦工厂",
+   "皮克斯",
+   "派拉蒙"
+  ],
+  "correct": 2,
+  "explanation": "《玩具总动员》（1995）由皮克斯制作。"
+ },
+ {
+  "id": "p0322",
+  "level": 3,
+  "category": "sport",
+  "q": "排球比赛中，一支球队同时有几名球员在场上？",
+  "options": [
+   "7",
+   "8",
+   "5",
+   "6"
+  ],
+  "correct": 3,
+  "explanation": "排球是六人对六人。"
+ },
+ {
+  "id": "p0323",
+  "level": 3,
+  "category": "food",
+  "q": "日本传统饮品清酒是用什么酿成的？",
+  "options": [
+   "大米",
+   "小麦",
+   "土豆",
+   "葡萄"
+  ],
+  "correct": 0,
+  "explanation": "清酒是以大米为原料的饮品。"
+ },
+ {
+  "id": "p0324",
+  "level": 3,
+  "category": "health",
+  "q": "按表面积计算，人体最大的器官是什么？",
+  "options": [
+   "肝脏",
+   "皮肤",
+   "肠道",
+   "肺"
+  ],
+  "correct": 1,
+  "explanation": "皮肤是表面积最大的器官。"
+ },
+ {
+  "id": "p0325",
+  "level": 3,
+  "category": "tech",
+  "q": "缩写USB代表什么？",
+  "options": [
+   "Unified System Board",
+   "Universal Storage Box",
+   "Universal Serial Bus",
+   "United Signal Band"
+  ],
+  "correct": 2,
+  "explanation": "USB是Universal Serial Bus（通用串行总线）的缩写。"
+ },
+ {
+  "id": "p0326",
+  "level": 3,
+  "category": "science",
+  "q": "哪种气体占地球大气的大部分？",
+  "options": [
+   "氧气",
+   "氩气",
+   "二氧化碳",
+   "氮气"
+  ],
+  "correct": 3,
+  "explanation": "氮气约占大气的78%。"
+ },
+ {
+  "id": "p0327",
+  "level": 3,
+  "category": "geography",
+  "q": "哪个欧洲国家的轮廓常被比作一只靴子？",
+  "options": [
+   "意大利",
+   "希腊",
+   "西班牙",
+   "葡萄牙"
+  ],
+  "correct": 0,
+  "explanation": "意大利半岛看起来像一只靴子。"
+ },
+ {
+  "id": "p0328",
+  "level": 3,
+  "category": "society",
+  "q": "日本的货币叫什么？",
+  "options": [
+   "元",
+   "日元",
+   "韩元",
+   "卢比"
+  ],
+  "correct": 1,
+  "explanation": "日本的货币是日元。"
+ },
+ {
+  "id": "p0329",
+  "level": 3,
+  "category": "history",
+  "q": "马丘比丘城是哪个文明建造的？",
+  "options": [
+   "古埃及人",
+   "玛雅人",
+   "印加人",
+   "阿兹特克人"
+  ],
+  "correct": 2,
+  "explanation": "印加人在15世纪于安第斯山脉建造了马丘比丘。"
+ },
+ {
+  "id": "p0330",
+  "level": 3,
+  "category": "geography",
+  "q": "世界上最大的热带沙漠叫什么？",
+  "options": [
+   "阿塔卡马沙漠",
+   "卡拉哈里沙漠",
+   "戈壁",
+   "撒哈拉沙漠"
+  ],
+  "correct": 3,
+  "explanation": "撒哈拉是地球上最大的热带沙漠。"
+ },
+ {
+  "id": "p0401",
+  "level": 4,
+  "category": "science",
+  "q": "太阳系中哪颗行星离太阳最近？",
+  "options": [
+   "火星",
+   "水星",
+   "地球",
+   "金星"
+  ],
+  "correct": 1,
+  "explanation": "水星是离太阳最近的行星。"
+ },
+ {
+  "id": "p0402",
+  "level": 4,
+  "category": "science",
+  "q": "哪种金属在室温下是液体？",
+  "options": [
+   "铜",
+   "铝",
+   "汞",
+   "铅"
+  ],
+  "correct": 2,
+  "explanation": "汞在−39 °C熔化，所以在常温下是液态。"
+ },
+ {
+  "id": "p0403",
+  "level": 4,
+  "category": "science",
+  "q": "植物在光合作用中释放哪种气体？",
+  "options": [
+   "甲烷",
+   "氮气",
+   "氢气",
+   "氧气"
+  ],
+  "correct": 3,
+  "explanation": "植物在光合作用中释放氧气。"
+ },
+ {
+  "id": "p0404",
+  "level": 4,
+  "category": "geography",
+  "q": "德国的首都是哪座城市？",
+  "options": [
+   "柏林",
+   "慕尼黑",
+   "法兰克福",
+   "汉堡"
+  ],
+  "correct": 0,
+  "explanation": "柏林是德国的首都，也是最大的城市。"
+ },
+ {
+  "id": "p0405",
+  "level": 4,
+  "category": "geography",
+  "q": "美国哪座城市被昵称为“大苹果”？",
+  "options": [
+   "芝加哥",
+   "纽约",
+   "洛杉矶",
+   "波士顿"
+  ],
+  "correct": 1,
+  "explanation": "“大苹果”是纽约市的昵称。"
+ },
+ {
+  "id": "p0406",
+  "level": 4,
+  "category": "geography",
+  "q": "哪条河流经巴黎？",
+  "options": [
+   "泰晤士河",
+   "多瑙河",
+   "塞纳河",
+   "莱茵河"
+  ],
+  "correct": 2,
+  "explanation": "巴黎坐落在塞纳河畔。"
+ },
+ {
+  "id": "p0407",
+  "level": 4,
+  "category": "history",
+  "q": "第一个在月球上行走的人是谁？",
+  "options": [
+   "巴兹·奥尔德林",
+   "迈克尔·柯林斯",
+   "尤里·加加林",
+   "尼尔·阿姆斯特朗"
+  ],
+  "correct": 3,
+  "explanation": "尼尔·阿姆斯特朗于1969年7月20日迈出了在月球上的第一步。"
+ },
+ {
+  "id": "p0408",
+  "level": 4,
+  "category": "history",
+  "q": "哪位法国皇帝在滑铁卢战败？",
+  "options": [
+   "拿破仑·波拿巴",
+   "查理曼",
+   "夏尔·戴高乐",
+   "路易十四"
+  ],
+  "correct": 0,
+  "explanation": "1815年的滑铁卢战役终结了拿破仑的统治。"
+ },
+ {
+  "id": "p0409",
+  "level": 4,
+  "category": "literature",
+  "q": "童话《小王子》的作者是谁？",
+  "options": [
+   "阿尔贝·加缪",
+   "安托万·德·圣埃克苏佩里",
+   "维克多·雨果",
+   "儒勒·凡尔纳"
+  ],
+  "correct": 1,
+  "explanation": "《小王子》出版于1943年。"
+ },
+ {
+  "id": "p0410",
+  "level": 4,
+  "category": "literature",
+  "q": "《爱丽丝梦游仙境》是谁写的？",
+  "options": [
+   "鲁德亚德·吉卜林",
+   "乔纳森·斯威夫特",
+   "刘易斯·卡罗尔",
+   "罗伯特·路易斯·史蒂文森"
+  ],
+  "correct": 2,
+  "explanation": "刘易斯·卡罗尔的这本书出版于1865年。"
+ },
+ {
+  "id": "p0411",
+  "level": 4,
+  "category": "art",
+  "q": "把红色和白色颜料混合会得到什么颜色？",
+  "options": [
+   "紫色",
+   "棕色",
+   "橙色",
+   "粉色"
+  ],
+  "correct": 3,
+  "explanation": "红色和白色混合得到粉色。"
+ },
+ {
+  "id": "p0412",
+  "level": 4,
+  "category": "art",
+  "q": "埃菲尔铁塔矗立在哪座城市？",
+  "options": [
+   "巴黎",
+   "柏林",
+   "伦敦",
+   "罗马"
+  ],
+  "correct": 0,
+  "explanation": "埃菲尔铁塔是巴黎的象征。"
+ },
+ {
+  "id": "p0413",
+  "level": 4,
+  "category": "art",
+  "q": "把蓝色和红色颜料混合会得到什么颜色？",
+  "options": [
+   "灰色",
+   "紫色",
+   "绿色",
+   "橙色"
+  ],
+  "correct": 1,
+  "explanation": "蓝色和红色混合得到紫色。"
+ },
+ {
+  "id": "p0414",
+  "level": 4,
+  "category": "music",
+  "q": "小提琴属于哪一类乐器？",
+  "options": [
+   "打击乐器",
+   "键盘乐器",
+   "弦乐器",
+   "木管乐器"
+  ],
+  "correct": 2,
+  "explanation": "小提琴是一种拉弦乐器。"
+ },
+ {
+  "id": "p0415",
+  "level": 4,
+  "category": "music",
+  "q": "哪种乐器传统上被称为“乐器之王”？",
+  "options": [
+   "吉他",
+   "鼓",
+   "长笛",
+   "管风琴"
+  ],
+  "correct": 3,
+  "explanation": "管风琴因音量宏大、音域宽广而被称为乐器之王。"
+ },
+ {
+  "id": "p0416",
+  "level": 4,
+  "category": "film",
+  "q": "《指环王》中那位身穿灰袍的巫师叫什么名字？",
+  "options": [
+   "甘道夫",
+   "萨茹曼",
+   "梅林",
+   "邓布利多"
+  ],
+  "correct": 0,
+  "explanation": "灰袍甘道夫是这部三部曲的核心角色。"
+ },
+ {
+  "id": "p0417",
+  "level": 4,
+  "category": "film",
+  "q": "歌曲《Let It Go》出自迪士尼的哪部电影？",
+  "options": [
+   "海洋奇缘",
+   "冰雪奇缘",
+   "魔发奇缘",
+   "狮子王"
+  ],
+  "correct": 1,
+  "explanation": "艾莎在《冰雪奇缘》（2013）中唱了《Let It Go》。"
+ },
+ {
+  "id": "p0418",
+  "level": 4,
+  "category": "sport",
+  "q": "篮球比赛中，一支球队同时有几名球员在场上？",
+  "options": [
+   "4",
+   "7",
+   "5",
+   "6"
+  ],
+  "correct": 2,
+  "explanation": "每支篮球队场上有五名球员。"
+ },
+ {
+  "id": "p0419",
+  "level": 4,
+  "category": "sport",
+  "q": "“温布尔登”锦标赛属于哪项运动？",
+  "options": [
+   "橄榄球",
+   "板球",
+   "高尔夫",
+   "网球"
+  ],
+  "correct": 3,
+  "explanation": "温布尔登是网球四大满贯赛事之一。"
+ },
+ {
+  "id": "p0420",
+  "level": 4,
+  "category": "food",
+  "q": "豆腐是用哪种植物做的？",
+  "options": [
+   "大豆",
+   "玉米",
+   "小麦",
+   "大米"
+  ],
+  "correct": 0,
+  "explanation": "豆腐是大豆凝固而成的。"
+ },
+ {
+  "id": "p0421",
+  "level": 4,
+  "category": "food",
+  "q": "意大利面通常用哪种谷物制成？",
+  "options": [
+   "燕麦",
+   "小麦",
+   "黑麦",
+   "大米"
+  ],
+  "correct": 1,
+  "explanation": "经典意大利面由（硬粒）小麦粉制成。"
+ },
+ {
+  "id": "p0422",
+  "level": 4,
+  "category": "health",
+  "q": "哪种矿物质对强健骨骼和牙齿特别重要？",
+  "options": [
+   "碘",
+   "钠",
+   "钙",
+   "铜"
+  ],
+  "correct": 2,
+  "explanation": "钙是骨骼的主要构成材料。"
+ },
+ {
+  "id": "p0423",
+  "level": 4,
+  "category": "health",
+  "q": "成年人通常建议每天睡多少小时？",
+  "options": [
+   "5",
+   "3–4",
+   "11–12",
+   "7–9"
+  ],
+  "correct": 3,
+  "explanation": "大多数成年人需要7至9小时的睡眠。"
+ },
+ {
+  "id": "p0424",
+  "level": 4,
+  "category": "tech",
+  "q": "网址中的“WWW”代表什么？",
+  "options": [
+   "World Wide Web",
+   "Web With Words",
+   "World Web Work",
+   "Wide Window Web"
+  ],
+  "correct": 0,
+  "explanation": "WWW是World Wide Web（万维网）的缩写。"
+ },
+ {
+  "id": "p0425",
+  "level": 4,
+  "category": "tech",
+  "q": "用来浏览网站的程序叫什么？",
+  "options": [
+   "编辑器",
+   "浏览器",
+   "压缩软件",
+   "杀毒软件"
+  ],
+  "correct": 1,
+  "explanation": "Chrome、Firefox和Safari都是浏览器。"
+ },
+ {
+  "id": "p0426",
+  "level": 4,
+  "category": "daily",
+  "q": "闰年有多少天？",
+  "options": [
+   "365",
+   "364",
+   "366",
+   "367"
+  ],
+  "correct": 2,
+  "explanation": "闰年多出2月29日这一天。"
+ },
+ {
+  "id": "p0427",
+  "level": 4,
+  "category": "daily",
+  "q": "一年中哪个月份最短？",
+  "options": [
+   "4月",
+   "6月",
+   "1月",
+   "2月"
+  ],
+  "correct": 3,
+  "explanation": "2月有28天或29天。"
+ },
+ {
+  "id": "p0428",
+  "level": 4,
+  "category": "language",
+  "q": "德国的官方语言是什么？",
+  "options": [
+   "德语",
+   "波兰语",
+   "丹麦语",
+   "荷兰语"
+  ],
+  "correct": 0,
+  "explanation": "德国的官方语言是德语。"
+ },
+ {
+  "id": "p0429",
+  "level": 4,
+  "category": "language",
+  "q": "语言学研究什么？",
+  "options": [
+   "植物",
+   "语言",
+   "星星",
+   "岩石"
+  ],
+  "correct": 1,
+  "explanation": "语言学是研究语言的科学。"
+ },
+ {
+  "id": "p0430",
+  "level": 4,
+  "category": "society",
+  "q": "出国旅行时，哪种证件可以证明一个人的身份？",
+  "options": [
+   "借书证",
+   "毕业证",
+   "护照",
+   "出生证明"
+  ],
+  "correct": 2,
+  "explanation": "出国旅行者出示护照。"
+ },
+ {
+  "id": "p0431",
+  "level": 4,
+  "category": "society",
+  "q": "经济学中的“GDP”代表什么？",
+  "options": [
+   "每日总产值",
+   "全球发展计划",
+   "一般国内价格",
+   "国内生产总值"
+  ],
+  "correct": 3,
+  "explanation": "GDP衡量一个国家一年内生产的所有商品和服务的价值。"
+ },
+ {
+  "id": "p0501",
+  "level": 5,
+  "category": "science",
+  "q": "在海平面上，水在多少摄氏度沸腾？",
+  "options": [
+   "100 °C",
+   "120 °C",
+   "80 °C",
+   "90 °C"
+  ],
+  "correct": 0,
+  "explanation": "在标准大气压下，水在100 °C沸腾。"
+ },
+ {
+  "id": "p0502",
+  "level": 5,
+  "category": "science",
+  "q": "原子中的哪种粒子带负电？",
+  "options": [
+   "质子",
+   "电子",
+   "中子",
+   "正电子"
+  ],
+  "correct": 1,
+  "explanation": "电子带负电。"
+ },
+ {
+  "id": "p0503",
+  "level": 5,
+  "category": "science",
+  "q": "下列天然材料中，哪种最硬？",
+  "options": [
+   "黄金",
+   "石英",
+   "钻石",
+   "花岗岩"
+  ],
+  "correct": 2,
+  "explanation": "钻石是常见天然材料中最硬的。"
+ },
+ {
+  "id": "p0504",
+  "level": 5,
+  "category": "science",
+  "q": "彩虹传统上被分为几种颜色？",
+  "options": [
+   "9",
+   "5",
+   "6",
+   "7"
+  ],
+  "correct": 3,
+  "explanation": "传统上认为彩虹有七种颜色。"
+ },
+ {
+  "id": "p0505",
+  "level": 5,
+  "category": "geography",
+  "q": "澳大利亚的首都是哪座城市？",
+  "options": [
+   "堪培拉",
+   "墨尔本",
+   "布里斯班",
+   "悉尼"
+  ],
+  "correct": 0,
+  "explanation": "澳大利亚的首都是堪培拉，而不是悉尼。"
+ },
+ {
+  "id": "p0506",
+  "level": 5,
+  "category": "geography",
+  "q": "欧洲最长的河流是哪条？",
+  "options": [
+   "塞纳河",
+   "伏尔加河",
+   "莱茵河",
+   "多瑙河"
+  ],
+  "correct": 1,
+  "explanation": "伏尔加河是欧洲最长的河流。"
+ },
+ {
+  "id": "p0507",
+  "level": 5,
+  "category": "geography",
+  "q": "哪条河流经开罗？",
+  "options": [
+   "尼日尔河",
+   "赞比西河",
+   "尼罗河",
+   "刚果河"
+  ],
+  "correct": 2,
+  "explanation": "开罗坐落在尼罗河畔。"
+ },
+ {
+  "id": "p0508",
+  "level": 5,
+  "category": "history",
+  "q": "谁被认为是古罗马的第一位皇帝？",
+  "options": [
+   "图拉真",
+   "尼禄",
+   "尤利乌斯·凯撒",
+   "屋大维·奥古斯都"
+  ],
+  "correct": 3,
+  "explanation": "屋大维·奥古斯都于公元前27年成为第一位皇帝。"
+ },
+ {
+  "id": "p0509",
+  "level": 5,
+  "category": "history",
+  "q": "第二次世界大战结束于哪一年？",
+  "options": [
+   "1945",
+   "1944",
+   "1946",
+   "1950"
+  ],
+  "correct": 0,
+  "explanation": "战争于1945年结束。"
+ },
+ {
+  "id": "p0510",
+  "level": 5,
+  "category": "history",
+  "q": "哪个国家把自由女神像赠送给了美国？",
+  "options": [
+   "意大利",
+   "法国",
+   "西班牙",
+   "英国"
+  ],
+  "correct": 1,
+  "explanation": "法国于1886年赠送了自由女神像。"
+ },
+ {
+  "id": "p0511",
+  "level": 5,
+  "category": "literature",
+  "q": "中篇小说《老人与海》的作者是谁？",
+  "options": [
+   "约翰·斯坦贝克",
+   "威廉·福克纳",
+   "欧内斯特·海明威",
+   "F. 斯科特·菲茨杰拉德"
+  ],
+  "correct": 2,
+  "explanation": "海明威的这部中篇小说出版于1952年。"
+ },
+ {
+  "id": "p0512",
+  "level": 5,
+  "category": "literature",
+  "q": "《三个火枪手》的作者是谁？",
+  "options": [
+   "司汤达",
+   "儒勒·凡尔纳",
+   "维克多·雨果",
+   "亚历山大·仲马"
+  ],
+  "correct": 3,
+  "explanation": "亚历山大·仲马的这部小说出版于1844年。"
+ },
+ {
+  "id": "p0513",
+  "level": 5,
+  "category": "art",
+  "q": "《格尔尼卡》是谁画的？",
+  "options": [
+   "巴勃罗·毕加索",
+   "萨尔瓦多·达利",
+   "琼·米罗",
+   "亨利·马蒂斯"
+  ],
+  "correct": 0,
+  "explanation": "《格尔尼卡》由毕加索创作于1937年。"
+ },
+ {
+  "id": "p0514",
+  "level": 5,
+  "category": "art",
+  "q": "米开朗基罗的《大卫》是用什么材料雕成的？",
+  "options": [
+   "青铜",
+   "大理石",
+   "木头",
+   "花岗岩"
+  ],
+  "correct": 1,
+  "explanation": "《大卫》是用白色大理石雕刻的。"
+ },
+ {
+  "id": "p0515",
+  "level": 5,
+  "category": "music",
+  "q": "一架标准钢琴有多少个琴键？",
+  "options": [
+   "100",
+   "92",
+   "88",
+   "76"
+  ],
+  "correct": 2,
+  "explanation": "标准钢琴有88个琴键。"
+ },
+ {
+  "id": "p0516",
+  "level": 5,
+  "category": "music",
+  "q": "哪位作曲家晚年失聪，却仍坚持创作？",
+  "options": [
+   "安东尼奥·维瓦尔第",
+   "约翰·塞巴斯蒂安·巴赫",
+   "朱塞佩·威尔第",
+   "路德维希·凡·贝多芬"
+  ],
+  "correct": 3,
+  "explanation": "贝多芬几乎完全失聪，但仍写出了伟大的作品。"
+ },
+ {
+  "id": "p0517",
+  "level": 5,
+  "category": "film",
+  "q": "电影《阿凡达》（2009）的导演是谁？",
+  "options": [
+   "詹姆斯·卡梅隆",
+   "彼得·杰克逊",
+   "迈克尔·贝",
+   "雷德利·斯科特"
+  ],
+  "correct": 0,
+  "explanation": "《阿凡达》由詹姆斯·卡梅隆执导。"
+ },
+ {
+  "id": "p0518",
+  "level": 5,
+  "category": "film",
+  "q": "《加勒比海盗》中杰克·斯派洛船长由哪位演员饰演？",
+  "options": [
+   "奥兰多·布鲁姆",
+   "约翰尼·德普",
+   "汤姆·克鲁斯",
+   "布拉德·皮特"
+  ],
+  "correct": 1,
+  "explanation": "杰克·斯派洛由约翰尼·德普饰演。"
+ },
+ {
+  "id": "p0519",
+  "level": 5,
+  "category": "sport",
+  "q": "夏季奥运会多久举办一次？",
+  "options": [
+   "每五年",
+   "每两年",
+   "每四年",
+   "每年"
+  ],
+  "correct": 2,
+  "explanation": "夏季奥运会每四年举办一次。"
+ },
+ {
+  "id": "p0520",
+  "level": 5,
+  "category": "sport",
+  "q": "哪支国家队赢得了2014年国际足联世界杯？",
+  "options": [
+   "巴西",
+   "阿根廷",
+   "西班牙",
+   "德国"
+  ],
+  "correct": 3,
+  "explanation": "德国在2014年决赛中击败了阿根廷。"
+ },
+ {
+  "id": "p0521",
+  "level": 5,
+  "category": "food",
+  "q": "寿司起源于哪个国家？",
+  "options": [
+   "日本",
+   "中国",
+   "韩国",
+   "泰国"
+  ],
+  "correct": 0,
+  "explanation": "寿司是日本料理中的一道菜。"
+ },
+ {
+  "id": "p0522",
+  "level": 5,
+  "category": "food",
+  "q": "鳄梨酱是用哪种水果做的？",
+  "options": [
+   "青柠",
+   "牛油果",
+   "芒果",
+   "木瓜"
+  ],
+  "correct": 1,
+  "explanation": "鳄梨酱（guacamole）是一种用牛油果做的墨西哥蘸酱。"
+ },
+ {
+  "id": "p0523",
+  "level": 5,
+  "category": "health",
+  "q": "哪个器官分泌胰岛素？",
+  "options": [
+   "肝脏",
+   "肾脏",
+   "胰腺",
+   "脾脏"
+  ],
+  "correct": 2,
+  "explanation": "胰岛素由胰腺分泌。"
+ },
+ {
+  "id": "p0524",
+  "level": 5,
+  "category": "health",
+  "q": "一个健康人的体细胞中有多少条染色体？",
+  "options": [
+   "23",
+   "44",
+   "48",
+   "46"
+  ],
+  "correct": 3,
+  "explanation": "人类普通细胞有46条染色体（23对）。"
+ },
+ {
+  "id": "p0525",
+  "level": 5,
+  "category": "tech",
+  "q": "缩写HTML代表什么？",
+  "options": [
+   "HyperText Markup Language",
+   "High Tech Machine Language",
+   "Hyper Transfer Mail Link",
+   "Home Tool Markup Level"
+  ],
+  "correct": 0,
+  "explanation": "HTML是网页的标记语言。"
+ },
+ {
+  "id": "p0526",
+  "level": 5,
+  "category": "tech",
+  "q": "哪家公司开发了Android移动操作系统？",
+  "options": [
+   "苹果",
+   "谷歌",
+   "诺基亚",
+   "微软"
+  ],
+  "correct": 1,
+  "explanation": "Android由谷歌开发。"
+ },
+ {
+  "id": "p0527",
+  "level": 5,
+  "category": "daily",
+  "q": "一小时有多少秒？",
+  "options": [
+   "6000",
+   "360",
+   "3600",
+   "1440"
+  ],
+  "correct": 2,
+  "explanation": "60分钟 × 60秒 = 3600秒。"
+ },
+ {
+  "id": "p0528",
+  "level": 5,
+  "category": "language",
+  "q": "“pizza”这个词是从哪种语言进入其他语言的？",
+  "options": [
+   "西班牙语",
+   "希腊语",
+   "拉丁语",
+   "意大利语"
+  ],
+  "correct": 3,
+  "explanation": "“pizza”是意大利语单词。"
+ },
+ {
+  "id": "p0529",
+  "level": 5,
+  "category": "society",
+  "q": "英国的货币是什么？",
+  "options": [
+   "英镑",
+   "克朗",
+   "美元",
+   "欧元"
+  ],
+  "correct": 0,
+  "explanation": "英国使用英镑。"
+ },
+ {
+  "id": "p0530",
+  "level": 5,
+  "category": "society",
+  "q": "哪个组织负责管理现代奥林匹克运动会？",
+  "options": [
+   "联合国",
+   "国际奥林匹克委员会",
+   "联合国教科文组织",
+   "国际足联"
+  ],
+  "correct": 1,
+  "explanation": "奥运会由国际奥林匹克委员会（IOC）管理。"
+ },
+ {
+  "id": "p0601",
+  "level": 6,
+  "category": "science",
+  "q": "哪种化学元素的符号是Na？",
+  "options": [
+   "氮",
+   "氖",
+   "镍",
+   "钠"
+  ],
+  "correct": 3,
+  "explanation": "Na来自拉丁语natrium。"
+ },
+ {
+  "id": "p0602",
+  "level": 6,
+  "category": "science",
+  "q": "pH值衡量什么？",
+  "options": [
+   "酸碱度",
+   "密度",
+   "导电性",
+   "温度"
+  ],
+  "correct": 0,
+  "explanation": "pH表示溶液的酸碱度。"
+ },
+ {
+  "id": "p0603",
+  "level": 6,
+  "category": "science",
+  "q": "哪种化学元素最轻？",
+  "options": [
+   "锂",
+   "氢",
+   "氧",
+   "氦"
+  ],
+  "correct": 1,
+  "explanation": "氢是最轻的元素。"
+ },
+ {
+  "id": "p0604",
+  "level": 6,
+  "category": "science",
+  "q": "太阳系中最大的行星是哪一颗？",
+  "options": [
+   "土星",
+   "海王星",
+   "木星",
+   "地球"
+  ],
+  "correct": 2,
+  "explanation": "木星是太阳系中最大的行星。"
+ },
+ {
+  "id": "p0605",
+  "level": 6,
+  "category": "geography",
+  "q": "巴西的首都是哪座城市？",
+  "options": [
+   "圣保罗",
+   "萨尔瓦多",
+   "里约热内卢",
+   "巴西利亚"
+  ],
+  "correct": 3,
+  "explanation": "首都巴西利亚建于20世纪50年代。"
+ },
+ {
+  "id": "p0606",
+  "level": 6,
+  "category": "geography",
+  "q": "哪条河流经伦敦？",
+  "options": [
+   "泰晤士河",
+   "易北河",
+   "卢瓦尔河",
+   "塞纳河"
+  ],
+  "correct": 0,
+  "explanation": "伦敦坐落在泰晤士河畔。"
+ },
+ {
+  "id": "p0607",
+  "level": 6,
+  "category": "geography",
+  "q": "世界上最深的湖泊是哪一个？",
+  "options": [
+   "苏必利尔湖",
+   "贝加尔湖",
+   "坦噶尼喀湖",
+   "维多利亚湖"
+  ],
+  "correct": 1,
+  "explanation": "贝加尔湖的最大深度约为1642米。"
+ },
+ {
+  "id": "p0608",
+  "level": 6,
+  "category": "history",
+  "q": "哪位印度领袖以非暴力争取独立而闻名？",
+  "options": [
+   "贾瓦哈拉尔·尼赫鲁",
+   "英迪拉·甘地",
+   "圣雄甘地",
+   "苏巴斯·钱德拉·鲍斯"
+  ],
+  "correct": 2,
+  "explanation": "甘地领导了印度的非暴力独立运动。"
+ },
+ {
+  "id": "p0609",
+  "level": 6,
+  "category": "history",
+  "q": "柏林墙倒塌于哪一年？",
+  "options": [
+   "1991",
+   "1985",
+   "1979",
+   "1989"
+  ],
+  "correct": 3,
+  "explanation": "柏林墙于1989年11月9日倒塌。"
+ },
+ {
+  "id": "p0610",
+  "level": 6,
+  "category": "history",
+  "q": "意大利哪座城市被视为文艺复兴的摇篮？",
+  "options": [
+   "佛罗伦萨",
+   "米兰",
+   "那不勒斯",
+   "都灵"
+  ],
+  "correct": 0,
+  "explanation": "文艺复兴始于佛罗伦萨。"
+ },
+ {
+  "id": "p0611",
+  "level": 6,
+  "category": "literature",
+  "q": "反乌托邦小说《1984》的作者是谁？",
+  "options": [
+   "雷·布拉德伯里",
+   "乔治·奥威尔",
+   "奥尔德斯·赫胥黎",
+   "叶夫根尼·扎米亚京"
+  ],
+  "correct": 1,
+  "explanation": "乔治·奥威尔的这部小说出版于1949年。"
+ },
+ {
+  "id": "p0612",
+  "level": 6,
+  "category": "literature",
+  "q": "《堂吉诃德》是谁写的？",
+  "options": [
+   "洛佩·德·维加",
+   "乔万尼·薄伽丘",
+   "米格尔·德·塞万提斯",
+   "但丁·阿利吉耶里"
+  ],
+  "correct": 2,
+  "explanation": "《堂吉诃德》是塞万提斯的伟大小说。"
+ },
+ {
+  "id": "p0613",
+  "level": 6,
+  "category": "literature",
+  "q": "《伊利亚特》和《奥德赛》传统上被认为是谁的作品？",
+  "options": [
+   "柏拉图",
+   "索福克勒斯",
+   "维吉尔",
+   "荷马"
+  ],
+  "correct": 3,
+  "explanation": "这两部史诗传统上被认为出自荷马之手。"
+ },
+ {
+  "id": "p0614",
+  "level": 6,
+  "category": "art",
+  "q": "西斯廷礼拜堂的天顶画是谁画的？",
+  "options": [
+   "米开朗基罗",
+   "波提切利",
+   "列奥纳多·达·芬奇",
+   "拉斐尔"
+  ],
+  "correct": 0,
+  "explanation": "米开朗基罗在1508至1512年间绘制了西斯廷天顶画。"
+ },
+ {
+  "id": "p0615",
+  "level": 6,
+  "category": "art",
+  "q": "哪位艺术家画了带有软塌塌时钟的《记忆的永恒》？",
+  "options": [
+   "巴勃罗·毕加索",
+   "萨尔瓦多·达利",
+   "勒内·马格里特",
+   "马克·夏加尔"
+  ],
+  "correct": 1,
+  "explanation": "《记忆的永恒》（1931）是达利最著名的画作。"
+ },
+ {
+  "id": "p0616",
+  "level": 6,
+  "category": "music",
+  "q": "贝多芬写了多少首交响曲？",
+  "options": [
+   "5",
+   "12",
+   "9",
+   "7"
+  ],
+  "correct": 2,
+  "explanation": "贝多芬写了九首交响曲。"
+ },
+ {
+  "id": "p0617",
+  "level": 6,
+  "category": "music",
+  "q": "芭蕾舞剧《天鹅湖》是谁作曲的？",
+  "options": [
+   "伊戈尔·斯特拉文斯基",
+   "尼古拉·里姆斯基-科萨科夫",
+   "谢尔盖·普罗科菲耶夫",
+   "彼得·柴可夫斯基"
+  ],
+  "correct": 3,
+  "explanation": "柴可夫斯基的这部芭蕾舞剧于1877年首演。"
+ },
+ {
+  "id": "p0618",
+  "level": 6,
+  "category": "film",
+  "q": "电影《教父》的导演是谁？",
+  "options": [
+   "弗朗西斯·福特·科波拉",
+   "马丁·斯科塞斯",
+   "布赖恩·德·帕尔马",
+   "西德尼·吕美特"
+  ],
+  "correct": 0,
+  "explanation": "《教父》（1972）由弗朗西斯·福特·科波拉执导。"
+ },
+ {
+  "id": "p0619",
+  "level": 6,
+  "category": "film",
+  "q": "颁发“金棕榈奖”的电影节在法国哪座城市举行？",
+  "options": [
+   "马赛",
+   "戛纳",
+   "尼斯",
+   "里昂"
+  ],
+  "correct": 1,
+  "explanation": "戛纳电影节颁发金棕榈奖。"
+ },
+ {
+  "id": "p0620",
+  "level": 6,
+  "category": "sport",
+  "q": "柔道的发源地是哪个国家？",
+  "options": [
+   "韩国",
+   "中国",
+   "日本",
+   "蒙古"
+  ],
+  "correct": 2,
+  "explanation": "柔道由嘉纳治五郎于1882年在日本创立。"
+ },
+ {
+  "id": "p0621",
+  "level": 6,
+  "category": "sport",
+  "q": "马拉松的长度大约是多少？",
+  "options": [
+   "21公里",
+   "30公里",
+   "50公里",
+   "42公里"
+  ],
+  "correct": 3,
+  "explanation": "马拉松全程为42.195公里。"
+ },
+ {
+  "id": "p0622",
+  "level": 6,
+  "category": "food",
+  "q": "玛格丽特比萨传统上用哪种奶酪？",
+  "options": [
+   "马苏里拉奶酪",
+   "洛克福奶酪",
+   "切达奶酪",
+   "帕尔马干酪"
+  ],
+  "correct": 0,
+  "explanation": "玛格丽特比萨用马苏里拉奶酪、番茄和罗勒。"
+ },
+ {
+  "id": "p0623",
+  "level": 6,
+  "category": "food",
+  "q": "鹰嘴豆泥是用哪种豆类做的？",
+  "options": [
+   "小扁豆",
+   "鹰嘴豆",
+   "豌豆",
+   "芸豆"
+  ],
+  "correct": 1,
+  "explanation": "鹰嘴豆泥是用鹰嘴豆做成的泥。"
+ },
+ {
+  "id": "p0624",
+  "level": 6,
+  "category": "health",
+  "q": "哪种激素常被称为“压力激素”？",
+  "options": [
+   "甲状腺素",
+   "胰岛素",
+   "皮质醇",
+   "褪黑素"
+  ],
+  "correct": 2,
+  "explanation": "皮质醇由肾上腺在压力下分泌。"
+ },
+ {
+  "id": "p0625",
+  "level": 6,
+  "category": "health",
+  "q": "柑橘类水果中大量含有哪种维生素？",
+  "options": [
+   "维生素B12",
+   "维生素D",
+   "维生素A",
+   "维生素C"
+  ],
+  "correct": 3,
+  "explanation": "柠檬和橙子富含维生素C。"
+ },
+ {
+  "id": "p0626",
+  "level": 6,
+  "category": "tech",
+  "q": "电脑中的缩写CPU代表什么？",
+  "options": [
+   "中央处理器",
+   "电源",
+   "显卡",
+   "硬盘"
+  ],
+  "correct": 0,
+  "explanation": "CPU是中央处理器，是电脑的“大脑”。"
+ },
+ {
+  "id": "p0627",
+  "level": 6,
+  "category": "daily",
+  "q": "平年大约有多少周？",
+  "options": [
+   "60",
+   "52",
+   "56",
+   "48"
+  ],
+  "correct": 1,
+  "explanation": "365天比52周略多一点。"
+ },
+ {
+  "id": "p0628",
+  "level": 6,
+  "category": "language",
+  "q": "俄语使用哪种文字？",
+  "options": [
+   "拉丁字母",
+   "希腊字母",
+   "西里尔字母",
+   "阿拉伯字母"
+  ],
+  "correct": 2,
+  "explanation": "俄语使用西里尔字母书写。"
+ },
+ {
+  "id": "p0629",
+  "level": 6,
+  "category": "language",
+  "q": "哪种古老的语言是西班牙语、意大利语等罗曼语族语言的基础？",
+  "options": [
+   "古希腊语",
+   "希伯来语",
+   "梵语",
+   "拉丁语"
+  ],
+  "correct": 3,
+  "explanation": "罗曼语族语言源自通俗拉丁语。"
+ },
+ {
+  "id": "p0630",
+  "level": 6,
+  "category": "society",
+  "q": "国际事务中的缩写“WHO”代表什么？",
+  "options": [
+   "世界卫生组织",
+   "西方遗产骑士团",
+   "世界饥饿办公室",
+   "世界住房组织"
+  ],
+  "correct": 0,
+  "explanation": "世界卫生组织是联合国负责卫生事务的专门机构。"
+ },
+ {
+  "id": "p0701",
+  "level": 7,
+  "category": "science",
+  "q": "化学元素周期表是谁创立的？",
+  "options": [
+   "尼尔斯·玻尔",
+   "安托万·拉瓦锡",
+   "德米特里·门捷列夫",
+   "罗伯特·玻意耳"
+  ],
+  "correct": 2,
+  "explanation": "门捷列夫于1869年提出了元素周期系统。"
+ },
+ {
+  "id": "p0702",
+  "level": 7,
+  "category": "science",
+  "q": "在国际单位制中，力的单位是什么？",
+  "options": [
+   "瓦特",
+   "帕斯卡",
+   "焦耳",
+   "牛顿"
+  ],
+  "correct": 3,
+  "explanation": "力的国际单位是牛顿。"
+ },
+ {
+  "id": "p0703",
+  "level": 7,
+  "category": "science",
+  "q": "离我们银河系最近的大型旋涡星系叫什么？",
+  "options": [
+   "仙女座星系",
+   "风车星系",
+   "草帽星系",
+   "三角座星系"
+  ],
+  "correct": 0,
+  "explanation": "仙女座星系距离我们约250万光年。"
+ },
+ {
+  "id": "p0704",
+  "level": 7,
+  "category": "science",
+  "q": "人体中最坚硬的组织是什么？",
+  "options": [
+   "指甲",
+   "牙釉质",
+   "软骨",
+   "大腿骨"
+  ],
+  "correct": 1,
+  "explanation": "牙釉质是人体最坚硬的组织。"
+ },
+ {
+  "id": "p0705",
+  "level": 7,
+  "category": "geography",
+  "q": "新西兰的首都是哪座城市？",
+  "options": [
+   "奥克兰",
+   "汉密尔顿",
+   "惠灵顿",
+   "克赖斯特彻奇"
+  ],
+  "correct": 2,
+  "explanation": "新西兰的首都是惠灵顿，而不是最大的城市奥克兰。"
+ },
+ {
+  "id": "p0706",
+  "level": 7,
+  "category": "geography",
+  "q": "瑞士的首都是哪座城市？",
+  "options": [
+   "苏黎世",
+   "巴塞尔",
+   "日内瓦",
+   "伯尔尼"
+  ],
+  "correct": 3,
+  "explanation": "瑞士的联邦城市是伯尔尼。"
+ },
+ {
+  "id": "p0707",
+  "level": 7,
+  "category": "geography",
+  "q": "在地中海西端，哪个海峡把欧洲和非洲分开？",
+  "options": [
+   "直布罗陀海峡",
+   "墨西拿海峡",
+   "博斯普鲁斯海峡",
+   "英吉利海峡"
+  ],
+  "correct": 0,
+  "explanation": "宽约14公里的直布罗陀海峡连接着地中海和大西洋。"
+ },
+ {
+  "id": "p0708",
+  "level": 7,
+  "category": "history",
+  "q": "1940年，在第二次世界大战的艰难岁月里，谁出任英国首相？",
+  "options": [
+   "克莱门特·艾德礼",
+   "温斯顿·丘吉尔",
+   "哈罗德·麦克米伦",
+   "内维尔·张伯伦"
+  ],
+  "correct": 1,
+  "explanation": "丘吉尔于1940年5月上任。"
+ },
+ {
+  "id": "p0709",
+  "level": 7,
+  "category": "history",
+  "q": "美国《独立宣言》是在哪一年通过的？",
+  "options": [
+   "1789",
+   "1812",
+   "1776",
+   "1865"
+  ],
+  "correct": 2,
+  "explanation": "它于1776年7月4日通过。"
+ },
+ {
+  "id": "p0710",
+  "level": 7,
+  "category": "history",
+  "q": "哪座城市曾是拜占庭帝国的首都？",
+  "options": [
+   "亚历山大",
+   "罗马",
+   "雅典",
+   "君士坦丁堡"
+  ],
+  "correct": 3,
+  "explanation": "君士坦丁堡于1453年落入奥斯曼人手中。"
+ },
+ {
+  "id": "p0711",
+  "level": 7,
+  "category": "literature",
+  "q": "戏剧《浮士德》的作者是谁？",
+  "options": [
+   "约翰·沃尔夫冈·冯·歌德",
+   "海因里希·海涅",
+   "弗里德里希·席勒",
+   "托马斯·曼"
+  ],
+  "correct": 0,
+  "explanation": "《浮士德》是歌德的代表作。"
+ },
+ {
+  "id": "p0712",
+  "level": 7,
+  "category": "literature",
+  "q": "《神曲》的作者是谁？",
+  "options": [
+   "尼科洛·马基雅维利",
+   "但丁·阿利吉耶里",
+   "乔万尼·薄伽丘",
+   "弗朗切斯科·彼特拉克"
+  ],
+  "correct": 1,
+  "explanation": "但丁于14世纪初写下了这部长诗。"
+ },
+ {
+  "id": "p0713",
+  "level": 7,
+  "category": "literature",
+  "q": "小说《百年孤独》的作者是谁？",
+  "options": [
+   "马里奥·巴尔加斯·略萨",
+   "巴勃罗·聂鲁达",
+   "加西亚·马尔克斯",
+   "豪尔赫·路易斯·博尔赫斯"
+  ],
+  "correct": 2,
+  "explanation": "加西亚·马尔克斯的这部小说出版于1967年。"
+ },
+ {
+  "id": "p0714",
+  "level": 7,
+  "category": "art",
+  "q": "克洛德·莫奈与哪个绘画流派有关？",
+  "options": [
+   "巴洛克",
+   "立体主义",
+   "超现实主义",
+   "印象派"
+  ],
+  "correct": 3,
+  "explanation": "这个流派的名称来自他的《印象·日出》。"
+ },
+ {
+  "id": "p0715",
+  "level": 7,
+  "category": "art",
+  "q": "雕塑《思想者》是谁创作的？",
+  "options": [
+   "奥古斯特·罗丹",
+   "安东尼奥·卡诺瓦",
+   "米开朗基罗",
+   "多纳泰罗"
+  ],
+  "correct": 0,
+  "explanation": "《思想者》是罗丹的名作。"
+ },
+ {
+  "id": "p0716",
+  "level": 7,
+  "category": "music",
+  "q": "最低的男声叫什么？",
+  "options": [
+   "男中音",
+   "男低音",
+   "男高音",
+   "假声男高音"
+  ],
+  "correct": 1,
+  "explanation": "男低音是最低的男声。"
+ },
+ {
+  "id": "p0717",
+  "level": 7,
+  "category": "music",
+  "q": "小提琴协奏曲集《四季》是谁作曲的？",
+  "options": [
+   "约翰·塞巴斯蒂安·巴赫",
+   "阿尔坎杰罗·科雷利",
+   "安东尼奥·维瓦尔第",
+   "乔治·弗里德里克·亨德尔"
+  ],
+  "correct": 2,
+  "explanation": "维瓦尔第的《四季》创作于1720年前后。"
+ },
+ {
+  "id": "p0718",
+  "level": 7,
+  "category": "film",
+  "q": "《盗梦空间》和《星际穿越》是哪位导演拍的？",
+  "options": [
+   "昆汀·塔伦蒂诺",
+   "丹尼斯·维伦纽瓦",
+   "大卫·芬奇",
+   "克里斯托弗·诺兰"
+  ],
+  "correct": 3,
+  "explanation": "这两部电影都由克里斯托弗·诺兰执导。"
+ },
+ {
+  "id": "p0719",
+  "level": 7,
+  "category": "film",
+  "q": "被称为“宝莱坞”的电影业位于哪个国家？",
+  "options": [
+   "印度",
+   "中国",
+   "巴西",
+   "埃及"
+  ],
+  "correct": 0,
+  "explanation": "宝莱坞是以孟买为中心的印地语电影业。"
+ },
+ {
+  "id": "p0720",
+  "level": 7,
+  "category": "sport",
+  "q": "现代形式的足球起源于哪个国家？",
+  "options": [
+   "德国",
+   "英国",
+   "意大利",
+   "巴西"
+  ],
+  "correct": 1,
+  "explanation": "足球的第一套通用规则于1863年在英国制定。"
+ },
+ {
+  "id": "p0721",
+  "level": 7,
+  "category": "sport",
+  "q": "冰球比赛中，一支球队同时有几名球员在冰上（含守门员）？",
+  "options": [
+   "7",
+   "8",
+   "6",
+   "5"
+  ],
+  "correct": 2,
+  "explanation": "每支冰球队在冰上有六名球员。"
+ },
+ {
+  "id": "p0722",
+  "level": 7,
+  "category": "food",
+  "q": "据传说，咖啡的提神作用最早是在哪个国家被发现的？",
+  "options": [
+   "哥伦比亚",
+   "巴西",
+   "意大利",
+   "埃塞俄比亚"
+  ],
+  "correct": 3,
+  "explanation": "传说牧羊人卡尔迪在埃塞俄比亚发现了它。"
+ },
+ {
+  "id": "p0723",
+  "level": 7,
+  "category": "food",
+  "q": "哪种带蓝纹的奶酪产自法国？",
+  "options": [
+   "洛克福奶酪",
+   "卡布拉莱斯奶酪",
+   "戈贡佐拉奶酪",
+   "斯提尔顿奶酪"
+  ],
+  "correct": 0,
+  "explanation": "洛克福奶酪在法国用羊奶制成。"
+ },
+ {
+  "id": "p0724",
+  "level": 7,
+  "category": "food",
+  "q": "龙舌兰酒是用哪种植物酿成的？",
+  "options": [
+   "甘蔗",
+   "蓝色龙舌兰",
+   "土豆",
+   "玉米"
+  ],
+  "correct": 1,
+  "explanation": "龙舌兰酒是用蓝色龙舌兰的汁液酿成的。"
+ },
+ {
+  "id": "p0725",
+  "level": 7,
+  "category": "health",
+  "q": "哪个器官负责过滤血液并生成尿液？",
+  "options": [
+   "肺",
+   "脾",
+   "肾",
+   "肝"
+  ],
+  "correct": 2,
+  "explanation": "肾脏过滤血液，并通过尿液排出废物。"
+ },
+ {
+  "id": "p0726",
+  "level": 7,
+  "category": "health",
+  "q": "血压持续升高叫什么？",
+  "options": [
+   "低血糖",
+   "贫血",
+   "心律失常",
+   "高血压"
+  ],
+  "correct": 3,
+  "explanation": "高血压就是血压升高。"
+ },
+ {
+  "id": "p0727",
+  "level": 7,
+  "category": "tech",
+  "q": "缩写GPS代表什么？",
+  "options": [
+   "Global Positioning System",
+   "Ground Path Scanner",
+   "General Packet Service",
+   "Great Public Signal"
+  ],
+  "correct": 0,
+  "explanation": "GPS是Global Positioning System（全球定位系统）的缩写。"
+ },
+ {
+  "id": "p0728",
+  "level": 7,
+  "category": "daily",
+  "q": "普通竖直交通信号灯从上到下的顺序是什么？",
+  "options": [
+   "红、绿、黄",
+   "红、黄、绿",
+   "绿、黄、红",
+   "黄、红、绿"
+  ],
+  "correct": 1,
+  "explanation": "红灯在上，黄灯在中，绿灯在下。"
+ },
+ {
+  "id": "p0729",
+  "level": 7,
+  "category": "language",
+  "q": "与另一个词意思相反的词叫什么？",
+  "options": [
+   "同音异义词",
+   "修饰语",
+   "反义词",
+   "同义词"
+  ],
+  "correct": 2,
+  "explanation": "“冷”和“热”是反义词。"
+ },
+ {
+  "id": "p0730",
+  "level": 7,
+  "category": "society",
+  "q": "大多数欧盟国家使用哪种货币？",
+  "options": [
+   "美元",
+   "法郎",
+   "英镑",
+   "欧元"
+  ],
+  "correct": 3,
+  "explanation": "欧元是欧元区的货币。"
+ },
+ {
+  "id": "p0801",
+  "level": 8,
+  "category": "science",
+  "q": "哪种细胞器以ATP的形式产生细胞的大部分能量？",
+  "options": [
+   "溶酶体",
+   "线粒体",
+   "核糖体",
+   "细胞核"
+  ],
+  "correct": 1,
+  "explanation": "线粒体是细胞的“发电站”。"
+ },
+ {
+  "id": "p0802",
+  "level": 8,
+  "category": "science",
+  "q": "圆周率“π”的近似值是多少？",
+  "options": [
+   "2.71",
+   "1.62",
+   "3.14",
+   "4.13"
+  ],
+  "correct": 2,
+  "explanation": "π ≈ 3.14159。"
+ },
+ {
+  "id": "p0803",
+  "level": 8,
+  "category": "science",
+  "q": "哪种物质构成了大气层中的臭氧层？",
+  "options": [
+   "二氧化碳",
+   "甲烷",
+   "氩",
+   "臭氧（O₃）"
+  ],
+  "correct": 3,
+  "explanation": "臭氧层由臭氧组成，它能吸收紫外线。"
+ },
+ {
+  "id": "p0804",
+  "level": 8,
+  "category": "science",
+  "q": "频率的单位是什么？",
+  "options": [
+   "赫兹",
+   "欧姆",
+   "伏特",
+   "特斯拉"
+  ],
+  "correct": 0,
+  "explanation": "一赫兹就是每秒振动一次。"
+ },
+ {
+  "id": "p0805",
+  "level": 8,
+  "category": "geography",
+  "q": "阿根廷的首都是哪座城市？",
+  "options": [
+   "圣地亚哥",
+   "布宜诺斯艾利斯",
+   "蒙得维的亚",
+   "利马"
+  ],
+  "correct": 1,
+  "explanation": "布宜诺斯艾利斯是阿根廷的首都和最大城市。"
+ },
+ {
+  "id": "p0806",
+  "level": 8,
+  "category": "geography",
+  "q": "哪个国家与西班牙共有伊比利亚半岛？",
+  "options": [
+   "法国",
+   "安道尔",
+   "葡萄牙",
+   "意大利"
+  ],
+  "correct": 2,
+  "explanation": "葡萄牙位于半岛西部。"
+ },
+ {
+  "id": "p0807",
+  "level": 8,
+  "category": "geography",
+  "q": "哪座大城市横跨欧洲和亚洲两个大洲？",
+  "options": [
+   "雅典",
+   "德黑兰",
+   "开罗",
+   "伊斯坦布尔"
+  ],
+  "correct": 3,
+  "explanation": "伊斯坦布尔位于博斯普鲁斯海峡两岸。"
+ },
+ {
+  "id": "p0808",
+  "level": 8,
+  "category": "geography",
+  "q": "陆地上最长的山脉是哪一条？",
+  "options": [
+   "安第斯山脉",
+   "北美科迪勒拉山系",
+   "喜马拉雅山脉",
+   "阿尔卑斯山脉"
+  ],
+  "correct": 0,
+  "explanation": "安第斯山脉沿南美洲绵延约7000公里。"
+ },
+ {
+  "id": "p0809",
+  "level": 8,
+  "category": "history",
+  "q": "哪位迦太基将领带着大象翻越了阿尔卑斯山？",
+  "options": [
+   "西庇阿",
+   "汉尼拔",
+   "阿提拉",
+   "亚历山大大帝"
+  ],
+  "correct": 1,
+  "explanation": "汉尼拔于公元前218年翻越了阿尔卑斯山。"
+ },
+ {
+  "id": "p0810",
+  "level": 8,
+  "category": "history",
+  "q": "1919年哪个条约正式结束了与德国的第一次世界大战？",
+  "options": [
+   "维也纳条约",
+   "巴黎条约",
+   "凡尔赛条约",
+   "布列斯特条约"
+  ],
+  "correct": 2,
+  "explanation": "《凡尔赛条约》于1919年6月28日签署。"
+ },
+ {
+  "id": "p0811",
+  "level": 8,
+  "category": "history",
+  "q": "地球的第一颗人造卫星叫什么？",
+  "options": [
+   "东方1号",
+   "探险者1号",
+   "阿波罗11号",
+   "斯普特尼克1号"
+  ],
+  "correct": 3,
+  "explanation": "斯普特尼克1号于1957年10月4日发射。"
+ },
+ {
+  "id": "p0812",
+  "level": 8,
+  "category": "literature",
+  "q": "小说《麦田里的守望者》的作者是谁？",
+  "options": [
+   "J. D. 塞林格",
+   "F. 斯科特·菲茨杰拉德",
+   "杰克·伦敦",
+   "库尔特·冯内古特"
+  ],
+  "correct": 0,
+  "explanation": "塞林格的这部小说出版于1951年。"
+ },
+ {
+  "id": "p0813",
+  "level": 8,
+  "category": "literature",
+  "q": "中篇小说《变形记》中一个人变成了昆虫，它的作者是谁？",
+  "options": [
+   "托马斯·曼",
+   "弗朗茨·卡夫卡",
+   "阿尔贝·加缪",
+   "赫尔曼·黑塞"
+  ],
+  "correct": 1,
+  "explanation": "卡夫卡的《变形记》发表于1915年。"
+ },
+ {
+  "id": "p0814",
+  "level": 8,
+  "category": "literature",
+  "q": "小说《安娜·卡列尼娜》的作者是谁？",
+  "options": [
+   "安东·契诃夫",
+   "伊万·屠格涅夫",
+   "列夫·托尔斯泰",
+   "费奥多尔·陀思妥耶夫斯基"
+  ],
+  "correct": 2,
+  "explanation": "列夫·托尔斯泰的这部小说于1875年至1877年连载。"
+ },
+ {
+  "id": "p0815",
+  "level": 8,
+  "category": "art",
+  "q": "《戴珍珠耳环的少女》是谁画的？",
+  "options": [
+   "伦勃朗",
+   "扬·凡·艾克",
+   "弗兰斯·哈尔斯",
+   "约翰内斯·维米尔"
+  ],
+  "correct": 3,
+  "explanation": "这幅画出自荷兰画家约翰内斯·维米尔之手。"
+ },
+ {
+  "id": "p0816",
+  "level": 8,
+  "category": "art",
+  "q": "巴塞罗那的圣家堂是哪位建筑师设计的？",
+  "options": [
+   "安东尼·高迪",
+   "诺曼·福斯特",
+   "菲利波·布鲁内莱斯基",
+   "勒·柯布西耶"
+  ],
+  "correct": 0,
+  "explanation": "高迪从1883年起一直为这座教堂工作到生命终结。"
+ },
+ {
+  "id": "p0817",
+  "level": 8,
+  "category": "music",
+  "q": "《波莱罗》是谁作曲的？",
+  "options": [
+   "埃里克·萨蒂",
+   "莫里斯·拉威尔",
+   "克洛德·德彪西",
+   "卡米尔·圣-桑"
+  ],
+  "correct": 1,
+  "explanation": "拉威尔的《波莱罗》创作于1928年。"
+ },
+ {
+  "id": "p0818",
+  "level": 8,
+  "category": "music",
+  "q": "小提琴有几根弦？",
+  "options": [
+   "6",
+   "5",
+   "4",
+   "3"
+  ],
+  "correct": 2,
+  "explanation": "小提琴有四根弦。"
+ },
+ {
+  "id": "p0819",
+  "level": 8,
+  "category": "film",
+  "q": "电影《惊魂记》（1960）是谁导演的？",
+  "options": [
+   "比利·怀尔德",
+   "斯坦利·库布里克",
+   "奥逊·威尔斯",
+   "阿尔弗雷德·希区柯克"
+  ],
+  "correct": 3,
+  "explanation": "《惊魂记》由阿尔弗雷德·希区柯克执导。"
+ },
+ {
+  "id": "p0820",
+  "level": 8,
+  "category": "film",
+  "q": "哪位演员因在《蝙蝠侠：黑暗骑士》中饰演小丑而获得奥斯卡奖遗赠？",
+  "options": [
+   "希斯·莱杰",
+   "贾里德·莱托",
+   "华金·菲尼克斯",
+   "克里斯蒂安·贝尔"
+  ],
+  "correct": 0,
+  "explanation": "希斯·莱杰在2009年获得奥斯卡最佳男配角奖。"
+ },
+ {
+  "id": "p0821",
+  "level": 8,
+  "category": "sport",
+  "q": "1896年首届现代奥运会在哪座城市举行？",
+  "options": [
+   "伦敦",
+   "雅典",
+   "巴黎",
+   "罗马"
+  ],
+  "correct": 1,
+  "explanation": "首届现代奥运会在雅典举行。"
+ },
+ {
+  "id": "p0822",
+  "level": 8,
+  "category": "sport",
+  "q": "足球中的“帽子戏法”是什么意思？",
+  "options": [
+   "三张红牌",
+   "三个任意球",
+   "一名球员在一场比赛中进三个球",
+   "连续三场胜利"
+  ],
+  "correct": 2,
+  "explanation": "帽子戏法是指一名球员在一场比赛中打进三球。"
+ },
+ {
+  "id": "p0823",
+  "level": 8,
+  "category": "food",
+  "q": "用大米配海鲜或肉做成的西班牙菜叫什么？",
+  "options": [
+   "西班牙冷汤",
+   "蔬菜杂烩",
+   "土豆蛋饼",
+   "海鲜饭"
+  ],
+  "correct": 3,
+  "explanation": "海鲜饭（paella）源自瓦伦西亚。"
+ },
+ {
+  "id": "p0824",
+  "level": 8,
+  "category": "health",
+  "q": "甲状腺正常工作需要哪种微量元素？",
+  "options": [
+   "碘",
+   "铁",
+   "锌",
+   "氟"
+  ],
+  "correct": 0,
+  "explanation": "碘是甲状腺激素的组成部分。"
+ },
+ {
+  "id": "p0825",
+  "level": 8,
+  "category": "health",
+  "q": "抗生素对哪类病原体无效？",
+  "options": [
+   "所有微生物",
+   "病毒",
+   "细菌",
+   "葡萄球菌"
+  ],
+  "correct": 1,
+  "explanation": "抗生素对细菌起作用，对病毒无效。"
+ },
+ {
+  "id": "p0826",
+  "level": 8,
+  "category": "tech",
+  "q": "Python编程语言是以哪个英国喜剧团体命名的？",
+  "options": [
+   "Beyond the Fringe",
+   "The Goodies",
+   "巨蟒剧团（Monty Python）",
+   "The Two Ronnies"
+  ],
+  "correct": 2,
+  "explanation": "它的创造者是《巨蟒的飞行马戏团》的粉丝。"
+ },
+ {
+  "id": "p0827",
+  "level": 8,
+  "category": "tech",
+  "q": "一个字节有多少位？",
+  "options": [
+   "16",
+   "10",
+   "4",
+   "8"
+  ],
+  "correct": 3,
+  "explanation": "一个字节是八位。"
+ },
+ {
+  "id": "p0828",
+  "level": 8,
+  "category": "daily",
+  "q": "一立方米有多少升？",
+  "options": [
+   "1000",
+   "10",
+   "10 000",
+   "100"
+  ],
+  "correct": 0,
+  "explanation": "1立方米 = 1000升。"
+ },
+ {
+  "id": "p0829",
+  "level": 8,
+  "category": "language",
+  "q": "L. L. 柴门霍夫创造了哪种国际人造语言？",
+  "options": [
+   "伊多语",
+   "世界语",
+   "沃拉普克语",
+   "国际语"
+  ],
+  "correct": 1,
+  "explanation": "柴门霍夫于1887年发表了世界语。"
+ },
+ {
+  "id": "p0830",
+  "level": 8,
+  "category": "society",
+  "q": "联合国国际法院设在哪座城市？",
+  "options": [
+   "日内瓦",
+   "布鲁塞尔",
+   "海牙",
+   "纽约"
+  ],
+  "correct": 2,
+  "explanation": "国际法院设在海牙。"
+ },
+ {
+  "id": "p0901",
+  "level": 9,
+  "category": "science",
+  "q": "哪种化学元素的符号是W？",
+  "options": [
+   "钨",
+   "钒",
+   "氢",
+   "铋"
+  ],
+  "correct": 0,
+  "explanation": "W来自德语Wolfram。"
+ },
+ {
+  "id": "p0902",
+  "level": 9,
+  "category": "science",
+  "q": "宇宙中含量最多的元素是哪种？",
+  "options": [
+   "碳",
+   "氢",
+   "氧",
+   "氦"
+  ],
+  "correct": 1,
+  "explanation": "氢约占宇宙中普通物质的75%。"
+ },
+ {
+  "id": "p0903",
+  "level": 9,
+  "category": "science",
+  "q": "大约−273.15 °C、低于此温度任何物体都无法再冷却的温度叫什么？",
+  "options": [
+   "临界点",
+   "露点",
+   "绝对零度",
+   "三相点"
+  ],
+  "correct": 2,
+  "explanation": "绝对零度就是0开尔文。"
+ },
+ {
+  "id": "p0904",
+  "level": 9,
+  "category": "science",
+  "q": "哪位科学家同时获得了诺贝尔物理学奖和化学奖？",
+  "options": [
+   "罗莎琳德·富兰克林",
+   "莉泽·迈特纳",
+   "伊雷娜·约里奥-居里",
+   "玛丽·居里"
+  ],
+  "correct": 3,
+  "explanation": "玛丽·居里在两个不同的学科中获奖。"
+ },
+ {
+  "id": "p0905",
+  "level": 9,
+  "category": "geography",
+  "q": "哪个海峡把亚洲和北美洲分开？",
+  "options": [
+   "白令海峡",
+   "德雷克海峡",
+   "麦哲伦海峡",
+   "望加锡海峡"
+  ],
+  "correct": 0,
+  "explanation": "白令海峡位于楚科奇半岛和阿拉斯加之间。"
+ },
+ {
+  "id": "p0906",
+  "level": 9,
+  "category": "geography",
+  "q": "世界海洋中已知最深的地方叫什么？",
+  "options": [
+   "波多黎各海沟",
+   "马里亚纳海沟",
+   "巽他海沟",
+   "千岛-堪察加海沟"
+  ],
+  "correct": 1,
+  "explanation": "马里亚纳海沟深约11公里。"
+ },
+ {
+  "id": "p0907",
+  "level": 9,
+  "category": "geography",
+  "q": "摩洛哥的首都是哪座城市？",
+  "options": [
+   "卡萨布兰卡",
+   "马拉喀什",
+   "拉巴特",
+   "非斯"
+  ],
+  "correct": 2,
+  "explanation": "摩洛哥的首都是拉巴特，而不是卡萨布兰卡。"
+ },
+ {
+  "id": "p0908",
+  "level": 9,
+  "category": "geography",
+  "q": "下列哪个国家没有海岸线？",
+  "options": [
+   "比利时",
+   "丹麦",
+   "荷兰",
+   "瑞士"
+  ],
+  "correct": 3,
+  "explanation": "瑞士是内陆国。"
+ },
+ {
+  "id": "p0909",
+  "level": 9,
+  "category": "history",
+  "q": "1789年7月14日在巴黎发生了什么事件？",
+  "options": [
+   "攻占巴士底狱",
+   "路易十六被处决",
+   "拿破仑加冕",
+   "向凡尔赛进军"
+  ],
+  "correct": 0,
+  "explanation": "攻占巴士底狱成为法国大革命的象征。"
+ },
+ {
+  "id": "p0910",
+  "level": 9,
+  "category": "history",
+  "q": "1922年霍华德·卡特发现了谁的陵墓？",
+  "options": [
+   "拉美西斯二世",
+   "图坦卡蒙",
+   "胡夫",
+   "阿肯那顿"
+  ],
+  "correct": 1,
+  "explanation": "图坦卡蒙在帝王谷的陵墓于1922年11月被发现。"
+ },
+ {
+  "id": "p0911",
+  "level": 9,
+  "category": "history",
+  "q": "1911至1912年革命之前，哪个王朝统治中国？",
+  "options": [
+   "唐",
+   "明",
+   "清",
+   "汉"
+  ],
+  "correct": 2,
+  "explanation": "清朝从1644年到1912年统治中国。"
+ },
+ {
+  "id": "p0912",
+  "level": 9,
+  "category": "literature",
+  "q": "小说《尤利西斯》（1922）的作者是谁？",
+  "options": [
+   "T. S. 艾略特",
+   "塞缪尔·贝克特",
+   "弗吉尼亚·伍尔夫",
+   "詹姆斯·乔伊斯"
+  ],
+  "correct": 3,
+  "explanation": "乔伊斯的《尤利西斯》出版于1922年。"
+ },
+ {
+  "id": "p0913",
+  "level": 9,
+  "category": "literature",
+  "q": "小说《白鲸》的作者是谁？",
+  "options": [
+   "赫尔曼·梅尔维尔",
+   "纳撒尼尔·霍桑",
+   "马克·吐温",
+   "埃德加·爱伦·坡"
+  ],
+  "correct": 0,
+  "explanation": "《白鲸》出版于1851年。"
+ },
+ {
+  "id": "p0914",
+  "level": 9,
+  "category": "literature",
+  "q": "小说《玫瑰的名字》的作者是谁？",
+  "options": [
+   "伊塔洛·卡尔维诺",
+   "翁贝托·埃科",
+   "普里莫·莱维",
+   "阿尔贝托·莫拉维亚"
+  ],
+  "correct": 1,
+  "explanation": "翁贝托·埃科的这部小说出版于1980年。"
+ },
+ {
+  "id": "p0915",
+  "level": 9,
+  "category": "art",
+  "q": "哪位艺术家与巴勃罗·毕加索一起开创了立体主义？",
+  "options": [
+   "埃德加·德加",
+   "保罗·高更",
+   "乔治·布拉克",
+   "亨利·卢梭"
+  ],
+  "correct": 2,
+  "explanation": "毕加索和乔治·布拉克在1907至1914年间发展出立体主义。"
+ },
+ {
+  "id": "p0916",
+  "level": 9,
+  "category": "art",
+  "q": "伦勃朗的《夜巡》收藏在哪家博物馆？",
+  "options": [
+   "卢浮宫",
+   "普拉多博物馆",
+   "乌菲兹美术馆",
+   "阿姆斯特丹国立博物馆"
+  ],
+  "correct": 3,
+  "explanation": "《夜巡》收藏在阿姆斯特丹国立博物馆。"
+ },
+ {
+  "id": "p0917",
+  "level": 9,
+  "category": "music",
+  "q": "歌剧《卡门》是谁作曲的？",
+  "options": [
+   "乔治·比才",
+   "朱尔·马斯奈",
+   "夏尔·古诺",
+   "贾科莫·普契尼"
+  ],
+  "correct": 0,
+  "explanation": "比才的《卡门》于1875年首演。"
+ },
+ {
+  "id": "p0918",
+  "level": 9,
+  "category": "music",
+  "q": "谁的最后一部作品《安魂曲》在作曲家1791年去世时尚未完成？",
+  "options": [
+   "海顿",
+   "莫扎特",
+   "贝多芬",
+   "舒伯特"
+  ],
+  "correct": 1,
+  "explanation": "莫扎特于1791年去世，《安魂曲》未能完成。"
+ },
+ {
+  "id": "p0919",
+  "level": 9,
+  "category": "film",
+  "q": "斯坦利·库布里克的哪部电影在1968年上映？",
+  "options": [
+   "发条橙",
+   "斯巴达克斯",
+   "2001太空漫游",
+   "闪灵"
+  ],
+  "correct": 2,
+  "explanation": "《2001太空漫游》于1968年上映。"
+ },
+ {
+  "id": "p0920",
+  "level": 9,
+  "category": "film",
+  "q": "《七武士》是哪位日本导演拍的？",
+  "options": [
+   "宫崎骏",
+   "小津安二郎",
+   "北野武",
+   "黑泽明"
+  ],
+  "correct": 3,
+  "explanation": "《七武士》（1954）由黑泽明执导。"
+ },
+ {
+  "id": "p0921",
+  "level": 9,
+  "category": "sport",
+  "q": "在哪项自行车赛事中，领先者穿黄色领骑衫？",
+  "options": [
+   "环法自行车赛",
+   "环西班牙自行车赛",
+   "环意大利自行车赛",
+   "巴黎—鲁贝赛"
+  ],
+  "correct": 0,
+  "explanation": "环法自行车赛的领先者穿黄色领骑衫。"
+ },
+ {
+  "id": "p0922",
+  "level": 9,
+  "category": "sport",
+  "q": "国际象棋开局时，每位棋手有多少枚棋子？",
+  "options": [
+   "18",
+   "16",
+   "20",
+   "12"
+  ],
+  "correct": 1,
+  "explanation": "八个兵加八个其他棋子，共16枚。"
+ },
+ {
+  "id": "p0923",
+  "level": 9,
+  "category": "food",
+  "q": "除了甜、酸、咸、苦之外，“第五种味道”叫什么？",
+  "options": [
+   "辣",
+   "涩",
+   "鲜味",
+   "酸涩"
+  ],
+  "correct": 2,
+  "explanation": "鲜味是谷氨酸盐带来的鲜美味道。"
+ },
+ {
+  "id": "p0924",
+  "level": 9,
+  "category": "food",
+  "q": "希腊沙拉传统上使用哪种奶酪？",
+  "options": [
+   "荷兰圆奶酪",
+   "里科塔奶酪",
+   "布里奶酪",
+   "菲达奶酪"
+  ],
+  "correct": 3,
+  "explanation": "希腊沙拉里有菲达奶酪。"
+ },
+ {
+  "id": "p0925",
+  "level": 9,
+  "category": "health",
+  "q": "谁发现了青霉素？",
+  "options": [
+   "亚历山大·弗莱明",
+   "爱德华·詹纳",
+   "罗伯特·科赫",
+   "路易·巴斯德"
+  ],
+  "correct": 0,
+  "explanation": "弗莱明于1928年发现了青霉素。"
+ },
+ {
+  "id": "p0926",
+  "level": 9,
+  "category": "health",
+  "q": "凝血需要哪种维生素？",
+  "options": [
+   "维生素B6",
+   "维生素K",
+   "维生素A",
+   "维生素C"
+  ],
+  "correct": 1,
+  "explanation": "维生素K参与血液凝固。"
+ },
+ {
+  "id": "p0927",
+  "level": 9,
+  "category": "tech",
+  "q": "谁发明了万维网？",
+  "options": [
+   "林纳斯·托瓦兹",
+   "文特·瑟夫",
+   "蒂姆·伯纳斯-李",
+   "史蒂夫·乔布斯"
+  ],
+  "correct": 2,
+  "explanation": "伯纳斯-李于1989年提出了万维网。"
+ },
+ {
+  "id": "p0928",
+  "level": 9,
+  "category": "tech",
+  "q": "“开源”（open source）这个术语是什么意思？",
+  "options": [
+   "代码是加密的",
+   "代码可以离线运行",
+   "代码不能被复制",
+   "代码可以被阅读和修改"
+  ],
+  "correct": 3,
+  "explanation": "任何人都可以研究和修改开源代码。"
+ },
+ {
+  "id": "p0929",
+  "level": 9,
+  "category": "daily",
+  "q": "声音的响度通常用什么单位衡量？",
+  "options": [
+   "分贝",
+   "赫兹",
+   "瓦特",
+   "勒克斯"
+  ],
+  "correct": 0,
+  "explanation": "响度用分贝来衡量。"
+ },
+ {
+  "id": "p0930",
+  "level": 9,
+  "category": "language",
+  "q": "英语字母表有多少个字母？",
+  "options": [
+   "24",
+   "26",
+   "28",
+   "30"
+  ],
+  "correct": 1,
+  "explanation": "英语字母表有26个字母。"
+ },
+ {
+  "id": "p0931",
+  "level": 9,
+  "category": "society",
+  "q": "哪个国家最先赋予女性全国选举的投票权（1893年）？",
+  "options": [
+   "美国",
+   "英国",
+   "新西兰",
+   "法国"
+  ],
+  "correct": 2,
+  "explanation": "新西兰在1893年做到了这一点。"
+ },
+ {
+  "id": "p1001",
+  "level": 10,
+  "category": "science",
+  "q": "除太阳外，离地球最近的恒星是哪一颗？",
+  "options": [
+   "天狼星",
+   "织女星",
+   "参宿四",
+   "比邻星"
+  ],
+  "correct": 3,
+  "explanation": "比邻星距离我们约4.2光年。"
+ },
+ {
+  "id": "p1002",
+  "level": 10,
+  "category": "science",
+  "q": "昆虫学研究什么？",
+  "options": [
+   "昆虫",
+   "鱼类",
+   "鸟类",
+   "真菌"
+  ],
+  "correct": 0,
+  "explanation": "昆虫学是动物学中研究昆虫的分支。"
+ },
+ {
+  "id": "p1003",
+  "level": 10,
+  "category": "science",
+  "q": "光在真空中的速度大约是多少？",
+  "options": [
+   "15万公里/秒",
+   "30万公里/秒",
+   "300万公里/秒",
+   "3万公里/秒"
+  ],
+  "correct": 1,
+  "explanation": "光在真空中的速度约为299 792公里/秒。"
+ },
+ {
+  "id": "p1004",
+  "level": 10,
+  "category": "science",
+  "q": "光线从空气进入水中时改变方向的现象叫什么？",
+  "options": [
+   "衍射",
+   "干涉",
+   "折射",
+   "偏振"
+  ],
+  "correct": 2,
+  "explanation": "折射发生在光学密度不同的介质交界处。"
+ },
+ {
+  "id": "p1005",
+  "level": 10,
+  "category": "geography",
+  "q": "哪个国家的海岸线是世界上最长的？",
+  "options": [
+   "印度尼西亚",
+   "俄罗斯",
+   "澳大利亚",
+   "加拿大"
+  ],
+  "correct": 3,
+  "explanation": "算上岛屿，加拿大的海岸线超过20万公里。"
+ },
+ {
+  "id": "p1006",
+  "level": 10,
+  "category": "geography",
+  "q": "肯尼亚、乌干达和坦桑尼亚共有哪个湖泊？",
+  "options": [
+   "维多利亚湖",
+   "坦噶尼喀湖",
+   "马拉维湖",
+   "乍得湖"
+  ],
+  "correct": 0,
+  "explanation": "维多利亚湖是非洲最大的湖泊。"
+ },
+ {
+  "id": "p1007",
+  "level": 10,
+  "category": "history",
+  "q": "百年战争（1337–1453）是哪两个国家之间的战争？",
+  "options": [
+   "瑞典和俄罗斯",
+   "英国和法国",
+   "西班牙和葡萄牙",
+   "德国和波兰"
+  ],
+  "correct": 1,
+  "explanation": "英国和法国的国王为争夺法国的王位和土地而交战。"
+ },
+ {
+  "id": "p1008",
+  "level": 10,
+  "category": "history",
+  "q": "哪个民族在今天的约旦把古城佩特拉凿刻在岩石中？",
+  "options": [
+   "埃及人",
+   "罗马人",
+   "纳巴泰人",
+   "腓尼基人"
+  ],
+  "correct": 2,
+  "explanation": "佩特拉是纳巴泰王国的首都。"
+ },
+ {
+  "id": "p1009",
+  "level": 10,
+  "category": "history",
+  "q": "1215年限制英国国王权力的文件叫什么？",
+  "options": [
+   "权利法案",
+   "金玺诏书",
+   "人身保护法",
+   "大宪章"
+  ],
+  "correct": 3,
+  "explanation": "约翰王签署了《大宪章》。"
+ },
+ {
+  "id": "p1010",
+  "level": 10,
+  "category": "literature",
+  "q": "小说《父与子》的作者是谁？",
+  "options": [
+   "伊凡·屠格涅夫",
+   "伊凡·冈察洛夫",
+   "尼古拉·列斯科夫",
+   "费奥多尔·陀思妥耶夫斯基"
+  ],
+  "correct": 0,
+  "explanation": "屠格涅夫的这部小说出版于1862年。"
+ },
+ {
+  "id": "p1011",
+  "level": 10,
+  "category": "literature",
+  "q": "侦探夏洛克·福尔摩斯是谁创造的？",
+  "options": [
+   "埃德加·爱伦·坡",
+   "阿瑟·柯南·道尔",
+   "G. K. 切斯特顿",
+   "阿加莎·克里斯蒂"
+  ],
+  "correct": 1,
+  "explanation": "第一篇福尔摩斯故事发表于1887年。"
+ },
+ {
+  "id": "p1012",
+  "level": 10,
+  "category": "art",
+  "q": "《星空》是哪位画家画的？",
+  "options": [
+   "保罗·高更",
+   "保罗·塞尚",
+   "文森特·梵高",
+   "爱德华·马奈"
+  ],
+  "correct": 2,
+  "explanation": "梵高于1889年画了它。"
+ },
+ {
+  "id": "p1013",
+  "level": 10,
+  "category": "art",
+  "q": "《蒙娜丽莎》收藏在巴黎的哪家博物馆？",
+  "options": [
+   "罗丹博物馆",
+   "奥赛博物馆",
+   "蓬皮杜中心",
+   "卢浮宫"
+  ],
+  "correct": 3,
+  "explanation": "列奥纳多·达·芬奇的《蒙娜丽莎》收藏在卢浮宫。"
+ },
+ {
+  "id": "p1014",
+  "level": 10,
+  "category": "music",
+  "q": "歌剧《茶花女》是谁作曲的？",
+  "options": [
+   "朱塞佩·威尔第",
+   "焦阿基诺·罗西尼",
+   "理查德·瓦格纳",
+   "贾科莫·普契尼"
+  ],
+  "correct": 0,
+  "explanation": "威尔第的《茶花女》于1853年首演。"
+ },
+ {
+  "id": "p1015",
+  "level": 10,
+  "category": "music",
+  "q": "五线谱有几条线？",
+  "options": [
+   "6",
+   "5",
+   "7",
+   "4"
+  ],
+  "correct": 1,
+  "explanation": "五线谱有五条线。"
+ },
+ {
+  "id": "p1016",
+  "level": 10,
+  "category": "film",
+  "q": "谁在《阿甘正传》（1994）中饰演主角？",
+  "options": [
+   "凯文·史派西",
+   "布拉德·皮特",
+   "汤姆·汉克斯",
+   "蒂姆·罗宾斯"
+  ],
+  "correct": 2,
+  "explanation": "汤姆·汉克斯饰演阿甘，并因此获得奥斯卡奖。"
+ },
+ {
+  "id": "p1017",
+  "level": 10,
+  "category": "film",
+  "q": "詹姆斯·卡梅隆1997年的哪部电影获得了11项奥斯卡奖？",
+  "options": [
+   "《异形2》",
+   "《阿凡达》",
+   "《终结者2》",
+   "《泰坦尼克号》"
+  ],
+  "correct": 3,
+  "explanation": "《泰坦尼克号》并列保持奥斯卡获奖数的纪录：11项。"
+ },
+ {
+  "id": "p1018",
+  "level": 10,
+  "category": "sport",
+  "q": "1930年首届足球世界杯在哪个国家举行？",
+  "options": [
+   "乌拉圭",
+   "意大利",
+   "巴西",
+   "英国"
+  ],
+  "correct": 0,
+  "explanation": "乌拉圭主办并赢得了首届世界杯。"
+ },
+ {
+  "id": "p1019",
+  "level": 10,
+  "category": "sport",
+  "q": "谁在1985年击败阿纳托利·卡尔波夫，成为国际象棋世界冠军？",
+  "options": [
+   "米哈伊尔·塔尔",
+   "加里·卡斯帕罗夫",
+   "鲍比·费舍尔",
+   "弗拉基米尔·克拉姆尼克"
+  ],
+  "correct": 1,
+  "explanation": "卡斯帕罗夫在1985年以22岁的年龄成为世界冠军。"
+ },
+ {
+  "id": "p1020",
+  "level": 10,
+  "category": "food",
+  "q": "哪种瑞士奶酪以大“孔洞”闻名？",
+  "options": [
+   "布里奶酪",
+   "帕尔马干酪",
+   "埃曼塔尔奶酪",
+   "戈贡佐拉奶酪"
+  ],
+  "correct": 2,
+  "explanation": "埃曼塔尔奶酪的孔洞来自成熟过程中产生的气泡。"
+ },
+ {
+  "id": "p1021",
+  "level": 10,
+  "category": "food",
+  "q": "格瓦斯传统上是用什么做的？",
+  "options": [
+   "土豆",
+   "苹果",
+   "燕麦",
+   "黑麦面包"
+  ],
+  "correct": 3,
+  "explanation": "传统格瓦斯是用黑麦面包或面包干的麦芽汁发酵而成。"
+ },
+ {
+  "id": "p1022",
+  "level": 10,
+  "category": "health",
+  "q": "哪种血型（ABO系统）是红细胞的“万能供血者”？",
+  "options": [
+   "O型",
+   "A型",
+   "AB型",
+   "B型"
+  ],
+  "correct": 0,
+  "explanation": "O型红细胞适合大多数受血者。"
+ },
+ {
+  "id": "p1023",
+  "level": 10,
+  "category": "health",
+  "q": "成年人的骨骼有多少块骨头？",
+  "options": [
+   "256",
+   "206",
+   "306",
+   "106"
+  ],
+  "correct": 1,
+  "explanation": "成年人有206块骨头。"
+ },
+ {
+  "id": "p1024",
+  "level": 10,
+  "category": "tech",
+  "q": "缩写PDF代表什么？",
+  "options": [
+   "Printable Data File",
+   "Personal Document Form",
+   "Portable Document Format",
+   "Public Data Format"
+  ],
+  "correct": 2,
+  "explanation": "PDF是Adobe创建的便携式文档格式。"
+ },
+ {
+  "id": "p1025",
+  "level": 10,
+  "category": "tech",
+  "q": "加密你的文件并索要赎金的恶意软件叫什么？",
+  "options": [
+   "网络蠕虫",
+   "广告软件",
+   "间谍软件",
+   "勒索软件"
+  ],
+  "correct": 3,
+  "explanation": "这类恶意软件被称为勒索软件（ransomware）。"
+ },
+ {
+  "id": "p1026",
+  "level": 10,
+  "category": "daily",
+  "q": "一周有多少小时？",
+  "options": [
+   "168",
+   "148",
+   "144",
+   "188"
+  ],
+  "correct": 0,
+  "explanation": "24小时 × 7天 = 168小时。"
+ },
+ {
+  "id": "p1027",
+  "level": 10,
+  "category": "daily",
+  "q": "一天有多少分钟？",
+  "options": [
+   "1600",
+   "1440",
+   "1240",
+   "1200"
+  ],
+  "correct": 1,
+  "explanation": "24小时 × 60分钟 = 1440分钟。"
+ },
+ {
+  "id": "p1028",
+  "level": 10,
+  "category": "language",
+  "q": "什么是同形同音异义词？",
+  "options": [
+   "意思相反的词",
+   "借自其他语言的词",
+   "拼写和读音相同但意思不同",
+   "意思相近的词"
+  ],
+  "correct": 2,
+  "explanation": "例如，“河岸”（bank）和“银行”（bank）。"
+ },
+ {
+  "id": "p1029",
+  "level": 10,
+  "category": "language",
+  "q": "俄语有几个格（按标准学校语法）？",
+  "options": [
+   "7",
+   "8",
+   "5",
+   "6"
+  ],
+  "correct": 3,
+  "explanation": "学校语法列出六个格，从主格到前置格。"
+ },
+ {
+  "id": "p1030",
+  "level": 10,
+  "category": "society",
+  "q": "联合国哪个机构有五个拥有否决权的常任成员？",
+  "options": [
+   "安全理事会",
+   "联合国大会",
+   "秘书处",
+   "经济及社会理事会"
+  ],
+  "correct": 0,
+  "explanation": "常任成员是中国、法国、俄罗斯、英国和美国。"
+ },
+ {
+  "id": "p1031",
+  "level": 10,
+  "category": "society",
+  "q": "下列哪个国家不是欧盟成员？",
+  "options": [
+   "比利时",
+   "挪威",
+   "爱尔兰",
+   "希腊"
+  ],
+  "correct": 1,
+  "explanation": "挪威不在欧盟内，但属于欧洲经济区。"
+ },
+ {
+  "id": "p1101",
+  "level": 11,
+  "category": "science",
+  "q": "哪种基本粒子传递电磁力？",
+  "options": [
+   "中微子",
+   "电子",
+   "光子",
+   "胶子"
+  ],
+  "correct": 2,
+  "explanation": "光子是电磁场的量子。"
+ },
+ {
+  "id": "p1102",
+  "level": 11,
+  "category": "science",
+  "q": "牛顿哪条定律说每一个作用力都有一个大小相等、方向相反的反作用力？",
+  "options": [
+   "第一定律",
+   "万有引力定律",
+   "第二定律",
+   "第三定律"
+  ],
+  "correct": 3,
+  "explanation": "这是牛顿第三运动定律。"
+ },
+ {
+  "id": "p1103",
+  "level": 11,
+  "category": "science",
+  "q": "太阳系中哪颗行星“侧着身子”自转，自转轴倾角约98°？",
+  "options": [
+   "天王星",
+   "土星",
+   "金星",
+   "海王星"
+  ],
+  "correct": 0,
+  "explanation": "天王星的自转轴几乎躺在它的轨道平面内。"
+ },
+ {
+  "id": "p1104",
+  "level": 11,
+  "category": "geography",
+  "q": "哈萨克斯坦的首都是哪座城市？",
+  "options": [
+   "塔什干",
+   "阿斯塔纳",
+   "比什凯克",
+   "阿拉木图"
+  ],
+  "correct": 1,
+  "explanation": "首都是阿斯塔纳；阿拉木图是最大的城市。"
+ },
+ {
+  "id": "p1105",
+  "level": 11,
+  "category": "geography",
+  "q": "哪片沙漠沿着纳米比亚的大西洋海岸延伸？",
+  "options": [
+   "阿塔卡马沙漠",
+   "卡拉哈里沙漠",
+   "纳米布沙漠",
+   "戈壁"
+  ],
+  "correct": 2,
+  "explanation": "纳米布沙漠是世界上最古老的沙漠之一。"
+ },
+ {
+  "id": "p1106",
+  "level": 11,
+  "category": "geography",
+  "q": "赤道穿过下列哪个国家？",
+  "options": [
+   "坦桑尼亚",
+   "委内瑞拉",
+   "秘鲁",
+   "厄瓜多尔"
+  ],
+  "correct": 3,
+  "explanation": "赤道穿过厄瓜多尔（国名本身就是“赤道”的意思）；秘鲁、委内瑞拉和坦桑尼亚不在赤道线上。"
+ },
+ {
+  "id": "p1107",
+  "level": 11,
+  "category": "history",
+  "q": "1648年的哪项和约结束了三十年战争？",
+  "options": [
+   "威斯特伐利亚和约",
+   "乌得勒支和约",
+   "维也纳和约",
+   "巴黎和约"
+  ],
+  "correct": 0,
+  "explanation": "威斯特伐利亚和约奠定了欧洲国家体系的基础。"
+ },
+ {
+  "id": "p1108",
+  "level": 11,
+  "category": "history",
+  "q": "公元前221年，谁成为统一中国的第一位皇帝？",
+  "options": [
+   "孙中山",
+   "秦始皇",
+   "忽必烈",
+   "毛泽东"
+  ],
+  "correct": 1,
+  "explanation": "秦始皇把相互征战的诸侯国统一为一个帝国。"
+ },
+ {
+  "id": "p1109",
+  "level": 11,
+  "category": "history",
+  "q": "埃尔南·科尔特斯在1519至1521年征服了谁的帝国？",
+  "options": [
+   "印加",
+   "托尔特克",
+   "阿兹特克",
+   "玛雅"
+  ],
+  "correct": 2,
+  "explanation": "科尔特斯于1521年攻占了阿兹特克的首都特诺奇蒂特兰。"
+ },
+ {
+  "id": "p1110",
+  "level": 11,
+  "category": "literature",
+  "q": "小说《大师与玛格丽特》的作者是谁？",
+  "options": [
+   "叶夫根尼·扎米亚京",
+   "弗拉基米尔·纳博科夫",
+   "鲍里斯·帕斯捷尔纳克",
+   "米哈伊尔·布尔加科夫"
+  ],
+  "correct": 3,
+  "explanation": "布尔加科夫从20世纪20年代末一直写到1940年去世。"
+ },
+ {
+  "id": "p1111",
+  "level": 11,
+  "category": "literature",
+  "q": "小说《呼啸山庄》的作者是谁？",
+  "options": [
+   "艾米莉·勃朗特",
+   "玛丽·雪莱",
+   "简·奥斯汀",
+   "夏洛蒂·勃朗特"
+  ],
+  "correct": 0,
+  "explanation": "艾米莉·勃朗特的这部小说出版于1847年。"
+ },
+ {
+  "id": "p1112",
+  "level": 11,
+  "category": "art",
+  "q": "《黑方块》是谁画的？",
+  "options": [
+   "马克·夏加尔",
+   "卡济米尔·马列维奇",
+   "埃尔·利西茨基",
+   "瓦西里·康定斯基"
+  ],
+  "correct": 1,
+  "explanation": "马列维奇于1915年首次展出《黑方块》。"
+ },
+ {
+  "id": "p1113",
+  "level": 11,
+  "category": "art",
+  "q": "乌菲兹美术馆位于意大利哪座城市？",
+  "options": [
+   "罗马",
+   "米兰",
+   "佛罗伦萨",
+   "威尼斯"
+  ],
+  "correct": 2,
+  "explanation": "佛罗伦萨的乌菲兹美术馆收藏着文艺复兴时期的杰作。"
+ },
+ {
+  "id": "p1114",
+  "level": 11,
+  "category": "music",
+  "q": "歌剧系列《尼伯龙根的指环》是谁作曲的？",
+  "options": [
+   "朱塞佩·威尔第",
+   "理查德·施特劳斯",
+   "约翰·施特劳斯",
+   "理查德·瓦格纳"
+  ],
+  "correct": 3,
+  "explanation": "瓦格纳为这部四联剧工作了约26年。"
+ },
+ {
+  "id": "p1115",
+  "level": 11,
+  "category": "music",
+  "q": "下列速度术语中，哪个最快？",
+  "options": [
+   "急板（Presto）",
+   "柔板（Adagio）",
+   "行板（Andante）",
+   "广板（Largo）"
+  ],
+  "correct": 0,
+  "explanation": "Presto的意思是非常快。"
+ },
+ {
+  "id": "p1116",
+  "level": 11,
+  "category": "film",
+  "q": "哪部电影被认为是第一部有声长片（1927年）？",
+  "options": [
+   "《大独裁者》",
+   "《爵士歌手》",
+   "《大都会》",
+   "《摩登时代》"
+  ],
+  "correct": 1,
+  "explanation": "《爵士歌手》开启了有声电影时代。"
+ },
+ {
+  "id": "p1117",
+  "level": 11,
+  "category": "film",
+  "q": "哪个国家给世界带来了电影“新浪潮”（戈达尔、特吕弗）？",
+  "options": [
+   "意大利",
+   "英国",
+   "法国",
+   "日本"
+  ],
+  "correct": 2,
+  "explanation": "新浪潮于20世纪50年代末在法国兴起。"
+ },
+ {
+  "id": "p1118",
+  "level": 11,
+  "category": "sport",
+  "q": "十五人制橄榄球比赛中，一支球队同时有几名球员在场上？",
+  "options": [
+   "13",
+   "11",
+   "7",
+   "15"
+  ],
+  "correct": 3,
+  "explanation": "十五人制橄榄球每队上场15名球员。"
+ },
+ {
+  "id": "p1119",
+  "level": 11,
+  "category": "sport",
+  "q": "法国网球公开赛（罗兰·加洛斯）使用什么场地？",
+  "options": [
+   "红土",
+   "地毯",
+   "硬地",
+   "草地"
+  ],
+  "correct": 0,
+  "explanation": "罗兰·加洛斯在红土场地上进行。"
+ },
+ {
+  "id": "p1120",
+  "level": 11,
+  "category": "food",
+  "q": "哪种植物结出香草豆荚？",
+  "options": [
+   "仙人掌",
+   "兰花",
+   "棕榈",
+   "蕨类"
+  ],
+  "correct": 1,
+  "explanation": "香草来自香草属兰花的豆荚。"
+ },
+ {
+  "id": "p1121",
+  "level": 11,
+  "category": "food",
+  "q": "用马斯卡彭奶酪、咖啡和手指饼干做成的意大利甜点叫什么？",
+  "options": [
+   "奶冻",
+   "半冷冻甜点",
+   "提拉米苏",
+   "卡诺里卷"
+  ],
+  "correct": 2,
+  "explanation": "提拉米苏在意大利语中的意思是“带我走”（提神）。"
+ },
+ {
+  "id": "p1122",
+  "level": 11,
+  "category": "health",
+  "q": "哪种激素在黑暗中分泌并调节睡眠周期？",
+  "options": [
+   "肾上腺素",
+   "睾酮",
+   "甲状腺素",
+   "褪黑素"
+  ],
+  "correct": 3,
+  "explanation": "褪黑素由松果体分泌。"
+ },
+ {
+  "id": "p1123",
+  "level": 11,
+  "category": "health",
+  "q": "缺乏哪种维生素会导致坏血病？",
+  "options": [
+   "维生素C",
+   "维生素A",
+   "维生素D",
+   "维生素B12"
+  ],
+  "correct": 0,
+  "explanation": "坏血病是长期缺乏维生素C所致。"
+ },
+ {
+  "id": "p1124",
+  "level": 11,
+  "category": "tech",
+  "q": "缩写SSD代表什么？",
+  "options": [
+   "System Storage Disk",
+   "Solid State Drive",
+   "Speed Server Disk",
+   "Standard Save Drive"
+  ],
+  "correct": 1,
+  "explanation": "SSD把数据存储在闪存芯片中。"
+ },
+ {
+  "id": "p1125",
+  "level": 11,
+  "category": "tech",
+  "q": "网址中的哪个前缀表示安全连接？",
+  "options": [
+   "FTP",
+   "SMTP",
+   "HTTPS",
+   "DNS"
+  ],
+  "correct": 2,
+  "explanation": "HTTPS对浏览器和网站之间的数据进行加密。"
+ },
+ {
+  "id": "p1126",
+  "level": 11,
+  "category": "daily",
+  "q": "北半球的夏至在哪个月？",
+  "options": [
+   "5月",
+   "7月",
+   "8月",
+   "6月"
+  ],
+  "correct": 3,
+  "explanation": "一年中最长的一天在6月21日前后。"
+ },
+ {
+  "id": "p1127",
+  "level": 11,
+  "category": "daily",
+  "q": "32 °F相当于多少摄氏度？",
+  "options": [
+   "0 °C",
+   "−32 °C",
+   "10 °C",
+   "32 °C"
+  ],
+  "correct": 0,
+  "explanation": "32 °F是水的冰点，即0 °C。"
+ },
+ {
+  "id": "p1128",
+  "level": 11,
+  "category": "language",
+  "q": "俄语属于哪个语系？",
+  "options": [
+   "突厥语系",
+   "印欧语系",
+   "卡特维尔语系",
+   "乌拉尔语系"
+  ],
+  "correct": 1,
+  "explanation": "俄语属于印欧语系的斯拉夫语族。"
+ },
+ {
+  "id": "p1129",
+  "level": 11,
+  "category": "language",
+  "q": "主要用来书写外来词的日语音节文字叫什么？",
+  "options": [
+   "汉字",
+   "谚文",
+   "片假名",
+   "平假名"
+  ],
+  "correct": 2,
+  "explanation": "片假名用于书写外来词和外国人名。"
+ },
+ {
+  "id": "p1130",
+  "level": 11,
+  "category": "society",
+  "q": "什么是通货膨胀？",
+  "options": [
+   "失业率上升",
+   "税收增加",
+   "总体物价水平下降",
+   "总体物价水平上升"
+  ],
+  "correct": 3,
+  "explanation": "发生通货膨胀时，同样数量的钱能买到的东西变少了。"
+ },
+ {
+  "id": "p1131",
+  "level": 11,
+  "category": "society",
+  "q": "北约总部设在哪座城市？",
+  "options": [
+   "布鲁塞尔",
+   "日内瓦",
+   "华盛顿",
+   "巴黎"
+  ],
+  "correct": 0,
+  "explanation": "北约总部在布鲁塞尔。"
+ },
+ {
+  "id": "p1201",
+  "level": 12,
+  "category": "science",
+  "q": "哪种化学元素的原子序数是6，是有机化学的基础？",
+  "options": [
+   "硅",
+   "碳",
+   "氧",
+   "氮"
+  ],
+  "correct": 1,
+  "explanation": "碳是有机化合物的基础。"
+ },
+ {
+  "id": "p1202",
+  "level": 12,
+  "category": "science",
+  "q": "阿伏伽德罗常数（约6.02·10²³）表示什么？",
+  "options": [
+   "太阳中的原子数",
+   "电子的电荷",
+   "一摩尔物质中的粒子数",
+   "光在真空中的速度"
+  ],
+  "correct": 2,
+  "explanation": "一摩尔物质约含6.02·10²³个基本粒子。"
+ },
+ {
+  "id": "p1203",
+  "level": 12,
+  "category": "science",
+  "q": "遥远星系光谱中的红移通常说明什么？",
+  "options": [
+   "它们非常热",
+   "它们不自转",
+   "它们正在靠近我们",
+   "它们正在远离我们"
+  ],
+  "correct": 3,
+  "explanation": "红移与宇宙的膨胀有关。"
+ },
+ {
+  "id": "p1204",
+  "level": 12,
+  "category": "geography",
+  "q": "传奇城市廷巴克图位于哪个国家？",
+  "options": [
+   "马里",
+   "埃塞俄比亚",
+   "尼日利亚",
+   "埃及"
+  ],
+  "correct": 0,
+  "explanation": "廷巴克图是撒哈拉南缘的古代贸易和学术中心。"
+ },
+ {
+  "id": "p1205",
+  "level": 12,
+  "category": "geography",
+  "q": "不算大陆，世界上最大的岛屿是哪一个？",
+  "options": [
+   "婆罗洲",
+   "格陵兰岛",
+   "新几内亚岛",
+   "马达加斯加岛"
+  ],
+  "correct": 1,
+  "explanation": "格陵兰岛面积超过200万平方公里。"
+ },
+ {
+  "id": "p1206",
+  "level": 12,
+  "category": "geography",
+  "q": "哪条运河连接地中海和红海？",
+  "options": [
+   "巴拿马运河",
+   "科林斯运河",
+   "苏伊士运河",
+   "基尔运河"
+  ],
+  "correct": 2,
+  "explanation": "苏伊士运河于1869年通航。"
+ },
+ {
+  "id": "p1207",
+  "level": 12,
+  "category": "history",
+  "q": "谁赢得了1066年的黑斯廷斯战役？",
+  "options": [
+   "狮心王理查",
+   "阿尔弗雷德大帝",
+   "哈罗德·戈德温森",
+   "征服者威廉"
+  ],
+  "correct": 3,
+  "explanation": "诺曼底的威廉获胜并成为英格兰国王。"
+ },
+ {
+  "id": "p1208",
+  "level": 12,
+  "category": "history",
+  "q": "奥斯曼人是在哪一年攻占君士坦丁堡的？",
+  "options": [
+   "1453",
+   "1492",
+   "1389",
+   "1204"
+  ],
+  "correct": 0,
+  "explanation": "1453年5月29日，穆罕默德二世攻占该城，拜占庭帝国灭亡。"
+ },
+ {
+  "id": "p1209",
+  "level": 12,
+  "category": "history",
+  "q": "1494年的哪项条约划分了西班牙和葡萄牙的势力范围？",
+  "options": [
+   "《尼布楚条约》",
+   "《托尔德西里亚斯条约》",
+   "《乌得勒支条约》",
+   "《南特敕令》"
+  ],
+  "correct": 1,
+  "explanation": "条约沿大西洋上的一条子午线划出了分界线。"
+ },
+ {
+  "id": "p1210",
+  "level": 12,
+  "category": "literature",
+  "q": "小说《德古拉》（1897）的作者是谁？",
+  "options": [
+   "埃德加·爱伦·坡",
+   "玛丽·雪莱",
+   "布拉姆·斯托克",
+   "罗伯特·路易斯·史蒂文森"
+  ],
+  "correct": 2,
+  "explanation": "布拉姆·斯托克的这部小说出版于1897年。"
+ },
+ {
+  "id": "p1211",
+  "level": 12,
+  "category": "literature",
+  "q": "小说《弗兰肯斯坦，或现代普罗米修斯》的作者是谁？",
+  "options": [
+   "简·奥斯汀",
+   "乔治·艾略特",
+   "艾米莉·勃朗特",
+   "玛丽·雪莱"
+  ],
+  "correct": 3,
+  "explanation": "玛丽·雪莱于1818年出版了这部小说。"
+ },
+ {
+  "id": "p1212",
+  "level": 12,
+  "category": "art",
+  "q": "谁用金箔创作了《吻》（1907–1908）？",
+  "options": [
+   "古斯塔夫·克里姆特",
+   "亨利·马蒂斯",
+   "阿尔丰斯·穆夏",
+   "埃贡·席勒"
+  ],
+  "correct": 0,
+  "explanation": "《吻》是古斯塔夫·克里姆特“黄金时期”最著名的作品。"
+ },
+ {
+  "id": "p1213",
+  "level": 12,
+  "category": "art",
+  "q": "哪种建筑风格以尖拱和彩色玻璃窗为特点，如巴黎圣母院？",
+  "options": [
+   "巴洛克",
+   "哥特式",
+   "罗马式",
+   "古典主义"
+  ],
+  "correct": 1,
+  "explanation": "哥特式建筑以尖拱穹顶和大型彩色玻璃窗著称。"
+ },
+ {
+  "id": "p1214",
+  "level": 12,
+  "category": "music",
+  "q": "《马太受难曲》是谁作曲的？",
+  "options": [
+   "约瑟夫·海顿",
+   "乔治·弗里德里克·亨德尔",
+   "约翰·塞巴斯蒂安·巴赫",
+   "弗朗茨·舒伯特"
+  ],
+  "correct": 2,
+  "explanation": "巴赫在18世纪20年代创作了《马太受难曲》。"
+ },
+ {
+  "id": "p1215",
+  "level": 12,
+  "category": "music",
+  "q": "由一件独奏乐器与管弦乐队伴奏的乐曲叫什么？",
+  "options": [
+   "交响曲",
+   "小夜曲",
+   "序曲",
+   "协奏曲"
+  ],
+  "correct": 3,
+  "explanation": "在协奏曲中，独奏者与乐队相互呼应。"
+ },
+ {
+  "id": "p1216",
+  "level": 12,
+  "category": "film",
+  "q": "《银翼杀手》（1982）是谁导演的？",
+  "options": [
+   "雷德利·斯科特",
+   "詹姆斯·卡梅隆",
+   "保罗·范霍文",
+   "丹尼斯·维伦纽瓦"
+  ],
+  "correct": 0,
+  "explanation": "它由雷德利·斯科特执导，改编自菲利普·K·迪克的小说。"
+ },
+ {
+  "id": "p1217",
+  "level": 12,
+  "category": "film",
+  "q": "哪位演员在《教父》（1972）中饰演维托·柯里昂？",
+  "options": [
+   "阿尔·帕西诺",
+   "马龙·白兰度",
+   "罗伯特·德尼罗",
+   "詹姆斯·凯恩"
+  ],
+  "correct": 1,
+  "explanation": "白兰度因这个角色获得了奥斯卡奖。"
+ },
+ {
+  "id": "p1218",
+  "level": 12,
+  "category": "sport",
+  "q": "美式橄榄球中达阵得多少分？",
+  "options": [
+   "1",
+   "3",
+   "6",
+   "7"
+  ],
+  "correct": 2,
+  "explanation": "达阵得6分，随后还有一次附加分尝试。"
+ },
+ {
+  "id": "p1219",
+  "level": 12,
+  "category": "sport",
+  "q": "1954年，谁是世界上第一个在4分钟内跑完一英里的人？",
+  "options": [
+   "帕沃·努尔米",
+   "埃米尔·扎托佩克",
+   "塞巴斯蒂安·科",
+   "罗杰·班尼斯特"
+  ],
+  "correct": 3,
+  "explanation": "班尼斯特于1954年5月6日在牛津跑出了3分59秒4。"
+ },
+ {
+  "id": "p1220",
+  "level": 12,
+  "category": "food",
+  "q": "波本威士忌的主要原料是哪种谷物？",
+  "options": [
+   "玉米",
+   "大麦",
+   "黑麦",
+   "燕麦"
+  ],
+  "correct": 0,
+  "explanation": "美国规定波本的谷物配比中玉米至少占51%。"
+ },
+ {
+  "id": "p1221",
+  "level": 12,
+  "category": "food",
+  "q": "与班尼迪克蛋搭配的、用蛋黄和黄油做成的法式酱汁叫什么？",
+  "options": [
+   "贝亚恩酱",
+   "荷兰酱",
+   "丝绒白酱",
+   "白酱"
+  ],
+  "correct": 1,
+  "explanation": "荷兰酱是班尼迪克蛋的经典酱汁。"
+ },
+ {
+  "id": "p1222",
+  "level": 12,
+  "category": "health",
+  "q": "哪个人体器官分泌胆汁？",
+  "options": [
+   "胰腺",
+   "脾",
+   "肝",
+   "胃"
+  ],
+  "correct": 2,
+  "explanation": "胆汁由肝脏分泌，储存在胆囊中。"
+ },
+ {
+  "id": "p1223",
+  "level": 12,
+  "category": "health",
+  "q": "进行气体交换的肺泡位于哪个器官？",
+  "options": [
+   "脾",
+   "肾",
+   "肝",
+   "肺"
+  ],
+  "correct": 3,
+  "explanation": "氧气通过肺泡壁进入血液，二氧化碳则排出体外。"
+ },
+ {
+  "id": "p1224",
+  "level": 12,
+  "category": "tech",
+  "q": "谁因为给巴贝奇的分析机编写算法而被视为第一位程序员？",
+  "options": [
+   "阿达·洛芙莱斯",
+   "约翰·冯·诺依曼",
+   "格蕾丝·霍珀",
+   "艾伦·图灵"
+  ],
+  "correct": 0,
+  "explanation": "阿达·洛芙莱斯在1843年描述了计算伯努利数的算法。"
+ },
+ {
+  "id": "p1225",
+  "level": 12,
+  "category": "tech",
+  "q": "RAM代表什么？",
+  "options": [
+   "Rapid Active Memory",
+   "Random Access Memory",
+   "Remote Access Module",
+   "Read-only Access Module"
+  ],
+  "correct": 1,
+  "explanation": "RAM是运行中的程序使用的快速易失性存储器。"
+ },
+ {
+  "id": "p1226",
+  "level": 12,
+  "category": "daily",
+  "q": "一天有多少秒？",
+  "options": [
+   "3600",
+   "14 400",
+   "86 400",
+   "864 000"
+  ],
+  "correct": 2,
+  "explanation": "24 × 60 × 60 = 86 400秒。"
+ },
+ {
+  "id": "p1227",
+  "level": 12,
+  "category": "daily",
+  "q": "闰年有多少小时？",
+  "options": [
+   "8760",
+   "8640",
+   "8808",
+   "8784"
+  ],
+  "correct": 3,
+  "explanation": "366天 × 24小时 = 8784小时。"
+ },
+ {
+  "id": "p1228",
+  "level": 12,
+  "category": "language",
+  "q": "瑞士有几种国家语言？",
+  "options": [
+   "4",
+   "5",
+   "3",
+   "2"
+  ],
+  "correct": 0,
+  "explanation": "瑞士的国家语言是德语、法语、意大利语和罗曼什语。"
+ },
+ {
+  "id": "p1229",
+  "level": 12,
+  "category": "language",
+  "q": "什么是回文？",
+  "options": [
+   "意思相反的词",
+   "正读反读都一样的词或句子",
+   "由短语缩略而成的词",
+   "借自拉丁语的词"
+  ],
+  "correct": 1,
+  "explanation": "例如“level”，或汉语的“上海自来水来自海上”。"
+ },
+ {
+  "id": "p1230",
+  "level": 12,
+  "category": "society",
+  "q": "1948年通过的哪份联合国文件宣告了基本人权？",
+  "options": [
+   "日内瓦公约",
+   "联合国宪章",
+   "世界人权宣言",
+   "赫尔辛基最后文件"
+  ],
+  "correct": 2,
+  "explanation": "联合国大会于1948年12月10日通过了它。"
+ },
+ {
+  "id": "p1231",
+  "level": 12,
+  "category": "society",
+  "q": "哪个机构制定欧元区的货币政策？",
+  "options": [
+   "欧洲议会",
+   "欧盟委员会",
+   "国际货币基金组织",
+   "欧洲中央银行"
+  ],
+  "correct": 3,
+  "explanation": "欧洲中央银行总部设在法兰克福。"
+ },
+ {
+  "id": "p1301",
+  "level": 13,
+  "category": "science",
+  "q": "哪种化学元素的符号是Pb？",
+  "options": [
+   "铅",
+   "铂",
+   "磷",
+   "锡"
+  ],
+  "correct": 0,
+  "explanation": "符号Pb来自拉丁语plumbum，意为“铅”。"
+ },
+ {
+  "id": "p1302",
+  "level": 13,
+  "category": "science",
+  "q": "谁在《天体运行论》（1543）中提出了日心说？",
+  "options": [
+   "第谷·布拉赫",
+   "尼古拉·哥白尼",
+   "伽利略·伽利莱",
+   "约翰内斯·开普勒"
+  ],
+  "correct": 1,
+  "explanation": "哥白尼把太阳而不是地球放在宇宙的中心。"
+ },
+ {
+  "id": "p1303",
+  "level": 13,
+  "category": "science",
+  "q": "当波源相对于观察者运动时，波的频率发生变化的现象叫什么？",
+  "options": [
+   "霍尔效应",
+   "光电效应",
+   "多普勒效应",
+   "康普顿效应"
+  ],
+  "correct": 2,
+  "explanation": "这就是驶过的救护车警笛声调会变化的原因。"
+ },
+ {
+  "id": "p1304",
+  "level": 13,
+  "category": "geography",
+  "q": "按面积计算，非洲最大的国家是哪个？",
+  "options": [
+   "刚果民主共和国",
+   "苏丹",
+   "利比亚",
+   "阿尔及利亚"
+  ],
+  "correct": 3,
+  "explanation": "2011年苏丹分裂后，阿尔及利亚成为最大的国家。"
+ },
+ {
+  "id": "p1305",
+  "level": 13,
+  "category": "geography",
+  "q": "土耳其的首都是哪座城市？",
+  "options": [
+   "安卡拉",
+   "安塔利亚",
+   "伊兹密尔",
+   "伊斯坦布尔"
+  ],
+  "correct": 0,
+  "explanation": "首都是安卡拉，而不是最大的城市伊斯坦布尔。"
+ },
+ {
+  "id": "p1306",
+  "level": 13,
+  "category": "geography",
+  "q": "哪条河流经维也纳、布达佩斯和贝尔格莱德？",
+  "options": [
+   "莱茵河",
+   "多瑙河",
+   "维斯瓦河",
+   "易北河"
+  ],
+  "correct": 1,
+  "explanation": "多瑙河流经十个国家。"
+ },
+ {
+  "id": "p1307",
+  "level": 13,
+  "category": "history",
+  "q": "1812年哪场战役是拿破仑进军莫斯科途中规模最大的一次？",
+  "options": [
+   "滑铁卢",
+   "莱比锡",
+   "博罗季诺",
+   "奥斯特里茨"
+  ],
+  "correct": 2,
+  "explanation": "博罗季诺战役发生在1812年9月7日。"
+ },
+ {
+  "id": "p1308",
+  "level": 13,
+  "category": "history",
+  "q": "西罗马帝国灭亡于哪一年？",
+  "options": [
+   "410",
+   "1054",
+   "800",
+   "476"
+  ],
+  "correct": 3,
+  "explanation": "476年，奥多亚克废黜了最后一位皇帝罗慕路斯·奥古斯图卢斯。"
+ },
+ {
+  "id": "p1309",
+  "level": 13,
+  "category": "history",
+  "q": "谁在13世纪初建立了蒙古帝国？",
+  "options": [
+   "成吉思汗",
+   "阿提拉",
+   "帖木儿",
+   "忽必烈"
+  ],
+  "correct": 0,
+  "explanation": "铁木真于1206年被尊为成吉思汗。"
+ },
+ {
+  "id": "p1310",
+  "level": 13,
+  "category": "literature",
+  "q": "小说《当代英雄》的作者是谁？",
+  "options": [
+   "尼古拉·果戈理",
+   "米哈伊尔·莱蒙托夫",
+   "伊凡·冈察洛夫",
+   "亚历山大·普希金"
+  ],
+  "correct": 1,
+  "explanation": "莱蒙托夫的这部小说出版于1840年。"
+ },
+ {
+  "id": "p1311",
+  "level": 13,
+  "category": "literature",
+  "q": "小说《了不起的盖茨比》的作者是谁？",
+  "options": [
+   "欧内斯特·海明威",
+   "威廉·福克纳",
+   "F. 斯科特·菲茨杰拉德",
+   "约翰·斯坦贝克"
+  ],
+  "correct": 2,
+  "explanation": "这部小说出版于1925年。"
+ },
+ {
+  "id": "p1312",
+  "level": 13,
+  "category": "art",
+  "q": "《伏尔加河上的纤夫》是谁画的？",
+  "options": [
+   "伊凡·希施金",
+   "伊凡·艾瓦佐夫斯基",
+   "瓦西里·苏里科夫",
+   "伊利亚·列宾"
+  ],
+  "correct": 3,
+  "explanation": "列宾在1870至1873年间创作了这幅画。"
+ },
+ {
+  "id": "p1313",
+  "level": 13,
+  "category": "art",
+  "q": "列奥纳多·达·芬奇的壁画《最后的晚餐》位于意大利哪座城市？",
+  "options": [
+   "米兰",
+   "罗马",
+   "佛罗伦萨",
+   "威尼斯"
+  ],
+  "correct": 0,
+  "explanation": "这幅壁画装饰着米兰圣玛丽亚感恩教堂的食堂。"
+ },
+ {
+  "id": "p1314",
+  "level": 13,
+  "category": "music",
+  "q": "钢琴组曲《图画展览会》是谁作曲的？",
+  "options": [
+   "尼古拉·里姆斯基-科萨科夫",
+   "莫杰斯特·穆索尔斯基",
+   "谢尔盖·拉赫玛尼诺夫",
+   "亚历山大·鲍罗丁"
+  ],
+  "correct": 1,
+  "explanation": "这部组曲创作于1874年；后来莫里斯·拉威尔为它配了管弦乐。"
+ },
+ {
+  "id": "p1315",
+  "level": 13,
+  "category": "music",
+  "q": "第九交响曲《自新大陆》是谁作曲的？",
+  "options": [
+   "贝德里赫·斯美塔那",
+   "让·西贝柳斯",
+   "安东宁·德沃夏克",
+   "爱德华·格里格"
+  ],
+  "correct": 2,
+  "explanation": "德沃夏克于1893年在美国写下了这部交响曲。"
+ },
+ {
+  "id": "p1316",
+  "level": 13,
+  "category": "film",
+  "q": "《美国往事》（1984）是谁导演的？",
+  "options": [
+   "布赖恩·德·帕尔马",
+   "弗朗西斯·福特·科波拉",
+   "马丁·斯科塞斯",
+   "赛尔乔·莱昂内"
+  ],
+  "correct": 3,
+  "explanation": "这是赛尔乔·莱昂内的最后一部电影。"
+ },
+ {
+  "id": "p1317",
+  "level": 13,
+  "category": "film",
+  "q": "米洛斯·福尔曼1975年的哪部电影包揽了五项奥斯卡主要奖项？",
+  "options": [
+   "《飞越疯人院》",
+   "《莫扎特传》",
+   "《毛发》",
+   "《雷格泰姆》"
+  ],
+  "correct": 0,
+  "explanation": "它获得了最佳影片、导演、男主角、女主角和改编剧本奖。"
+ },
+ {
+  "id": "p1318",
+  "level": 13,
+  "category": "sport",
+  "q": "哪支国家队赢得了2010年足球世界杯？",
+  "options": [
+   "德国",
+   "西班牙",
+   "荷兰",
+   "乌拉圭"
+  ],
+  "correct": 1,
+  "explanation": "在约翰内斯堡的决赛中，西班牙以1比0击败荷兰。"
+ },
+ {
+  "id": "p1319",
+  "level": 13,
+  "category": "sport",
+  "q": "1976年，哪位体操运动员获得了奥运会历史上第一个满分“10分”？",
+  "options": [
+   "拉丽萨·拉特尼娜",
+   "纳莉·金",
+   "纳迪娅·科马内奇",
+   "奥尔加·科尔布特"
+  ],
+  "correct": 2,
+  "explanation": "科马内奇在蒙特利尔参赛时年仅14岁。"
+ },
+ {
+  "id": "p1320",
+  "level": 13,
+  "category": "food",
+  "q": "哪种意大利奶酪被称为“奶酪之王”？",
+  "options": [
+   "里科塔奶酪",
+   "马苏里拉奶酪",
+   "戈贡佐拉奶酪",
+   "帕尔马干酪"
+  ],
+  "correct": 3,
+  "explanation": "帕尔马干酪至少要熟成12个月。"
+ },
+ {
+  "id": "p1321",
+  "level": 13,
+  "category": "food",
+  "q": "在东南亚，哪种水果被称为“水果之王”？",
+  "options": [
+   "榴莲",
+   "荔枝",
+   "芒果",
+   "木瓜"
+  ],
+  "correct": 0,
+  "explanation": "榴莲以浓烈的气味闻名。"
+ },
+ {
+  "id": "p1322",
+  "level": 13,
+  "category": "health",
+  "q": "人体中最长的骨头是哪一块？",
+  "options": [
+   "肱骨",
+   "股骨",
+   "脊柱",
+   "胫骨"
+  ],
+  "correct": 1,
+  "explanation": "股骨的长度大约是一个人身高的四分之一。"
+ },
+ {
+  "id": "p1323",
+  "level": 13,
+  "category": "health",
+  "q": "胡萝卜中的β-胡萝卜素是哪种维生素的前体？",
+  "options": [
+   "维生素D",
+   "维生素C",
+   "维生素A",
+   "维生素E"
+  ],
+  "correct": 2,
+  "explanation": "人体会把β-胡萝卜素转化为维生素A。"
+ },
+ {
+  "id": "p1324",
+  "level": 13,
+  "category": "tech",
+  "q": "缩写VPN代表什么？",
+  "options": [
+   "Variable Packet Node",
+   "Video Protocol Node",
+   "Verified Public Network",
+   "Virtual Private Network"
+  ],
+  "correct": 3,
+  "explanation": "VPN（虚拟专用网络）可以加密连接并隐藏IP地址。"
+ },
+ {
+  "id": "p1325",
+  "level": 13,
+  "category": "tech",
+  "q": "第一代iPhone是在哪一年发布的？",
+  "options": [
+   "2007",
+   "2010",
+   "2005",
+   "2003"
+  ],
+  "correct": 0,
+  "explanation": "史蒂夫·乔布斯于2007年1月发布了iPhone。"
+ },
+ {
+  "id": "p1326",
+  "level": 13,
+  "category": "daily",
+  "q": "三角形的内角和是多少？",
+  "options": [
+   "360°",
+   "180°",
+   "270°",
+   "90°"
+  ],
+  "correct": 1,
+  "explanation": "任何平面三角形的内角和都是180°。"
+ },
+ {
+  "id": "p1327",
+  "level": 13,
+  "category": "daily",
+  "q": "一年中有多少个月恰好有30天？",
+  "options": [
+   "3",
+   "5",
+   "4",
+   "6"
+  ],
+  "correct": 2,
+  "explanation": "它们是4月、6月、9月和11月。"
+ },
+ {
+  "id": "p1328",
+  "level": 13,
+  "category": "language",
+  "q": "俄语字母表有多少个字母？",
+  "options": [
+   "35",
+   "31",
+   "32",
+   "33"
+  ],
+  "correct": 3,
+  "explanation": "俄语字母表有33个字母。"
+ },
+ {
+  "id": "p1329",
+  "level": 13,
+  "category": "language",
+  "q": "什么是“通用语”（lingua franca）？",
+  "options": [
+   "不同母语者之间共用的语言",
+   "死语言",
+   "手语",
+   "人造语言"
+  ],
+  "correct": 0,
+  "explanation": "通用语能让母语不同的人互相沟通。"
+ },
+ {
+  "id": "p1330",
+  "level": 13,
+  "category": "society",
+  "q": "瑞士的货币是什么？",
+  "options": [
+   "克朗",
+   "法郎",
+   "欧元",
+   "马克"
+  ],
+  "correct": 1,
+  "explanation": "瑞士使用瑞士法郎。"
+ },
+ {
+  "id": "p1331",
+  "level": 13,
+  "category": "society",
+  "q": "美国国会的下议院叫什么？",
+  "options": [
+   "最高法院",
+   "参议院",
+   "众议院",
+   "内阁"
+  ],
+  "correct": 2,
+  "explanation": "美国国会由参议院和众议院组成。"
+ },
+ {
+  "id": "p1401",
+  "level": 14,
+  "category": "science",
+  "q": "白矮星质量超过约1.4倍太阳质量就会变得不稳定，这个质量极限叫什么？",
+  "options": [
+   "哈勃极限",
+   "洛希极限",
+   "史瓦西半径",
+   "钱德拉塞卡极限"
+  ],
+  "correct": 3,
+  "explanation": "这个极限以天体物理学家苏布拉马尼扬·钱德拉塞卡命名。"
+ },
+ {
+  "id": "p1402",
+  "level": 14,
+  "category": "science",
+  "q": "2012年在大型强子对撞机上发现了哪种粒子？",
+  "options": [
+   "希格斯玻色子",
+   "正电子",
+   "中微子",
+   "夸克"
+  ],
+  "correct": 0,
+  "explanation": "希格斯玻色子的发现于2012年7月宣布。"
+ },
+ {
+  "id": "p1403",
+  "level": 14,
+  "category": "science",
+  "q": "哪种化学元素是以阿尔伯特·爱因斯坦命名的？",
+  "options": [
+   "锘",
+   "锿",
+   "钔",
+   "镄"
+  ],
+  "correct": 1,
+  "explanation": "锿（99号元素）是在首次热核爆炸的残留物中发现的。"
+ },
+ {
+  "id": "p1404",
+  "level": 14,
+  "category": "geography",
+  "q": "哪个海峡把塔斯马尼亚岛和澳大利亚大陆分开？",
+  "options": [
+   "麦哲伦海峡",
+   "白令海峡",
+   "巴斯海峡",
+   "托雷斯海峡"
+  ],
+  "correct": 2,
+  "explanation": "巴斯海峡以英国外科医生乔治·巴斯命名。"
+ },
+ {
+  "id": "p1405",
+  "level": 14,
+  "category": "geography",
+  "q": "的的喀喀湖由哪两个国家共有？",
+  "options": [
+   "哥伦比亚和厄瓜多尔",
+   "智利和阿根廷",
+   "巴西和巴拉圭",
+   "秘鲁和玻利维亚"
+  ],
+  "correct": 3,
+  "explanation": "的的喀喀湖是安第斯山脉中的高原湖。"
+ },
+ {
+  "id": "p1406",
+  "level": 14,
+  "category": "geography",
+  "q": "尼日利亚的首都是哪座城市？",
+  "options": [
+   "阿布贾",
+   "卡诺",
+   "伊巴丹",
+   "拉各斯"
+  ],
+  "correct": 0,
+  "explanation": "首都于1991年从拉各斯迁到阿布贾。"
+ },
+ {
+  "id": "p1407",
+  "level": 14,
+  "category": "history",
+  "q": "1598年之前，哪个王朝在罗曼诺夫王朝之前统治俄罗斯？",
+  "options": [
+   "格迪米纳斯王朝",
+   "留里克王朝",
+   "舒伊斯基家族",
+   "戈东诺夫家族"
+  ],
+  "correct": 1,
+  "explanation": "留里克王朝的最后一位沙皇是费奥多尔一世。"
+ },
+ {
+  "id": "p1408",
+  "level": 14,
+  "category": "history",
+  "q": "谁的远征队在1519至1522年完成了首次环球航行？",
+  "options": [
+   "詹姆斯·库克",
+   "克里斯托弗·哥伦布",
+   "斐迪南·麦哲伦",
+   "瓦斯科·达·伽马"
+  ],
+  "correct": 2,
+  "explanation": "麦哲伦在途中去世；胡安·塞巴斯蒂安·埃尔卡诺完成了航行。"
+ },
+ {
+  "id": "p1409",
+  "level": 14,
+  "category": "history",
+  "q": "1814至1815年的哪次会议在拿破仑倒台后重新划分了欧洲版图？",
+  "options": [
+   "柏林会议",
+   "凡尔赛会议",
+   "巴黎会议",
+   "维也纳会议"
+  ],
+  "correct": 3,
+  "explanation": "维也纳会议恢复了欧洲的均势。"
+ },
+ {
+  "id": "p1410",
+  "level": 14,
+  "category": "literature",
+  "q": "史诗《埃涅阿斯纪》的作者是谁？",
+  "options": [
+   "维吉尔",
+   "奥维德",
+   "贺拉斯",
+   "荷马"
+  ],
+  "correct": 0,
+  "explanation": "维吉尔一直写《埃涅阿斯纪》，直到公元前19年去世。"
+ },
+ {
+  "id": "p1411",
+  "level": 14,
+  "category": "literature",
+  "q": "《局外人》（1942）是谁写的？",
+  "options": [
+   "让-保罗·萨特",
+   "阿尔贝·加缪",
+   "安德烈·马尔罗",
+   "弗朗茨·卡夫卡"
+  ],
+  "correct": 1,
+  "explanation": "加缪于1957年获得诺贝尔文学奖。"
+ },
+ {
+  "id": "p1412",
+  "level": 14,
+  "category": "art",
+  "q": "《宫娥》（1656）是谁画的？",
+  "options": [
+   "弗朗西斯科·戈雅",
+   "埃尔·格列柯",
+   "迭戈·委拉斯开兹",
+   "巴托洛梅·牟利罗"
+  ],
+  "correct": 2,
+  "explanation": "《宫娥》悬挂在马德里的普拉多博物馆。"
+ },
+ {
+  "id": "p1413",
+  "level": 14,
+  "category": "art",
+  "q": "用细小的纯色点构成画面的绘画技法叫什么？",
+  "options": [
+   "超现实主义",
+   "立体主义",
+   "野兽派",
+   "点彩派"
+  ],
+  "correct": 3,
+  "explanation": "点彩派与乔治·修拉联系在一起。"
+ },
+ {
+  "id": "p1414",
+  "level": 14,
+  "category": "music",
+  "q": "芭蕾舞剧《春之祭》（1913）是谁作曲的？",
+  "options": [
+   "伊戈尔·斯特拉文斯基",
+   "莫里斯·拉威尔",
+   "谢尔盖·普罗科菲耶夫",
+   "德米特里·肖斯塔科维奇"
+  ],
+  "correct": 0,
+  "explanation": "《春之祭》在巴黎的首演引起了轩然大波。"
+ },
+ {
+  "id": "p1415",
+  "level": 14,
+  "category": "music",
+  "q": "介于男高音和男低音之间的男声叫什么？",
+  "options": [
+   "女低音",
+   "男中音",
+   "假声男高音",
+   "女中音"
+  ],
+  "correct": 1,
+  "explanation": "男中音是最常见的男声。"
+ },
+ {
+  "id": "p1416",
+  "level": 14,
+  "category": "film",
+  "q": "在《卡萨布兰卡》（1942）中，里克·布莱恩由哪位演员饰演？",
+  "options": [
+   "詹姆斯·斯图尔特",
+   "加里·格兰特",
+   "亨弗莱·鲍嘉",
+   "克拉克·盖博"
+  ],
+  "correct": 2,
+  "explanation": "鲍嘉的搭档是英格丽·褒曼。"
+ },
+ {
+  "id": "p1417",
+  "level": 14,
+  "category": "film",
+  "q": "《潜行者》（1979）是谁导演的？",
+  "options": [
+   "埃勒姆·克里莫夫",
+   "谢尔盖·爱森斯坦",
+   "安德烈·康查洛夫斯基",
+   "安德烈·塔可夫斯基"
+  ],
+  "correct": 3,
+  "explanation": "《潜行者》大致改编自斯特鲁加茨基兄弟的《路边野餐》。"
+ },
+ {
+  "id": "p1418",
+  "level": 14,
+  "category": "sport",
+  "q": "1980年夏季奥运会在哪座城市举行？",
+  "options": [
+   "莫斯科",
+   "慕尼黑",
+   "蒙特利尔",
+   "洛杉矶"
+  ],
+  "correct": 0,
+  "explanation": "1980年奥运会是首次在东欧举办的奥运会。"
+ },
+ {
+  "id": "p1419",
+  "level": 14,
+  "category": "sport",
+  "q": "职业拳击世界冠军争霸赛传统上打多少回合？",
+  "options": [
+   "15",
+   "12",
+   "8",
+   "10"
+  ],
+  "correct": 1,
+  "explanation": "如今冠军争霸赛最多打12回合。"
+ },
+ {
+  "id": "p1420",
+  "level": 14,
+  "category": "food",
+  "q": "哪座城市被认为是比萨的发源地？",
+  "options": [
+   "罗马",
+   "米兰",
+   "那不勒斯",
+   "巴勒莫"
+  ],
+  "correct": 2,
+  "explanation": "现代形式的比萨形成于那不勒斯。"
+ },
+ {
+  "id": "p1421",
+  "level": 14,
+  "category": "food",
+  "q": "哪种地下真菌被称为烹饪中的“黑钻石”？",
+  "options": [
+   "蘑菇",
+   "鸡油菌",
+   "平菇",
+   "松露"
+  ],
+  "correct": 3,
+  "explanation": "人们借助专门训练的狗或猪来寻找松露。"
+ },
+ {
+  "id": "p1422",
+  "level": 14,
+  "category": "health",
+  "q": "哪种肾上腺激素会引发“战斗或逃跑”反应？",
+  "options": [
+   "肾上腺素",
+   "甲状腺素",
+   "胰岛素",
+   "褪黑素"
+  ],
+  "correct": 0,
+  "explanation": "肾上腺素会加快心跳，动员身体。"
+ },
+ {
+  "id": "p1423",
+  "level": 14,
+  "category": "health",
+  "q": "儿童完整的乳牙有多少颗？",
+  "options": [
+   "24",
+   "20",
+   "32",
+   "28"
+  ],
+  "correct": 1,
+  "explanation": "完整的乳牙共有20颗。"
+ },
+ {
+  "id": "p1424",
+  "level": 14,
+  "category": "tech",
+  "q": "谁在1950年提出了检验机器能否“思考”的测试？",
+  "options": [
+   "克劳德·香农",
+   "诺伯特·维纳",
+   "艾伦·图灵",
+   "约翰·冯·诺依曼"
+  ],
+  "correct": 2,
+  "explanation": "图灵的论文《计算机器与智能》发表于1950年。"
+ },
+ {
+  "id": "p1425",
+  "level": 14,
+  "category": "tech",
+  "q": "“IP地址”中的“IP”代表什么？",
+  "options": [
+   "Intelligent Process",
+   "Instant Packet",
+   "Internal Port",
+   "Internet Protocol"
+  ],
+  "correct": 3,
+  "explanation": "IP是互联网的核心寻址协议。"
+ },
+ {
+  "id": "p1426",
+  "level": 14,
+  "category": "daily",
+  "q": "一海里等于多少米？",
+  "options": [
+   "1852",
+   "1000",
+   "1609",
+   "1760"
+  ],
+  "correct": 0,
+  "explanation": "一海里等于1852米。"
+ },
+ {
+  "id": "p1427",
+  "level": 14,
+  "category": "daily",
+  "q": "一周有多少秒？",
+  "options": [
+   "86 400",
+   "604 800",
+   "3600",
+   "1 209 600"
+  ],
+  "correct": 1,
+  "explanation": "7 × 24 × 60 × 60 = 604 800秒。"
+ },
+ {
+  "id": "p1428",
+  "level": 14,
+  "category": "language",
+  "q": "如果把母语者和非母语者都算上，世界上使用人数最多的语言是哪种？",
+  "options": [
+   "印地语",
+   "西班牙语",
+   "英语",
+   "汉语"
+  ],
+  "correct": 2,
+  "explanation": "按总使用人数计算，英语排第一。"
+ },
+ {
+  "id": "p1429",
+  "level": 14,
+  "category": "language",
+  "q": "15世纪创制的朝鲜文字叫什么？",
+  "options": [
+   "汉字",
+   "天城文",
+   "片假名",
+   "谚文"
+  ],
+  "correct": 3,
+  "explanation": "谚文是在世宗大王的主持下创制的。"
+ },
+ {
+  "id": "p1430",
+  "level": 14,
+  "category": "society",
+  "q": "按面积计算，世界上最小的国家是哪个？",
+  "options": [
+   "梵蒂冈",
+   "列支敦士登",
+   "圣马力诺",
+   "摩纳哥"
+  ],
+  "correct": 0,
+  "explanation": "梵蒂冈的面积约0.44平方公里。"
+ },
+ {
+  "id": "p1431",
+  "level": 14,
+  "category": "society",
+  "q": "联合国的第一任秘书长是谁？",
+  "options": [
+   "吴丹",
+   "特里格夫·赖伊",
+   "达格·哈马舍尔德",
+   "科菲·安南"
+  ],
+  "correct": 1,
+  "explanation": "挪威人特里格夫·赖伊于1946年就任。"
+ },
+ {
+  "id": "p1501",
+  "level": 15,
+  "category": "science",
+  "q": "哪位科学家在1896年发现了放射性？",
+  "options": [
+   "欧内斯特·卢瑟福",
+   "皮埃尔·居里",
+   "亨利·贝克勒尔",
+   "尼尔斯·玻尔"
+  ],
+  "correct": 2,
+  "explanation": "贝克勒尔发现了来自铀盐的辐射。"
+ },
+ {
+  "id": "p1502",
+  "level": 15,
+  "category": "science",
+  "q": "黑洞周围的、从内部任何东西都无法逃脱的边界叫什么？",
+  "options": [
+   "希尔球",
+   "洛希极限",
+   "光子球",
+   "事件视界"
+  ],
+  "correct": 3,
+  "explanation": "越过事件视界后，逃逸速度超过光速。"
+ },
+ {
+  "id": "p1503",
+  "level": 15,
+  "category": "science",
+  "q": "谁在17世纪第一次通过显微镜观察到细菌？",
+  "options": [
+   "安东尼·范·列文虎克",
+   "罗伯特·胡克",
+   "罗伯特·科赫",
+   "路易·巴斯德"
+  ],
+  "correct": 0,
+  "explanation": "列文虎克把它们称为“微小动物”。"
+ },
+ {
+  "id": "p1504",
+  "level": 15,
+  "category": "geography",
+  "q": "非洲最高的山峰是哪座？",
+  "options": [
+   "勃朗峰",
+   "乞力马扎罗山",
+   "肯尼亚山",
+   "厄尔布鲁士山"
+  ],
+  "correct": 1,
+  "explanation": "乞力马扎罗山高约5895米。"
+ },
+ {
+  "id": "p1505",
+  "level": 15,
+  "category": "geography",
+  "q": "大西洋中哪片海没有海岸？",
+  "options": [
+   "黑海",
+   "波罗的海",
+   "马尾藻海",
+   "红海"
+  ],
+  "correct": 2,
+  "explanation": "马尾藻海是由洋流界定的。"
+ },
+ {
+  "id": "p1506",
+  "level": 15,
+  "category": "geography",
+  "q": "亚洲最长的河流是哪条？",
+  "options": [
+   "恒河",
+   "湄公河",
+   "黄河",
+   "长江"
+  ],
+  "correct": 3,
+  "explanation": "长江长约6300公里。"
+ },
+ {
+  "id": "p1507",
+  "level": 15,
+  "category": "history",
+  "q": "1938年，哪位英国首相签署了《慕尼黑协定》？",
+  "options": [
+   "内维尔·张伯伦",
+   "斯坦利·鲍德温",
+   "克莱门特·艾德礼",
+   "温斯顿·丘吉尔"
+  ],
+  "correct": 0,
+  "explanation": "张伯伦从慕尼黑回国时承诺“我们时代的和平”。"
+ },
+ {
+  "id": "p1508",
+  "level": 15,
+  "category": "history",
+  "q": "建造吉萨大金字塔的法老胡夫属于哪个王朝？",
+  "options": [
+   "第十二王朝",
+   "第四王朝",
+   "第十八王朝",
+   "第一王朝"
+  ],
+  "correct": 1,
+  "explanation": "胡夫在公元前26世纪在位。"
+ },
+ {
+  "id": "p1509",
+  "level": 15,
+  "category": "history",
+  "q": "1871年德意志帝国成立后，谁成为第一任宰相？",
+  "options": [
+   "利奥波德·冯·兰克",
+   "伯恩哈德·冯·比洛",
+   "奥托·冯·俾斯麦",
+   "威廉二世"
+  ],
+  "correct": 2,
+  "explanation": "俾斯麦担任该职务直到1890年。"
+ },
+ {
+  "id": "p1510",
+  "level": 15,
+  "category": "literature",
+  "q": "小说《世界大战》（《星际战争》）的作者是谁？",
+  "options": [
+   "雷·布拉德伯里",
+   "儒勒·凡尔纳",
+   "阿瑟·柯南·道尔",
+   "H. G. 威尔斯"
+  ],
+  "correct": 3,
+  "explanation": "这部小说出版于1898年。"
+ },
+ {
+  "id": "p1511",
+  "level": 15,
+  "category": "literature",
+  "q": "小说《洛丽塔》的作者是谁？",
+  "options": [
+   "弗拉基米尔·纳博科夫",
+   "伊万·布宁",
+   "马克西姆·高尔基",
+   "鲍里斯·帕斯捷尔纳克"
+  ],
+  "correct": 0,
+  "explanation": "这部小说于1955年以英文出版。"
+ },
+ {
+  "id": "p1512",
+  "level": 15,
+  "category": "art",
+  "q": "《煎饼磨坊的舞会》（1876）是谁画的？",
+  "options": [
+   "阿尔弗雷德·西斯莱",
+   "皮埃尔-奥古斯特·雷诺阿",
+   "卡米耶·毕沙罗",
+   "埃德加·德加"
+  ],
+  "correct": 1,
+  "explanation": "这幅画描绘了蒙马特的一场周日舞会。"
+ },
+ {
+  "id": "p1513",
+  "level": 15,
+  "category": "art",
+  "q": "《1808年5月3日》是谁画的？",
+  "options": [
+   "迭戈·委拉斯开兹",
+   "埃尔·格列柯",
+   "弗朗西斯科·戈雅",
+   "巴勃罗·毕加索"
+  ],
+  "correct": 2,
+  "explanation": "戈雅描绘了法国士兵处决马德里市民的场景。"
+ },
+ {
+  "id": "p1514",
+  "level": 15,
+  "category": "music",
+  "q": "芭蕾舞剧《罗密欧与朱丽叶》（1935–1936）是谁作曲的？",
+  "options": [
+   "阿拉姆·哈恰图良",
+   "伊戈尔·斯特拉文斯基",
+   "彼得·柴可夫斯基",
+   "谢尔盖·普罗科菲耶夫"
+  ],
+  "correct": 3,
+  "explanation": "著名的《骑士舞》就出自这部芭蕾舞剧。"
+ },
+ {
+  "id": "p1515",
+  "level": 15,
+  "category": "music",
+  "q": "《野蜂飞舞》是谁作曲的？",
+  "options": [
+   "尼古拉·里姆斯基-科萨科夫",
+   "莫杰斯特·穆索尔斯基",
+   "亚历山大·鲍罗丁",
+   "米哈伊尔·格林卡"
+  ],
+  "correct": 0,
+  "explanation": "《野蜂飞舞》是歌剧《萨尔坦沙皇的故事》中的间奏曲。"
+ },
+ {
+  "id": "p1516",
+  "level": 15,
+  "category": "film",
+  "q": "爱森斯坦1925年的哪部电影中有敖德萨阶梯的段落？",
+  "options": [
+   "《十月》",
+   "《战舰波将金号》",
+   "《恐怖的伊万》",
+   "《亚历山大·涅夫斯基》"
+  ],
+  "correct": 1,
+  "explanation": "敖德萨阶梯的段落成为电影剪辑的经典。"
+ },
+ {
+  "id": "p1517",
+  "level": 15,
+  "category": "film",
+  "q": "谁执导并主演了《公民凯恩》（1941）？",
+  "options": [
+   "阿尔弗雷德·希区柯克",
+   "约翰·福特",
+   "奥逊·威尔斯",
+   "查理·卓别林"
+  ],
+  "correct": 2,
+  "explanation": "威尔斯拍《公民凯恩》时年仅25岁。"
+ },
+ {
+  "id": "p1518",
+  "level": 15,
+  "category": "sport",
+  "q": "谁在职业生涯中赢得的奥运金牌最多？",
+  "options": [
+   "卡尔·刘易斯",
+   "尤塞恩·博尔特",
+   "马克·施皮茨",
+   "迈克尔·菲尔普斯"
+  ],
+  "correct": 3,
+  "explanation": "菲尔普斯有23枚金牌。"
+ },
+ {
+  "id": "p1519",
+  "level": 15,
+  "category": "sport",
+  "q": "首届冬季奥运会是在哪一年举行的？",
+  "options": [
+   "1924",
+   "1896",
+   "1936",
+   "1948"
+  ],
+  "correct": 0,
+  "explanation": "首届冬奥会在夏蒙尼举行。"
+ },
+ {
+  "id": "p1520",
+  "level": 15,
+  "category": "food",
+  "q": "下列哪种大米传统上用来做意式烩饭？",
+  "options": [
+   "德夫齐拉米",
+   "阿尔伯里奥米",
+   "茉莉香米",
+   "印度香米"
+  ],
+  "correct": 1,
+  "explanation": "阿尔伯里奥米淀粉含量高，能做出奶油般的口感。"
+ },
+ {
+  "id": "p1521",
+  "level": 15,
+  "category": "food",
+  "q": "香槟来自法国的哪个产区？",
+  "options": [
+   "波尔多",
+   "勃艮第",
+   "香槟区",
+   "普罗旺斯"
+  ],
+  "correct": 2,
+  "explanation": "只有产自香槟区的起泡酒才能称为香槟。"
+ },
+ {
+  "id": "p1522",
+  "level": 15,
+  "category": "health",
+  "q": "人体最大的动脉叫什么？",
+  "options": [
+   "肺动脉",
+   "颈动脉",
+   "股动脉",
+   "主动脉"
+  ],
+  "correct": 3,
+  "explanation": "主动脉从心脏的左心室发出。"
+ },
+ {
+  "id": "p1523",
+  "level": 15,
+  "category": "health",
+  "q": "胰腺分泌的哪种激素会升高血糖？",
+  "options": [
+   "胰高血糖素",
+   "皮质醇",
+   "催产素",
+   "胰岛素"
+  ],
+  "correct": 0,
+  "explanation": "胰高血糖素的作用与胰岛素相反。"
+ },
+ {
+  "id": "p1524",
+  "level": 15,
+  "category": "tech",
+  "q": "比雅尼·斯特劳斯特鲁普创造了哪种编程语言？",
+  "options": [
+   "Java",
+   "C++",
+   "Ruby",
+   "Python"
+  ],
+  "correct": 1,
+  "explanation": "斯特劳斯特鲁普在20世纪80年代初开始研发C++。"
+ },
+ {
+  "id": "p1525",
+  "level": 15,
+  "category": "tech",
+  "q": "1969年在美国建立、后来成为互联网前身的网络叫什么？",
+  "options": [
+   "以太网",
+   "蓝牙",
+   "ARPANET",
+   "Usenet"
+  ],
+  "correct": 2,
+  "explanation": "ARPANET连接了四所大学的第一批计算机。"
+ },
+ {
+  "id": "p1526",
+  "level": 15,
+  "category": "daily",
+  "q": "一英寸等于多少毫米？",
+  "options": [
+   "30.48",
+   "12",
+   "10",
+   "25.4"
+  ],
+  "correct": 3,
+  "explanation": "一英寸等于25.4毫米。"
+ },
+ {
+  "id": "p1527",
+  "level": 15,
+  "category": "daily",
+  "q": "国际单位制中的“秒”是由哪种元素的原子定义的？",
+  "options": [
+   "铯-133",
+   "氢-1",
+   "铷-87",
+   "锶-88"
+  ],
+  "correct": 0,
+  "explanation": "一秒等于铯-133原子辐射9 192 631 770个周期所持续的时间。"
+ },
+ {
+  "id": "p1528",
+  "level": 15,
+  "category": "language",
+  "q": "下列哪种语言不属于印欧语系？",
+  "options": [
+   "亚美尼亚语",
+   "匈牙利语",
+   "立陶宛语",
+   "阿尔巴尼亚语"
+  ],
+  "correct": 1,
+  "explanation": "匈牙利语属于乌拉尔语系。"
+ },
+ {
+  "id": "p1529",
+  "level": 15,
+  "category": "language",
+  "q": "词源学研究什么？",
+  "options": [
+   "句子结构",
+   "重音规则",
+   "词的来源",
+   "语音的发音"
+  ],
+  "correct": 2,
+  "explanation": "词源学追溯词语的历史。"
+ },
+ {
+  "id": "p1530",
+  "level": 15,
+  "category": "society",
+  "q": "联合国安理会共有多少个成员国（常任和非常任合计）？",
+  "options": [
+   "20",
+   "5",
+   "10",
+   "15"
+  ],
+  "correct": 3,
+  "explanation": "五个常任理事国和十个非常任理事国。"
+ },
+ {
+  "id": "p1531",
+  "level": 15,
+  "category": "society",
+  "q": "美国的最高法院叫什么？",
+  "options": [
+   "最高法院",
+   "上诉法院",
+   "联邦储备系统",
+   "参议院"
+  ],
+  "correct": 0,
+  "explanation": "美国最高法院有九位大法官。"
+ }
+]

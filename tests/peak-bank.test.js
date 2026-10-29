@@ -5,7 +5,7 @@ const path = require("path");
 
 const CATEGORIES = ["science", "geography", "history", "literature", "art", "music", "film", "sport", "food", "health", "tech", "daily", "language", "society"];
 const MIN_PER_LEVEL = 30;
-const LANGS = ["ru", "en"];
+const LANGS = ["ru", "en", "es", "zh", "fr"];
 
 const load = (lang) => JSON.parse(fs.readFileSync(path.join(__dirname, "..", "peak", `questions.${lang}.json`), "utf8"));
 const norm = (s) => s.toLowerCase().replace(/\s+/g, " ").trim();
@@ -51,16 +51,25 @@ for (const lang of LANGS) {
   });
 }
 
-test("ru and en banks describe the same questions: ids, levels, categories and the right answer match", () => {
-  const ru = load("ru"), en = load("en");
-  assert.equal(ru.length, en.length);
-  ru.forEach((q, i) => {
-    assert.deepEqual([q.id, q.level, q.category, q.correct], [en[i].id, en[i].level, en[i].category, en[i].correct]);
-  });
+test("every language describes the same questions as en: ids, levels, categories and the right answer match", () => {
+  const en = load("en");
+  for (const lang of LANGS.filter((l) => l !== "en")) {
+    const bank = load(lang);
+    assert.equal(bank.length, en.length, lang + " length");
+    bank.forEach((q, i) => {
+      assert.deepEqual([q.id, q.level, q.category, q.correct], [en[i].id, en[i].level, en[i].category, en[i].correct], lang + " " + en[i].id);
+    });
+  }
 });
 
 test("each language is written in its own script", () => {
   const cyr = /[А-Яа-яЁё]/;
   load("ru").forEach((q) => assert.ok(cyr.test(q.q), q.id + " ru question"));
-  load("en").forEach((q) => assert.ok(!cyr.test(q.q + q.options.join("") + q.explanation), q.id + " en has Cyrillic"));
+  const cjk = /[\u3400-\u9fff]/;
+  const text = (q) => q.q + q.options.join("") + q.explanation;
+  for (const lang of ["en", "es", "fr"]) load(lang).forEach((q) => assert.ok(!cyr.test(text(q)) && !cjk.test(text(q)), q.id + " " + lang + " has foreign script"));
+  load("zh").forEach((q) => assert.ok(cjk.test(q.q) && !cyr.test(text(q)), q.id + " zh question"));
+  // a translation must really differ from the English source (catches a copied file)
+  const en = load("en");
+  for (const lang of ["es", "zh", "fr"]) assert.ok(load(lang).filter((q, i) => q.q === en[i].q).length < 10, lang + " looks untranslated");
 });
