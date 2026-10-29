@@ -8723,7 +8723,7 @@ function peakTickDue(left,last){const s=Math.ceil(left);return(s>=1&&s<=20&&s!==
 // A short pause is part of the drama; shortened when the system asks for reduced motion.
 function peakDelay(ms){try{return window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches?Math.min(ms,400):ms}catch(e){return ms}}
 // ----- Peak INLI: screen, timer and fair-play protection -----
-let peakUi={mode:"idle",practice:false,picks:{},game:null,bank:null,bankLang:null,dnd:false,left:PEAK_SECONDS,qStart:0,sel:-1,note:"",noteCls:"",overlay:null,reason:"",end:null,count:3};
+let peakUi={mode:"idle",practice:false,picks:{},game:null,bank:null,bankLang:null,dnd:false,left:PEAK_SECONDS,qStart:0,sel:-1,note:"",noteCls:"",overlay:null,shot:null,reason:"",end:null,count:3};
 let peakTimerId=null,peakNextId=null,peakCountId=null,peakGuardId=null,peakListening=false;
 const peakFullSupported=()=>!!document.documentElement.requestFullscreen;
 // Protection applies to a real game only; practice has no guard, no limits and pays nothing.
@@ -8804,7 +8804,7 @@ function peakAskNext(){
     if(!state.peak.seen.includes(q.id))state.peak.seen.push(q.id);
     state.peak.active.level=g.level;state.peak.active.lifelines=g.used.slice();save();
   }
-  Object.assign(peakUi,{mode:"play",sel:-1,note:"",noteCls:"",overlay:null,qStart:performance.now(),left:PEAK_SECONDS,fresh:true,lastTick:0});
+  Object.assign(peakUi,{mode:"play",sel:-1,note:"",noteCls:"",overlay:null,shot:null,qStart:performance.now(),left:PEAK_SECONDS,fresh:true,lastTick:0});
   peakRunTimer();renderPeak();peakTension(true);
 }
 function peakRunTimer(){
@@ -8834,14 +8834,14 @@ function peakReveal(res,how){
   peakNextId=setTimeout(()=>peakFinish(how==="timeout"?"timeout":"wrong",res.reached),2400);
 }
 function peakConfirm(){
-  const g=peakUi.game,level=g.level,res=peakAnswer(g,peakUi.sel);
+  const g=peakUi.game,level=g.level,shot=peakShot(g),res=peakAnswer(g,peakUi.sel);
   peakUi.picks[level]=peakUi.sel;
   peakUi.overlay=null;
   if(res.result==="retry"){peakUi.sel=-1;peakUi.note=T.peakRetry;peakUi.noteCls="bad";renderPeak();peakSfx("wrong");return}
   if(res.result==="invalid"){renderPeak();return}
   // the stored game follows at once, then a suspense beat before the verdict (the timer is stopped)
   if(!peakUi.practice&&state.peak.active){state.peak.active.level=g.level;save()}
-  peakUi.mode="reveal";peakUi.revealRes=null;clearInterval(peakTimerId);peakTension(false);peakSfx("final");renderPeak();
+  peakUi.mode="reveal";peakUi.revealRes=null;peakUi.shot=shot;clearInterval(peakTimerId);peakTension(false);peakSfx("final");renderPeak();
   peakNextId=setTimeout(()=>peakReveal(res,"answer"),peakDelay(1400));
 }
 function peakLifeline(kind){
@@ -8876,12 +8876,19 @@ function peakGateHTML(){
     <div class="pk-btns"><button class="pk-btn" data-pk="start" ${peakCanStart()?"":"disabled"}>${T.peakStart}</button><button class="pk-btn ghost" data-pk="practice" ${peakUi.bank?"":"disabled"}>${T.peakPractice}</button></div><p class="hint" style="text-align:center">${T.peakPracticeHint}</p></div></div>`;
 }
 function peakCountHTML(){return`<div class="pk-wrap"><div class="pk-card" style="text-align:center"><div class="eyebrow">${T.peakTitle}</div><div class="pk-big">${peakUi.count}</div><p class="sub">${T.peakCountdown.replace("{0}",peakUi.count)}</p></div></div>`}
+// What the screen shows for the question being played. peakAnswer moves the game on to the next
+// question the instant a right answer is confirmed, but the suspense beat and the verdict still have to
+// draw THAT question with the answer that was given to it — so peakConfirm takes this snapshot before
+// answering and peakPlayHTML draws from it while peakUi.mode is "reveal" (cleared by peakAskNext).
+function peakShot(g){
+  return{level:g.level,q:peakQ(g),shown:g.shown[g.level-1].slice(),gone:g.gone.slice(),struck:g.struck.slice(),used:g.used.slice(),doubleOn:g.doubleOn,vis:peakVisible(g)};
+}
 function peakPlayHTML(){
-  const g=peakUi.game,q=peakQ(g),shown=g.shown[g.level-1],vis=peakVisible(g),rev=peakUi.mode==="reveal",res=peakUi.revealRes||{};
+  const g=peakUi.game,rev=peakUi.mode==="reveal",v=(rev&&peakUi.shot)||peakShot(g),q=v.q,shown=v.shown,vis=v.vis,res=peakUi.revealRes||{};
   const fresh=peakUi.fresh;peakUi.fresh=false;
   const opts=shown.map((orig,pos)=>{
     let cls="";
-    if(g.gone.includes(orig))cls="gone";else if(g.struck.includes(orig))cls="cross";
+    if(v.gone.includes(orig))cls="gone";else if(v.struck.includes(orig))cls="cross";
     else if(rev&&(res.result==="right"||res.result==="top")&&orig===peakUi.sel)cls="ok";
     else if(rev&&(res.result==="wrong"||res.result==="timeout")){if(orig===q.correct)cls="ok";else if(orig===peakUi.sel)cls="bad"}
     else if(orig===peakUi.sel)cls="sel";
@@ -8889,25 +8896,25 @@ function peakPlayHTML(){
     return`<button class="pk-opt pk-hex ${cls||label}" aria-pressed="${orig===peakUi.sel}" data-pk="opt" data-i="${pos}" ${rev||!vis.includes(orig)?"disabled":""}><i>${"ABCD"[pos]}</i><span>${escapeHtml(q.options[orig])}</span></button>`;
   }).join("");
   const LL=[["5050","50:50"],["phone","📞"],["audience","📊"],["double","🛡"]],names={"5050":T.peakLl5050,phone:T.peakLlPhone,audience:T.peakLlAudience,double:T.peakLlDouble};
-  const lls=LL.map(([k,ic])=>`<div class="pk-ll ${g.used.includes(k)?(k==="double"&&g.doubleOn?"active":"used"):""}"><button class="pk-ci" data-pk="ll" data-k="${k}" ${rev?"disabled":""}>${ic}</button>${names[k]}</div>`).join("");
+  const lls=LL.map(([k,ic])=>`<div class="pk-ll ${v.used.includes(k)?(k==="double"&&v.doubleOn?"active":"used"):""}"><button class="pk-ci" data-pk="ll" data-k="${k}" ${rev?"disabled":""}>${ic}</button>${names[k]}</div>`).join("");
   let lad='<ul class="pk-ladder">';
-  for(let i=15;i>=1;i--)lad+=`<li class="${i===g.level?"cur":i<g.level?"done":""}${(i===5||i===10)?" safe":""}"><em>${i}</em>${(i===5||i===10)?"◆":""}<span>${peakPrizeInli(i)}</span></li>`;
+  for(let i=15;i>=1;i--)lad+=`<li class="${i===v.level?"cur":i<v.level?"done":""}${(i===5||i===10)?" safe":""}"><em>${i}</em>${(i===5||i===10)?"◆":""}<span>${peakPrizeInli(i)}</span></li>`;
   lad+=`<small>${T.peakSafeNote}</small></ul>`;
   let ov="";const o=peakUi.overlay;
   if(o&&o.type==="final")ov=`<div class="pk-ov" role="dialog" aria-modal="true"><div class="pk-panel" style="text-align:center"><h4>${T.peakFinalQ}</h4><div style="font-size:20px;font-weight:800;margin:8px 0"><span style="color:var(--accent)">${"ABCD"[shown.indexOf(peakUi.sel)]}</span> ${escapeHtml(q.options[peakUi.sel])}</div><div class="pk-btns"><button class="pk-btn" data-pk="yes">${T.peakFinalYes}</button><button class="pk-btn ghost" data-pk="no">${T.peakFinalNo}</button></div></div></div>`;
-  else if(o&&o.type==="walk")ov=`<div class="pk-ov" role="dialog" aria-modal="true"><div class="pk-panel" style="text-align:center"><h4>${T.peakWalkAsk.replace("{0}",peakPrizeInli(g.level-1))}</h4><div class="pk-btns"><button class="pk-btn" data-pk="walkyes">${T.peakFinalYes}</button><button class="pk-btn ghost" data-pk="no">${T.peakFinalNo}</button></div></div></div>`;
+  else if(o&&o.type==="walk")ov=`<div class="pk-ov" role="dialog" aria-modal="true"><div class="pk-panel" style="text-align:center"><h4>${T.peakWalkAsk.replace("{0}",peakPrizeInli(v.level-1))}</h4><div class="pk-btns"><button class="pk-btn" data-pk="walkyes">${T.peakFinalYes}</button><button class="pk-btn ghost" data-pk="no">${T.peakFinalNo}</button></div></div></div>`;
   else if(o&&o.type==="phone")ov=`<div class="pk-ov" role="dialog" aria-modal="true"><div class="pk-panel"><h4>${T.peakLlPhone}</h4><div class="pk-bubble">${T.peakFriend.replace("{0}",`<b>${"ABCD"[shown.indexOf(o.answer)]} — ${escapeHtml(q.options[o.answer])}</b>`).replace("{1}",o.confidence)}</div><div class="pk-btns"><button class="pk-btn ghost" data-pk="no">${T.peakClose}</button></div></div></div>`;
   else if(o&&o.type==="audience"){
     const bars=shown.filter(i=>o.percent[i]!==undefined).map(i=>`<div><span style="height:${Math.max(6,o.percent[i]*1.3)}px"></span>${o.percent[i]}%<br>${"ABCD"[shown.indexOf(i)]}</div>`).join("");
     ov=`<div class="pk-ov" role="dialog" aria-modal="true"><div class="pk-panel"><h4>${T.peakLlAudience}</h4><div class="pk-bars">${bars}</div><div class="pk-btns"><button class="pk-btn ghost" data-pk="no">${T.peakClose}</button></div></div></div>`;
   }
   const ribbon=peakUi.practice?`<div class="pk-ribbon" role="status">${T.peakPracticeRibbon}</div>`:"";
-  return`<div class="pk-stage">${ribbon}<div class="pk-bar"><div class="pk-bl">${peakLogo(26)}<span>${T.peakTitle}</span></div><div class="pk-bc"><b>${T.peakQOf.replace("{0}",g.level)}</b></div>
+  return`<div class="pk-stage">${ribbon}<div class="pk-bar"><div class="pk-bl">${peakLogo(26)}<span>${T.peakTitle}</span></div><div class="pk-bc"><b>${T.peakQOf.replace("{0}",v.level)}</b></div>
     <div class="pk-br">${peakSndBtn()}${peakUi.practice?"":`<span class="pk-guard"><i></i>${T.peakGuard}</span>`}${peakTimerHTML()}</div></div>
     <div class="pk-game"><div class="pk-main"><div class="pk-q pk-hex"><span>${escapeHtml(q.q)}</span></div>
     ${peakUi.note?`<div class="pk-banner ${peakUi.noteCls}" role="status">${peakUi.note}</div>`:""}
     <div class="pk-opts ${fresh?"pk-in":""}">${opts}</div><div class="pk-lls">${lls}</div>
-    ${rev?"":peakUi.practice?`<button class="pk-walk" data-pk="pexit">${T.peakPracticeExit}</button>`:`<button class="pk-walk" data-pk="walk">${T.peakWalk.replace("{0}",`<b>${peakPrizeInli(g.level-1)}</b>`)}</button>`}</div>${lad}</div>${ov}</div>`;
+    ${rev?"":peakUi.practice?`<button class="pk-walk" data-pk="pexit">${T.peakPracticeExit}</button>`:`<button class="pk-walk" data-pk="walk">${T.peakWalk.replace("{0}",`<b>${peakPrizeInli(v.level-1)}</b>`)}</button>`}</div>${lad}</div>${ov}</div>`;
 }
 function peakEndHTML(){
   const g=peakUi.end||{};
