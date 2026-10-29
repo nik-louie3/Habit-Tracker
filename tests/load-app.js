@@ -46,6 +46,7 @@ function loadApp() {
       peakPrizeInli, peakPayoutOnWrong, peakGamesThisMonth, peakAttemptsLeft, peakStartGame, peakFinishGame, peakDropInterrupted,
       peakPickQuestions, peakNewGame, peakQ, peakVisible, peakUseLifeline, peakAnswer, peakTimeout, peakWalkAway,
       peakSoundOn, peakSetSound, peakSfx, peakTension, peakTickDue,
+      peakMonthStats, peakReviewItems,
       // confirm() is not implemented in jsdom — tests install their own answer per case.
       setConfirm: (fn) => { window.confirm = fn; },
     };
