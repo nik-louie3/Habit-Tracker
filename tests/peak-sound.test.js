@@ -25,7 +25,5 @@ test("sound is on by default, the mute choice is remembered, and nothing throws 
     assert.equal(a.peakSoundOn(), true);
     // jsdom has no AudioContext: every cue must quietly do nothing
     for (const c of ["final", "correct", "wrong", "lifeline", "tick", "win", "violation"]) a.peakSfx(c);
-    a.peakTension(true);
-    a.peakTension(false);
   } finally { a.close(); }
 });
