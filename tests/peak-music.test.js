@@ -21,7 +21,7 @@ function fakeAudio() {
 }
 const sound = (log) => log.started + log.noise;
 
-test("peakTier — questions 1-5 curious, 6-10 serious, 11-15 dread", () => {
+test("peakTier — questions 1-5 calm, 6-10 serious, 11-15 tense", () => {
   const a = loadApp();
   try {
     const tiers = [];
@@ -30,26 +30,45 @@ test("peakTier — questions 1-5 curious, 6-10 serious, 11-15 dread", () => {
   } finally { a.close(); }
 });
 
-test("the suspense bed gets denser and darker with every tier", () => {
+test("the suspense bed picks up with every tier — a quicker, louder pulse and a warmer drone", () => {
   const a = loadApp();
   try {
     assert.equal(a.PEAK_BED.length, 3);
     const [t0, t1, t2] = a.PEAK_BED;
-    assert.ok(t0.step > t1.step && t1.step > t2.step, "each tier beats faster");
-    assert.ok(t0.beat > t1.beat && t1.beat > t2.beat, "the heartbeat comes more often");
-    assert.ok(t0.arp < t1.arp && t1.arp < t2.arp, "the arpeggio gets louder");
-    assert.ok(t0.drone.length < t1.drone.length && t1.drone.length < t2.drone.length, "the drone gains voices");
-    for (const bed of a.PEAK_BED) assert.ok(bed.seq.length > 0 && bed.step > 0);
+    assert.ok(t0.bpm < t1.bpm && t1.bpm < t2.bpm, "each tier's heartbeat is quicker");
+    assert.ok(t0.beatV < t1.beatV && t1.beatV < t2.beatV, "and a little louder");
+    assert.ok(t0.cut < t1.cut && t1.cut < t2.cut, "the drone gets brighter");
+    assert.ok(t0.drone.length < t1.drone.length && t1.drone.length < t2.drone.length, "and gains voices");
+    for (const bed of a.PEAK_BED) {
+      assert.ok(bed.vol[0] < bed.vol[1], "the drone swells over the question");
+      assert.ok(!("seq" in bed), "no melody: the bed is a drone and a pulse");
+    }
+    assert.ok(t0.vol[1] <= t1.vol[1] && t1.vol[1] <= t2.vol[1]);
   } finally { a.close(); }
 });
 
-test("peakTension — each tier starts its own drone, filter sweep and first beat, and stops them all", () => {
+test("the drone is consonant — only the root, its fifth and octaves, never a minor second or tritone", () => {
+  const a = loadApp();
+  try {
+    const consonant = [1, 1.5, 2, 3, 4];
+    for (const bed of a.PEAK_BED) {
+      const root = bed.drone[0];
+      assert.ok(root >= 100, "the root sits where a phone speaker can still play it");
+      for (const f of bed.drone) {
+        const r = f / root;
+        assert.ok(consonant.some((c) => Math.abs(r - c) / c < 0.01), f + " Hz is not a fifth or octave of " + root);
+      }
+    }
+  } finally { a.close(); }
+});
+
+test("peakTension — each tier starts its own drone, filter drift and first heartbeat, and stops them all", () => {
   const a = loadApp();
   try {
     const { Ctx, log } = fakeAudio();
     a.setAudioContext(Ctx);
-    // drone voices + the filter LFO + the first step (an arpeggio note, and the heartbeat: single, or lub-dub in tier 3)
-    const expected = [5, 6, 8];
+    // drone voices + the filter LFO + the first lub-dub (two soft thumps)
+    const expected = [5, 6, 7];
     [1, 7, 13].forEach((level, tier) => {
       a.peakUi.mode = "play";
       a.peakUi.game = { level };
@@ -59,7 +78,7 @@ test("peakTension — each tier starts its own drone, filter sweep and first bea
       a.peakTension(false);
       assert.ok(log.stopped - stoppedBefore >= a.PEAK_BED[tier].drone.length + 1, "tier " + tier + " stops its drone and LFO");
     });
-    a.peakUi.mode = "idle"; // leaves nothing running between steps
+    a.peakUi.mode = "idle"; // leaves nothing running between beats
   } finally { a.close(); }
 });
 
@@ -78,6 +97,19 @@ test("every cue really sounds, and a safe sum is grander than an ordinary one", 
     assert.ok(safe5 > ordinary && safe10 > ordinary, "question 5 and 10 get the full fanfare");
     assert.equal(safe5, safe10);
     assert.equal(ordinary, ordinary11, "other levels share the ordinary cue");
+  } finally { a.close(); }
+});
+
+test("the musical cues are pure tones — no noise bursts", () => {
+  const a = loadApp();
+  try {
+    const { Ctx, log } = fakeAudio();
+    a.setAudioContext(Ctx);
+    for (const cue of ["final", "correct", "strike", "wrong", "win"]) {
+      const before = log.noise;
+      a.peakSfx(cue, 5);
+      assert.equal(log.noise, before, cue + " uses no noise");
+    }
   } finally { a.close(); }
 });
 

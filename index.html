@@ -8675,7 +8675,7 @@ function peakSetSound(on){
 function peakAudio(){
   if(!peakSoundOn())return null;
   try{
-    if(!peakAc){const C=window.AudioContext||window.webkitAudioContext;if(!C)return null;peakAc=new C();peakMaster=peakAc.createGain();peakMaster.gain.value=.32;peakMaster.connect(peakAc.destination)}
+    if(!peakAc){const C=window.AudioContext||window.webkitAudioContext;if(!C)return null;peakAc=new C();peakMaster=peakAc.createGain();peakMaster.gain.value=.16;peakMaster.connect(peakAc.destination)}
     if(peakAc.state==="suspended")peakAc.resume();
     return peakAc;
   }catch(e){return null}
@@ -8692,81 +8692,66 @@ function peakNoise(t,d,v,hp){
   const src=c.createBufferSource(),g=c.createGain(),f=c.createBiquadFilter();f.type="highpass";f.frequency.value=hp;src.buffer=b;g.gain.value=v;src.connect(f);f.connect(g);g.connect(peakMaster);src.start(t);
 }
 const peakHz=n=>440*Math.pow(2,(n-69)/12);
-// A rising noise sweep: bandpass-filtered noise whose centre climbs from `from` to `to` Hz while it swells.
-function peakRiser(t,d,from,to,v){
-  const c=peakAc,b=c.createBuffer(1,Math.max(1,Math.floor(c.sampleRate*d)),c.sampleRate),x=b.getChannelData(0);
-  for(let i=0;i<x.length;i++)x[i]=Math.random()*2-1;
-  const s=c.createBufferSource(),f=c.createBiquadFilter(),g=c.createGain();
-  s.buffer=b;f.type="bandpass";f.Q.value=2.5;f.frequency.setValueAtTime(from,t);f.frequency.exponentialRampToValueAtTime(to,t+d);
-  g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(v,t+d*.9);g.gain.linearRampToValueAtTime(0,t+d);
-  s.connect(f);f.connect(g);g.connect(peakMaster);s.start(t);
-}
 function peakSfx(name,lv){
   const c=peakAudio();if(!c)return;const t=c.currentTime,hz=peakHz;
+  // Soft sine/triangle tones only (no saw buzz, no noise bursts), kept above ~100 Hz so a phone speaker still plays them.
   if(name==="final"){
-    // the suspense beat before a verdict: a noise riser and a climbing tone over a swelling low note,
-    // a heartbeat that quickens, then one heavy hit as the verdict lands
-    peakRiser(t,1.3,300,5200,.22);
-    peakTone(110,t,1.3,"sawtooth",.16,.6,.4,330,900);peakTone(55,t,1.3,"sine",.3,.3,.4,70);
-    [0,.5,.9,1.15].forEach((d,k)=>peakTone(78,t+d,.16,"sine",.3+.05*k,.002,.12,36));
-    peakTone(46,t+1.3,.5,"sine",.45,.003,.4,34);peakNoise(t+1.3,.3,.3,200);
+    // the suspense beat before a verdict: a low swell that climbs, a heartbeat that quickens, one soft hit as the verdict lands
+    peakTone(110,t,1.3,"sine",.3,.6,.4,220);peakTone(165,t,1.3,"triangle",.1,.7,.4,330);
+    [0,.6,1].forEach((d,k)=>{peakTone(150,t+d,.22,"sine",.22+.05*k,.004,.16,70);peakTone(130,t+d+.17,.2,"sine",.15+.04*k,.004,.15,64)});
+    peakTone(120,t+1.3,.5,"sine",.4,.004,.4,60);
   }
   else if(name==="correct"){
-    // a rising run; at a safe sum (5 and 10) a held chord and a bell shimmer make it a real moment (lv = the level just cleared)
-    const big=PEAK_SAFE_LEVELS.includes(lv),run=big?[67,72,76,79,84,88]:[72,76,79,84];
-    run.forEach((n,i)=>{peakTone(hz(n),t+i*.12,.55,"sawtooth",.18,.01,.3,null,2600);peakTone(hz(n)/2,t+i*.12,.55,"triangle",.16)});
-    [91,95,98].forEach((n,i)=>peakTone(hz(n),t+.5+i*.07,.5,"sine",.12,.005,.4));
-    if(big){[60,64,67,72].forEach(n=>peakTone(hz(n),t+.25,1.5,"triangle",.13,.05,.9));[96,100,103,108].forEach((n,i)=>peakTone(hz(n),t+.85+i*.08,1,"sine",.1,.005,.8))}
+    // a short rising C-major figure; at a safe sum (5 and 10) a longer one with a held chord and a few bells (lv = the level just cleared)
+    const big=PEAK_SAFE_LEVELS.includes(lv),run=big?[60,64,67,72,76]:[67,72,76];
+    run.forEach((n,i)=>{peakTone(hz(n),t+i*.14,.6,"triangle",.2,.01,.4);peakTone(hz(n)/2,t+i*.14,.6,"sine",.14)});
+    if(big){[60,64,67].forEach(n=>peakTone(hz(n),t+.3,1.5,"triangle",.12,.06,.9));[88,91,96].forEach((n,i)=>peakTone(hz(n),t+.9+i*.1,1,"sine",.09,.005,.8))}
   }
-  else if(name==="strike"){peakTone(220,t,.35,"sawtooth",.22,.01,.2,150,800);peakNoise(t,.1,.15,1500)} // a missed Double dip: the game goes on
+  else if(name==="strike"){peakTone(220,t,.3,"sine",.25,.005,.2,140)} // a missed Double dip: the game goes on
   else if(name==="wrong"){
-    // the game is over: a sagging minor second over a heavy drop, then a slow falling sigh
-    peakTone(196,t,1.1,"sawtooth",.28,.02,.6,82,600);peakTone(207,t,1.1,"sawtooth",.24,.02,.6,86,600);
-    peakTone(55,t,1.4,"sine",.4,.01,.9,32);peakNoise(t,.2,.22,1000);
-    [69,65,62].forEach((n,i)=>peakTone(hz(n),t+.5+i*.28,.7,"triangle",.1,.02,.5,null,900));
+    // the game is over: two voices sagging a minor third and a heavy drop under them
+    peakTone(157,t,.9,"sine",.26,.01,.6,94);peakTone(131,t,.9,"triangle",.2,.01,.6,78);
+    peakTone(110,t,1,"triangle",.3,.01,.7,55);
   }
   else if(name==="lifeline"){[84,88,91,96].forEach((n,i)=>peakTone(hz(n),t+i*.07,.35,"sine",.16,.005,.25))}
   else if(name==="tick"){peakNoise(t,.05,.35,2500);peakTone(1200,t,.04,"square",.06,.001,.03)}
   else if(name==="win"){
-    // a full ascending run, then a held chord with a deep root and a shower of bells
-    [60,64,67,72,76,79,84,88].forEach((n,i)=>{peakTone(hz(n),t+i*.13,.9,"sawtooth",.18,.01,.6,null,2800);peakTone(hz(n)/2,t+i*.13,.9,"triangle",.16)});
-    [72,76,79,84].forEach(n=>peakTone(hz(n),t+1.15,2.4,"sawtooth",.12,.04,1.4,null,2400));
-    [48,55].forEach(n=>peakTone(hz(n),t+1.15,2.4,"triangle",.2,.04,1.4));
-    [96,100,103,108,112,115].forEach((n,i)=>peakTone(hz(n),t+1.3+i*.1,1.2,"sine",.1,.005,.9));
+    // a rising major run, then a held chord with a deep root and a few bells
+    [60,64,67,72,76,79,84].forEach((n,i)=>{peakTone(hz(n),t+i*.14,.9,"triangle",.18,.01,.6);peakTone(hz(n)/2,t+i*.14,.9,"sine",.14)});
+    [72,76,79,84].forEach(n=>peakTone(hz(n),t+1.1,2.2,"triangle",.1,.05,1.3));
+    [48,55].forEach(n=>peakTone(hz(n),t+1.1,2.2,"sine",.2,.05,1.3));
+    [96,100,103,108].forEach((n,i)=>peakTone(hz(n),t+1.3+i*.12,1.2,"sine",.08,.005,.9));
   }
   else if(name==="violation"){peakTone(110,t,.5,"sawtooth",.3,.01,.2,98);peakTone(117,t,.5,"sawtooth",.3,.01,.2,104);peakTone(110,t+.55,.9,"sawtooth",.3,.01,.5,60,500);peakNoise(t+.55,.4,.2,800)}
 }
-// The mood of the suspense bed follows the questions: 1-5 curious, 6-10 serious, 11-15 dread.
+// The mood of the suspense bed follows the questions: 1-5 calm, 6-10 serious, 11-15 tense. There is no melody:
+// only the pulse and the warmth of the drone change.
 function peakTier(level){return level>=11?2:level>=6?1:0}
-// drone = the held notes (Hz); cut/lfo/depth = the filter's centre, sweep speed and sweep width; step = ms per
-// beat; seq = the arpeggio (MIDI notes, an octave up) played at volume arp; beat = a heartbeat every N steps
-// (in the last tier every step is a double thump) at volume beatV.
+// drone = the held notes (Hz), all consonant — a fifth and octaves of A; cut = the drone filter's centre (Hz);
+// bpm = the heartbeat's pace; beatV = its volume; vol = [start,end] drone level over a question's two minutes.
 const PEAK_BED=[
-  {drone:[55,82.4],cut:380,lfo:.12,depth:150,step:600,seq:[57,60,64,60,57,59,60,59],arp:.06,beat:4,beatV:.26},
-  {drone:[55,58.3,82.4],cut:520,lfo:.18,depth:260,step:520,seq:[57,60,63,60,57,58,63,60],arp:.08,beat:2,beatV:.34},
-  {drone:[55,58.3,77.8,110.6],cut:760,lfo:.26,depth:420,step:440,seq:[57,60,63,66,63,60,58,63],arp:.1,beat:1,beatV:.42},
+  {drone:[110,164.8],cut:520,bpm:60,beatV:.28,vol:[.07,.125]},
+  {drone:[110,164.8,220],cut:680,bpm:72,beatV:.36,vol:[.085,.155]},
+  {drone:[110,164.8,220,329.6],cut:860,bpm:84,beatV:.4,vol:[.088,.158]},
 ];
-// The suspense bed under a question: a low drone swelling over the question's two minutes, a slow filter
-// sweep, a heartbeat and a minor arpeggio — denser and darker for harder questions.
+// The suspense bed under a question: a soft drone swelling over the question's two minutes, a slow filter
+// drift and a quiet heartbeat that picks up with the harder questions.
 function peakTension(on){
   if(peakLoop){clearInterval(peakLoop.id);peakLoop.nodes.forEach(n=>{try{n.stop()}catch(e){}});peakLoop=null}
   if(!on)return;
   const c=peakAudio();if(!c)return;
   const bed=PEAK_BED[peakTier(peakUi.game?peakUi.game.level:1)];
   const t0=c.currentTime,nodes=[],g=c.createGain(),f=c.createBiquadFilter();
-  g.gain.setValueAtTime(.11,t0);g.gain.linearRampToValueAtTime(.2,t0+PEAK_SECONDS);
+  g.gain.setValueAtTime(bed.vol[0],t0);g.gain.linearRampToValueAtTime(bed.vol[1],t0+PEAK_SECONDS);
   f.type="lowpass";f.frequency.value=bed.cut;g.connect(f);f.connect(peakMaster);
-  bed.drone.forEach(fr=>{const o=c.createOscillator();o.type="sawtooth";o.frequency.value=fr;o.connect(g);o.start(t0);nodes.push(o)});
-  const lfo=c.createOscillator(),lg=c.createGain();lfo.frequency.value=bed.lfo;lg.gain.value=bed.depth;lfo.connect(lg);lg.connect(f.frequency);lfo.start(t0);nodes.push(lfo);
-  let i=0;
+  bed.drone.forEach((fr,k)=>{const o=c.createOscillator();o.type=k===0?"sine":"triangle";o.frequency.value=fr;o.connect(g);o.start(t0);nodes.push(o)});
+  const lfo=c.createOscillator(),lg=c.createGain();lfo.frequency.value=.1;lg.gain.value=bed.cut*.25;lfo.connect(lg);lg.connect(f.frequency);lfo.start(t0);nodes.push(lfo);
   const step=()=>{
     if(peakUi.mode!=="play"){peakTension(false);return}
     const t=c.currentTime+.05;
-    peakTone(peakHz(bed.seq[i%bed.seq.length]+12),t,bed.step/1000*.7,"triangle",bed.arp,.01,.3);
-    if(i%bed.beat===0){peakTone(80,t,.22,"sine",bed.beatV,.002,.2,38);if(bed.beat===1)peakTone(70,t+.16,.2,"sine",bed.beatV*.7,.002,.2,34)}
-    i++;
+    peakTone(150,t,.22,"sine",bed.beatV,.004,.16,70);peakTone(130,t+.17,.2,"sine",bed.beatV*.7,.004,.15,64); // lub-dub
   };
-  step();peakLoop={id:setInterval(step,bed.step),nodes};
+  step();peakLoop={id:setInterval(step,60000/bed.bpm),nodes};
 }
 // The tick sounds once per second during the last 20 seconds; returns the second to tick for, or null.
 function peakTickDue(left,last){const s=Math.ceil(left);return(s>=1&&s<=20&&s!==last)?s:null}
