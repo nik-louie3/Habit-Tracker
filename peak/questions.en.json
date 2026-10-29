@@ -4077,29 +4077,29 @@
   "id": "p1020",
   "level": 10,
   "category": "food",
-  "q": "Which spice is considered the most expensive in the world by weight?",
+  "q": "Which Swiss cheese is known for its large «holes»?",
   "options": [
-   "Black pepper",
-   "Cinnamon",
-   "Saffron",
-   "Turmeric"
+   "Brie",
+   "Parmesan",
+   "Emmental",
+   "Gorgonzola"
   ],
   "correct": 2,
-  "explanation": "Saffron is harvested by hand from crocus stigmas."
+  "explanation": "The holes in Emmental come from gas bubbles formed during ripening."
  },
  {
   "id": "p1021",
   "level": 10,
   "category": "food",
-  "q": "Which grain is traditionally used to make Japanese sake?",
+  "q": "What is kvass traditionally made from?",
   "options": [
-   "Wheat",
-   "Barley",
-   "Millet",
-   "Rice"
+   "Potatoes",
+   "Apples",
+   "Oats",
+   "Rye bread"
   ],
   "correct": 3,
-  "explanation": "Sake is made by fermenting rice."
+  "explanation": "Classic kvass is made by fermenting a wort of rye bread or rusks."
  },
  {
   "id": "p1022",
@@ -4833,15 +4833,15 @@
   "id": "p1212",
   "level": 12,
   "category": "art",
-  "q": "Who painted «The Scream» (1893)?",
+  "q": "Who painted «The Kiss» (1907–1908), using gold leaf?",
   "options": [
-   "Edvard Munch",
-   "Franz Marc",
-   "Egon Schiele",
-   "Gustav Klimt"
+   "Gustav Klimt",
+   "Henri Matisse",
+   "Alphonse Mucha",
+   "Egon Schiele"
   ],
   "correct": 0,
-  "explanation": "Munch made several versions of «The Scream»."
+  "explanation": "«The Kiss» is the best-known work of Gustav Klimt's «golden period»."
  },
  {
   "id": "p1213",
@@ -4987,15 +4987,15 @@
   "id": "p1223",
   "level": 12,
   "category": "health",
-  "q": "Which vitamin is produced in the skin under sunlight?",
+  "q": "In which organ are the alveoli, where gas exchange takes place?",
   "options": [
-   "Vitamin B1",
-   "Vitamin C",
-   "Vitamin K",
-   "Vitamin D"
+   "The spleen",
+   "The kidneys",
+   "The liver",
+   "The lungs"
   ],
   "correct": 3,
-  "explanation": "Ultraviolet light triggers vitamin D synthesis in the skin."
+  "explanation": "Oxygen enters the blood through the alveolar walls while carbon dioxide leaves."
  },
  {
   "id": "p1224",
@@ -5057,15 +5057,15 @@
   "id": "p1228",
   "level": 12,
   "category": "language",
-  "q": "What is the official language of Brazil?",
+  "q": "How many national languages does Switzerland have?",
   "options": [
-   "Portuguese",
-   "French",
-   "English",
-   "Spanish"
+   "4",
+   "5",
+   "3",
+   "2"
   ],
   "correct": 0,
-  "explanation": "Brazil is the largest Portuguese-speaking country in the world."
+  "explanation": "Switzerland's national languages are German, French, Italian and Romansh."
  },
  {
   "id": "p1229",
@@ -5108,5 +5108,1307 @@
   ],
   "correct": 3,
   "explanation": "The European Central Bank is based in Frankfurt."
+ },
+ {
+  "id": "p1301",
+  "level": 13,
+  "category": "science",
+  "q": "Which chemical element has the symbol Pb?",
+  "options": [
+   "Lead",
+   "Platinum",
+   "Phosphorus",
+   "Tin"
+  ],
+  "correct": 0,
+  "explanation": "The symbol Pb comes from the Latin plumbum, «lead»."
+ },
+ {
+  "id": "p1302",
+  "level": 13,
+  "category": "science",
+  "q": "Who proposed the heliocentric system in «On the Revolutions of the Heavenly Spheres» (1543)?",
+  "options": [
+   "Tycho Brahe",
+   "Nicolaus Copernicus",
+   "Galileo Galilei",
+   "Johannes Kepler"
+  ],
+  "correct": 1,
+  "explanation": "Copernicus placed the Sun, not the Earth, at the centre."
+ },
+ {
+  "id": "p1303",
+  "level": 13,
+  "category": "science",
+  "q": "What is the change in the frequency of a wave when its source moves relative to the observer called?",
+  "options": [
+   "The Hall effect",
+   "The photoelectric effect",
+   "The Doppler effect",
+   "The Compton effect"
+  ],
+  "correct": 2,
+  "explanation": "This is why the siren of a passing ambulance changes pitch."
+ },
+ {
+  "id": "p1304",
+  "level": 13,
+  "category": "geography",
+  "q": "Which is the largest country in Africa by area?",
+  "options": [
+   "The Democratic Republic of the Congo",
+   "Sudan",
+   "Libya",
+   "Algeria"
+  ],
+  "correct": 3,
+  "explanation": "After Sudan split in 2011, Algeria became the largest."
+ },
+ {
+  "id": "p1305",
+  "level": 13,
+  "category": "geography",
+  "q": "Which city is the capital of Turkey?",
+  "options": [
+   "Ankara",
+   "Antalya",
+   "Izmir",
+   "Istanbul"
+  ],
+  "correct": 0,
+  "explanation": "The capital is Ankara, not the largest city, Istanbul."
+ },
+ {
+  "id": "p1306",
+  "level": 13,
+  "category": "geography",
+  "q": "Which river flows through Vienna, Budapest and Belgrade?",
+  "options": [
+   "The Rhine",
+   "The Danube",
+   "The Vistula",
+   "The Elbe"
+  ],
+  "correct": 1,
+  "explanation": "The Danube flows through ten countries."
+ },
+ {
+  "id": "p1307",
+  "level": 13,
+  "category": "history",
+  "q": "Which 1812 battle was the largest of Napoleon's march on Moscow?",
+  "options": [
+   "Waterloo",
+   "Leipzig",
+   "Borodino",
+   "Austerlitz"
+  ],
+  "correct": 2,
+  "explanation": "The Battle of Borodino took place on 7 September 1812."
+ },
+ {
+  "id": "p1308",
+  "level": 13,
+  "category": "history",
+  "q": "In which year did the Western Roman Empire fall?",
+  "options": [
+   "410",
+   "1054",
+   "800",
+   "476"
+  ],
+  "correct": 3,
+  "explanation": "In 476 Odoacer deposed the last emperor, Romulus Augustulus."
+ },
+ {
+  "id": "p1309",
+  "level": 13,
+  "category": "history",
+  "q": "Who founded the Mongol Empire in the early 13th century?",
+  "options": [
+   "Genghis Khan",
+   "Attila",
+   "Tamerlane",
+   "Kublai Khan"
+  ],
+  "correct": 0,
+  "explanation": "Temüjin was proclaimed Genghis Khan in 1206."
+ },
+ {
+  "id": "p1310",
+  "level": 13,
+  "category": "literature",
+  "q": "Who wrote the novel «A Hero of Our Time»?",
+  "options": [
+   "Nikolai Gogol",
+   "Mikhail Lermontov",
+   "Ivan Goncharov",
+   "Alexander Pushkin"
+  ],
+  "correct": 1,
+  "explanation": "Lermontov's novel was published in 1840."
+ },
+ {
+  "id": "p1311",
+  "level": 13,
+  "category": "literature",
+  "q": "Who wrote the novel «The Great Gatsby»?",
+  "options": [
+   "Ernest Hemingway",
+   "William Faulkner",
+   "F. Scott Fitzgerald",
+   "John Steinbeck"
+  ],
+  "correct": 2,
+  "explanation": "The novel was published in 1925."
+ },
+ {
+  "id": "p1312",
+  "level": 13,
+  "category": "art",
+  "q": "Who painted «Barge Haulers on the Volga»?",
+  "options": [
+   "Ivan Shishkin",
+   "Ivan Aivazovsky",
+   "Vasily Surikov",
+   "Ilya Repin"
+  ],
+  "correct": 3,
+  "explanation": "Repin worked on the painting in 1870–1873."
+ },
+ {
+  "id": "p1313",
+  "level": 13,
+  "category": "art",
+  "q": "In which Italian city is Leonardo da Vinci's mural «The Last Supper»?",
+  "options": [
+   "Milan",
+   "Rome",
+   "Florence",
+   "Venice"
+  ],
+  "correct": 0,
+  "explanation": "The mural adorns the refectory of Santa Maria delle Grazie in Milan."
+ },
+ {
+  "id": "p1314",
+  "level": 13,
+  "category": "music",
+  "q": "Who composed the piano suite «Pictures at an Exhibition»?",
+  "options": [
+   "Nikolai Rimsky-Korsakov",
+   "Modest Mussorgsky",
+   "Sergei Rachmaninoff",
+   "Alexander Borodin"
+  ],
+  "correct": 1,
+  "explanation": "The suite dates from 1874; Maurice Ravel later orchestrated it."
+ },
+ {
+  "id": "p1315",
+  "level": 13,
+  "category": "music",
+  "q": "Who composed Symphony No. 9, «From the New World»?",
+  "options": [
+   "Bedřich Smetana",
+   "Jean Sibelius",
+   "Antonín Dvořák",
+   "Edvard Grieg"
+  ],
+  "correct": 2,
+  "explanation": "Dvořák wrote the symphony in 1893 in the United States."
+ },
+ {
+  "id": "p1316",
+  "level": 13,
+  "category": "film",
+  "q": "Who directed «Once Upon a Time in America» (1984)?",
+  "options": [
+   "Brian De Palma",
+   "Francis Ford Coppola",
+   "Martin Scorsese",
+   "Sergio Leone"
+  ],
+  "correct": 3,
+  "explanation": "It was Sergio Leone's last film."
+ },
+ {
+  "id": "p1317",
+  "level": 13,
+  "category": "film",
+  "q": "Which 1975 Miloš Forman film won all five major Oscars?",
+  "options": [
+   "«One Flew Over the Cuckoo's Nest»",
+   "«Amadeus»",
+   "«Hair»",
+   "«Ragtime»"
+  ],
+  "correct": 0,
+  "explanation": "It won for picture, director, actor, actress and adapted screenplay."
+ },
+ {
+  "id": "p1318",
+  "level": 13,
+  "category": "sport",
+  "q": "Which national team won the 2010 football World Cup?",
+  "options": [
+   "Germany",
+   "Spain",
+   "The Netherlands",
+   "Uruguay"
+  ],
+  "correct": 1,
+  "explanation": "In the Johannesburg final Spain beat the Netherlands 1–0."
+ },
+ {
+  "id": "p1319",
+  "level": 13,
+  "category": "sport",
+  "q": "Which gymnast scored the first perfect «10» in Olympic history in 1976?",
+  "options": [
+   "Larisa Latynina",
+   "Nellie Kim",
+   "Nadia Comăneci",
+   "Olga Korbut"
+  ],
+  "correct": 2,
+  "explanation": "Comăneci competed in Montreal at the age of 14."
+ },
+ {
+  "id": "p1320",
+  "level": 13,
+  "category": "food",
+  "q": "Which Italian cheese is called «the king of cheeses»?",
+  "options": [
+   "Ricotta",
+   "Mozzarella",
+   "Gorgonzola",
+   "Parmigiano-Reggiano"
+  ],
+  "correct": 3,
+  "explanation": "Parmigiano-Reggiano is aged for at least 12 months."
+ },
+ {
+  "id": "p1321",
+  "level": 13,
+  "category": "food",
+  "q": "Which fruit is known as «the king of fruits» in Southeast Asia?",
+  "options": [
+   "Durian",
+   "Lychee",
+   "Mango",
+   "Papaya"
+  ],
+  "correct": 0,
+  "explanation": "Durian is famous for its strong smell."
+ },
+ {
+  "id": "p1322",
+  "level": 13,
+  "category": "health",
+  "q": "Which is the longest bone in the human body?",
+  "options": [
+   "The humerus",
+   "The femur",
+   "The spine",
+   "The tibia"
+  ],
+  "correct": 1,
+  "explanation": "The femur is roughly a quarter of a person's height."
+ },
+ {
+  "id": "p1323",
+  "level": 13,
+  "category": "health",
+  "q": "Beta-carotene from carrots is a provitamin of which vitamin?",
+  "options": [
+   "Vitamin D",
+   "Vitamin C",
+   "Vitamin A",
+   "Vitamin E"
+  ],
+  "correct": 2,
+  "explanation": "The body converts beta-carotene into vitamin A."
+ },
+ {
+  "id": "p1324",
+  "level": 13,
+  "category": "tech",
+  "q": "What does the abbreviation VPN stand for?",
+  "options": [
+   "Variable Packet Node",
+   "Video Protocol Node",
+   "Verified Public Network",
+   "Virtual Private Network"
+  ],
+  "correct": 3,
+  "explanation": "A VPN encrypts the connection and hides the IP address."
+ },
+ {
+  "id": "p1325",
+  "level": 13,
+  "category": "tech",
+  "q": "In which year was the first iPhone released?",
+  "options": [
+   "2007",
+   "2010",
+   "2005",
+   "2003"
+  ],
+  "correct": 0,
+  "explanation": "Steve Jobs unveiled the iPhone in January 2007."
+ },
+ {
+  "id": "p1326",
+  "level": 13,
+  "category": "daily",
+  "q": "What is the sum of the angles of a triangle?",
+  "options": [
+   "360°",
+   "180°",
+   "270°",
+   "90°"
+  ],
+  "correct": 1,
+  "explanation": "The angles of any flat triangle add up to 180°."
+ },
+ {
+  "id": "p1327",
+  "level": 13,
+  "category": "daily",
+  "q": "How many months of the year have exactly 30 days?",
+  "options": [
+   "3",
+   "5",
+   "4",
+   "6"
+  ],
+  "correct": 2,
+  "explanation": "They are April, June, September and November."
+ },
+ {
+  "id": "p1328",
+  "level": 13,
+  "category": "language",
+  "q": "How many letters does the Russian alphabet have?",
+  "options": [
+   "35",
+   "31",
+   "32",
+   "33"
+  ],
+  "correct": 3,
+  "explanation": "The Russian alphabet has 33 letters."
+ },
+ {
+  "id": "p1329",
+  "level": 13,
+  "category": "language",
+  "q": "What is a «lingua franca»?",
+  "options": [
+   "A shared language between different native speakers",
+   "A dead language",
+   "A sign language",
+   "A constructed language"
+  ],
+  "correct": 0,
+  "explanation": "A lingua franca lets people with different native languages understand each other."
+ },
+ {
+  "id": "p1330",
+  "level": 13,
+  "category": "society",
+  "q": "What is the currency of Switzerland?",
+  "options": [
+   "The krone",
+   "The franc",
+   "The euro",
+   "The mark"
+  ],
+  "correct": 1,
+  "explanation": "Switzerland uses the Swiss franc."
+ },
+ {
+  "id": "p1331",
+  "level": 13,
+  "category": "society",
+  "q": "What is the lower house of the US Congress called?",
+  "options": [
+   "The Supreme Court",
+   "The Senate",
+   "The House of Representatives",
+   "The Cabinet"
+  ],
+  "correct": 2,
+  "explanation": "The US Congress consists of the Senate and the House of Representatives."
+ },
+ {
+  "id": "p1401",
+  "level": 14,
+  "category": "science",
+  "q": "What is the mass limit (about 1.4 solar masses) above which a white dwarf is unstable called?",
+  "options": [
+   "The Hubble limit",
+   "The Roche limit",
+   "The Schwarzschild radius",
+   "The Chandrasekhar limit"
+  ],
+  "correct": 3,
+  "explanation": "The limit is named after the astrophysicist Subrahmanyan Chandrasekhar."
+ },
+ {
+  "id": "p1402",
+  "level": 14,
+  "category": "science",
+  "q": "Which particle was discovered at the Large Hadron Collider in 2012?",
+  "options": [
+   "The Higgs boson",
+   "The positron",
+   "The neutrino",
+   "The quark"
+  ],
+  "correct": 0,
+  "explanation": "The discovery of the Higgs boson was announced in July 2012."
+ },
+ {
+  "id": "p1403",
+  "level": 14,
+  "category": "science",
+  "q": "Which chemical element is named after Albert Einstein?",
+  "options": [
+   "Nobelium",
+   "Einsteinium",
+   "Mendelevium",
+   "Fermium"
+  ],
+  "correct": 1,
+  "explanation": "Einsteinium (element 99) was found in the debris of the first thermonuclear explosion."
+ },
+ {
+  "id": "p1404",
+  "level": 14,
+  "category": "geography",
+  "q": "Which strait separates Tasmania from mainland Australia?",
+  "options": [
+   "Strait of Magellan",
+   "Bering Strait",
+   "Bass Strait",
+   "Torres Strait"
+  ],
+  "correct": 2,
+  "explanation": "Bass Strait is named after the British surgeon George Bass."
+ },
+ {
+  "id": "p1405",
+  "level": 14,
+  "category": "geography",
+  "q": "Which two countries share Lake Titicaca?",
+  "options": [
+   "Colombia and Ecuador",
+   "Chile and Argentina",
+   "Brazil and Paraguay",
+   "Peru and Bolivia"
+  ],
+  "correct": 3,
+  "explanation": "Titicaca is a high-altitude lake in the Andes."
+ },
+ {
+  "id": "p1406",
+  "level": 14,
+  "category": "geography",
+  "q": "Which city is the capital of Nigeria?",
+  "options": [
+   "Abuja",
+   "Kano",
+   "Ibadan",
+   "Lagos"
+  ],
+  "correct": 0,
+  "explanation": "The capital was moved from Lagos to Abuja in 1991."
+ },
+ {
+  "id": "p1407",
+  "level": 14,
+  "category": "history",
+  "q": "Which dynasty ruled Russia before the Romanovs, until 1598?",
+  "options": [
+   "The Gediminids",
+   "The Rurikids",
+   "The Shuiskys",
+   "The Godunovs"
+  ],
+  "correct": 1,
+  "explanation": "The last Rurikid tsar was Feodor I."
+ },
+ {
+  "id": "p1408",
+  "level": 14,
+  "category": "history",
+  "q": "Whose expedition completed the first circumnavigation of the globe in 1519–1522?",
+  "options": [
+   "James Cook",
+   "Christopher Columbus",
+   "Ferdinand Magellan",
+   "Vasco da Gama"
+  ],
+  "correct": 2,
+  "explanation": "Magellan died on the way; Juan Sebastián Elcano completed the voyage."
+ },
+ {
+  "id": "p1409",
+  "level": 14,
+  "category": "history",
+  "q": "Which congress of 1814–1815 redrew the map of Europe after Napoleon?",
+  "options": [
+   "The Congress of Berlin",
+   "The Congress of Versailles",
+   "The Congress of Paris",
+   "The Congress of Vienna"
+  ],
+  "correct": 3,
+  "explanation": "The Congress of Vienna restored the balance of power in Europe."
+ },
+ {
+  "id": "p1410",
+  "level": 14,
+  "category": "literature",
+  "q": "Who wrote the epic «The Aeneid»?",
+  "options": [
+   "Virgil",
+   "Ovid",
+   "Horace",
+   "Homer"
+  ],
+  "correct": 0,
+  "explanation": "Virgil worked on «The Aeneid» until his death in 19 BC."
+ },
+ {
+  "id": "p1411",
+  "level": 14,
+  "category": "literature",
+  "q": "Who wrote «The Stranger» (1942)?",
+  "options": [
+   "Jean-Paul Sartre",
+   "Albert Camus",
+   "André Malraux",
+   "Franz Kafka"
+  ],
+  "correct": 1,
+  "explanation": "Camus won the Nobel Prize in Literature in 1957."
+ },
+ {
+  "id": "p1412",
+  "level": 14,
+  "category": "art",
+  "q": "Who painted «Las Meninas» (1656)?",
+  "options": [
+   "Francisco Goya",
+   "El Greco",
+   "Diego Velázquez",
+   "Bartolomé Murillo"
+  ],
+  "correct": 2,
+  "explanation": "«Las Meninas» hangs in the Prado Museum in Madrid."
+ },
+ {
+  "id": "p1413",
+  "level": 14,
+  "category": "art",
+  "q": "What is the painting technique that builds a picture from small dots of pure colour called?",
+  "options": [
+   "Surrealism",
+   "Cubism",
+   "Fauvism",
+   "Pointillism"
+  ],
+  "correct": 3,
+  "explanation": "Pointillism is associated with Georges Seurat."
+ },
+ {
+  "id": "p1414",
+  "level": 14,
+  "category": "music",
+  "q": "Who composed the ballet «The Rite of Spring» (1913)?",
+  "options": [
+   "Igor Stravinsky",
+   "Maurice Ravel",
+   "Sergei Prokofiev",
+   "Dmitri Shostakovich"
+  ],
+  "correct": 0,
+  "explanation": "The Paris premiere of «The Rite of Spring» caused a scandal."
+ },
+ {
+  "id": "p1415",
+  "level": 14,
+  "category": "music",
+  "q": "What is the male singing voice between tenor and bass called?",
+  "options": [
+   "Contralto",
+   "Baritone",
+   "Countertenor",
+   "Mezzo-soprano"
+  ],
+  "correct": 1,
+  "explanation": "The baritone is the most common male voice."
+ },
+ {
+  "id": "p1416",
+  "level": 14,
+  "category": "film",
+  "q": "Which actor played Rick Blaine in «Casablanca» (1942)?",
+  "options": [
+   "James Stewart",
+   "Cary Grant",
+   "Humphrey Bogart",
+   "Clark Gable"
+  ],
+  "correct": 2,
+  "explanation": "Bogart's co-star was Ingrid Bergman."
+ },
+ {
+  "id": "p1417",
+  "level": 14,
+  "category": "film",
+  "q": "Who directed «Stalker» (1979)?",
+  "options": [
+   "Elem Klimov",
+   "Sergei Eisenstein",
+   "Andrei Konchalovsky",
+   "Andrei Tarkovsky"
+  ],
+  "correct": 3,
+  "explanation": "«Stalker» is loosely based on the Strugatskys' «Roadside Picnic»."
+ },
+ {
+  "id": "p1418",
+  "level": 14,
+  "category": "sport",
+  "q": "In which city were the 1980 Summer Olympics held?",
+  "options": [
+   "Moscow",
+   "Munich",
+   "Montreal",
+   "Los Angeles"
+  ],
+  "correct": 0,
+  "explanation": "The 1980 Games were the first held in Eastern Europe."
+ },
+ {
+  "id": "p1419",
+  "level": 14,
+  "category": "sport",
+  "q": "How many rounds does a professional boxing world title fight traditionally last?",
+  "options": [
+   "15",
+   "12",
+   "8",
+   "10"
+  ],
+  "correct": 1,
+  "explanation": "Today title fights last up to 12 rounds."
+ },
+ {
+  "id": "p1420",
+  "level": 14,
+  "category": "food",
+  "q": "Which city is regarded as the birthplace of pizza?",
+  "options": [
+   "Rome",
+   "Milan",
+   "Naples",
+   "Palermo"
+  ],
+  "correct": 2,
+  "explanation": "Pizza in its modern form took shape in Naples."
+ },
+ {
+  "id": "p1421",
+  "level": 14,
+  "category": "food",
+  "q": "Which underground fungus is called the «black diamond» of cooking?",
+  "options": [
+   "The button mushroom",
+   "The chanterelle",
+   "The oyster mushroom",
+   "The truffle"
+  ],
+  "correct": 3,
+  "explanation": "Truffles are found with specially trained dogs or pigs."
+ },
+ {
+  "id": "p1422",
+  "level": 14,
+  "category": "health",
+  "q": "Which adrenal hormone triggers the «fight or flight» response?",
+  "options": [
+   "Adrenaline",
+   "Thyroxine",
+   "Insulin",
+   "Melatonin"
+  ],
+  "correct": 0,
+  "explanation": "Adrenaline speeds up the heart and mobilises the body."
+ },
+ {
+  "id": "p1423",
+  "level": 14,
+  "category": "health",
+  "q": "How many baby teeth does a child have in a full set?",
+  "options": [
+   "24",
+   "20",
+   "32",
+   "28"
+  ],
+  "correct": 1,
+  "explanation": "A full set of baby teeth is 20."
+ },
+ {
+  "id": "p1424",
+  "level": 14,
+  "category": "tech",
+  "q": "Who proposed a test of a machine's ability to «think» in 1950?",
+  "options": [
+   "Claude Shannon",
+   "Norbert Wiener",
+   "Alan Turing",
+   "John von Neumann"
+  ],
+  "correct": 2,
+  "explanation": "Turing's paper «Computing Machinery and Intelligence» appeared in 1950."
+ },
+ {
+  "id": "p1425",
+  "level": 14,
+  "category": "tech",
+  "q": "What does «IP» stand for in «IP address»?",
+  "options": [
+   "Intelligent Process",
+   "Instant Packet",
+   "Internal Port",
+   "Internet Protocol"
+  ],
+  "correct": 3,
+  "explanation": "IP is the core addressing protocol of the Internet."
+ },
+ {
+  "id": "p1426",
+  "level": 14,
+  "category": "daily",
+  "q": "How many metres are there in one nautical mile?",
+  "options": [
+   "1,852",
+   "1,000",
+   "1,609",
+   "1,760"
+  ],
+  "correct": 0,
+  "explanation": "A nautical mile is 1,852 metres."
+ },
+ {
+  "id": "p1427",
+  "level": 14,
+  "category": "daily",
+  "q": "How many seconds are there in one week?",
+  "options": [
+   "86,400",
+   "604,800",
+   "3,600",
+   "1,209,600"
+  ],
+  "correct": 1,
+  "explanation": "7 × 24 × 60 × 60 = 604,800 seconds."
+ },
+ {
+  "id": "p1428",
+  "level": 14,
+  "category": "language",
+  "q": "Which language has the most speakers in the world, counting native and non-native speakers?",
+  "options": [
+   "Hindi",
+   "Spanish",
+   "English",
+   "Chinese"
+  ],
+  "correct": 2,
+  "explanation": "By total number of speakers English comes first."
+ },
+ {
+  "id": "p1429",
+  "level": 14,
+  "category": "language",
+  "q": "What is the Korean writing system created in the 15th century called?",
+  "options": [
+   "Kanji",
+   "Devanagari",
+   "Katakana",
+   "Hangul"
+  ],
+  "correct": 3,
+  "explanation": "Hangul was created under King Sejong the Great."
+ },
+ {
+  "id": "p1430",
+  "level": 14,
+  "category": "society",
+  "q": "Which is the smallest state in the world by area?",
+  "options": [
+   "Vatican City",
+   "Liechtenstein",
+   "San Marino",
+   "Monaco"
+  ],
+  "correct": 0,
+  "explanation": "Vatican City covers about 0.44 km²."
+ },
+ {
+  "id": "p1431",
+  "level": 14,
+  "category": "society",
+  "q": "Who was the first Secretary-General of the United Nations?",
+  "options": [
+   "U Thant",
+   "Trygve Lie",
+   "Dag Hammarskjöld",
+   "Kofi Annan"
+  ],
+  "correct": 1,
+  "explanation": "The Norwegian Trygve Lie took the post in 1946."
+ },
+ {
+  "id": "p1501",
+  "level": 15,
+  "category": "science",
+  "q": "Which scientist discovered radioactivity in 1896?",
+  "options": [
+   "Ernest Rutherford",
+   "Pierre Curie",
+   "Henri Becquerel",
+   "Niels Bohr"
+  ],
+  "correct": 2,
+  "explanation": "Becquerel found radiation coming from uranium salts."
+ },
+ {
+  "id": "p1502",
+  "level": 15,
+  "category": "science",
+  "q": "What is the boundary around a black hole from inside which nothing can escape called?",
+  "options": [
+   "The Hill sphere",
+   "The Roche limit",
+   "The photon sphere",
+   "The event horizon"
+  ],
+  "correct": 3,
+  "explanation": "Beyond the event horizon the escape velocity exceeds the speed of light."
+ },
+ {
+  "id": "p1503",
+  "level": 15,
+  "category": "science",
+  "q": "Who first observed bacteria through a microscope in the 17th century?",
+  "options": [
+   "Antonie van Leeuwenhoek",
+   "Robert Hooke",
+   "Robert Koch",
+   "Louis Pasteur"
+  ],
+  "correct": 0,
+  "explanation": "Leeuwenhoek called them «animalcules»."
+ },
+ {
+  "id": "p1504",
+  "level": 15,
+  "category": "geography",
+  "q": "What is the highest mountain in Africa?",
+  "options": [
+   "Mont Blanc",
+   "Kilimanjaro",
+   "Mount Kenya",
+   "Elbrus"
+  ],
+  "correct": 1,
+  "explanation": "Kilimanjaro is about 5,895 m high."
+ },
+ {
+  "id": "p1505",
+  "level": 15,
+  "category": "geography",
+  "q": "Which sea in the Atlantic Ocean has no shores?",
+  "options": [
+   "The Black Sea",
+   "The Baltic Sea",
+   "The Sargasso Sea",
+   "The Red Sea"
+  ],
+  "correct": 2,
+  "explanation": "The Sargasso Sea is bounded by ocean currents."
+ },
+ {
+  "id": "p1506",
+  "level": 15,
+  "category": "geography",
+  "q": "Which is the longest river in Asia?",
+  "options": [
+   "The Ganges",
+   "The Mekong",
+   "The Yellow River",
+   "The Yangtze"
+  ],
+  "correct": 3,
+  "explanation": "The Yangtze is about 6,300 km long."
+ },
+ {
+  "id": "p1507",
+  "level": 15,
+  "category": "history",
+  "q": "Which British prime minister signed the Munich Agreement in 1938?",
+  "options": [
+   "Neville Chamberlain",
+   "Stanley Baldwin",
+   "Clement Attlee",
+   "Winston Churchill"
+  ],
+  "correct": 0,
+  "explanation": "Chamberlain returned from Munich promising «peace for our time»."
+ },
+ {
+  "id": "p1508",
+  "level": 15,
+  "category": "history",
+  "q": "To which dynasty did the pharaoh Khufu, builder of the Great Pyramid of Giza, belong?",
+  "options": [
+   "The Twelfth",
+   "The Fourth",
+   "The Eighteenth",
+   "The First"
+  ],
+  "correct": 1,
+  "explanation": "Khufu ruled in the 26th century BC."
+ },
+ {
+  "id": "p1509",
+  "level": 15,
+  "category": "history",
+  "q": "Who became the first chancellor of the German Empire after its proclamation in 1871?",
+  "options": [
+   "Leopold von Ranke",
+   "Bernhard von Bülow",
+   "Otto von Bismarck",
+   "Wilhelm II"
+  ],
+  "correct": 2,
+  "explanation": "Bismarck held the post until 1890."
+ },
+ {
+  "id": "p1510",
+  "level": 15,
+  "category": "literature",
+  "q": "Who wrote the novel «The War of the Worlds»?",
+  "options": [
+   "Ray Bradbury",
+   "Jules Verne",
+   "Arthur Conan Doyle",
+   "H. G. Wells"
+  ],
+  "correct": 3,
+  "explanation": "The novel was published in 1898."
+ },
+ {
+  "id": "p1511",
+  "level": 15,
+  "category": "literature",
+  "q": "Who wrote the novel «Lolita»?",
+  "options": [
+   "Vladimir Nabokov",
+   "Ivan Bunin",
+   "Maxim Gorky",
+   "Boris Pasternak"
+  ],
+  "correct": 0,
+  "explanation": "The novel appeared in English in 1955."
+ },
+ {
+  "id": "p1512",
+  "level": 15,
+  "category": "art",
+  "q": "Who painted «Bal du moulin de la Galette» (1876)?",
+  "options": [
+   "Alfred Sisley",
+   "Pierre-Auguste Renoir",
+   "Camille Pissarro",
+   "Edgar Degas"
+  ],
+  "correct": 1,
+  "explanation": "The painting shows a Sunday dance in Montmartre."
+ },
+ {
+  "id": "p1513",
+  "level": 15,
+  "category": "art",
+  "q": "Who painted «The Third of May 1808»?",
+  "options": [
+   "Diego Velázquez",
+   "El Greco",
+   "Francisco Goya",
+   "Pablo Picasso"
+  ],
+  "correct": 2,
+  "explanation": "Goya depicted the execution of Madrid citizens by French soldiers."
+ },
+ {
+  "id": "p1514",
+  "level": 15,
+  "category": "music",
+  "q": "Who composed the ballet «Romeo and Juliet» (1935–1936)?",
+  "options": [
+   "Aram Khachaturian",
+   "Igor Stravinsky",
+   "Pyotr Tchaikovsky",
+   "Sergei Prokofiev"
+  ],
+  "correct": 3,
+  "explanation": "The famous «Dance of the Knights» comes from this ballet."
+ },
+ {
+  "id": "p1515",
+  "level": 15,
+  "category": "music",
+  "q": "Who composed «Flight of the Bumblebee»?",
+  "options": [
+   "Nikolai Rimsky-Korsakov",
+   "Modest Mussorgsky",
+   "Alexander Borodin",
+   "Mikhail Glinka"
+  ],
+  "correct": 0,
+  "explanation": "«Flight of the Bumblebee» is an interlude from the opera «The Tale of Tsar Saltan»."
+ },
+ {
+  "id": "p1516",
+  "level": 15,
+  "category": "film",
+  "q": "Which 1925 Sergei Eisenstein film contains the Odessa Steps sequence?",
+  "options": [
+   "«October»",
+   "«Battleship Potemkin»",
+   "«Ivan the Terrible»",
+   "«Alexander Nevsky»"
+  ],
+  "correct": 1,
+  "explanation": "The Odessa Steps sequence became a classic of film editing."
+ },
+ {
+  "id": "p1517",
+  "level": 15,
+  "category": "film",
+  "q": "Who directed and starred in «Citizen Kane» (1941)?",
+  "options": [
+   "Alfred Hitchcock",
+   "John Ford",
+   "Orson Welles",
+   "Charlie Chaplin"
+  ],
+  "correct": 2,
+  "explanation": "Welles was 25 when he made «Citizen Kane»."
+ },
+ {
+  "id": "p1518",
+  "level": 15,
+  "category": "sport",
+  "q": "Who has won the most Olympic gold medals in a career?",
+  "options": [
+   "Carl Lewis",
+   "Usain Bolt",
+   "Mark Spitz",
+   "Michael Phelps"
+  ],
+  "correct": 3,
+  "explanation": "Phelps has 23 gold medals."
+ },
+ {
+  "id": "p1519",
+  "level": 15,
+  "category": "sport",
+  "q": "In which year were the first Winter Olympics held?",
+  "options": [
+   "1924",
+   "1896",
+   "1936",
+   "1948"
+  ],
+  "correct": 0,
+  "explanation": "The first Winter Games took place in Chamonix."
+ },
+ {
+  "id": "p1520",
+  "level": 15,
+  "category": "food",
+  "q": "Which of these rice varieties is traditionally used for risotto?",
+  "options": [
+   "Devzira",
+   "Arborio",
+   "Jasmine",
+   "Basmati"
+  ],
+  "correct": 1,
+  "explanation": "Arborio is rich in starch and gives a creamy texture."
+ },
+ {
+  "id": "p1521",
+  "level": 15,
+  "category": "food",
+  "q": "Which French region does champagne come from?",
+  "options": [
+   "Bordeaux",
+   "Burgundy",
+   "Champagne",
+   "Provence"
+  ],
+  "correct": 2,
+  "explanation": "Only sparkling wine from Champagne may be called champagne."
+ },
+ {
+  "id": "p1522",
+  "level": 15,
+  "category": "health",
+  "q": "What is the largest artery in the human body called?",
+  "options": [
+   "The pulmonary artery",
+   "The carotid artery",
+   "The femoral artery",
+   "The aorta"
+  ],
+  "correct": 3,
+  "explanation": "The aorta leaves the left ventricle of the heart."
+ },
+ {
+  "id": "p1523",
+  "level": 15,
+  "category": "health",
+  "q": "Which pancreatic hormone raises blood glucose levels?",
+  "options": [
+   "Glucagon",
+   "Cortisol",
+   "Oxytocin",
+   "Insulin"
+  ],
+  "correct": 0,
+  "explanation": "Glucagon acts opposite to insulin."
+ },
+ {
+  "id": "p1524",
+  "level": 15,
+  "category": "tech",
+  "q": "Which programming language did Bjarne Stroustrup create?",
+  "options": [
+   "Java",
+   "C++",
+   "Ruby",
+   "Python"
+  ],
+  "correct": 1,
+  "explanation": "Stroustrup started work on C++ in the early 1980s."
+ },
+ {
+  "id": "p1525",
+  "level": 15,
+  "category": "tech",
+  "q": "What was the network created in the US in 1969 that became a precursor of the Internet called?",
+  "options": [
+   "Ethernet",
+   "Bluetooth",
+   "ARPANET",
+   "Usenet"
+  ],
+  "correct": 2,
+  "explanation": "ARPANET linked the first computers of four universities."
+ },
+ {
+  "id": "p1526",
+  "level": 15,
+  "category": "daily",
+  "q": "How many millimetres are there in one inch?",
+  "options": [
+   "30.48",
+   "12",
+   "10",
+   "25.4"
+  ],
+  "correct": 3,
+  "explanation": "One inch equals 25.4 mm."
+ },
+ {
+  "id": "p1527",
+  "level": 15,
+  "category": "daily",
+  "q": "Atoms of which element define the SI second?",
+  "options": [
+   "Caesium-133",
+   "Hydrogen-1",
+   "Rubidium-87",
+   "Strontium-88"
+  ],
+  "correct": 0,
+  "explanation": "The second is 9,192,631,770 periods of radiation of the caesium-133 atom."
+ },
+ {
+  "id": "p1528",
+  "level": 15,
+  "category": "language",
+  "q": "Which of these languages does not belong to the Indo-European family?",
+  "options": [
+   "Armenian",
+   "Hungarian",
+   "Lithuanian",
+   "Albanian"
+  ],
+  "correct": 1,
+  "explanation": "Hungarian belongs to the Uralic family."
+ },
+ {
+  "id": "p1529",
+  "level": 15,
+  "category": "language",
+  "q": "What does the science of etymology study?",
+  "options": [
+   "Sentence structure",
+   "Rules of stress",
+   "The origin of words",
+   "Pronunciation of sounds"
+  ],
+  "correct": 2,
+  "explanation": "Etymology traces the history of words."
+ },
+ {
+  "id": "p1530",
+  "level": 15,
+  "category": "society",
+  "q": "How many members does the UN Security Council have, permanent and non-permanent together?",
+  "options": [
+   "20",
+   "5",
+   "10",
+   "15"
+  ],
+  "correct": 3,
+  "explanation": "Five permanent and ten non-permanent members."
+ },
+ {
+  "id": "p1531",
+  "level": 15,
+  "category": "society",
+  "q": "What is the highest court in the United States called?",
+  "options": [
+   "The Supreme Court",
+   "The Court of Appeals",
+   "The Federal Reserve",
+   "The Senate"
+  ],
+  "correct": 0,
+  "explanation": "The US Supreme Court has nine justices."
  }
 ]
