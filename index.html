@@ -8692,38 +8692,88 @@ function peakNoise(t,d,v,hp){
   const src=c.createBufferSource(),g=c.createGain(),f=c.createBiquadFilter();f.type="highpass";f.frequency.value=hp;src.buffer=b;g.gain.value=v;src.connect(f);f.connect(g);g.connect(peakMaster);src.start(t);
 }
 const peakHz=n=>440*Math.pow(2,(n-69)/12);
-function peakSfx(name){
+// A rising noise sweep: bandpass-filtered noise whose centre climbs from `from` to `to` Hz while it swells.
+function peakRiser(t,d,from,to,v){
+  const c=peakAc,b=c.createBuffer(1,Math.max(1,Math.floor(c.sampleRate*d)),c.sampleRate),x=b.getChannelData(0);
+  for(let i=0;i<x.length;i++)x[i]=Math.random()*2-1;
+  const s=c.createBufferSource(),f=c.createBiquadFilter(),g=c.createGain();
+  s.buffer=b;f.type="bandpass";f.Q.value=2.5;f.frequency.setValueAtTime(from,t);f.frequency.exponentialRampToValueAtTime(to,t+d);
+  g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(v,t+d*.9);g.gain.linearRampToValueAtTime(0,t+d);
+  s.connect(f);f.connect(g);g.connect(peakMaster);s.start(t);
+}
+function peakSfx(name,lv){
   const c=peakAudio();if(!c)return;const t=c.currentTime,hz=peakHz;
-  if(name==="final"){peakTone(55,t,1.4,"sawtooth",.28,.5,.5,40,260);peakTone(110,t+.9,.5,"triangle",.35,.01,.3,55);peakNoise(t+.92,.25,.3,300)}
-  else if(name==="correct"){[72,76,79,84].forEach((n,i)=>{peakTone(hz(n),t+i*.13,.5,"sawtooth",.2,.01,.25,null,2600);peakTone(hz(n)/2,t+i*.13,.5,"triangle",.18)});[91,95,98].forEach((n,i)=>peakTone(hz(n),t+.55+i*.07,.5,"sine",.12,.005,.4))}
-  else if(name==="wrong"){peakTone(196,t,.9,"sawtooth",.3,.02,.5,92,700);peakTone(207,t,.9,"sawtooth",.25,.02,.5,98,700);peakNoise(t,.18,.2,1200)}
+  if(name==="final"){
+    // the suspense beat before a verdict: a noise riser and a climbing tone over a swelling low note,
+    // a heartbeat that quickens, then one heavy hit as the verdict lands
+    peakRiser(t,1.3,300,5200,.22);
+    peakTone(110,t,1.3,"sawtooth",.16,.6,.4,330,900);peakTone(55,t,1.3,"sine",.3,.3,.4,70);
+    [0,.5,.9,1.15].forEach((d,k)=>peakTone(78,t+d,.16,"sine",.3+.05*k,.002,.12,36));
+    peakTone(46,t+1.3,.5,"sine",.45,.003,.4,34);peakNoise(t+1.3,.3,.3,200);
+  }
+  else if(name==="correct"){
+    // a rising run; at a safe sum (5 and 10) a held chord and a bell shimmer make it a real moment (lv = the level just cleared)
+    const big=PEAK_SAFE_LEVELS.includes(lv),run=big?[67,72,76,79,84,88]:[72,76,79,84];
+    run.forEach((n,i)=>{peakTone(hz(n),t+i*.12,.55,"sawtooth",.18,.01,.3,null,2600);peakTone(hz(n)/2,t+i*.12,.55,"triangle",.16)});
+    [91,95,98].forEach((n,i)=>peakTone(hz(n),t+.5+i*.07,.5,"sine",.12,.005,.4));
+    if(big){[60,64,67,72].forEach(n=>peakTone(hz(n),t+.25,1.5,"triangle",.13,.05,.9));[96,100,103,108].forEach((n,i)=>peakTone(hz(n),t+.85+i*.08,1,"sine",.1,.005,.8))}
+  }
+  else if(name==="strike"){peakTone(220,t,.35,"sawtooth",.22,.01,.2,150,800);peakNoise(t,.1,.15,1500)} // a missed Double dip: the game goes on
+  else if(name==="wrong"){
+    // the game is over: a sagging minor second over a heavy drop, then a slow falling sigh
+    peakTone(196,t,1.1,"sawtooth",.28,.02,.6,82,600);peakTone(207,t,1.1,"sawtooth",.24,.02,.6,86,600);
+    peakTone(55,t,1.4,"sine",.4,.01,.9,32);peakNoise(t,.2,.22,1000);
+    [69,65,62].forEach((n,i)=>peakTone(hz(n),t+.5+i*.28,.7,"triangle",.1,.02,.5,null,900));
+  }
   else if(name==="lifeline"){[84,88,91,96].forEach((n,i)=>peakTone(hz(n),t+i*.07,.35,"sine",.16,.005,.25))}
   else if(name==="tick"){peakNoise(t,.05,.35,2500);peakTone(1200,t,.04,"square",.06,.001,.03)}
-  else if(name==="win"){[60,64,67,72,76,79,84].forEach((n,i)=>{peakTone(hz(n),t+i*.12,.8,"sawtooth",.2,.01,.5,null,2800);peakTone(hz(n)/2,t+i*.12,.8,"triangle",.18)});[96,100,103,108].forEach((n,i)=>peakTone(hz(n),t+1+i*.09,.9,"sine",.12,.005,.7))}
+  else if(name==="win"){
+    // a full ascending run, then a held chord with a deep root and a shower of bells
+    [60,64,67,72,76,79,84,88].forEach((n,i)=>{peakTone(hz(n),t+i*.13,.9,"sawtooth",.18,.01,.6,null,2800);peakTone(hz(n)/2,t+i*.13,.9,"triangle",.16)});
+    [72,76,79,84].forEach(n=>peakTone(hz(n),t+1.15,2.4,"sawtooth",.12,.04,1.4,null,2400));
+    [48,55].forEach(n=>peakTone(hz(n),t+1.15,2.4,"triangle",.2,.04,1.4));
+    [96,100,103,108,112,115].forEach((n,i)=>peakTone(hz(n),t+1.3+i*.1,1.2,"sine",.1,.005,.9));
+  }
   else if(name==="violation"){peakTone(110,t,.5,"sawtooth",.3,.01,.2,98);peakTone(117,t,.5,"sawtooth",.3,.01,.2,104);peakTone(110,t+.55,.9,"sawtooth",.3,.01,.5,60,500);peakNoise(t+.55,.4,.2,800)}
 }
-// The suspense bed under a question: a low drone, a slow filter sweep, a heartbeat and a minor arpeggio.
+// The mood of the suspense bed follows the questions: 1-5 curious, 6-10 serious, 11-15 dread.
+function peakTier(level){return level>=11?2:level>=6?1:0}
+// drone = the held notes (Hz); cut/lfo/depth = the filter's centre, sweep speed and sweep width; step = ms per
+// beat; seq = the arpeggio (MIDI notes, an octave up) played at volume arp; beat = a heartbeat every N steps
+// (in the last tier every step is a double thump) at volume beatV.
+const PEAK_BED=[
+  {drone:[55,82.4],cut:380,lfo:.12,depth:150,step:600,seq:[57,60,64,60,57,59,60,59],arp:.06,beat:4,beatV:.26},
+  {drone:[55,58.3,82.4],cut:520,lfo:.18,depth:260,step:520,seq:[57,60,63,60,57,58,63,60],arp:.08,beat:2,beatV:.34},
+  {drone:[55,58.3,77.8,110.6],cut:760,lfo:.26,depth:420,step:440,seq:[57,60,63,66,63,60,58,63],arp:.1,beat:1,beatV:.42},
+];
+// The suspense bed under a question: a low drone swelling over the question's two minutes, a slow filter
+// sweep, a heartbeat and a minor arpeggio — denser and darker for harder questions.
 function peakTension(on){
   if(peakLoop){clearInterval(peakLoop.id);peakLoop.nodes.forEach(n=>{try{n.stop()}catch(e){}});peakLoop=null}
   if(!on)return;
   const c=peakAudio();if(!c)return;
+  const bed=PEAK_BED[peakTier(peakUi.game?peakUi.game.level:1)];
   const t0=c.currentTime,nodes=[],g=c.createGain(),f=c.createBiquadFilter();
-  g.gain.value=.16;f.type="lowpass";f.frequency.value=420;g.connect(f);f.connect(peakMaster);
-  [55,55.4,82.4].forEach(fr=>{const o=c.createOscillator();o.type="sawtooth";o.frequency.value=fr;o.connect(g);o.start(t0);nodes.push(o)});
-  const lfo=c.createOscillator(),lg=c.createGain();lfo.frequency.value=.12;lg.gain.value=180;lfo.connect(lg);lg.connect(f.frequency);lfo.start(t0);nodes.push(lfo);
-  const seq=[57,60,64,60,57,59,63,59];let i=0;
+  g.gain.setValueAtTime(.11,t0);g.gain.linearRampToValueAtTime(.2,t0+PEAK_SECONDS);
+  f.type="lowpass";f.frequency.value=bed.cut;g.connect(f);f.connect(peakMaster);
+  bed.drone.forEach(fr=>{const o=c.createOscillator();o.type="sawtooth";o.frequency.value=fr;o.connect(g);o.start(t0);nodes.push(o)});
+  const lfo=c.createOscillator(),lg=c.createGain();lfo.frequency.value=bed.lfo;lg.gain.value=bed.depth;lfo.connect(lg);lg.connect(f.frequency);lfo.start(t0);nodes.push(lfo);
+  let i=0;
   const step=()=>{
     if(peakUi.mode!=="play"){peakTension(false);return}
-    const t=c.currentTime+.05;peakTone(peakHz(seq[i%8]+12),t,.4,"triangle",.07,.01,.3);if(i%2===0)peakTone(80,t,.22,"sine",.35,.002,.2,38);i++;
+    const t=c.currentTime+.05;
+    peakTone(peakHz(bed.seq[i%bed.seq.length]+12),t,bed.step/1000*.7,"triangle",bed.arp,.01,.3);
+    if(i%bed.beat===0){peakTone(80,t,.22,"sine",bed.beatV,.002,.2,38);if(bed.beat===1)peakTone(70,t+.16,.2,"sine",bed.beatV*.7,.002,.2,34)}
+    i++;
   };
-  step();peakLoop={id:setInterval(step,550),nodes};
+  step();peakLoop={id:setInterval(step,bed.step),nodes};
 }
 // The tick sounds once per second during the last 20 seconds; returns the second to tick for, or null.
 function peakTickDue(left,last){const s=Math.ceil(left);return(s>=1&&s<=20&&s!==last)?s:null}
 // A short pause is part of the drama; shortened when the system asks for reduced motion.
 function peakDelay(ms){try{return window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches?Math.min(ms,400):ms}catch(e){return ms}}
 // ----- Peak INLI: screen, timer and fair-play protection -----
-let peakUi={mode:"idle",practice:false,picks:{},game:null,bank:null,bankLang:null,dnd:false,left:PEAK_SECONDS,qStart:0,sel:-1,note:"",noteCls:"",overlay:null,reason:"",end:null,count:3};
+let peakUi={mode:"idle",practice:false,picks:{},game:null,bank:null,bankLang:null,dnd:false,left:PEAK_SECONDS,qStart:0,sel:-1,note:"",noteCls:"",overlay:null,shot:null,reason:"",end:null,count:3};
 let peakTimerId=null,peakNextId=null,peakCountId=null,peakGuardId=null,peakListening=false;
 const peakFullSupported=()=>!!document.documentElement.requestFullscreen;
 // Protection applies to a real game only; practice has no guard, no limits and pays nothing.
@@ -8804,7 +8854,7 @@ function peakAskNext(){
     if(!state.peak.seen.includes(q.id))state.peak.seen.push(q.id);
     state.peak.active.level=g.level;state.peak.active.lifelines=g.used.slice();save();
   }
-  Object.assign(peakUi,{mode:"play",sel:-1,note:"",noteCls:"",overlay:null,qStart:performance.now(),left:PEAK_SECONDS,fresh:true,lastTick:0});
+  Object.assign(peakUi,{mode:"play",sel:-1,note:"",noteCls:"",overlay:null,shot:null,qStart:performance.now(),left:PEAK_SECONDS,fresh:true,lastTick:0});
   peakRunTimer();renderPeak();peakTension(true);
 }
 function peakRunTimer(){
@@ -8827,21 +8877,21 @@ function peakReveal(res,how){
   const g=peakUi.game;
   // keep the stored game in step at once: a reload during the pause must count this answer too
   if(!peakUi.practice&&state.peak.active){state.peak.active.level=g.level;save()}
-  if(res.result==="right"){peakUi.note=T.peakRight;peakUi.noteCls="ok";renderPeak();peakSfx("correct");peakNextId=setTimeout(peakAskNext,1700);return}
+  if(res.result==="right"){peakUi.note=T.peakRight;peakUi.noteCls="ok";renderPeak();peakSfx("correct",res.reached);peakNextId=setTimeout(peakAskNext,1700);return}
   if(res.result==="top"){peakUi.note=T.peakTopMsg;peakUi.noteCls="ok";renderPeak();peakSfx("win");peakNextId=setTimeout(()=>peakFinish("top",15),1900);return}
   const safe=peakPayoutOnWrong(res.reached+1);
   peakUi.note=(how==="timeout"?T.peakTimeUp:T.peakWrong).replace("{0}",safe);peakUi.noteCls="bad";renderPeak();peakSfx("wrong");
   peakNextId=setTimeout(()=>peakFinish(how==="timeout"?"timeout":"wrong",res.reached),2400);
 }
 function peakConfirm(){
-  const g=peakUi.game,level=g.level,res=peakAnswer(g,peakUi.sel);
+  const g=peakUi.game,level=g.level,shot=peakShot(g),res=peakAnswer(g,peakUi.sel);
   peakUi.picks[level]=peakUi.sel;
   peakUi.overlay=null;
-  if(res.result==="retry"){peakUi.sel=-1;peakUi.note=T.peakRetry;peakUi.noteCls="bad";renderPeak();peakSfx("wrong");return}
+  if(res.result==="retry"){peakUi.sel=-1;peakUi.note=T.peakRetry;peakUi.noteCls="bad";renderPeak();peakSfx("strike");return}
   if(res.result==="invalid"){renderPeak();return}
   // the stored game follows at once, then a suspense beat before the verdict (the timer is stopped)
   if(!peakUi.practice&&state.peak.active){state.peak.active.level=g.level;save()}
-  peakUi.mode="reveal";peakUi.revealRes=null;clearInterval(peakTimerId);peakTension(false);peakSfx("final");renderPeak();
+  peakUi.mode="reveal";peakUi.revealRes=null;peakUi.shot=shot;clearInterval(peakTimerId);peakTension(false);peakSfx("final");renderPeak();
   peakNextId=setTimeout(()=>peakReveal(res,"answer"),peakDelay(1400));
 }
 function peakLifeline(kind){
@@ -8876,12 +8926,19 @@ function peakGateHTML(){
     <div class="pk-btns"><button class="pk-btn" data-pk="start" ${peakCanStart()?"":"disabled"}>${T.peakStart}</button><button class="pk-btn ghost" data-pk="practice" ${peakUi.bank?"":"disabled"}>${T.peakPractice}</button></div><p class="hint" style="text-align:center">${T.peakPracticeHint}</p></div></div>`;
 }
 function peakCountHTML(){return`<div class="pk-wrap"><div class="pk-card" style="text-align:center"><div class="eyebrow">${T.peakTitle}</div><div class="pk-big">${peakUi.count}</div><p class="sub">${T.peakCountdown.replace("{0}",peakUi.count)}</p></div></div>`}
+// What the screen shows for the question being played. peakAnswer moves the game on to the next
+// question the instant a right answer is confirmed, but the suspense beat and the verdict still have to
+// draw THAT question with the answer that was given to it — so peakConfirm takes this snapshot before
+// answering and peakPlayHTML draws from it while peakUi.mode is "reveal" (cleared by peakAskNext).
+function peakShot(g){
+  return{level:g.level,q:peakQ(g),shown:g.shown[g.level-1].slice(),gone:g.gone.slice(),struck:g.struck.slice(),used:g.used.slice(),doubleOn:g.doubleOn,vis:peakVisible(g)};
+}
 function peakPlayHTML(){
-  const g=peakUi.game,q=peakQ(g),shown=g.shown[g.level-1],vis=peakVisible(g),rev=peakUi.mode==="reveal",res=peakUi.revealRes||{};
+  const g=peakUi.game,rev=peakUi.mode==="reveal",v=(rev&&peakUi.shot)||peakShot(g),q=v.q,shown=v.shown,vis=v.vis,res=peakUi.revealRes||{};
   const fresh=peakUi.fresh;peakUi.fresh=false;
   const opts=shown.map((orig,pos)=>{
     let cls="";
-    if(g.gone.includes(orig))cls="gone";else if(g.struck.includes(orig))cls="cross";
+    if(v.gone.includes(orig))cls="gone";else if(v.struck.includes(orig))cls="cross";
     else if(rev&&(res.result==="right"||res.result==="top")&&orig===peakUi.sel)cls="ok";
     else if(rev&&(res.result==="wrong"||res.result==="timeout")){if(orig===q.correct)cls="ok";else if(orig===peakUi.sel)cls="bad"}
     else if(orig===peakUi.sel)cls="sel";
@@ -8889,25 +8946,25 @@ function peakPlayHTML(){
     return`<button class="pk-opt pk-hex ${cls||label}" aria-pressed="${orig===peakUi.sel}" data-pk="opt" data-i="${pos}" ${rev||!vis.includes(orig)?"disabled":""}><i>${"ABCD"[pos]}</i><span>${escapeHtml(q.options[orig])}</span></button>`;
   }).join("");
   const LL=[["5050","50:50"],["phone","📞"],["audience","📊"],["double","🛡"]],names={"5050":T.peakLl5050,phone:T.peakLlPhone,audience:T.peakLlAudience,double:T.peakLlDouble};
-  const lls=LL.map(([k,ic])=>`<div class="pk-ll ${g.used.includes(k)?(k==="double"&&g.doubleOn?"active":"used"):""}"><button class="pk-ci" data-pk="ll" data-k="${k}" ${rev?"disabled":""}>${ic}</button>${names[k]}</div>`).join("");
+  const lls=LL.map(([k,ic])=>`<div class="pk-ll ${v.used.includes(k)?(k==="double"&&v.doubleOn?"active":"used"):""}"><button class="pk-ci" data-pk="ll" data-k="${k}" ${rev?"disabled":""}>${ic}</button>${names[k]}</div>`).join("");
   let lad='<ul class="pk-ladder">';
-  for(let i=15;i>=1;i--)lad+=`<li class="${i===g.level?"cur":i<g.level?"done":""}${(i===5||i===10)?" safe":""}"><em>${i}</em>${(i===5||i===10)?"◆":""}<span>${peakPrizeInli(i)}</span></li>`;
+  for(let i=15;i>=1;i--)lad+=`<li class="${i===v.level?"cur":i<v.level?"done":""}${(i===5||i===10)?" safe":""}"><em>${i}</em>${(i===5||i===10)?"◆":""}<span>${peakPrizeInli(i)}</span></li>`;
   lad+=`<small>${T.peakSafeNote}</small></ul>`;
   let ov="";const o=peakUi.overlay;
   if(o&&o.type==="final")ov=`<div class="pk-ov" role="dialog" aria-modal="true"><div class="pk-panel" style="text-align:center"><h4>${T.peakFinalQ}</h4><div style="font-size:20px;font-weight:800;margin:8px 0"><span style="color:var(--accent)">${"ABCD"[shown.indexOf(peakUi.sel)]}</span> ${escapeHtml(q.options[peakUi.sel])}</div><div class="pk-btns"><button class="pk-btn" data-pk="yes">${T.peakFinalYes}</button><button class="pk-btn ghost" data-pk="no">${T.peakFinalNo}</button></div></div></div>`;
-  else if(o&&o.type==="walk")ov=`<div class="pk-ov" role="dialog" aria-modal="true"><div class="pk-panel" style="text-align:center"><h4>${T.peakWalkAsk.replace("{0}",peakPrizeInli(g.level-1))}</h4><div class="pk-btns"><button class="pk-btn" data-pk="walkyes">${T.peakFinalYes}</button><button class="pk-btn ghost" data-pk="no">${T.peakFinalNo}</button></div></div></div>`;
+  else if(o&&o.type==="walk")ov=`<div class="pk-ov" role="dialog" aria-modal="true"><div class="pk-panel" style="text-align:center"><h4>${T.peakWalkAsk.replace("{0}",peakPrizeInli(v.level-1))}</h4><div class="pk-btns"><button class="pk-btn" data-pk="walkyes">${T.peakFinalYes}</button><button class="pk-btn ghost" data-pk="no">${T.peakFinalNo}</button></div></div></div>`;
   else if(o&&o.type==="phone")ov=`<div class="pk-ov" role="dialog" aria-modal="true"><div class="pk-panel"><h4>${T.peakLlPhone}</h4><div class="pk-bubble">${T.peakFriend.replace("{0}",`<b>${"ABCD"[shown.indexOf(o.answer)]} — ${escapeHtml(q.options[o.answer])}</b>`).replace("{1}",o.confidence)}</div><div class="pk-btns"><button class="pk-btn ghost" data-pk="no">${T.peakClose}</button></div></div></div>`;
   else if(o&&o.type==="audience"){
     const bars=shown.filter(i=>o.percent[i]!==undefined).map(i=>`<div><span style="height:${Math.max(6,o.percent[i]*1.3)}px"></span>${o.percent[i]}%<br>${"ABCD"[shown.indexOf(i)]}</div>`).join("");
     ov=`<div class="pk-ov" role="dialog" aria-modal="true"><div class="pk-panel"><h4>${T.peakLlAudience}</h4><div class="pk-bars">${bars}</div><div class="pk-btns"><button class="pk-btn ghost" data-pk="no">${T.peakClose}</button></div></div></div>`;
   }
   const ribbon=peakUi.practice?`<div class="pk-ribbon" role="status">${T.peakPracticeRibbon}</div>`:"";
-  return`<div class="pk-stage">${ribbon}<div class="pk-bar"><div class="pk-bl">${peakLogo(26)}<span>${T.peakTitle}</span></div><div class="pk-bc"><b>${T.peakQOf.replace("{0}",g.level)}</b></div>
+  return`<div class="pk-stage">${ribbon}<div class="pk-bar"><div class="pk-bl">${peakLogo(26)}<span>${T.peakTitle}</span></div><div class="pk-bc"><b>${T.peakQOf.replace("{0}",v.level)}</b></div>
     <div class="pk-br">${peakSndBtn()}${peakUi.practice?"":`<span class="pk-guard"><i></i>${T.peakGuard}</span>`}${peakTimerHTML()}</div></div>
     <div class="pk-game"><div class="pk-main"><div class="pk-q pk-hex"><span>${escapeHtml(q.q)}</span></div>
     ${peakUi.note?`<div class="pk-banner ${peakUi.noteCls}" role="status">${peakUi.note}</div>`:""}
     <div class="pk-opts ${fresh?"pk-in":""}">${opts}</div><div class="pk-lls">${lls}</div>
-    ${rev?"":peakUi.practice?`<button class="pk-walk" data-pk="pexit">${T.peakPracticeExit}</button>`:`<button class="pk-walk" data-pk="walk">${T.peakWalk.replace("{0}",`<b>${peakPrizeInli(g.level-1)}</b>`)}</button>`}</div>${lad}</div>${ov}</div>`;
+    ${rev?"":peakUi.practice?`<button class="pk-walk" data-pk="pexit">${T.peakPracticeExit}</button>`:`<button class="pk-walk" data-pk="walk">${T.peakWalk.replace("{0}",`<b>${peakPrizeInli(v.level-1)}</b>`)}</button>`}</div>${lad}</div>${ov}</div>`;
 }
 function peakEndHTML(){
   const g=peakUi.end||{};
