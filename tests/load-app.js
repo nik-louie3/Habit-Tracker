@@ -47,6 +47,7 @@ function loadApp() {
       peakPickQuestions, peakNewGame, peakQ, peakVisible, peakUseLifeline, peakAnswer, peakTimeout, peakWalkAway,
       peakSoundOn, peakSetSound, peakSfx, peakTickDue,
       peakUi, peakAskNext, peakConfirm, peakReveal, peakPlayHTML,
+      peakSoft, peakCanStart, peakCheckGuard, peakGateHTML, peakViolationHTML,
       getDocument: () => window.document,
       // jsdom has no Web Audio: tests install a stand-in so the real cue code actually runs.
       setAudioContext: (C) => { window.AudioContext = C; },
