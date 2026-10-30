@@ -7,7 +7,7 @@ const CATEGORIES = ["science", "geography", "history", "literature", "art", "mus
 // Each language has its OWN bank with a regional flavour (en: US/UK, ru: Russia, es: Spain + Latin America,
 // zh: China, fr: France + francophone world), so the banks are not translations of one another.
 // The minimum per level is raised language by language as each bank reaches its target of 100.
-const MIN_PER_LEVEL = { ru: 100, en: 100, es: 25, zh: 25, fr: 25 };
+const MIN_PER_LEVEL = { ru: 100, en: 100, es: 100, zh: 25, fr: 25 };
 const PREFIX = { ru: "r", en: "e", es: "s", zh: "z", fr: "f" };
 const LANGS = Object.keys(PREFIX);
 
